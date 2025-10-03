@@ -64,6 +64,16 @@
     // Import
     "import/prefer-default-export": "off",
     "import/no-default-export": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.config.ts",
+          "**/*.config.js",
+          "**/*.config.mjs"
+        ]
+      }
+    ],
     "import/extensions": [
       "error",
       "ignorePackages",

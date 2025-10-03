@@ -99,6 +99,8 @@ import { useState } from 'react';
 
 // components/AddToCartButton.tsx
 
+// components/AddToCartButton.tsx
+
 export default function AddToCartButton({ productId }: { productId: string }) {
   const [isAdding, setIsAdding] = useState(false);
   const [count, setCount] = useState(0);
@@ -223,6 +225,8 @@ import { MapContainer } from 'react-leaflet';
 
 // components/Map.tsx
 
+// components/Map.tsx
+
 export default function Map({ coordinates }: { coordinates: [number, number] }) {
   return (
     <MapContainer center={coordinates} zoom={13}>
@@ -261,6 +265,8 @@ export default async function PostsPage() {
 'use client';
 
 import { useEffect, useState } from 'react';
+
+// components/LivePosts.tsx
 
 // components/LivePosts.tsx
 
@@ -324,6 +330,8 @@ export default function Page() {
 'use client';
 
 import { db } from '@/lib/database';
+
+// components/UserProfile.tsx - WRONG
 
 // components/UserProfile.tsx - WRONG
 
@@ -532,8 +540,140 @@ When converting between component types:
 | **Environment Variables** | All               | `NEXT_PUBLIC_*`   |
 | **Streaming/Suspense**    | ✅ Yes            | Partial           |
 
+## Server-Only Code Protection
+
+### What is `'use server'`?
+
+The `'use server'` directive marks code that should **only execute on the server**. It's the opposite of `'use client'` and provides an extra security layer.
+
+### Two Use Cases
+
+#### 1. Server Actions (Functions)
+
+Mark async functions as Server Actions for form submissions and mutations:
+
+```tsx
+// app/actions.ts
+'use server';
+
+import { db } from '@/lib/database';
+
+// app/actions.ts
+
+export async function createUser(formData: FormData) {
+  const name = formData.get('name') as string;
+  const email = formData.get('email') as string;
+
+  // Direct database access - only runs on server
+  const user = await db.user.create({
+    data: { name, email },
+  });
+
+  return { success: true, userId: user.id };
+}
+```
+
+#### 2. Server-Only Utilities (Files)
+
+Mark entire files/modules to prevent accidental client-side bundling:
+
+```tsx
+// lib/server-utils.ts
+'use server';
+
+import { headers } from 'next/headers';
+
+// lib/server-utils.ts
+
+export async function getServerSideData() {
+  const headersList = await headers();
+  const apiKey = process.env.API_KEY; // Safe - never exposed to client
+
+  // Server-only logic
+  return fetch('https://api.example.com/data', {
+    headers: { Authorization: `Bearer ${apiKey}` },
+  });
+}
+```
+
+### Key Differences: `'use server'` vs Server Components
+
+| Feature              | `'use server'`                 | Server Components         |
+| -------------------- | ------------------------------ | ------------------------- |
+| **Purpose**          | Explicitly server-only code    | Default rendering mode    |
+| **Used For**         | Server Actions, utility files  | React components          |
+| **Protection**       | Prevents client bundling       | Implicit server execution |
+| **Can Be Called By** | Client Components (via import) | Only rendered server-side |
+| **Typical Use**      | Form actions, API calls        | Data fetching, rendering  |
+
+### Usage Example: Client Component Calling Server Action
+
+```tsx
+// app/actions.ts
+'use server';
+
+export async function submitForm(data: FormData) {
+  const result = await db.user.create({
+    data: { name: data.get('name') },
+  });
+  return result;
+}
+```
+
+```tsx
+// components/UserForm.tsx
+'use client';
+
+import { submitForm } from '@/app/actions';
+
+// components/UserForm.tsx
+
+export default function UserForm() {
+  const handleSubmit = async (formData: FormData) => {
+    const result = await submitForm(formData); // Calls server-side function
+    console.log(result);
+  };
+
+  return (
+    <form action={handleSubmit}>
+      <input name="name" />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+```
+
+### When to Use `'use server'`
+
+- ✅ Server Actions for form submissions
+- ✅ Protecting sensitive server utilities from client exposure
+- ✅ Database operations called from Client Components
+- ✅ API routes replacement (simpler than creating `/api` endpoints)
+- ✅ Environment variable access in shared utilities
+
+### Security Benefits
+
+```tsx
+// ❌ Without 'use server' - risky if imported in client
+// lib/dangerous.ts
+export function getApiKey() {
+  return process.env.SECRET_API_KEY; // Could leak if bundled in client!
+}
+```
+
+```tsx
+// ✅ With 'use server' - guaranteed server-only
+// lib/safe.ts
+'use server';
+
+export function getApiKey() {
+  return process.env.SECRET_API_KEY; // Safe - will error if client tries to import
+}
+```
+
 ## Resources
 
 - [Next.js Server Components Docs](https://nextjs.org/docs/app/building-your-application/rendering/server-components)
+- [Next.js Server Actions Docs](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations)
 - [React Server Components RFC](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md)
 - [When to Use Server vs Client Components](https://nextjs.org/docs/app/building-your-application/rendering/composition-patterns)

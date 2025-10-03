@@ -171,6 +171,7 @@ Imports are automatically organized in this order:
    ```
 
 5. **Relative Imports**
+
    ```typescript
    import { helper } from './helper';
    import styles from './styles.module.css';
@@ -303,7 +304,7 @@ singleQuote: true;
 
 File: [.prettierignore](../.prettierignore)
 
-```
+```plaintext
 # Dependencies
 node_modules/
 pnpm-lock.yaml

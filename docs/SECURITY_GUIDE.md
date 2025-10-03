@@ -6,8 +6,8 @@ Complete security guide for building secure Next.js applications with OWASP best
 
 - [🔒 Security Overview](#-security-overview)
 - [🛡️ OWASP Top 10 for Next.js](#️-owasp-top-10-for-nextjs)
-- [🔐 Authentication & Authorization](#-authentication--authorization)
-- [🚫 XSS Prevention](#-xss-prevention)
+  <!-- - [🔐 Authentication & Authorization](#-authentication--authorization) -->
+  <!-- - [🚫 XSS Prevention](#-xss-prevention) -->
 - [🔑 CSRF Protection](#-csrf-protection)
 - [📋 Content Security Policy (CSP)](#-content-security-policy-csp)
 - [🔒 Security Headers](#-security-headers)
@@ -96,6 +96,7 @@ export async function getUser(userId: string) {
 ```
 
 **Key Points:**
+
 - ✅ Always use ORMs (Prisma, Drizzle)
 - ✅ Never concatenate user input into queries
 - ✅ Validate input with Zod/Valibot
@@ -182,6 +183,7 @@ export const config = {
 ```
 
 **Key Points:**
+
 - ✅ Use Clerk, NextAuth, or Supabase Auth
 - ✅ Implement MFA (Multi-Factor Authentication)
 - ✅ Enforce strong password policies
@@ -199,13 +201,25 @@ export const config = {
 ```typescript
 // ❌ BAD - API key in client component
 'use client';
+
+// ✅ GOOD - Use server-only package
+import 'server-only';
+
+// ❌ BAD - API key in client component
+
+// ❌ BAD - API key in client component
+
+// ❌ BAD - API key in client component
+
+// ❌ BAD - API key in client component
+
 const API_KEY = 'sk-1234567890'; // NEVER DO THIS!
 
 // ✅ GOOD - Use environment variables
 // .env.local
-DATABASE_URL="postgresql://..."
-STRIPE_SECRET_KEY="sk_test_..."
-NEXT_PUBLIC_API_URL="https://api.example.com"
+DATABASE_URL = 'postgresql://...';
+STRIPE_SECRET_KEY = 'sk_test_...';
+NEXT_PUBLIC_API_URL = 'https://api.example.com';
 
 // Server Component or API Route
 export default async function ServerComponent() {
@@ -214,7 +228,7 @@ export default async function ServerComponent() {
 }
 
 // Client Component - only public env vars
-'use client';
+('use client');
 export default function ClientComponent() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   // Only NEXT_PUBLIC_* vars are available here
@@ -235,9 +249,6 @@ export async function GET() {
   return Response.json(user);
 }
 
-// ✅ GOOD - Use server-only package
-import 'server-only';
-
 export const db = new PrismaClient();
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -252,6 +263,7 @@ export function logUser(user: User) {
 ```
 
 **Key Points:**
+
 - ✅ Never commit secrets to git
 - ✅ Use `.env.local` for local secrets
 - ✅ Use `NEXT_PUBLIC_` prefix only for public variables
@@ -298,6 +310,7 @@ export async function POST(req: Request) {
 ```
 
 **Key Points:**
+
 - ✅ Prefer JSON over XML
 - ✅ Disable external entity processing
 - ✅ Use safe parsing libraries
@@ -394,6 +407,7 @@ export default clerkMiddleware(async (auth, req) => {
 ```
 
 **Key Points:**
+
 - ✅ Always verify user authentication
 - ✅ Check resource ownership
 - ✅ Implement role-based access control (RBAC)
@@ -488,6 +502,7 @@ export async function GET() {
 ```
 
 **Key Points:**
+
 - ✅ Set security headers
 - ✅ Disable verbose error messages in production
 - ✅ Keep dependencies updated
@@ -503,6 +518,18 @@ export async function GET() {
 **Prevention:**
 
 ```tsx
+// ✅ GOOD - Sanitize HTML with DOMPurify
+import DOMPurify from 'isomorphic-dompurify';
+// ✅ GOOD - Use markdown libraries with XSS protection
+import ReactMarkdown from 'react-markdown';
+// NEVER DO THIS!
+
+// ✅ GOOD - No eval, no Function constructor
+// Just don't use eval() or new Function() with user input
+
+// ✅ GOOD - Validate URLs
+import { z } from 'zod';
+
 // ✅ React automatically escapes by default
 export default function SafeComponent({ userInput }: { userInput: string }) {
   return <div>{userInput}</div>; // Automatically escaped
@@ -513,9 +540,6 @@ export default function UnsafeComponent({ html }: { html: string }) {
   return <div dangerouslySetInnerHTML={{ __html: html }} />; // XSS risk!
 }
 
-// ✅ GOOD - Sanitize HTML with DOMPurify
-import DOMPurify from 'isomorphic-dompurify';
-
 export default function SafeHTMLComponent({ html }: { html: string }) {
   const sanitizedHTML = DOMPurify.sanitize(html, {
     ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'a'],
@@ -525,9 +549,6 @@ export default function SafeHTMLComponent({ html }: { html: string }) {
   return <div dangerouslySetInnerHTML={{ __html: sanitizedHTML }} />;
 }
 
-// ✅ GOOD - Use markdown libraries with XSS protection
-import ReactMarkdown from 'react-markdown';
-
 export default function MarkdownComponent({ content }: { content: string }) {
   return <ReactMarkdown>{content}</ReactMarkdown>;
 }
@@ -536,24 +557,25 @@ export default function MarkdownComponent({ content }: { content: string }) {
 const userScript = "alert('XSS')";
 <div onClick={() => eval(userScript)} />; // NEVER DO THIS!
 
-// ✅ GOOD - No eval, no Function constructor
-// Just don't use eval() or new Function() with user input
-
-// ✅ GOOD - Validate URLs
-import { z } from 'zod';
-
-const urlSchema = z.string().url().refine(
-  (url) => {
-    const parsed = new URL(url);
-    return ['http:', 'https:'].includes(parsed.protocol);
-  },
-  { message: 'Only HTTP/HTTPS URLs allowed' }
-);
+const urlSchema = z
+  .string()
+  .url()
+  .refine(
+    (url) => {
+      const parsed = new URL(url);
+      return ['http:', 'https:'].includes(parsed.protocol);
+    },
+    { message: 'Only HTTP/HTTPS URLs allowed' }
+  );
 
 export function SafeLink({ href, children }: { href: string; children: React.ReactNode }) {
   try {
     const validUrl = urlSchema.parse(href);
-    return <a href={validUrl} rel="noopener noreferrer">{children}</a>;
+    return (
+      <a href={validUrl} rel="noopener noreferrer">
+        {children}
+      </a>
+    );
   } catch {
     return <span>{children}</span>;
   }
@@ -564,6 +586,7 @@ export function SafeLink({ href, children }: { href: string; children: React.Rea
 ```
 
 **Key Points:**
+
 - ✅ React escapes by default - use it!
 - ✅ Never use `dangerouslySetInnerHTML` without sanitization
 - ✅ Use DOMPurify for HTML sanitization
@@ -622,6 +645,7 @@ export const appRouter = router({
 ```
 
 **Key Points:**
+
 - ✅ Always validate deserialized data with Zod
 - ✅ Use type-safe APIs (tRPC)
 - ✅ Don't trust serialized data from clients
@@ -672,6 +696,7 @@ pnpm dlx license-checker --summary
 ```
 
 **Key Points:**
+
 - ✅ Run `pnpm audit` regularly
 - ✅ Enable Dependabot/Renovate
 - ✅ Keep dependencies updated
@@ -772,6 +797,7 @@ export async function POST(req: Request) {
 ```
 
 **Key Points:**
+
 - ✅ Log authentication events
 - ✅ Log authorization failures
 - ✅ Log sensitive operations
@@ -804,6 +830,12 @@ export async function updateProfile(formData: FormData) {
 ```typescript
 // lib/csrf.ts
 import { headers } from 'next/headers';
+// ✅ GOOD - Use CSRF tokens with forms
+import { cookies } from 'next/headers';
+
+// app/api/update/route.ts
+import { validateCSRF } from '@/lib/csrf';
+import { randomBytes } from 'crypto';
 
 export async function validateCSRF() {
   const headersList = await headers();
@@ -820,19 +852,12 @@ export async function validateCSRF() {
   }
 }
 
-// app/api/update/route.ts
-import { validateCSRF } from '@/lib/csrf';
-
 export async function POST(req: Request) {
   await validateCSRF(); // Validate before processing
 
   const data = await req.json();
   // Process request...
 }
-
-// ✅ GOOD - Use CSRF tokens with forms
-import { cookies } from 'next/headers';
-import { randomBytes } from 'crypto';
 
 export async function generateCSRFToken() {
   const token = randomBytes(32).toString('hex');
@@ -858,6 +883,7 @@ export async function validateCSRFToken(token: string) {
 ```
 
 **Key Points:**
+
 - ✅ Server Actions have built-in CSRF protection
 - ✅ Validate Origin vs Host for API routes
 - ✅ Use SameSite cookies
@@ -949,7 +975,9 @@ const nextConfig = {
               frame-ancestors 'none';
               base-uri 'self';
               form-action 'self';
-            `.replace(/\s{2,}/g, ' ').trim(),
+            `
+              .replace(/\s{2,}/g, ' ')
+              .trim(),
           },
         ],
       },
@@ -961,6 +989,7 @@ const nextConfig = {
 **Important:** When using nonces, all pages must be dynamically rendered.
 
 **Key Points:**
+
 - ✅ Start with strict `default-src 'self'`
 - ✅ Use nonces for inline scripts
 - ✅ Avoid `'unsafe-eval'` and `'unsafe-inline'`
@@ -1119,15 +1148,12 @@ export async function hashPassword(password: string): Promise<string> {
 }
 
 // Verify password
-export async function verifyPassword(
-  password: string,
-  hash: string
-): Promise<boolean> {
+export async function verifyPassword(password: string, hash: string): Promise<boolean> {
   return bcrypt.compare(password, hash);
 }
 
 // Usage
-'use server';
+('use server');
 export async function registerUser(email: string, password: string) {
   const hashedPassword = await hashPassword(password);
 
@@ -1141,6 +1167,7 @@ export async function registerUser(email: string, password: string) {
 ```
 
 **Key Points:**
+
 - ✅ Use AES-256-GCM for encryption
 - ✅ Use bcrypt/argon2 for password hashing
 - ✅ Never store passwords in plain text
@@ -1170,13 +1197,16 @@ const passwordSchema = z
   .regex(/[^A-Za-z0-9]/, 'Must contain special character');
 
 // ✅ URL validation (prevent javascript: URLs)
-const urlSchema = z.string().url().refine(
-  (url) => {
-    const parsed = new URL(url);
-    return ['http:', 'https:'].includes(parsed.protocol);
-  },
-  { message: 'Only HTTP/HTTPS URLs allowed' }
-);
+const urlSchema = z
+  .string()
+  .url()
+  .refine(
+    (url) => {
+      const parsed = new URL(url);
+      return ['http:', 'https:'].includes(parsed.protocol);
+    },
+    { message: 'Only HTTP/HTTPS URLs allowed' }
+  );
 
 // ✅ File upload validation
 const fileSchema = z.object({
@@ -1199,7 +1229,7 @@ const paginationSchema = z.object({
 });
 
 // Usage in Server Action
-'use server';
+('use server');
 export async function createUser(formData: FormData) {
   const schema = z.object({
     email: emailSchema,
@@ -1223,6 +1253,7 @@ export async function createUser(formData: FormData) {
 ```
 
 **Key Points:**
+
 - ✅ Validate all user input with Zod
 - ✅ Sanitize HTML content
 - ✅ Validate file uploads (size, type)
@@ -1288,6 +1319,7 @@ const apiRateLimit = new Ratelimit({
 ```typescript
 // lib/api-key.ts
 import { headers } from 'next/headers';
+
 import crypto from 'crypto';
 
 export async function validateAPIKey(): Promise<boolean> {
@@ -1299,10 +1331,7 @@ export async function validateAPIKey(): Promise<boolean> {
   }
 
   // Hash the API key for comparison
-  const hashedKey = crypto
-    .createHash('sha256')
-    .update(apiKey)
-    .digest('hex');
+  const hashedKey = crypto.createHash('sha256').update(apiKey).digest('hex');
 
   // Compare with stored hash
   return hashedKey === process.env.API_KEY_HASH;
@@ -1326,10 +1355,7 @@ export async function GET(req: Request) {
 // lib/cors.ts
 import { NextResponse } from 'next/server';
 
-const allowedOrigins = [
-  'https://yourdomain.com',
-  'https://app.yourdomain.com',
-];
+const allowedOrigins = ['https://yourdomain.com', 'https://app.yourdomain.com'];
 
 export function cors(req: Request, res: NextResponse) {
   const origin = req.headers.get('origin');
@@ -1357,6 +1383,7 @@ export async function OPTIONS(req: Request) {
 ```
 
 **Key Points:**
+
 - ✅ Implement rate limiting
 - ✅ Use API keys for service-to-service auth
 - ✅ Configure CORS properly
@@ -1419,6 +1446,7 @@ const stripe = new Stripe(env.STRIPE_SECRET_KEY);
 ```
 
 **Key Points:**
+
 - ✅ Never commit `.env.local`
 - ✅ Use `NEXT_PUBLIC_` prefix for client-side vars
 - ✅ Validate env vars with Zod
@@ -1459,16 +1487,16 @@ pnpm add next@15.0.5 --save-exact
 # .github/dependabot.yml
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "weekly"
+      interval: 'weekly'
     open-pull-requests-limit: 10
     reviewers:
-      - "your-team"
+      - 'your-team'
     commit-message:
-      prefix: "chore"
-      include: "scope"
+      prefix: 'chore'
+      include: 'scope'
 ```
 
 ### Package Verification
@@ -1485,6 +1513,7 @@ pnpm why <package-name>
 ```
 
 **Key Points:**
+
 - ✅ Run `pnpm audit` before every deployment
 - ✅ Enable Dependabot/Renovate
 - ✅ Review dependency changes in PRs
@@ -1580,6 +1609,7 @@ CMD ["node", "server.js"]
 ```
 
 **Key Points:**
+
 - ✅ Use environment-specific secrets
 - ✅ Enable security headers
 - ✅ Use HTTPS only
@@ -1594,6 +1624,7 @@ CMD ["node", "server.js"]
 ### Pre-Deployment Checklist
 
 #### Authentication & Authorization
+
 - [ ] Using established auth library (Clerk, NextAuth, Supabase)
 - [ ] MFA enabled for admin accounts
 - [ ] Strong password policy enforced
@@ -1601,6 +1632,7 @@ CMD ["node", "server.js"]
 - [ ] Account lockout after failed attempts
 
 #### Data Protection
+
 - [ ] All sensitive data encrypted at rest
 - [ ] Passwords hashed with bcrypt/argon2
 - [ ] Environment variables not committed to git
@@ -1608,6 +1640,7 @@ CMD ["node", "server.js"]
 - [ ] Database backups encrypted
 
 #### Input Validation
+
 - [ ] All user input validated with Zod
 - [ ] File upload validation (size, type)
 - [ ] SQL injection prevention (using ORM)
@@ -1615,6 +1648,7 @@ CMD ["node", "server.js"]
 - [ ] URL validation (no javascript: URLs)
 
 #### Security Headers
+
 - [ ] Content-Security-Policy configured
 - [ ] Strict-Transport-Security enabled
 - [ ] X-Frame-Options set
@@ -1622,6 +1656,7 @@ CMD ["node", "server.js"]
 - [ ] Referrer-Policy configured
 
 #### API Security
+
 - [ ] Rate limiting implemented
 - [ ] CORS properly configured
 - [ ] API authentication required
@@ -1629,6 +1664,7 @@ CMD ["node", "server.js"]
 - [ ] CSRF protection for API routes
 
 #### Monitoring & Logging
+
 - [ ] Error tracking configured (Sentry)
 - [ ] Security events logged
 - [ ] Failed login attempts logged
@@ -1636,6 +1672,7 @@ CMD ["node", "server.js"]
 - [ ] Log retention policy defined
 
 #### Dependencies
+
 - [ ] All dependencies up to date
 - [ ] No critical vulnerabilities (`pnpm audit`)
 - [ ] Dependabot/Renovate enabled
@@ -1643,6 +1680,7 @@ CMD ["node", "server.js"]
 - [ ] Unused dependencies removed
 
 #### Deployment
+
 - [ ] HTTPS enforced
 - [ ] Environment variables in platform (not code)
 - [ ] Security headers deployed
@@ -1681,7 +1719,7 @@ curl -X POST https://yoursite.com/api/comment \
 
 ```typescript
 // test/security.test.ts
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
 describe('Security Tests', () => {
   it('should reject SQL injection attempts', async () => {
@@ -1701,12 +1739,12 @@ describe('Security Tests', () => {
   });
 
   it('should enforce rate limiting', async () => {
-    const requests = Array(20).fill(null).map(() =>
-      fetch('/api/endpoint')
-    );
+    const requests = Array(20)
+      .fill(null)
+      .map(() => fetch('/api/endpoint'));
 
     const responses = await Promise.all(requests);
-    const tooManyRequests = responses.filter(r => r.status === 429);
+    const tooManyRequests = responses.filter((r) => r.status === 429);
 
     expect(tooManyRequests.length).toBeGreaterThan(0);
   });
@@ -1745,11 +1783,13 @@ describe('Security Tests', () => {
 ## 📚 Resources
 
 ### Official Documentation
+
 - [Next.js Security](https://nextjs.org/docs/app/guides/data-security)
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/)
 - [OWASP Cheat Sheets](https://cheatsheetseries.owasp.org/)
 
 ### Security Tools
+
 - [Snyk](https://snyk.io/) - Vulnerability scanning
 - [Dependabot](https://github.com/dependabot) - Dependency updates
 - [Sentry](https://sentry.io/) - Error tracking
@@ -1757,6 +1797,7 @@ describe('Security Tests', () => {
 - [SecurityHeaders.com](https://securityheaders.com/) - Header testing
 
 ### Learning Resources
+
 - [Web Security Academy](https://portswigger.net/web-security)
 - [OWASP WebGoat](https://owasp.org/www-project-webgoat/)
 - [HackerOne](https://www.hackerone.com/hackers/hacker101)

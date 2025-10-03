@@ -6,7 +6,7 @@
 
 - [🚀 Top 10 Advanced Features](#-top-10-advanced-features)
 - [💡 Recommended Features for This Project](#-recommended-features-for-this-project)
-- [📚 Implementation Guides](#-implementation-guides)
+<!-- - [📚 Implementation Guides](#-implementation-guides) -->
 - [🎯 Feature Comparison Matrix](#-feature-comparison-matrix)
 - [🛠️ Quick Start Examples](#️-quick-start-examples)
 
@@ -17,16 +17,19 @@
 ### 1. Partial Prerendering (PPR) ⭐️⭐️⭐️⭐️⭐️
 
 **What it is:**
+
 - ใหม่ล่าสุดใน Next.js 15
 - รวม Static + Dynamic content ในหน้าเดียว
 - ส่วนที่ static จะ prerender, ส่วนที่ dynamic จะ stream
 
 **Why it's special:**
+
 - ⚡ Performance ดีที่สุด (static shell loads instantly)
 - 🔄 Real-time data ได้พร้อมกัน
 - 🎯 Best of both worlds
 
 **Use cases:**
+
 - Dashboard with real-time stats
 - E-commerce product pages (static content + live inventory)
 - News sites (static layout + live comments)
@@ -39,17 +42,20 @@
 ### 2. Server Actions with Optimistic UI ⭐️⭐️⭐️⭐️⭐️
 
 **What it is:**
+
 - เขียน server-side logic โดยตรงใน component
 - ไม่ต้องสร้าง API routes
 - Update UI ทันทีก่อนที่ server จะตอบกลับ
 
 **Why it's special:**
+
 - 🚀 UX ดีเยี่ยม (no loading state)
 - 🔒 Type-safe end-to-end
 - 📝 Code น้อยลง
 - ♿ Progressive Enhancement (works without JS)
 
 **Use cases:**
+
 - Todo lists
 - Like/Unlike buttons
 - Forms with instant feedback
@@ -63,16 +69,19 @@
 ### 3. Streaming SSR with Suspense ⭐️⭐️⭐️⭐️
 
 **What it is:**
+
 - ส่ง HTML ทีละส่วน (stream)
 - ไม่ต้องรอให้ทุกอย่างโหลดเสร็จ
 - แสดง loading state อัตโนมัติ
 
 **Why it's special:**
+
 - ⚡ Time to First Byte (TTFB) เร็วสุด
 - 🎨 Loading states แบบ declarative
 - 📱 Better mobile experience
 
 **Use cases:**
+
 - Slow database queries
 - Multiple API calls
 - Heavy computations
@@ -86,17 +95,20 @@
 ### 4. Edge Runtime + Middleware ⭐️⭐️⭐️⭐️
 
 **What it is:**
+
 - Run code ใกล้ user (CDN edge)
 - Response เร็วมาก (< 50ms)
 - Middleware ที่ทำงานก่อน request ถึง server
 
 **Why it's special:**
+
 - 🌍 Global performance
 - 🔀 A/B testing
 - 🔐 Authentication/Authorization
 - 🗺️ Geo-based routing
 
 **Use cases:**
+
 - Feature flags
 - IP blocking
 - Redirect based on location
@@ -110,17 +122,20 @@
 ### 5. Parallel Routes & Intercepting Routes ⭐️⭐️⭐️⭐️
 
 **What it is:**
+
 - แสดงหลาย route พร้อมกัน
 - Modal ที่มี URL
 - Complex layouts
 
 **Why it's special:**
+
 - 🎨 Advanced UX patterns
 - 🔗 Shareable modal URLs
 - 📱 Mobile-friendly navigation
 - 🔄 Seamless transitions
 
 **Use cases:**
+
 - Dashboard with multiple panels
 - Photo gallery modals
 - Multi-step forms
@@ -134,17 +149,20 @@
 ### 6. React Server Components + Direct Database Access ⭐️⭐️⭐️⭐️⭐️
 
 **What it is:**
+
 - เข้าถึง database โดยตรงใน component
 - ไม่ต้องสร้าง API layer
 - Zero client-side JavaScript
 
 **Why it's special:**
+
 - 🎯 Simplest architecture
 - 🔒 Secure by default (database creds ไม่ leak)
 - 📦 Smallest bundle size
 - ⚡ Fastest data fetching
 
 **Use cases:**
+
 - Data-heavy pages
 - Admin panels
 - Reports & analytics
@@ -158,17 +176,20 @@
 ### 7. Dynamic OG Image Generation ⭐️⭐️⭐️⭐️
 
 **What it is:**
+
 - สร้าง Open Graph images ด้วย code
 - ใช้ JSX + CSS สร้างรูป
 - Generate on-the-fly
 
 **Why it's special:**
+
 - 🎨 Beautiful social media previews
 - 🔄 Dynamic content (titles, images, stats)
 - 🚀 No design tools needed
 - 📊 Perfect for analytics/stats
 
 **Use cases:**
+
 - Blog post previews
 - Product cards
 - User profile cards
@@ -182,17 +203,20 @@
 ### 8. Streaming API with Server-Sent Events ⭐️⭐️⭐️
 
 **What it is:**
+
 - API ที่ stream ข้อมูล real-time
 - Alternative to WebSocket
 - ใช้ได้กับ Server Components
 
 **Why it's special:**
+
 - 📡 Real-time updates
 - 🔄 Progressive data loading
 - 💬 Chat applications
 - 📊 Live dashboards
 
 **Use cases:**
+
 - AI chat responses
 - Live notifications
 - Stock tickers
@@ -206,17 +230,20 @@
 ### 9. Advanced Metadata API + JSON-LD ⭐️⭐️⭐️
 
 **What it is:**
+
 - SEO metadata แบบ type-safe
 - Structured data สำหรับ Google
 - Dynamic per-page metadata
 
 **Why it's special:**
+
 - 🔍 Perfect SEO
 - 📊 Rich snippets in search results
 - 🎯 Type-safe metadata
 - 🔄 Dynamic generation
 
 **Use cases:**
+
 - Blog with rich snippets
 - E-commerce products
 - Events & recipes
@@ -230,17 +257,20 @@
 ### 10. ISR with On-Demand Revalidation ⭐️⭐️⭐️⭐️
 
 **What it is:**
+
 - Static pages ที่ update ได้
 - Trigger revalidation จาก webhook
 - ไม่ต้อง rebuild ทั้ง site
 
 **Why it's special:**
+
 - ⚡ Static performance + fresh data
 - 🔄 Update specific pages
 - 💰 Cost-effective
 - 🎯 Best for CMS integration
 
 **Use cases:**
+
 - Blog with CMS
 - Product catalogs
 - Documentation sites
@@ -256,11 +286,20 @@
 ### Priority 1: Must Have 🎯
 
 #### 1. Server Actions with Optimistic UI
+
 **เหมาะสำหรับ:** Todo app, Forms, Interactive features
 
 ```tsx
 // app/todos/actions.ts
-'use server'
+'use server';
+
+import { useOptimistic } from 'react';
+
+// app/todos/actions.ts
+
+// app/todos/actions.ts
+
+// app/todos/actions.ts
 
 export async function addTodo(formData: FormData) {
   const text = formData.get('text');
@@ -270,20 +309,21 @@ export async function addTodo(formData: FormData) {
 }
 
 // app/todos/page.tsx
-'use client'
-import { useOptimistic } from 'react';
+('use client');
 
 export function TodoList({ initialTodos }) {
-  const [optimisticTodos, addOptimisticTodo] = useOptimistic(
-    initialTodos,
-    (state, newTodo) => [...state, newTodo]
-  );
+  const [optimisticTodos, addOptimisticTodo] = useOptimistic(initialTodos, (state, newTodo) => [
+    ...state,
+    newTodo,
+  ]);
 
   return (
-    <form action={async (formData) => {
-      addOptimisticTodo({ id: 'temp', text: formData.get('text') });
-      await addTodo(formData);
-    }}>
+    <form
+      action={async (formData) => {
+        addOptimisticTodo({ id: 'temp', text: formData.get('text') });
+        await addTodo(formData);
+      }}
+    >
       <input name="text" />
       <button>Add</button>
     </form>
@@ -292,6 +332,7 @@ export function TodoList({ initialTodos }) {
 ```
 
 **Benefits:**
+
 - ✅ Modern UX pattern
 - ✅ Easy to implement
 - ✅ Type-safe
@@ -300,6 +341,7 @@ export function TodoList({ initialTodos }) {
 ---
 
 #### 2. Dynamic OG Image Generator
+
 **เหมาะสำหรับ:** Blog, Portfolio, Social sharing
 
 ```tsx
@@ -346,6 +388,7 @@ export async function generateMetadata({ params }) {
 ```
 
 **Benefits:**
+
 - ✅ Professional look
 - ✅ Automatic generation
 - ✅ Customizable
@@ -354,6 +397,7 @@ export async function generateMetadata({ params }) {
 ---
 
 #### 3. Streaming SSR with Suspense
+
 **เหมาะสำหรับ:** Dashboard, Data-heavy pages
 
 ```tsx
@@ -386,6 +430,7 @@ export default function DashboardPage() {
 ```
 
 **Benefits:**
+
 - ✅ Fast initial page load
 - ✅ Better perceived performance
 - ✅ Automatic loading states
@@ -396,6 +441,7 @@ export default function DashboardPage() {
 ### Priority 2: High Impact 🚀
 
 #### 4. Edge Middleware for A/B Testing
+
 **เหมาะสำหรับ:** Feature flags, Experiments
 
 ```tsx
@@ -424,6 +470,7 @@ export const config = {
 ```
 
 **Benefits:**
+
 - ✅ Fast edge execution
 - ✅ Easy experiments
 - ✅ No client-side flicker
@@ -432,9 +479,10 @@ export const config = {
 ---
 
 #### 5. Parallel Routes Dashboard
+
 **เหมาะสำหรับ:** Admin panel, Complex UI
 
-```
+```plaintext
 app/
   dashboard/
     @analytics/
@@ -472,6 +520,7 @@ export default function DashboardLayout({
 ```
 
 **Benefits:**
+
 - ✅ Advanced layouts
 - ✅ Independent loading states
 - ✅ Better organization
@@ -482,6 +531,7 @@ export default function DashboardLayout({
 ### Priority 3: Advanced 🔥
 
 #### 6. Partial Prerendering (PPR)
+
 **เหมาะสำหรับ:** High-traffic pages with dynamic sections
 
 ```tsx
@@ -514,6 +564,7 @@ export default async function ProductPage({ params }) {
 ```
 
 **Benefits:**
+
 - ✅ Maximum performance
 - ✅ Fresh dynamic data
 - ✅ Best UX
@@ -522,6 +573,7 @@ export default async function ProductPage({ params }) {
 ---
 
 #### 7. Direct Database Access in Server Components
+
 **เหมาะสำหรับ:** Admin, Reports, Data dashboards
 
 ```tsx
@@ -540,7 +592,7 @@ export default async function AdminUsersPage() {
 
   return (
     <table>
-      {users.map(user => (
+      {users.map((user) => (
         <tr key={user.id}>
           <td>{user.name}</td>
           <td>{user._count.posts} posts</td>
@@ -553,6 +605,7 @@ export default async function AdminUsersPage() {
 ```
 
 **Benefits:**
+
 - ✅ Simplest code
 - ✅ Type-safe queries
 - ✅ Best performance
@@ -561,9 +614,13 @@ export default async function AdminUsersPage() {
 ---
 
 #### 8. ISR with On-Demand Revalidation
+
 **เหมาะสำหรับ:** Blog, CMS, Product catalog
 
 ```tsx
+// app/api/revalidate/route.ts
+import { revalidatePath } from 'next/cache';
+
 // app/blog/[slug]/page.tsx
 export const revalidate = 3600; // Revalidate every hour
 
@@ -572,9 +629,6 @@ export default async function BlogPost({ params }) {
   const post = await getPost(slug);
   return <Article post={post} />;
 }
-
-// app/api/revalidate/route.ts
-import { revalidatePath } from 'next/cache';
 
 export async function POST(request: Request) {
   const { path } = await request.json();
@@ -587,6 +641,7 @@ export async function POST(request: Request) {
 ```
 
 **Benefits:**
+
 - ✅ Static performance
 - ✅ Fresh content
 - ✅ Cost-effective
@@ -596,18 +651,18 @@ export async function POST(request: Request) {
 
 ## 🎯 Feature Comparison Matrix
 
-| Feature | Difficulty | Impact | Use Case | Time to Implement |
-|---------|-----------|--------|----------|-------------------|
-| Server Actions + Optimistic UI | 🔥🔥 Easy | 🌟🌟🌟🌟🌟 Very High | Forms, Interactive | 2-4 hours |
-| Dynamic OG Images | 🔥🔥 Easy | 🌟🌟🌟🌟 High | Social sharing | 1-2 hours |
-| Streaming SSR | 🔥🔥 Easy | 🌟🌟🌟🌟 High | Slow pages | 2-3 hours |
-| Edge Middleware | 🔥🔥🔥 Medium | 🌟🌟🌟🌟 High | A/B testing | 3-5 hours |
-| Parallel Routes | 🔥🔥🔥🔥 Hard | 🌟🌟🌟🌟 High | Complex UI | 4-8 hours |
-| Direct DB Access | 🔥🔥 Easy | 🌟🌟🌟🌟🌟 Very High | Data pages | 1-2 hours |
-| ISR + Revalidation | 🔥🔥 Easy | 🌟🌟🌟🌟 High | CMS integration | 2-4 hours |
-| PPR | 🔥🔥🔥 Medium | 🌟🌟🌟🌟🌟 Very High | High-traffic | 4-6 hours |
-| Streaming API | 🔥🔥🔥 Medium | 🌟🌟🌟 Medium | Real-time | 3-5 hours |
-| Advanced Metadata | 🔥 Easy | 🌟🌟🌟 Medium | SEO | 1-2 hours |
+| Feature                        | Difficulty    | Impact               | Use Case           | Time to Implement |
+| ------------------------------ | ------------- | -------------------- | ------------------ | ----------------- |
+| Server Actions + Optimistic UI | 🔥🔥 Easy     | 🌟🌟🌟🌟🌟 Very High | Forms, Interactive | 2-4 hours         |
+| Dynamic OG Images              | 🔥🔥 Easy     | 🌟🌟🌟🌟 High        | Social sharing     | 1-2 hours         |
+| Streaming SSR                  | 🔥🔥 Easy     | 🌟🌟🌟🌟 High        | Slow pages         | 2-3 hours         |
+| Edge Middleware                | 🔥🔥🔥 Medium | 🌟🌟🌟🌟 High        | A/B testing        | 3-5 hours         |
+| Parallel Routes                | 🔥🔥🔥🔥 Hard | 🌟🌟🌟🌟 High        | Complex UI         | 4-8 hours         |
+| Direct DB Access               | 🔥🔥 Easy     | 🌟🌟🌟🌟🌟 Very High | Data pages         | 1-2 hours         |
+| ISR + Revalidation             | 🔥🔥 Easy     | 🌟🌟🌟🌟 High        | CMS integration    | 2-4 hours         |
+| PPR                            | 🔥🔥🔥 Medium | 🌟🌟🌟🌟🌟 Very High | High-traffic       | 4-6 hours         |
+| Streaming API                  | 🔥🔥🔥 Medium | 🌟🌟🌟 Medium        | Real-time          | 3-5 hours         |
+| Advanced Metadata              | 🔥 Easy       | 🌟🌟🌟 Medium        | SEO                | 1-2 hours         |
 
 ---
 
@@ -691,18 +746,18 @@ export async function GET(request: Request) {
           backgroundImage: 'linear-gradient(to bottom, #667eea 0%, #764ba2 100%)',
         }}
       >
-        <div style={{
-          fontSize: 72,
-          fontWeight: 'bold',
-          color: 'white',
-          marginBottom: 20,
-        }}>
+        <div
+          style={{
+            fontSize: 72,
+            fontWeight: 'bold',
+            color: 'white',
+            marginBottom: 20,
+          }}
+        >
           {title}
         </div>
         {description && (
-          <div style={{ fontSize: 32, color: 'rgba(255,255,255,0.9)' }}>
-            {description}
-          </div>
+          <div style={{ fontSize: 32, color: 'rgba(255,255,255,0.9)' }}>{description}</div>
         )}
       </div>
     ),
@@ -733,9 +788,10 @@ export function middleware(request: NextRequest) {
     variant = Math.random() > 0.5 ? 'A' : 'B';
   }
 
-  const response = variant === 'B'
-    ? NextResponse.rewrite(new URL('/variant-b', request.url))
-    : NextResponse.next();
+  const response =
+    variant === 'B'
+      ? NextResponse.rewrite(new URL('/variant-b', request.url))
+      : NextResponse.next();
 
   response.cookies.set('variant', variant, { maxAge: 60 * 60 * 24 * 30 });
 
@@ -756,23 +812,23 @@ export const config = {
 import { Suspense } from 'react';
 
 async function UserStats() {
-  await new Promise(resolve => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   return <div>Users: 1,234</div>;
 }
 
 async function Revenue() {
-  await new Promise(resolve => setTimeout(resolve, 3000));
+  await new Promise((resolve) => setTimeout(resolve, 3000));
   return <div>Revenue: $12,345</div>;
 }
 
 export default function Dashboard() {
   return (
     <div className="grid grid-cols-2 gap-4 p-8">
-      <Suspense fallback={<div className="animate-pulse bg-gray-200 h-20" />}>
+      <Suspense fallback={<div className="h-20 animate-pulse bg-gray-200" />}>
         <UserStats />
       </Suspense>
 
-      <Suspense fallback={<div className="animate-pulse bg-gray-200 h-20" />}>
+      <Suspense fallback={<div className="h-20 animate-pulse bg-gray-200" />}>
         <Revenue />
       </Suspense>
     </div>
@@ -785,24 +841,28 @@ export default function Dashboard() {
 ## 📊 Implementation Roadmap
 
 ### Week 1: Foundation
+
 - [ ] Setup Server Actions
 - [ ] Create basic forms with optimistic UI
 - [ ] Add streaming to slow pages
 - [ ] Implement dynamic OG images
 
 ### Week 2: Enhancement
+
 - [ ] Add Edge middleware for A/B testing
 - [ ] Implement ISR with revalidation
 - [ ] Add structured metadata
 - [ ] Create admin panel with direct DB access
 
 ### Week 3: Advanced
+
 - [ ] Setup Parallel Routes for dashboard
 - [ ] Enable PPR on key pages
 - [ ] Add streaming API for real-time features
 - [ ] Implement intercepting routes for modals
 
 ### Week 4: Polish
+
 - [ ] Performance optimization
 - [ ] Add analytics tracking
 - [ ] Create documentation
@@ -813,16 +873,19 @@ export default function Dashboard() {
 ## 🎓 Learning Resources
 
 ### Official Docs
+
 - [Next.js 15 Documentation](https://nextjs.org/docs)
 - [Server Actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations)
 - [Parallel Routes](https://nextjs.org/docs/app/building-your-application/routing/parallel-routes)
 - [PPR](https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering)
 
 ### Video Tutorials
+
 - [Server Actions Deep Dive](https://www.youtube.com/watch?v=dDpZfOQBMaU)
 - [Next.js 15 New Features](https://www.youtube.com/watch?v=gfU1iZnjRZM)
 
 ### Example Projects
+
 - [Next.js Examples](https://github.com/vercel/next.js/tree/canary/examples)
 - [Vercel Templates](https://vercel.com/templates/next.js)
 
@@ -847,12 +910,14 @@ export default function Dashboard() {
 **Total time:** ~6-9 ชั่วโมง สำหรับ 3 features หลัก
 
 หลังจากนั้นค่อย add:
+
 - Edge Middleware (A/B testing)
 - Parallel Routes (Advanced dashboard)
 
 ---
 
 **เริ่มจาก feature ไหนดีครับ?** แนะนำ **Server Actions** เพราะ:
+
 - ✅ ใช้งานบ่อยที่สุด
 - ✅ เรียนรู้ได้เร็ว
 - ✅ ได้ผลชัดเจน

@@ -47,7 +47,7 @@ templates, and best practices.
 
 ## 📖 Documentation Structure
 
-```
+```text
 docs/
 ├── README.md                          # 📍 You are here - Documentation hub
 │
@@ -306,7 +306,7 @@ See: [TAILWIND_SETUP_CONTEXT.md](TAILWIND_SETUP_CONTEXT.md#technology-stack)
 
 ### Beginner Path (First Time Setup)
 
-```
+```text
 1. TAILWIND_SETUP_CONTEXT.md (overview)
    ↓
 2. templates/00-setup-guide.md (setup)
@@ -320,7 +320,7 @@ See: [TAILWIND_SETUP_CONTEXT.md](TAILWIND_SETUP_CONTEXT.md#technology-stack)
 
 ### Component Development Path
 
-```
+```text
 1. templates/01-overview.md (architecture)
    ↓
 2. templates/05-design-tokens.md (tokens)
@@ -334,7 +334,7 @@ See: [TAILWIND_SETUP_CONTEXT.md](TAILWIND_SETUP_CONTEXT.md#technology-stack)
 
 ### Tailwind CSS Mastery Path
 
-```
+```text
 1. tailwindcss/01-fundamentals.md
    ↓
 2. tailwindcss/02-best-practices.md
@@ -348,7 +348,7 @@ See: [TAILWIND_SETUP_CONTEXT.md](TAILWIND_SETUP_CONTEXT.md#technology-stack)
 
 ### Design System Path
 
-```
+```text
 1. design-system/01-overview.md
    ↓
 2. design-system/02-design-tokens.md
@@ -470,7 +470,7 @@ When adding new documentation:
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/) - TypeScript
 - [React Docs](https://react.dev/) - React library
 
-### Code Quality
+### Code Quality External Resources
 
 - [Airbnb JavaScript Style Guide](https://airbnb.io/javascript/) - JavaScript
   standards
@@ -480,7 +480,7 @@ When adding new documentation:
 - [Prettier Options](https://prettier.io/docs/en/options.html) - Prettier
   configuration
 
-### Accessibility
+### Accessibility External Resources
 
 - [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/) - Accessibility
   standards
@@ -508,7 +508,7 @@ When adding new documentation:
   [templates/00-setup-guide.md](templates/00-setup-guide.md#troubleshooting)
 - Search documentation for keywords
 
-### Code Quality
+### Code Quality Support
 
 - Run `pnpm lint` to check for issues
 - Run `pnpm format` to auto-fix formatting
@@ -543,6 +543,6 @@ details.
 
 ---
 
-**Happy coding! 🚀**
+Note: **Happy coding! 🚀**
 
-_Generated with care for developers by developers_
+Note: _Generated with care for developers by developers_

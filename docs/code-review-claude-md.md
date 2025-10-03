@@ -140,12 +140,12 @@ mentioned.
 
 ### Medium Priority
 
-3. Document PostCSS plugin architecture
-4. Mention `@import "tailwindcss"` directive
+1. Document PostCSS plugin architecture
+2. Mention `@import "tailwindcss"` directive
 
 ### Low Priority
 
-5. None
+1. None
 
 ---
 

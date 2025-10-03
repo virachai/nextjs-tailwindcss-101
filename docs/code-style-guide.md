@@ -259,7 +259,7 @@ const CardContent: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 
 ### Directory Structure
 
-```
+```plaintext
 src/
 ├── app/                    # Next.js App Router
 │   ├── (auth)/            # Route groups
@@ -279,7 +279,7 @@ src/
 
 ### File Naming
 
-```
+```plaintext
 // Components - PascalCase
 Button.tsx
 UserProfile.tsx
@@ -636,9 +636,9 @@ const fetchUser = async (userId: string): Promise<User> => {
 
 ## Testing
 
-### File Naming
+### Exam File Naming
 
-```
+```plaintext
 Button.tsx
 Button.test.tsx  // Unit tests
 Button.spec.tsx  // Integration tests

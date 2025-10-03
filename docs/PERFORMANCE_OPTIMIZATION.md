@@ -23,6 +23,7 @@ Complete guide for optimizing Next.js 15 applications with verification methods 
 ## Performance Optimization Checklist
 
 ### Quick Wins (Do First)
+
 - [ ] Use Next.js Image component for all images
 - [ ] Implement proper font loading with `next/font`
 - [ ] Enable Turbopack for faster builds
@@ -31,6 +32,7 @@ Complete guide for optimizing Next.js 15 applications with verification methods 
 - [ ] Enable static generation where possible
 
 ### Medium Priority
+
 - [ ] Implement code splitting with dynamic imports
 - [ ] Optimize bundle size (analyze with Bundle Analyzer)
 - [ ] Add proper caching headers
@@ -39,6 +41,7 @@ Complete guide for optimizing Next.js 15 applications with verification methods 
 - [ ] Implement proper error boundaries
 
 ### Advanced
+
 - [ ] Set up ISR (Incremental Static Regeneration)
 - [ ] Implement streaming with React Server Components
 - [ ] Add service worker for offline support
@@ -118,6 +121,7 @@ pnpm dlx lighthouse http://localhost:3000 --view
 ```
 
 **Checklist:**
+
 - [ ] All images use `next/image`
 - [ ] Above-fold images have `priority` prop
 - [ ] Remote images configured in `next.config.ts`
@@ -128,11 +132,13 @@ pnpm dlx lighthouse http://localhost:3000 --view
 
 ## 2. Font Optimization
 
-### Implementation
+### Exam Implementation
 
 ```tsx
 // app/layout.tsx
 import { Inter, Roboto_Mono } from 'next/font/google';
+// Local fonts
+import localFont from 'next/font/local';
 
 // ✅ Good - Variable fonts with subset
 const inter = Inter({
@@ -155,9 +161,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   );
 }
 
-// Local fonts
-import localFont from 'next/font/local';
-
 const customFont = localFont({
   src: './fonts/CustomFont.woff2',
   display: 'swap',
@@ -165,7 +168,7 @@ const customFont = localFont({
 });
 ```
 
-### Best Practices
+### Exam Best Practices
 
 ```tsx
 // 1. Use variable fonts when possible
@@ -185,7 +188,7 @@ const inter = Inter({
 display: 'swap' // Shows fallback font while loading
 ```
 
-### Verification
+### Exam Verification
 
 ```bash
 # Check in Network tab
@@ -197,6 +200,7 @@ display: 'swap' // Shows fallback font while loading
 ```
 
 **Checklist:**
+
 - [ ] Fonts loaded via `next/font`
 - [ ] `display: 'swap'` configured
 - [ ] Only necessary font weights loaded
@@ -207,10 +211,12 @@ display: 'swap' // Shows fallback font while loading
 
 ## 3. Code Splitting & Bundle Size
 
-### Implementation
+### Implementation Exam
 
 ```tsx
 // ✅ Good - Dynamic imports for client components
+import { useState } from 'react';
+
 import dynamic from 'next/dynamic';
 
 const HeavyChart = dynamic(() => import('@/components/HeavyChart'), {
@@ -219,13 +225,12 @@ const HeavyChart = dynamic(() => import('@/components/HeavyChart'), {
 });
 
 // ✅ Good - Named exports
-const DashboardModal = dynamic(
-  () => import('@/components/Dashboard').then((mod) => mod.DashboardModal)
+const DashboardModal = dynamic(() =>
+  import('@/components/Dashboard').then((mod) => mod.DashboardModal)
 );
 
 // ✅ Good - Conditional loading
-'use client';
-import { useState } from 'react';
+('use client');
 
 export function VideoPlayer() {
   const [showPlayer, setShowPlayer] = useState(false);
@@ -256,7 +261,7 @@ module.exports = withBundleAnalyzer(nextConfig);
 ANALYZE=true pnpm build
 ```
 
-### Best Practices
+### Best Practices Exam
 
 ```tsx
 // 1. Route-based splitting (automatic)
@@ -277,7 +282,7 @@ import { Button } from '@/components/Button';
 import { Modal } from '@/components/Modal';
 ```
 
-### Verification
+### Verification Exam
 
 ```bash
 # Check bundle size
@@ -294,6 +299,7 @@ ANALYZE=true pnpm build
 ```
 
 **Checklist:**
+
 - [ ] Heavy components use dynamic imports
 - [ ] Bundle analyzer configured
 - [ ] First Load JS < 100KB per route
@@ -304,9 +310,11 @@ ANALYZE=true pnpm build
 
 ## 4. Server Components
 
-### Implementation
+### Implementation Demo
 
 ```tsx
+import { useState } from 'react';
+
 // ✅ Good - Server Component (default)
 // app/page.tsx
 export default async function HomePage() {
@@ -316,15 +324,16 @@ export default async function HomePage() {
   return (
     <div>
       <h1>Posts</h1>
-      {posts.map(post => <PostCard key={post.id} post={post} />)}
+      {posts.map((post) => (
+        <PostCard key={post.id} post={post} />
+      ))}
     </div>
   );
 }
 
 // ✅ Good - Client Component (only when needed)
 // components/Counter.tsx
-'use client';
-import { useState } from 'react';
+('use client');
 
 export function Counter() {
   const [count, setCount] = useState(0);
@@ -371,7 +380,7 @@ function ClientComponent() {
 }
 ```
 
-### Verification
+### Verification Demo
 
 ```bash
 # Check in browser DevTools
@@ -385,6 +394,7 @@ function ClientComponent() {
 ```
 
 **Checklist:**
+
 - [ ] Default to Server Components
 - [ ] Only use `'use client'` when necessary
 - [ ] Data fetching in Server Components
@@ -395,7 +405,7 @@ function ClientComponent() {
 
 ## 5. Caching Strategies
 
-### Implementation
+### Demo Implementation
 
 ```tsx
 // 1. Fetch Cache
@@ -460,7 +470,7 @@ export const dynamic = 'force-dynamic';
 export const experimental_ppr = true;
 ```
 
-### Verification
+### Demo Verification
 
 ```bash
 # Check caching in DevTools
@@ -482,6 +492,7 @@ pnpm build
 ```
 
 **Checklist:**
+
 - [ ] Static pages use SSG/ISR
 - [ ] Dynamic pages have proper cache headers
 - [ ] API routes use appropriate caching
@@ -492,7 +503,7 @@ pnpm build
 
 ## 6. Database & API Optimization
 
-### Implementation
+### Implementation DB & API
 
 ```tsx
 // 1. Connection Pooling
@@ -555,7 +566,7 @@ export async function GET(request: Request) {
 }
 ```
 
-### Best Practices
+### Best Practices DB & API
 
 ```tsx
 // 1. Use database indexes
@@ -599,7 +610,7 @@ export async function GET() {
 }
 ```
 
-### Verification
+### Verification DB & API
 
 ```bash
 # Monitor database queries
@@ -618,6 +629,7 @@ npx autocannon -c 100 -d 10 http://localhost:3000/api/users
 ```
 
 **Checklist:**
+
 - [ ] Database connection pooling configured
 - [ ] No N+1 query problems
 - [ ] Database indexes on frequently queried fields
@@ -629,7 +641,7 @@ npx autocannon -c 100 -d 10 http://localhost:3000/api/users
 
 ## 7. CSS & Styling
 
-### Implementation
+### Implementation CSS & Styling
 
 ```tsx
 // 1. Tailwind CSS Optimization (already using v4)
@@ -663,7 +675,7 @@ const nextConfig = {
 };
 ```
 
-### Best Practices
+### Best Practices CSS & Styling
 
 ```tsx
 // ✅ Good - Tailwind utility classes
@@ -686,7 +698,7 @@ import clsx from 'clsx';
 )} />
 ```
 
-### Verification
+### Verification CSS & Styling
 
 ```bash
 # Check CSS bundle size
@@ -702,6 +714,7 @@ pnpm dlx tailwindcss-analyzer
 ```
 
 **Checklist:**
+
 - [ ] Tailwind CSS purge working
 - [ ] No unused CSS in production
 - [ ] CSS bundle size < 50KB
@@ -712,7 +725,7 @@ pnpm dlx tailwindcss-analyzer
 
 ## 8. Third-Party Scripts
 
-### Implementation
+### Implementation Third-Party Scripts
 
 ```tsx
 import Script from 'next/script';
@@ -727,22 +740,13 @@ export default function Page() {
       />
 
       {/* ✅ Good - After interactive for chat widgets */}
-      <Script
-        src="https://cdn.example.com/chat.js"
-        strategy="afterInteractive"
-      />
+      <Script src="https://cdn.example.com/chat.js" strategy="afterInteractive" />
 
       {/* ✅ Good - Before interactive for critical scripts */}
-      <Script
-        src="https://cdn.example.com/critical.js"
-        strategy="beforeInteractive"
-      />
+      <Script src="https://cdn.example.com/critical.js" strategy="beforeInteractive" />
 
       {/* ✅ Good - Worker strategy (experimental) */}
-      <Script
-        src="https://cdn.example.com/heavy-analytics.js"
-        strategy="worker"
-      />
+      <Script src="https://cdn.example.com/heavy-analytics.js" strategy="worker" />
     </>
   );
 }
@@ -764,7 +768,7 @@ export default function Page() {
 <Script src="/heavy-processing.js" strategy="worker" />
 ```
 
-### Verification
+### Verification Third-Party Scripts
 
 ```bash
 # DevTools Network tab
@@ -780,6 +784,7 @@ export default function Page() {
 ```
 
 **Checklist:**
+
 - [ ] All third-party scripts use `next/script`
 - [ ] Analytics use `lazyOnload` strategy
 - [ ] No blocking scripts in `<head>`
@@ -790,7 +795,7 @@ export default function Page() {
 
 ## 9. Metadata & SEO
 
-### Implementation
+### Implementation Metadata & SEO
 
 ```tsx
 // app/layout.tsx
@@ -818,9 +823,11 @@ export const metadata: Metadata = {
 };
 
 // app/blog/[slug]/page.tsx
-export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> }
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPost(slug);
 
@@ -834,7 +841,7 @@ export async function generateMetadata(
 }
 ```
 
-### Best Practices
+### Best Practices Metadata & SEO
 
 ```tsx
 // 1. Structured data
@@ -865,7 +872,7 @@ export default async function sitemap() {
 
   return [
     { url: 'https://myapp.com', lastModified: new Date() },
-    ...posts.map(post => ({
+    ...posts.map((post) => ({
       url: `https://myapp.com/blog/${post.slug}`,
       lastModified: post.updatedAt,
     })),
@@ -882,7 +889,7 @@ export default function robots() {
 }
 ```
 
-### Verification
+### Verification Metadata & SEO
 
 ```bash
 # Check metadata in browser
@@ -901,6 +908,7 @@ curl http://localhost:3000/sitemap.xml
 ```
 
 **Checklist:**
+
 - [ ] Metadata defined for all pages
 - [ ] Open Graph tags configured
 - [ ] Twitter Card tags configured
@@ -912,7 +920,7 @@ curl http://localhost:3000/sitemap.xml
 
 ## 10. Build & Deployment
 
-### Implementation
+### Implementation Build & Deployment
 
 ```bash
 # 1. Production build with Turbopack
@@ -972,7 +980,7 @@ ENV PORT 3000
 CMD ["node", "server.js"]
 ```
 
-### Verification
+### Verification Build & Deployment
 
 ```bash
 # Build size check
@@ -994,6 +1002,7 @@ pnpm dlx lighthouse http://localhost:3000 --view
 ```
 
 **Checklist:**
+
 - [ ] Production build successful
 - [ ] Environment variables configured
 - [ ] Static assets optimized
@@ -1024,13 +1033,13 @@ pnpm dlx lighthouse http://localhost:3000 --view
 
 ### Performance Metrics
 
-| Metric | Target | Good | Needs Improvement | Poor |
-|--------|--------|------|-------------------|------|
-| LCP (Largest Contentful Paint) | < 2.5s | < 2.5s | 2.5s - 4s | > 4s |
-| FID (First Input Delay) | < 100ms | < 100ms | 100ms - 300ms | > 300ms |
-| CLS (Cumulative Layout Shift) | < 0.1 | < 0.1 | 0.1 - 0.25 | > 0.25 |
-| TTFB (Time to First Byte) | < 600ms | < 600ms | 600ms - 1.8s | > 1.8s |
-| FCP (First Contentful Paint) | < 1.8s | < 1.8s | 1.8s - 3s | > 3s |
+| Metric                         | Target  | Good    | Needs Improvement | Poor    |
+| ------------------------------ | ------- | ------- | ----------------- | ------- |
+| LCP (Largest Contentful Paint) | < 2.5s  | < 2.5s  | 2.5s - 4s         | > 4s    |
+| FID (First Input Delay)        | < 100ms | < 100ms | 100ms - 300ms     | > 300ms |
+| CLS (Cumulative Layout Shift)  | < 0.1   | < 0.1   | 0.1 - 0.25        | > 0.25  |
+| TTFB (Time to First Byte)      | < 600ms | < 600ms | 600ms - 1.8s      | > 1.8s  |
+| FCP (First Contentful Paint)   | < 1.8s  | < 1.8s  | 1.8s - 3s         | > 3s    |
 
 ### Monitoring Tools
 
@@ -1092,12 +1101,14 @@ export function reportWebVitals() {
 ### Step-by-Step Process
 
 #### 1. Initial Setup (Week 1)
+
 - [ ] Set up performance monitoring (Lighthouse CI, Web Vitals)
 - [ ] Configure Turbopack for faster builds
 - [ ] Set up bundle analyzer
 - [ ] Document baseline metrics
 
 #### 2. Quick Wins (Week 1-2)
+
 - [ ] Implement `next/image` for all images
 - [ ] Optimize fonts with `next/font`
 - [ ] Add metadata and SEO tags
@@ -1105,6 +1116,7 @@ export function reportWebVitals() {
 - [ ] Run initial Lighthouse audit
 
 #### 3. Code Optimization (Week 2-3)
+
 - [ ] Convert to Server Components where possible
 - [ ] Implement dynamic imports for heavy components
 - [ ] Optimize database queries
@@ -1112,6 +1124,7 @@ export function reportWebVitals() {
 - [ ] Run bundle analysis
 
 #### 4. Advanced Optimization (Week 3-4)
+
 - [ ] Implement ISR/SSG strategies
 - [ ] Set up edge caching
 - [ ] Add service worker (if needed)
@@ -1119,6 +1132,7 @@ export function reportWebVitals() {
 - [ ] Implement streaming
 
 #### 5. Testing & Verification (Ongoing)
+
 - [ ] Run Lighthouse audits (weekly)
 - [ ] Monitor Core Web Vitals (daily)
 - [ ] Test on real devices
@@ -1126,6 +1140,7 @@ export function reportWebVitals() {
 - [ ] Check bundle size on every PR
 
 #### 6. Maintenance (Ongoing)
+
 - [ ] Review bundle size monthly
 - [ ] Update dependencies regularly
 - [ ] Monitor performance metrics

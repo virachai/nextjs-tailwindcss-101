@@ -88,7 +88,7 @@ git tag -l
 
 ### Tag Message Summary
 
-```
+```plaintext
 Version 1.0.0 - Tailwind CSS Setup & Templates
 
 ✅ Tailwind CSS 4 (CSS-first configuration)
@@ -113,7 +113,7 @@ Status: ✅ Production Ready
 
 ### Created Files
 
-```
+```plaintext
 docs/
 ├── TAILWIND_SETUP_CONTEXT.md          # 📄 Complete context (513 lines)
 ├── GIT_RELEASE_GUIDE.md               # 📄 This file - Push guide
@@ -131,7 +131,7 @@ docs/
 
 ### Key Files in Root
 
-```
+```plaintext
 tailwind.config.ts        # 200+ design tokens
 .eslintrc.json           # Airbnb configuration
 prettier.config.mjs      # Auto-formatting

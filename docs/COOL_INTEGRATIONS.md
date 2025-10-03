@@ -1379,7 +1379,7 @@ try {
 
 **Perfect for:** Production-ready SaaS applications
 
-```
+```plaintext
 ✅ Next.js 15 (App Router + Server Actions)
 ✅ Clerk (Authentication)
 ✅ Drizzle ORM
@@ -1400,7 +1400,7 @@ try {
 
 **Perfect for:** AI chatbots, assistants, content generators
 
-```
+```plaintext
 ✅ Next.js 15
 ✅ Vercel AI SDK
 ✅ Supabase (Database + Auth)
@@ -1419,7 +1419,7 @@ try {
 
 **Perfect for:** Developers who love TypeScript
 
-```
+```plaintext
 ✅ Next.js 15
 ✅ tRPC (API)
 ✅ Prisma (ORM)
@@ -1437,7 +1437,7 @@ try {
 
 **Perfect for:** Analytics, monitoring, live data
 
-```
+```plaintext
 ✅ Next.js 15 (Streaming SSR)
 ✅ Supabase (Real-time DB)
 ✅ Shadcn/ui + Tailwind CSS v4
@@ -1454,7 +1454,7 @@ try {
 
 **Perfect for:** Quick prototypes, learning projects
 
-```
+```plaintext
 ✅ Next.js 15
 ✅ Shadcn/ui + Tailwind CSS v4
 ✅ Zod
@@ -1730,28 +1730,28 @@ export default clerkMiddleware(async (auth, req) => {
 
 ## 🎯 Which Stack Should You Choose?
 
-### Choose **Supabase Stack** if:
+### Choose **Supabase Stack** if
 
 - ✅ Need real-time features
 - ✅ Want all-in-one backend
 - ✅ Building MVP quickly
 - ✅ Want generous free tier
 
-### Choose **T3 Stack** if:
+### Choose **T3 Stack** if
 
 - ✅ Love TypeScript
 - ✅ Want end-to-end type safety
 - ✅ Need full control
 - ✅ Building complex app
 
-### Choose **AI Stack** if:
+### Choose **AI Stack** if
 
 - ✅ Building AI features
 - ✅ Need streaming responses
 - ✅ Want modern UX
 - ✅ Using LLMs
 
-### Choose **Enterprise Stack** if:
+### Choose **Enterprise Stack** if
 
 - ✅ Building B2B SaaS
 - ✅ Need enterprise auth

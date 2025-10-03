@@ -353,7 +353,7 @@ rm .prettierignore
 
 ### Step 8: Create .biomeignore
 
-```
+```plaintext
 # Build outputs
 .next/
 out/

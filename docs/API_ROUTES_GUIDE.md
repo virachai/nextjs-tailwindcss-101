@@ -8,7 +8,7 @@ API Routes allow you to build RESTful APIs directly within your Next.js applicat
 
 ## Project Structure
 
-```
+```plaintext
 src/app/api/
 ├── users/
 │   ├── route.ts          # GET, POST /api/users
@@ -21,11 +21,13 @@ src/app/api/
 ### Users Collection (`/api/users`)
 
 #### GET - Fetch All Users
+
 ```bash
 curl http://localhost:3000/api/users
 ```
 
 **Response:**
+
 ```json
 {
   "data": [
@@ -37,21 +39,22 @@ curl http://localhost:3000/api/users
 ```
 
 #### GET - Filter by Role
+
 ```bash
 curl http://localhost:3000/api/users?role=Admin
 ```
 
 **Response:**
+
 ```json
 {
-  "data": [
-    { "id": 1, "name": "Alice Johnson", "email": "alice@example.com", "role": "Admin" }
-  ],
+  "data": [{ "id": 1, "name": "Alice Johnson", "email": "alice@example.com", "role": "Admin" }],
   "count": 1
 }
 ```
 
 #### POST - Create User
+
 ```bash
 curl -X POST http://localhost:3000/api/users \
   -H "Content-Type: application/json" \
@@ -59,6 +62,7 @@ curl -X POST http://localhost:3000/api/users \
 ```
 
 **Response:**
+
 ```json
 {
   "data": { "id": 4, "name": "John Doe", "email": "john@example.com", "role": "User" },
@@ -69,11 +73,13 @@ curl -X POST http://localhost:3000/api/users \
 ### Individual User (`/api/users/[id]`)
 
 #### GET - Fetch User by ID
+
 ```bash
 curl http://localhost:3000/api/users/1
 ```
 
 **Response:**
+
 ```json
 {
   "data": { "id": 1, "name": "Alice Johnson", "email": "alice@example.com", "role": "Admin" }
@@ -81,6 +87,7 @@ curl http://localhost:3000/api/users/1
 ```
 
 #### PATCH - Update User
+
 ```bash
 curl -X PATCH http://localhost:3000/api/users/1 \
   -H "Content-Type: application/json" \
@@ -88,6 +95,7 @@ curl -X PATCH http://localhost:3000/api/users/1 \
 ```
 
 **Response:**
+
 ```json
 {
   "data": { "id": 1, "name": "Alice Williams", "email": "alice@example.com", "role": "Admin" },
@@ -96,11 +104,13 @@ curl -X PATCH http://localhost:3000/api/users/1 \
 ```
 
 #### DELETE - Delete User
+
 ```bash
 curl -X DELETE http://localhost:3000/api/users/1
 ```
 
 **Response:**
+
 ```json
 {
   "message": "User deleted successfully"
@@ -132,10 +142,7 @@ Dynamic route segments use `[param]` syntax:
 
 ```typescript
 // app/api/users/[id]/route.ts
-export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   // Use id...
 }
@@ -227,7 +234,7 @@ const response = await fetch(`/api/users/${id}`, {
 });
 ```
 
-### Error Handling
+### Exam Error Handling
 
 ```typescript
 try {

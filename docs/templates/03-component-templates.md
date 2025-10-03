@@ -511,6 +511,8 @@ import { Container } from '@/templates/layout/Container';
 
 // src/templates/sections/Header.tsx
 
+// src/templates/sections/Header.tsx
+
 interface NavLink {
   label: string;
   href: string;

@@ -8,6 +8,10 @@
     {
       "name": "@import",
       "description": "Import Tailwind CSS or other stylesheets"
+    },
+    {
+      "name": "@apply",
+      "description": "Apply utility classes inline within CSS rules"
     }
   ]
 }

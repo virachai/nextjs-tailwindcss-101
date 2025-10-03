@@ -20,13 +20,21 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     const initial =
       stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     setThemeState(initial);
-    document.documentElement.classList.toggle('dark', initial === 'dark');
+    if (initial === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   }, []);
 
   const setTheme = useCallback((newTheme: Theme) => {
     setThemeState(newTheme);
     localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   }, []);
 
   const toggleTheme = useCallback(() => {

@@ -9,7 +9,7 @@ export const ThemeToggle: React.FC = () => {
     <button
       type="button"
       onClick={toggleTheme}
-      className="fixed top-8 right-8 z-50 rounded-full bg-neutral-200 p-3 shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl dark:bg-neutral-800"
+      className="border-foreground/10 bg-background hover:border-foreground/20 fixed top-8 right-8 z-50 rounded-full border p-3 shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl"
       aria-label="Toggle theme"
     >
       {theme === 'light' ? (
@@ -19,7 +19,7 @@ export const ThemeToggle: React.FC = () => {
           viewBox="0 0 24 24"
           strokeWidth={2}
           stroke="currentColor"
-          className="h-6 w-6 text-neutral-800"
+          className="text-foreground h-6 w-6"
         >
           <path
             strokeLinecap="round"
@@ -34,7 +34,7 @@ export const ThemeToggle: React.FC = () => {
           viewBox="0 0 24 24"
           strokeWidth={2}
           stroke="currentColor"
-          className="h-6 w-6 text-neutral-200"
+          className="text-foreground h-6 w-6"
         >
           <path
             strokeLinecap="round"

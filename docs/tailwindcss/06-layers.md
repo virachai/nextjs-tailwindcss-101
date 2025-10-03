@@ -1,8 +1,10 @@
 # Tailwind CSS Layers
 
-Comprehensive guide to understanding and using Tailwind CSS layers (`@layer`) directive for organizing custom styles.
+Comprehensive guide to understanding and using Tailwind CSS layers (`@layer`)
+directive for organizing custom styles.
 
 ## Table of Contents
+
 - [Layer Fundamentals](#layer-fundamentals)
 - [Base Layer](#base-layer)
 - [Components Layer](#components-layer)
@@ -36,7 +38,8 @@ Tailwind uses three main layers to organize styles in a specific order:
 
 ### Why Use Layers?
 
-1. **Predictable Specificity** - Utilities always override components, components override base
+1. **Predictable Specificity** - Utilities always override components,
+   components override base
 2. **Organization** - Clear separation of concerns
 3. **Performance** - Proper purging and optimization
 4. **Maintainability** - Easier to understand and modify styles
@@ -46,6 +49,7 @@ Tailwind uses three main layers to organize styles in a specific order:
 ## Base Layer
 
 ### Purpose
+
 Reset defaults and set global HTML element styles.
 
 ### Common Use Cases
@@ -60,11 +64,18 @@ Reset defaults and set global HTML element styles.
   /* HTML element defaults */
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
   }
 
   /* Heading defaults */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-bold;
   }
 
@@ -74,17 +85,21 @@ Reset defaults and set global HTML element styles.
 
   /* Link defaults */
   a {
-    @apply text-blue-600 hover:text-blue-800 transition-colors;
+    @apply text-blue-600 transition-colors hover:text-blue-800;
   }
 
   /* Form elements */
-  input, textarea, select {
+  input,
+  textarea,
+  select {
     @apply rounded-md border border-gray-300 px-3 py-2;
   }
 
   /* Focus styles */
-  input:focus, textarea:focus, select:focus {
-    @apply outline-none ring-2 ring-blue-500;
+  input:focus,
+  textarea:focus,
+  select:focus {
+    @apply ring-2 ring-blue-500 outline-none;
   }
 }
 ```
@@ -92,12 +107,14 @@ Reset defaults and set global HTML element styles.
 ### Best Practices
 
 ✅ **Do:**
+
 - Set global HTML element styles
 - Define typography defaults
 - Create consistent form element styles
 - Use for accessibility defaults
 
 ❌ **Don't:**
+
 - Add component-specific styles
 - Use class selectors (use components layer instead)
 - Override with !important
@@ -106,7 +123,8 @@ Reset defaults and set global HTML element styles.
 
 ## Components Layer
 
-### Purpose
+### Purpose of omponents Layer
+
 Define reusable component classes that combine multiple utilities.
 
 ### Component Patterns
@@ -115,7 +133,7 @@ Define reusable component classes that combine multiple utilities.
 @layer components {
   /* Button component */
   .btn {
-    @apply px-4 py-2 rounded-lg font-medium transition-colors;
+    @apply rounded-lg px-4 py-2 font-medium transition-colors;
   }
 
   .btn-primary {
@@ -138,7 +156,7 @@ Define reusable component classes that combine multiple utilities.
   /* Form components */
   .form-input {
     @apply w-full rounded-md border border-gray-300 px-3 py-2;
-    @apply focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500;
+    @apply focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none;
   }
 
   .form-label {
@@ -160,12 +178,14 @@ Define reusable component classes that combine multiple utilities.
 ### When to Use Components Layer
 
 ✅ **Use for:**
+
 - Repeated UI patterns (buttons, cards, badges)
 - Complex combinations of utilities
 - Design system components
 - Third-party component overrides
 
 ❌ **Don't use for:**
+
 - One-off styles (use inline utilities)
 - Simple single-property styles
 - Styles that should override utilities
@@ -174,7 +194,8 @@ Define reusable component classes that combine multiple utilities.
 
 ## Utilities Layer
 
-### Purpose
+### Purpose of Utilities Layer
+
 Add custom utility classes that work like Tailwind's built-in utilities.
 
 ### Custom Utilities
@@ -335,7 +356,7 @@ Add custom utility classes that work like Tailwind's built-in utilities.
 
   .truncate-tooltip:hover::after {
     content: attr(data-full-text);
-    @apply absolute left-0 top-full z-10 mt-1 rounded bg-gray-900 px-2 py-1 text-sm text-white;
+    @apply absolute top-full left-0 z-10 mt-1 rounded bg-gray-900 px-2 py-1 text-sm text-white;
   }
 }
 ```
@@ -346,8 +367,8 @@ Add custom utility classes that work like Tailwind's built-in utilities.
 @layer components {
   .card-theme {
     @apply rounded-lg border p-6 shadow-sm;
-    @apply bg-white border-gray-200;
-    @apply dark:bg-gray-800 dark:border-gray-700;
+    @apply border-gray-200 bg-white;
+    @apply dark:border-gray-700 dark:bg-gray-800;
   }
 
   .input-theme {
@@ -384,11 +405,12 @@ Add custom utility classes that work like Tailwind's built-in utilities.
 
 ### New `@layer` Syntax
 
-In Tailwind CSS v4 (used in this project), layers work with the CSS-first configuration:
+In Tailwind CSS v4 (used in this project), layers work with the CSS-first
+configuration:
 
 ```css
 /* globals.css - v4 approach */
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @layer base {
   body {
@@ -409,7 +431,7 @@ In Tailwind CSS v4 (used in this project), layers work with the CSS-first config
 ### Theme Inline Integration
 
 ```css
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* Define custom theme tokens */
 @theme inline {
@@ -477,5 +499,4 @@ In Tailwind CSS v4 (used in this project), layers work with the CSS-first config
 
 ---
 
-**Last Updated:** Oct 2025
-**Tailwind Version:** v4 (CSS-first configuration)
+**Last Updated:** Oct 2025 **Tailwind Version:** v4 (CSS-first configuration)

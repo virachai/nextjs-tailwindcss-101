@@ -1,0 +1,12 @@
+{
+  "HomePage": {
+    "title": "โลโก้ Next.js",
+    "getStarted": "เริ่มต้นโดยการแก้ไข",
+    "saveChanges": "บันทึกและดูการเปลี่ยนแปลงทันที",
+    "deployNow": "ติดตั้งเลย",
+    "readDocs": "อ่านเอกสาร",
+    "learn": "เรียนรู้",
+    "examples": "ตัวอย่าง",
+    "goToNextjs": "ไปที่ nextjs.org →"
+  }
+}

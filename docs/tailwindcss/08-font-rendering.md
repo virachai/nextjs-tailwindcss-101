@@ -42,15 +42,15 @@ curved lines.
 ### Usage Examples
 
 ```tsx
-{/* Grayscale anti-aliasing - smoother on dark backgrounds */}
-<h1 className="antialiased">
-  Smooth Title
-</h1>
+{
+  /* Grayscale anti-aliasing - smoother on dark backgrounds */
+}
+<h1 className="antialiased">Smooth Title</h1>;
 
-{/* Subpixel rendering - sharper on light backgrounds */}
-<p className="subpixel-antialiased">
-  Sharp body text with enhanced clarity
-</p>
+{
+  /* Subpixel rendering - sharper on light backgrounds */
+}
+<p className="subpixel-antialiased">Sharp body text with enhanced clarity</p>;
 ```
 
 ## Subpixel Rendering
@@ -96,39 +96,47 @@ can appear sharper and more precise, especially at smaller sizes.
 ### Use `antialiased` (Grayscale Anti-aliasing) When
 
 ```tsx
-{/* Dark backgrounds */}
+{
+  /* Dark backgrounds */
+}
 <div className="bg-gray-900 text-white">
   <h1 className="antialiased">Better on dark backgrounds</h1>
-</div>
+</div>;
 
-{/* High-DPI/Retina displays */}
-<p className="antialiased">
-  Smoother on modern displays
-</p>
+{
+  /* High-DPI/Retina displays */
+}
+<p className="antialiased">Smoother on modern displays</p>;
 
-{/* Avoiding color fringing */}
-<span className="antialiased text-blue-600">
-  No colored edges
-</span>
+{
+  /* Avoiding color fringing */
+}
+<span className="text-blue-600 antialiased">No colored edges</span>;
 ```
 
 ### Use `subpixel-antialiased` When
 
 ```tsx
-{/* Light backgrounds */}
+{
+  /* Light backgrounds */
+}
 <div className="bg-white text-gray-900">
   <p className="subpixel-antialiased">Sharper on light backgrounds</p>
-</div>
+</div>;
 
-{/* Small font sizes needing clarity */}
-<small className="subpixel-antialiased text-xs">
+{
+  /* Small font sizes needing clarity */
+}
+<small className="text-xs subpixel-antialiased">
   Enhanced readability at small sizes
-</small>
+</small>;
 
-{/* Body text on standard displays */}
+{
+  /* Body text on standard displays */
+}
 <article className="subpixel-antialiased">
   <p>Long-form content benefits from sharpness</p>
-</article>
+</article>;
 ```
 
 ## Practical Examples
@@ -137,10 +145,8 @@ can appear sharper and more precise, especially at smaller sizes.
 
 ```tsx
 <section className="bg-gradient-to-r from-purple-900 to-indigo-900 text-white">
-  <h1 className="antialiased text-6xl font-bold">
-    Welcome to Our Platform
-  </h1>
-  <p className="antialiased text-xl text-purple-100">
+  <h1 className="text-6xl font-bold antialiased">Welcome to Our Platform</h1>
+  <p className="text-xl text-purple-100 antialiased">
     Smooth, professional text on dark backgrounds
   </p>
 </section>
@@ -150,12 +156,10 @@ can appear sharper and more precise, especially at smaller sizes.
 
 ```tsx
 <article className="bg-white text-gray-900">
-  <h2 className="subpixel-antialiased text-3xl font-semibold">
-    Article Title
-  </h2>
-  <p className="subpixel-antialiased leading-relaxed">
-    Body text with enhanced clarity and sharpness for better readability
-    in long-form content on light backgrounds.
+  <h2 className="text-3xl font-semibold subpixel-antialiased">Article Title</h2>
+  <p className="leading-relaxed subpixel-antialiased">
+    Body text with enhanced clarity and sharpness for better readability in
+    long-form content on light backgrounds.
   </p>
 </article>
 ```
@@ -163,19 +167,15 @@ can appear sharper and more precise, especially at smaller sizes.
 ### Mixed Content Card
 
 ```tsx
-<div className="bg-white rounded-lg shadow-lg">
+<div className="rounded-lg bg-white shadow-lg">
   {/* Light background content - use subpixel */}
   <div className="p-6">
-    <h3 className="subpixel-antialiased text-xl font-semibold">
-      Card Title
-    </h3>
+    <h3 className="text-xl font-semibold subpixel-antialiased">Card Title</h3>
   </div>
 
   {/* Dark background footer - use antialiased */}
-  <div className="bg-gray-900 text-white p-4">
-    <p className="antialiased text-sm">
-      Footer text on dark background
-    </p>
+  <div className="bg-gray-900 p-4 text-white">
+    <p className="text-sm antialiased">Footer text on dark background</p>
   </div>
 </div>
 ```

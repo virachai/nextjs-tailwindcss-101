@@ -1,6 +1,7 @@
 # Modern Website Templates with Tailwind CSS
 
-> Professional-grade templates for building consistent, scalable UI using Tailwind CSS design tokens and Airbnb-level best practices.
+> Professional-grade templates for building consistent, scalable UI using
+> Tailwind CSS design tokens and Airbnb-level best practices.
 
 ## Table of Contents
 
@@ -58,7 +59,8 @@ Templates are **pre-built, reusable UI patterns** that combine:
 
 ### 1. **Consistency** 🎯
 
-Templates ensure UI consistency across your entire application by using shared design tokens.
+Templates ensure UI consistency across your entire application by using shared
+design tokens.
 
 ```tsx
 // ❌ Inconsistent - Magic numbers everywhere
@@ -70,7 +72,8 @@ Templates ensure UI consistency across your entire application by using shared d
 
 ### 2. **Speed** ⚡
 
-Build pages 10x faster by copying proven patterns instead of starting from scratch.
+Build pages 10x faster by copying proven patterns instead of starting from
+scratch.
 
 ```tsx
 // Instead of designing from scratch every time...
@@ -81,12 +84,13 @@ import { HeroTemplate } from '@/templates/hero';
   title="Your Custom Title"
   description="Your custom description"
   ctaText="Get Started"
-/>
+/>;
 ```
 
 ### 3. **Quality** ✨
 
 Templates are pre-tested for:
+
 - ✅ Accessibility (WCAG 2.1 AA)
 - ✅ Responsive design (mobile-first)
 - ✅ Performance (optimized classes)
@@ -95,6 +99,7 @@ Templates are pre-tested for:
 ### 4. **Scalability** 📈
 
 Templates grow with your project:
+
 - Easy to maintain (change once, update everywhere)
 - Simple to extend (add variants)
 - Type-safe (TypeScript interfaces)
@@ -148,37 +153,38 @@ src/
 
 ## Design Token System
 
-All templates use design tokens from [tailwind.config.ts](../../tailwind.config.ts) for consistency.
+All templates use design tokens from
+[tailwind.config.ts](../../tailwind.config.ts) for consistency.
 
 ### Color System
 
 ```tsx
 // Brand Colors (Primary actions)
-bg-brand-500       // Primary brand color
-bg-brand-600       // Hover state
-bg-brand-700       // Active state
+bg - brand - 500; // Primary brand color
+bg - brand - 600; // Hover state
+bg - brand - 700; // Active state
 
 // Semantic Colors (Meaning)
-bg-success-500     // Success states
-bg-warning-500     // Warning states
-bg-error-500       // Error states
-bg-info-500        // Info states
+bg - success - 500; // Success states
+bg - warning - 500; // Warning states
+bg - error - 500; // Error states
+bg - info - 500; // Info states
 
 // Neutral Colors (Text, backgrounds)
-text-neutral-900   // Primary text (dark mode: neutral-50)
-text-neutral-600   // Secondary text
-bg-neutral-50      // Light background
+text - neutral - 900; // Primary text (dark mode: neutral-50)
+text - neutral - 600; // Secondary text
+bg - neutral - 50; // Light background
 ```
 
 ### Spacing System (4px base unit)
 
 ```tsx
 // Consistent spacing across all templates
-space-y-4    // 16px vertical spacing
-space-y-6    // 24px vertical spacing
-space-y-8    // 32px vertical spacing
-space-y-12   // 48px section spacing
-space-y-16   // 64px large section spacing
+space - y - 4; // 16px vertical spacing
+space - y - 6; // 24px vertical spacing
+space - y - 8; // 32px vertical spacing
+space - y - 12; // 48px section spacing
+space - y - 16; // 64px large section spacing
 ```
 
 ### Typography Scale
@@ -219,18 +225,18 @@ shadow-2xl    // Maximum depth
 
 ```tsx
 // Fade transitions
-animate-fadeIn           // Entrance animations
-animate-fadeOut          // Exit animations
+animate - fadeIn; // Entrance animations
+animate - fadeOut; // Exit animations
 
 // Slide transitions
-animate-slideInFromTop    // From top
-animate-slideInFromBottom // From bottom
-animate-slideInFromLeft   // From left
-animate-slideInFromRight  // From right
+animate - slideInFromTop; // From top
+animate - slideInFromBottom; // From bottom
+animate - slideInFromLeft; // From left
+animate - slideInFromRight; // From right
 
 // Scale transitions
-animate-scaleIn          // Modal entrance
-animate-scaleOut         // Modal exit
+animate - scaleIn; // Modal entrance
+animate - scaleOut; // Modal exit
 ```
 
 ---
@@ -256,6 +262,7 @@ import { AppShell, TwoColumnLayout } from '@/templates/layout';
 ```
 
 **Use Cases:**
+
 - Admin dashboards
 - Documentation sites
 - Blog layouts
@@ -287,6 +294,7 @@ import { Hero, Features, CTA } from '@/templates/sections';
 ```
 
 **Use Cases:**
+
 - Landing pages
 - Marketing sites
 - Product pages
@@ -315,6 +323,7 @@ import { LandingPage, Dashboard } from '@/templates/pages';
 ```
 
 **Use Cases:**
+
 - Rapid prototyping
 - MVPs
 - Internal tools
@@ -351,9 +360,7 @@ import { LandingPage, Dashboard } from '@/templates/pages';
 <section className="py-12 md:py-16 lg:py-24">
   <div className="space-y-8">
     <h2 className="text-3xl font-bold">Title</h2>
-    <div className="space-y-4">
-      {/* Content with consistent spacing */}
-    </div>
+    <div className="space-y-4">{/* Content with consistent spacing */}</div>
   </div>
 </section>
 ```
@@ -362,11 +369,17 @@ import { LandingPage, Dashboard } from '@/templates/pages';
 
 ```tsx
 // ✅ Use proper semantic elements
-<section>           {/* Not <div> */}
-  <header>          {/* Not <div> */}
+<section>
+  {' '}
+  {/* Not <div> */}
+  <header>
+    {' '}
+    {/* Not <div> */}
     <h1>Title</h1>
   </header>
-  <article>         {/* Not <div> */}
+  <article>
+    {' '}
+    {/* Not <div> */}
     <p>Content</p>
   </article>
 </section>
@@ -379,12 +392,7 @@ import { LandingPage, Dashboard } from '@/templates/pages';
 <button
   type="button"
   aria-label="Close menu"
-  className="
-    focus:outline-none
-    focus:ring-2
-    focus:ring-brand-500
-    focus:ring-offset-2
-  "
+  className="focus:ring-brand-500 focus:ring-2 focus:ring-offset-2 focus:outline-none"
 >
   Close
 </button>
@@ -488,10 +496,13 @@ import { LandingPage, Dashboard } from '@/templates/pages';
 
 ## Next Steps
 
-1. **Read [Layout Templates](./02-layout-templates.md)** - Learn structural patterns
-2. **Read [Component Templates](./03-component-templates.md)** - Build reusable sections
+1. **Read [Layout Templates](./02-layout-templates.md)** - Learn structural
+   patterns
+2. **Read [Component Templates](./03-component-templates.md)** - Build reusable
+   sections
 3. **Read [Page Templates](./04-page-templates.md)** - Complete page examples
-4. **Review [tailwind.config.ts](../../tailwind.config.ts)** - Understand design tokens
+4. **Review [tailwind.config.ts](../../tailwind.config.ts)** - Understand design
+   tokens
 
 ---
 

@@ -1,6 +1,7 @@
 # Page Templates
 
-> Complete, production-ready page layouts combining sections and components for rapid development following Airbnb design system standards.
+> Complete, production-ready page layouts combining sections and components for
+> rapid development following Airbnb design system standards.
 
 ## Table of Contents
 
@@ -68,11 +69,11 @@ Page templates are **complete, ready-to-use pages** that combine:
 ```tsx
 // src/app/(marketing)/page.tsx
 import { AppShell } from '@/templates/layout/AppShell';
+import { CTASimple } from '@/templates/sections/CTASimple';
+import { FeaturesThreeColumn } from '@/templates/sections/FeaturesThreeColumn';
+import { Footer } from '@/templates/sections/Footer';
 import { Header } from '@/templates/sections/Header';
 import { HeroCentered } from '@/templates/sections/HeroCentered';
-import { FeaturesThreeColumn } from '@/templates/sections/FeaturesThreeColumn';
-import { CTASimple } from '@/templates/sections/CTASimple';
-import { Footer } from '@/templates/sections/Footer';
 
 export default function LandingPage() {
   return (
@@ -134,7 +135,7 @@ export default function LandingPage() {
       {/* Logo Cloud */}
       <section className="border-y border-neutral-200 bg-neutral-50 py-12 dark:border-neutral-800 dark:bg-neutral-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="mb-8 text-center text-sm font-semibold uppercase tracking-wide text-neutral-600 dark:text-neutral-400">
+          <p className="mb-8 text-center text-sm font-semibold tracking-wide text-neutral-600 uppercase dark:text-neutral-400">
             Trusted by leading companies
           </p>
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-6">
@@ -220,10 +221,10 @@ export default function LandingPage() {
       />
 
       {/* Testimonials Section */}
-      <section className="bg-neutral-50 py-24 dark:bg-neutral-950 lg:py-32">
+      <section className="bg-neutral-50 py-24 lg:py-32 dark:bg-neutral-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl dark:text-white">
               Loved by thousands of teams
             </h2>
           </div>
@@ -285,6 +286,7 @@ export default function LandingPage() {
 ```
 
 **Key Features:**
+
 - ✅ Fully responsive (mobile-first)
 - ✅ Dark mode support
 - ✅ Accessible (WCAG 2.1 AA)
@@ -318,10 +320,11 @@ export default function LandingPage() {
 
 ```tsx
 // src/app/dashboard/page.tsx
-import { AppShell } from '@/templates/layout/AppShell';
-import { TwoColumnLayout } from '@/templates/layout/TwoColumnLayout';
 import { Header } from '@/components/dashboard/Header';
 import { Sidebar } from '@/components/dashboard/Sidebar';
+
+import { AppShell } from '@/templates/layout/AppShell';
+import { TwoColumnLayout } from '@/templates/layout/TwoColumnLayout';
 
 export default function DashboardPage() {
   return (
@@ -378,9 +381,7 @@ export default function DashboardPage() {
                 </p>
                 <p
                   className={`mt-2 text-sm font-medium ${
-                    stat.trend === 'up'
-                      ? 'text-success-600'
-                      : 'text-error-600'
+                    stat.trend === 'up' ? 'text-success-600' : 'text-error-600'
                   }`}
                 >
                   {stat.change}
@@ -425,7 +426,10 @@ export default function DashboardPage() {
                   time: '3 hours ago',
                 },
               ].map((activity, index) => (
-                <div key={index} className="flex items-center justify-between p-6">
+                <div
+                  key={index}
+                  className="flex items-center justify-between p-6"
+                >
                   <div>
                     <p className="font-medium text-neutral-900 dark:text-white">
                       {activity.user}
@@ -454,6 +458,7 @@ export default function DashboardPage() {
 ```
 
 **Key Features:**
+
 - ✅ Sidebar navigation
 - ✅ Responsive grid layouts
 - ✅ Real-time data visualization
@@ -492,11 +497,12 @@ export default function DashboardPage() {
 
 ```tsx
 // src/app/blog/[slug]/page.tsx
+import Image from 'next/image';
+
 import { AppShell } from '@/templates/layout/AppShell';
 import { CenteredLayout } from '@/templates/layout/CenteredLayout';
-import { Header } from '@/templates/sections/Header';
 import { Footer } from '@/templates/sections/Footer';
-import Image from 'next/image';
+import { Header } from '@/templates/sections/Header';
 
 export default function BlogPostPage() {
   return (
@@ -508,13 +514,13 @@ export default function BlogPostPage() {
             <div className="space-y-4">
               {/* Category */}
               <div>
-                <span className="inline-flex items-center rounded-full bg-brand-100 px-3 py-1 text-sm font-medium text-brand-700 dark:bg-brand-900/20 dark:text-brand-400">
+                <span className="bg-brand-100 text-brand-700 dark:bg-brand-900/20 dark:text-brand-400 inline-flex items-center rounded-full px-3 py-1 text-sm font-medium">
                   Product Updates
                 </span>
               </div>
 
               {/* Title */}
-              <h1 className="text-4xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-5xl">
+              <h1 className="text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl dark:text-white">
                 Announcing our Series A funding
               </h1>
 
@@ -546,17 +552,17 @@ export default function BlogPostPage() {
 
         {/* Article Content */}
         <CenteredLayout maxWidth="lg">
-          <div className="prose prose-neutral prose-lg mx-auto py-16 dark:prose-invert">
+          <div className="prose prose-neutral prose-lg dark:prose-invert mx-auto py-16">
             <p className="lead">
-              We&apos;re excited to announce that we&apos;ve raised $20M in Series A
-              funding led by Acme Ventures to accelerate our mission of making
-              software development faster and more accessible.
+              We&apos;re excited to announce that we&apos;ve raised $20M in
+              Series A funding led by Acme Ventures to accelerate our mission of
+              making software development faster and more accessible.
             </p>
 
             <h2>What this means for you</h2>
             <p>
-              This funding allows us to double down on our commitment to developers
-              worldwide. Here&apos;s what you can expect:
+              This funding allows us to double down on our commitment to
+              developers worldwide. Here&apos;s what you can expect:
             </p>
 
             <ul>
@@ -568,21 +574,22 @@ export default function BlogPostPage() {
             <h2>Our journey so far</h2>
             <p>
               Since launching in 2023, we&apos;ve grown to serve over 100,000
-              developers across 150 countries. Our platform has processed over 10
-              million deployments and counting.
+              developers across 150 countries. Our platform has processed over
+              10 million deployments and counting.
             </p>
 
             <blockquote>
               <p>
-                &quot;This is just the beginning. We&apos;re building the future of
-                software development.&quot;
+                &quot;This is just the beginning. We&apos;re building the future
+                of software development.&quot;
               </p>
             </blockquote>
 
             <h2>What&apos;s next</h2>
             <p>
-              We&apos;re working on some exciting new features that we can&apos;t wait
-              to share. Stay tuned for updates in the coming weeks.
+              We&apos;re working on some exciting new features that we
+              can&apos;t wait to share. Stay tuned for updates in the coming
+              weeks.
             </p>
           </div>
         </CenteredLayout>
@@ -597,8 +604,8 @@ export default function BlogPostPage() {
                   Sarah Johnson
                 </h3>
                 <p className="mt-1 text-neutral-600 dark:text-neutral-400">
-                  Co-founder & CEO at YourBrand. Previously led product at BigTech.
-                  Passionate about developer tools and open source.
+                  Co-founder & CEO at YourBrand. Previously led product at
+                  BigTech. Passionate about developer tools and open source.
                 </p>
               </div>
             </div>
@@ -618,7 +625,7 @@ export default function BlogPostPage() {
                   href={`/blog/post-${i}`}
                   className="group rounded-xl border border-neutral-200 p-6 transition-shadow hover:shadow-lg dark:border-neutral-800"
                 >
-                  <h3 className="text-lg font-semibold text-neutral-900 group-hover:text-brand-600 dark:text-white dark:group-hover:text-brand-400">
+                  <h3 className="group-hover:text-brand-600 dark:group-hover:text-brand-400 text-lg font-semibold text-neutral-900 dark:text-white">
                     Another interesting article title
                   </h3>
                   <p className="mt-2 text-neutral-600 dark:text-neutral-400">
@@ -639,6 +646,7 @@ export default function BlogPostPage() {
 ```
 
 **Key Features:**
+
 - ✅ SEO-optimized article structure
 - ✅ Rich typography with Tailwind Typography
 - ✅ Optimal reading width
@@ -657,8 +665,8 @@ export default function BlogPostPage() {
 // src/app/pricing/page.tsx
 import { AppShell } from '@/templates/layout/AppShell';
 import { Container } from '@/templates/layout/Container';
-import { Header } from '@/templates/sections/Header';
 import { Footer } from '@/templates/sections/Footer';
+import { Header } from '@/templates/sections/Header';
 
 export default function PricingPage() {
   const plans = [
@@ -714,12 +722,12 @@ export default function PricingPage() {
         <Container>
           {/* Header */}
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl dark:text-white">
               Simple, transparent pricing
             </h1>
             <p className="mt-6 text-lg text-neutral-600 dark:text-neutral-300">
-              Choose the plan that&apos;s right for you. All plans include a 14-day
-              free trial.
+              Choose the plan that&apos;s right for you. All plans include a
+              14-day free trial.
             </p>
           </div>
 
@@ -730,13 +738,13 @@ export default function PricingPage() {
                 key={plan.name}
                 className={`relative rounded-2xl border p-8 ${
                   plan.featured
-                    ? 'border-brand-500 bg-brand-50 shadow-xl dark:bg-brand-900/10'
+                    ? 'border-brand-500 bg-brand-50 dark:bg-brand-900/10 shadow-xl'
                     : 'border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900'
                 }`}
               >
                 {plan.featured && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <span className="inline-flex rounded-full bg-brand-500 px-4 py-1 text-sm font-semibold text-white">
+                    <span className="bg-brand-500 inline-flex rounded-full px-4 py-1 text-sm font-semibold text-white">
                       Most Popular
                     </span>
                   </div>
@@ -765,7 +773,7 @@ export default function PricingPage() {
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-start">
                       <svg
-                        className="mr-3 h-5 w-5 flex-shrink-0 text-brand-500"
+                        className="text-brand-500 mr-3 h-5 w-5 flex-shrink-0"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -788,7 +796,7 @@ export default function PricingPage() {
                   href={plan.href}
                   className={`mt-8 block w-full rounded-lg px-6 py-3 text-center font-semibold transition-colors ${
                     plan.featured
-                      ? 'bg-brand-600 text-white hover:bg-brand-700'
+                      ? 'bg-brand-600 hover:bg-brand-700 text-white'
                       : 'bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100'
                   }`}
                 >
@@ -805,6 +813,7 @@ export default function PricingPage() {
 ```
 
 **Key Features:**
+
 - ✅ Three-tier pricing structure
 - ✅ Featured plan highlight
 - ✅ Feature comparison
@@ -831,7 +840,8 @@ export default function LoginPage() {
         <div className="text-white">
           <h1 className="text-4xl font-bold">Welcome back</h1>
           <p className="mt-4 text-lg text-white/90">
-            Sign in to continue to your account and start building amazing products.
+            Sign in to continue to your account and start building amazing
+            products.
           </p>
           <div className="mt-12 space-y-4">
             <div className="flex items-center space-x-3">
@@ -867,7 +877,7 @@ export default function LoginPage() {
               Don&apos;t have an account?{' '}
               <a
                 href="/signup"
-                className="font-medium text-brand-600 hover:text-brand-500"
+                className="text-brand-600 hover:text-brand-500 font-medium"
               >
                 Sign up
               </a>
@@ -885,7 +895,7 @@ export default function LoginPage() {
               <input
                 type="email"
                 id="email"
-                className="mt-1 block w-full rounded-lg border border-neutral-300 px-3 py-2 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-neutral-700 dark:bg-neutral-800"
+                className="focus:border-brand-500 focus:ring-brand-500 mt-1 block w-full rounded-lg border border-neutral-300 px-3 py-2 focus:ring-2 focus:outline-none dark:border-neutral-700 dark:bg-neutral-800"
                 placeholder="you@example.com"
               />
             </div>
@@ -900,7 +910,7 @@ export default function LoginPage() {
               <input
                 type="password"
                 id="password"
-                className="mt-1 block w-full rounded-lg border border-neutral-300 px-3 py-2 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-neutral-700 dark:bg-neutral-800"
+                className="focus:border-brand-500 focus:ring-brand-500 mt-1 block w-full rounded-lg border border-neutral-300 px-3 py-2 focus:ring-2 focus:outline-none dark:border-neutral-700 dark:bg-neutral-800"
               />
             </div>
 
@@ -909,7 +919,7 @@ export default function LoginPage() {
                 <input
                   type="checkbox"
                   id="remember"
-                  className="h-4 w-4 rounded border-neutral-300 text-brand-600 focus:ring-brand-500"
+                  className="text-brand-600 focus:ring-brand-500 h-4 w-4 rounded border-neutral-300"
                 />
                 <label
                   htmlFor="remember"
@@ -920,7 +930,7 @@ export default function LoginPage() {
               </div>
               <a
                 href="/forgot-password"
-                className="text-sm font-medium text-brand-600 hover:text-brand-500"
+                className="text-brand-600 hover:text-brand-500 text-sm font-medium"
               >
                 Forgot password?
               </a>
@@ -928,7 +938,7 @@ export default function LoginPage() {
 
             <button
               type="submit"
-              className="w-full rounded-lg bg-brand-600 px-4 py-2 font-semibold text-white transition-colors hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
+              className="bg-brand-600 hover:bg-brand-700 focus:ring-brand-500 w-full rounded-lg px-4 py-2 font-semibold text-white transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none"
             >
               Sign in
             </button>
@@ -941,6 +951,7 @@ export default function LoginPage() {
 ```
 
 **Key Features:**
+
 - ✅ Split-screen layout
 - ✅ Form validation (client-side)
 - ✅ Accessible form inputs
@@ -977,8 +988,8 @@ import Image from 'next/image';
   alt="Hero"
   width={1200}
   height={600}
-  priority  // For above-the-fold images
-/>
+  priority // For above-the-fold images
+/>;
 ```
 
 ### 3. **Accessibility**
@@ -1007,13 +1018,12 @@ useEffect(() => {
 
 ```tsx
 // Show loading states for better UX
-{isLoading ? (
-  <div className="animate-pulse">Loading...</div>
-) : (
-  <Content />
-)}
+{
+  isLoading ? <div className="animate-pulse">Loading...</div> : <Content />;
+}
 ```
 
 ---
 
-**Related:** [Layout Templates](./02-layout-templates.md) | [Component Templates](./03-component-templates.md)
+**Related:** [Layout Templates](./02-layout-templates.md) |
+[Component Templates](./03-component-templates.md)

@@ -65,7 +65,7 @@ const Button: React.FC<ButtonProps> = ({
 ```tsx
 const IconButton: React.FC<IconButtonProps> = ({ icon, label, ...props }) => (
   <button
-    className="inline-flex h-10 w-10 items-center justify-center rounded-md text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+    className="inline-flex h-10 w-10 items-center justify-center rounded-md text-gray-700 transition-colors hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
     aria-label={label}
     {...props}
   >
@@ -74,7 +74,7 @@ const IconButton: React.FC<IconButtonProps> = ({ icon, label, ...props }) => (
 );
 
 // Usage
-<IconButton icon={<CloseIcon />} label="Close" onClick={handleClose} />
+<IconButton icon={<CloseIcon />} label="Close" onClick={handleClose} />;
 ```
 
 ### Button with Icon
@@ -132,7 +132,7 @@ const LoadingButton: React.FC<LoadingButtonProps> = ({
 );
 
 // Usage
-<LoadingButton loading={isSubmitting}>Submit</LoadingButton>
+<LoadingButton loading={isSubmitting}>Submit</LoadingButton>;
 ```
 
 ## Input & Form Components
@@ -187,16 +187,14 @@ const Textarea: React.FC<TextareaProps> = ({
 }) => (
   <div className="space-y-1">
     {label && (
-      <label className="block text-sm font-medium text-gray-700">
-        {label}
-      </label>
+      <label className="block text-sm font-medium text-gray-700">{label}</label>
     )}
     <textarea
       rows={rows}
       className={cn(
         'block w-full rounded-md border border-gray-300 px-3 py-2',
         'placeholder:text-gray-400',
-        'focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500',
+        'focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none',
         error && 'border-red-500 focus:border-red-500 focus:ring-red-500'
       )}
       {...props}
@@ -209,22 +207,15 @@ const Textarea: React.FC<TextareaProps> = ({
 ### Select
 
 ```tsx
-const Select: React.FC<SelectProps> = ({
-  label,
-  options,
-  error,
-  ...props
-}) => (
+const Select: React.FC<SelectProps> = ({ label, options, error, ...props }) => (
   <div className="space-y-1">
     {label && (
-      <label className="block text-sm font-medium text-gray-700">
-        {label}
-      </label>
+      <label className="block text-sm font-medium text-gray-700">{label}</label>
     )}
     <select
       className={cn(
         'block w-full rounded-md border border-gray-300 px-3 py-2',
-        'focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500',
+        'focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none',
         error && 'border-red-500 focus:border-red-500 focus:ring-red-500'
       )}
       {...props}
@@ -255,16 +246,24 @@ const Checkbox: React.FC<CheckboxProps> = ({ label, ...props }) => (
 );
 
 // Usage
-<Checkbox label="I agree to the terms and conditions" />
+<Checkbox label="I agree to the terms and conditions" />;
 ```
 
 ### Radio Group
 
 ```tsx
-const RadioGroup: React.FC<RadioGroupProps> = ({ options, name, value, onChange }) => (
+const RadioGroup: React.FC<RadioGroupProps> = ({
+  options,
+  name,
+  value,
+  onChange,
+}) => (
   <div className="space-y-2">
     {options.map((option) => (
-      <label key={option.value} className="inline-flex cursor-pointer items-center">
+      <label
+        key={option.value}
+        className="inline-flex cursor-pointer items-center"
+      >
         <input
           type="radio"
           name={name}
@@ -318,7 +317,7 @@ const CardFooter: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <CardFooter>
     <Button>Action</Button>
   </CardFooter>
-</Card>
+</Card>;
 ```
 
 ### Product Card
@@ -334,7 +333,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => (
         className="h-full w-full object-cover transition-transform group-hover:scale-105"
       />
       {product.badge && (
-        <span className="absolute right-2 top-2 rounded-full bg-red-500 px-3 py-1 text-xs font-semibold text-white">
+        <span className="absolute top-2 right-2 rounded-full bg-red-500 px-3 py-1 text-xs font-semibold text-white">
           {product.badge}
         </span>
       )}
@@ -393,9 +392,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
           </p>
         )}
       </div>
-      <div className="rounded-full bg-blue-100 p-3 text-blue-600">
-        {icon}
-      </div>
+      <div className="rounded-full bg-blue-100 p-3 text-blue-600">{icon}</div>
     </div>
   </div>
 );
@@ -477,7 +474,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs, activeTab, onChange }) => (
   ]}
   activeTab={activeTab}
   onChange={setActiveTab}
-/>
+/>;
 ```
 
 ### Breadcrumbs
@@ -489,7 +486,11 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => (
       {items.map((item, index) => (
         <li key={item.href} className="flex items-center gap-2">
           {index > 0 && (
-            <svg className="h-4 w-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+            <svg
+              className="h-4 w-4 text-gray-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
               <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
             </svg>
           )}
@@ -524,7 +525,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
     <div className="fixed inset-0 z-50 overflow-y-auto">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
+        className="bg-opacity-50 fixed inset-0 bg-black transition-opacity"
         onClick={onClose}
       />
 
@@ -552,9 +553,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
 
 // Usage
 <Modal isOpen={isOpen} onClose={handleClose} title="Confirm Action">
-  <p className="mb-4 text-gray-600">
-    Are you sure you want to proceed?
-  </p>
+  <p className="mb-4 text-gray-600">Are you sure you want to proceed?</p>
   <div className="flex justify-end gap-2">
     <Button variant="secondary" onClick={handleClose}>
       Cancel
@@ -563,7 +562,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
       Confirm
     </Button>
   </div>
-</Modal>
+</Modal>;
 ```
 
 ### Alert Dialog
@@ -652,7 +651,7 @@ const Table: React.FC<TableProps> = ({ columns, data }) => (
           {columns.map((column) => (
             <th
               key={column.key}
-              className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+              className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase"
             >
               {column.label}
             </th>
@@ -665,7 +664,7 @@ const Table: React.FC<TableProps> = ({ columns, data }) => (
             {columns.map((column) => (
               <td
                 key={column.key}
-                className="whitespace-nowrap px-6 py-4 text-sm text-gray-900"
+                className="px-6 py-4 text-sm whitespace-nowrap text-gray-900"
               >
                 {row[column.key]}
               </td>
@@ -713,10 +712,7 @@ const Tag: React.FC<TagProps> = ({ children, onRemove }) => (
   <span className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800">
     {children}
     {onRemove && (
-      <button
-        onClick={onRemove}
-        className="text-blue-600 hover:text-blue-800"
-      >
+      <button onClick={onRemove} className="text-blue-600 hover:text-blue-800">
         <CloseIcon className="h-4 w-4" />
       </button>
     )}
@@ -759,12 +755,7 @@ const Spinner: React.FC<SpinnerProps> = ({ size = 'md' }) => (
 
 ```tsx
 const Skeleton: React.FC<SkeletonProps> = ({ className }) => (
-  <div
-    className={cn(
-      'animate-pulse rounded-md bg-gray-200',
-      className
-    )}
-  />
+  <div className={cn('animate-pulse rounded-md bg-gray-200', className)} />
 );
 
 // Usage - Loading card
@@ -772,7 +763,7 @@ const Skeleton: React.FC<SkeletonProps> = ({ className }) => (
   <Skeleton className="mb-4 h-6 w-3/4" />
   <Skeleton className="mb-2 h-4 w-full" />
   <Skeleton className="h-4 w-2/3" />
-</div>
+</div>;
 ```
 
 ## Next Steps

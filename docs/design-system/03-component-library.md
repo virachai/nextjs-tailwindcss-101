@@ -1,6 +1,7 @@
 # Component Library
 
-Build a production-ready component library inspired by industry-leading design systems.
+Build a production-ready component library inspired by industry-leading design
+systems.
 
 ## Table of Contents
 
@@ -46,8 +47,7 @@ Components
 
 ### Design Principles
 
-**1. Single Responsibility**
-Each component does one thing well.
+**1. Single Responsibility** Each component does one thing well.
 
 ```tsx
 // ✅ Good - focused component
@@ -63,8 +63,8 @@ Each component does one thing well.
 />
 ```
 
-**2. Composition Over Configuration**
-Build complex UIs by combining simple components.
+**2. Composition Over Configuration** Build complex UIs by combining simple
+components.
 
 ```tsx
 // ✅ Good - composition
@@ -88,8 +88,7 @@ Build complex UIs by combining simple components.
 />
 ```
 
-**3. Controlled Components**
-Let parent manage state for flexibility.
+**3. Controlled Components** Let parent manage state for flexibility.
 
 ```tsx
 // ✅ Good - controlled
@@ -111,7 +110,9 @@ Let parent manage state for flexibility.
 ```tsx
 // components/Button/Button.tsx
 import { forwardRef } from 'react';
+
 import { cva, type VariantProps } from 'class-variance-authority';
+
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
@@ -120,9 +121,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-brand-primary text-white hover:bg-brand-primary-hover focus-visible:ring-brand-primary',
-        secondary: 'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus-visible:ring-gray-500',
-        destructive: 'bg-red-600 text-white hover:bg-red-700 focus-visible:ring-red-500',
+        primary:
+          'bg-brand-primary text-white hover:bg-brand-primary-hover focus-visible:ring-brand-primary',
+        secondary:
+          'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus-visible:ring-gray-500',
+        destructive:
+          'bg-red-600 text-white hover:bg-red-700 focus-visible:ring-red-500',
         ghost: 'hover:bg-gray-100 text-gray-700 focus-visible:ring-gray-500',
         link: 'text-brand-primary underline-offset-4 hover:underline',
       },
@@ -149,7 +153,20 @@ export interface ButtonProps
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, isLoading, leftIcon, rightIcon, children, disabled, ...props }, ref) => {
+  (
+    {
+      className,
+      variant,
+      size,
+      isLoading,
+      leftIcon,
+      rightIcon,
+      children,
+      disabled,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <button
         className={cn(buttonVariants({ variant, size, className }))}
@@ -182,9 +199,11 @@ Button.displayName = 'Button';
 ```tsx
 // components/Input/Input.tsx
 import { forwardRef } from 'react';
+
 import { cn } from '@/lib/utils';
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
   helperText?: string;
@@ -193,13 +212,28 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, label, error, helperText, leftAddon, rightAddon, id, ...props }, ref) => {
+  (
+    {
+      className,
+      label,
+      error,
+      helperText,
+      leftAddon,
+      rightAddon,
+      id,
+      ...props
+    },
+    ref
+  ) => {
     const inputId = id || label?.toLowerCase().replace(/\s+/g, '-');
 
     return (
       <div className="w-full">
         {label && (
-          <label htmlFor={inputId} className="mb-1 block text-sm font-medium text-gray-700">
+          <label
+            htmlFor={inputId}
+            className="mb-1 block text-sm font-medium text-gray-700"
+          >
             {label}
             {props.required && <span className="ml-1 text-red-500">*</span>}
           </label>
@@ -217,7 +251,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             className={cn(
               'flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm',
               'placeholder:text-gray-400',
-              'focus:border-brand-primary focus:outline-none focus:ring-1 focus:ring-brand-primary',
+              'focus:border-brand-primary focus:ring-brand-primary focus:ring-1 focus:outline-none',
               'disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500',
               error && 'border-red-500 focus:border-red-500 focus:ring-red-500',
               leftAddon && 'pl-10',
@@ -226,7 +260,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             )}
             ref={ref}
             aria-invalid={error ? 'true' : 'false'}
-            aria-describedby={error ? `${inputId}-error` : helperText ? `${inputId}-helper` : undefined}
+            aria-describedby={
+              error
+                ? `${inputId}-error`
+                : helperText
+                  ? `${inputId}-helper`
+                  : undefined
+            }
             {...props}
           />
 
@@ -261,6 +301,7 @@ Input.displayName = 'Input';
 ```tsx
 // components/Select/Select.tsx
 import { forwardRef } from 'react';
+
 import { cn } from '@/lib/utils';
 
 export interface SelectOption {
@@ -269,7 +310,8 @@ export interface SelectOption {
   disabled?: boolean;
 }
 
-export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+export interface SelectProps
+  extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
   error?: string;
   options: SelectOption[];
@@ -283,7 +325,10 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     return (
       <div className="w-full">
         {label && (
-          <label htmlFor={selectId} className="mb-1 block text-sm font-medium text-gray-700">
+          <label
+            htmlFor={selectId}
+            className="mb-1 block text-sm font-medium text-gray-700"
+          >
             {label}
             {props.required && <span className="ml-1 text-red-500">*</span>}
           </label>
@@ -293,7 +338,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           id={selectId}
           className={cn(
             'flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm',
-            'focus:border-brand-primary focus:outline-none focus:ring-1 focus:ring-brand-primary',
+            'focus:border-brand-primary focus:ring-brand-primary focus:ring-1 focus:outline-none',
             'disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500',
             error && 'border-red-500 focus:border-red-500 focus:ring-red-500',
             className
@@ -308,15 +353,17 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
             </option>
           )}
           {options.map((option) => (
-            <option key={option.value} value={option.value} disabled={option.disabled}>
+            <option
+              key={option.value}
+              value={option.value}
+              disabled={option.disabled}
+            >
               {option.label}
             </option>
           ))}
         </select>
 
-        {error && (
-          <p className="mt-1 text-sm text-red-600">{error}</p>
-        )}
+        {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
       </div>
     );
   }
@@ -356,7 +403,13 @@ export const Container: React.FC<ContainerProps> = ({
   };
 
   return (
-    <Component className={cn('mx-auto w-full px-4 sm:px-6 lg:px-8', maxWidthClasses[maxWidth], className)}>
+    <Component
+      className={cn(
+        'mx-auto w-full px-4 sm:px-6 lg:px-8',
+        maxWidthClasses[maxWidth],
+        className
+      )}
+    >
       {children}
     </Component>
   );
@@ -430,24 +483,22 @@ export const Stack: React.FC<StackProps> = ({
 ```tsx
 // components/Alert/Alert.tsx
 import { cva, type VariantProps } from 'class-variance-authority';
+
 import { cn } from '@/lib/utils';
 
-const alertVariants = cva(
-  'relative w-full rounded-lg border p-4',
-  {
-    variants: {
-      variant: {
-        info: 'border-blue-200 bg-blue-50 text-blue-900',
-        success: 'border-green-200 bg-green-50 text-green-900',
-        warning: 'border-yellow-200 bg-yellow-50 text-yellow-900',
-        error: 'border-red-200 bg-red-50 text-red-900',
-      },
+const alertVariants = cva('relative w-full rounded-lg border p-4', {
+  variants: {
+    variant: {
+      info: 'border-blue-200 bg-blue-50 text-blue-900',
+      success: 'border-green-200 bg-green-50 text-green-900',
+      warning: 'border-yellow-200 bg-yellow-50 text-yellow-900',
+      error: 'border-red-200 bg-red-50 text-red-900',
     },
-    defaultVariants: {
-      variant: 'info',
-    },
-  }
-);
+  },
+  defaultVariants: {
+    variant: 'info',
+  },
+});
 
 interface AlertProps extends VariantProps<typeof alertVariants> {
   children: React.ReactNode;
@@ -495,7 +546,9 @@ export const Alert: React.FC<AlertProps> = ({
 ```tsx
 // components/Modal/Modal.tsx
 import { useEffect } from 'react';
+
 import { createPortal } from 'react-dom';
+
 import { cn } from '@/lib/utils';
 
 interface ModalProps {
@@ -621,7 +674,12 @@ interface CardProps {
   onClick?: () => void;
 }
 
-export const Card: React.FC<CardProps> = ({ children, className, hover, onClick }) => {
+export const Card: React.FC<CardProps> = ({
+  children,
+  className,
+  hover,
+  onClick,
+}) => {
   return (
     <div
       className={cn(
@@ -637,7 +695,13 @@ export const Card: React.FC<CardProps> = ({ children, className, hover, onClick 
   );
 };
 
-Card.Header = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+Card.Header = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
   <div className={cn('mb-4 border-b border-gray-200 pb-4', className)}>
     {children}
   </div>
@@ -651,11 +715,21 @@ Card.Description = ({ children }: { children: React.ReactNode }) => (
   <p className="text-sm text-gray-600">{children}</p>
 );
 
-Card.Content = ({ children, className }: { children: React.ReactNode; className?: string }) => (
-  <div className={cn('text-gray-600', className)}>{children}</div>
-);
+Card.Content = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => <div className={cn('text-gray-600', className)}>{children}</div>;
 
-Card.Footer = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+Card.Footer = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
   <div className={cn('mt-4 border-t border-gray-200 pt-4', className)}>
     {children}
   </div>
@@ -716,7 +790,7 @@ const Button: React.FC<ButtonProps> = ({
 };
 
 // Usage - minimal props needed
-<Button>Click me</Button>
+<Button>Click me</Button>;
 ```
 
 ### Flexible but Constrained
@@ -769,7 +843,7 @@ Tabs.Panel = TabPanel;
     <Tabs.Panel>Content 1</Tabs.Panel>
     <Tabs.Panel>Content 2</Tabs.Panel>
   </Tabs.Panels>
-</Tabs>
+</Tabs>;
 ```
 
 ### Render Props
@@ -777,7 +851,11 @@ Tabs.Panel = TabPanel;
 ```tsx
 const DataFetcher: React.FC<{
   url: string;
-  children: (data: any, loading: boolean, error: Error | null) => React.ReactNode;
+  children: (
+    data: any,
+    loading: boolean,
+    error: Error | null
+  ) => React.ReactNode;
 }> = ({ url, children }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -795,14 +873,14 @@ const DataFetcher: React.FC<{
     if (error) return <Alert variant="error">{error.message}</Alert>;
     return <UserList users={data} />;
   }}
-</DataFetcher>
+</DataFetcher>;
 ```
 
 ## Documentation Standards
 
 ### Component Documentation Template
 
-```tsx
+````tsx
 /**
  * Button component for user actions
  *
@@ -823,13 +901,14 @@ const DataFetcher: React.FC<{
 export const Button: React.FC<ButtonProps> = ({ ... }) => {
   // Implementation
 };
-```
+````
 
 ### Storybook Stories
 
 ```tsx
 // Button.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
@@ -875,7 +954,8 @@ export const Loading: Story = {
 
 ```tsx
 // Button.test.tsx
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
+
 import { Button } from './Button';
 
 describe('Button', () => {
@@ -909,7 +989,10 @@ describe('Button', () => {
 ```tsx
 it('has proper ARIA attributes', () => {
   render(<Button aria-label="Close dialog">×</Button>);
-  expect(screen.getByRole('button')).toHaveAttribute('aria-label', 'Close dialog');
+  expect(screen.getByRole('button')).toHaveAttribute(
+    'aria-label',
+    'Close dialog'
+  );
 });
 
 it('is keyboard accessible', () => {
@@ -927,6 +1010,7 @@ it('is keyboard accessible', () => {
 ## Best Practices
 
 ✅ **DO:**
+
 - Use TypeScript for type safety
 - Support ref forwarding with `forwardRef`
 - Include ARIA attributes
@@ -937,6 +1021,7 @@ it('is keyboard accessible', () => {
 - Create Storybook stories
 
 ❌ **DON'T:**
+
 - Create overly complex components
 - Hardcode values (use tokens)
 - Forget error states

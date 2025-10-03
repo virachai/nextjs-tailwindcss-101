@@ -1,6 +1,7 @@
 # Design Tokens
 
-The foundation of your design system - named entities that store visual design attributes.
+The foundation of your design system - named entities that store visual design
+attributes.
 
 ## Table of Contents
 
@@ -14,11 +15,15 @@ The foundation of your design system - named entities that store visual design a
 
 ## What are Design Tokens?
 
-Design tokens are the **visual design atoms** of the design system — specifically, they are named entities that store visual design attributes. We use them in place of hard-coded values (like hex codes for colors, pixels for spacing) to maintain a scalable and consistent visual system.
+Design tokens are the **visual design atoms** of the design system —
+specifically, they are named entities that store visual design attributes. We
+use them in place of hard-coded values (like hex codes for colors, pixels for
+spacing) to maintain a scalable and consistent visual system.
 
 ### Why Design Tokens?
 
 **Before Tokens:**
+
 ```tsx
 // ❌ Hard-coded values scattered everywhere
 <button style={{
@@ -42,6 +47,7 @@ Design tokens are the **visual design atoms** of the design system — specifica
 ```
 
 **With Tokens:**
+
 ```tsx
 // ✅ Consistent, semantic tokens
 import { tokens } from '@/design-tokens';
@@ -63,11 +69,10 @@ import { tokens } from '@/design-tokens';
 
 ### Benefits
 
-✅ **Single source of truth** - Update once, changes everywhere
-✅ **Consistency** - Same values = same look
-✅ **Scalability** - Easy to add themes, dark mode
-✅ **Communication** - Shared language between design & dev
-✅ **Maintainability** - Change brand color in one place
+✅ **Single source of truth** - Update once, changes everywhere ✅
+**Consistency** - Same values = same look ✅ **Scalability** - Easy to add
+themes, dark mode ✅ **Communication** - Shared language between design & dev ✅
+**Maintainability** - Change brand color in one place
 
 ## Token Categories
 
@@ -80,10 +85,10 @@ The most common and critical tokens in any design system.
 export const colors = {
   // Brand colors
   brand: {
-    primary: '#FF5A5F',      // Airbnb Rausch (main brand color)
+    primary: '#FF5A5F', // Airbnb Rausch (main brand color)
     primaryHover: '#E00007',
     primaryActive: '#C13515',
-    secondary: '#00A699',    // Teal
+    secondary: '#00A699', // Teal
     secondaryHover: '#008489',
   },
 
@@ -131,11 +136,11 @@ export const colors = {
 
   // Text colors
   text: {
-    primary: '#222222',      // Main text
-    secondary: '#717171',    // Secondary text
-    tertiary: '#B0B0B0',     // Muted text
-    inverse: '#FFFFFF',      // Text on dark backgrounds
-    link: '#00A699',         // Links
+    primary: '#222222', // Main text
+    secondary: '#717171', // Secondary text
+    tertiary: '#B0B0B0', // Muted text
+    inverse: '#FFFFFF', // Text on dark backgrounds
+    link: '#00A699', // Links
     linkHover: '#008489',
   },
 
@@ -167,41 +172,41 @@ Consistent spacing creates visual rhythm and hierarchy.
 export const spacing = {
   // Base unit: 4px
   '0': '0',
-  '1': '4px',      // 0.25rem
-  '2': '8px',      // 0.5rem
-  '3': '12px',     // 0.75rem
-  '4': '16px',     // 1rem (base)
-  '5': '20px',     // 1.25rem
-  '6': '24px',     // 1.5rem
-  '8': '32px',     // 2rem
-  '10': '40px',    // 2.5rem
-  '12': '48px',    // 3rem
-  '16': '64px',    // 4rem
-  '20': '80px',    // 5rem
-  '24': '96px',    // 6rem
-  '32': '128px',   // 8rem
-  '40': '160px',   // 10rem
+  '1': '4px', // 0.25rem
+  '2': '8px', // 0.5rem
+  '3': '12px', // 0.75rem
+  '4': '16px', // 1rem (base)
+  '5': '20px', // 1.25rem
+  '6': '24px', // 1.5rem
+  '8': '32px', // 2rem
+  '10': '40px', // 2.5rem
+  '12': '48px', // 3rem
+  '16': '64px', // 4rem
+  '20': '80px', // 5rem
+  '24': '96px', // 6rem
+  '32': '128px', // 8rem
+  '40': '160px', // 10rem
 
   // Semantic spacing
-  componentGap: '16px',      // Gap between related elements
-  sectionGap: '48px',        // Gap between sections
-  containerPadding: '24px',  // Container padding
-  cardPadding: '24px',       // Card padding
+  componentGap: '16px', // Gap between related elements
+  sectionGap: '48px', // Gap between sections
+  containerPadding: '24px', // Container padding
+  cardPadding: '24px', // Card padding
 };
 
 // Usage guidelines
 export const spacingGuidelines = {
   // Tight spacing (related elements)
-  tight: ['0', '1', '2'],        // 0-8px
+  tight: ['0', '1', '2'], // 0-8px
 
   // Normal spacing (component internals)
-  normal: ['3', '4', '5', '6'],  // 12-24px
+  normal: ['3', '4', '5', '6'], // 12-24px
 
   // Loose spacing (between components)
-  loose: ['8', '10', '12'],      // 32-48px
+  loose: ['8', '10', '12'], // 32-48px
 
   // Section spacing (major sections)
-  section: ['16', '20', '24'],   // 64-96px
+  section: ['16', '20', '24'], // 64-96px
 };
 ```
 
@@ -214,23 +219,24 @@ Font families, sizes, weights, and line heights.
 export const typography = {
   // Font families
   fontFamily: {
-    primary: '"Circular", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+    primary:
+      '"Circular", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
     mono: '"Monaco", "Courier New", monospace',
   },
 
   // Font sizes (type scale)
   fontSize: {
-    '2xs': '10px',   // 0.625rem - Fine print
-    xs: '12px',      // 0.75rem  - Captions
-    sm: '14px',      // 0.875rem - Small body
-    base: '16px',    // 1rem     - Body text
-    lg: '18px',      // 1.125rem - Large body
-    xl: '20px',      // 1.25rem  - Small heading
-    '2xl': '24px',   // 1.5rem   - Heading
-    '3xl': '30px',   // 1.875rem - Large heading
-    '4xl': '36px',   // 2.25rem  - Display
-    '5xl': '48px',   // 3rem     - Large display
-    '6xl': '64px',   // 4rem     - Extra large display
+    '2xs': '10px', // 0.625rem - Fine print
+    xs: '12px', // 0.75rem  - Captions
+    sm: '14px', // 0.875rem - Small body
+    base: '16px', // 1rem     - Body text
+    lg: '18px', // 1.125rem - Large body
+    xl: '20px', // 1.25rem  - Small heading
+    '2xl': '24px', // 1.5rem   - Heading
+    '3xl': '30px', // 1.875rem - Large heading
+    '4xl': '36px', // 2.25rem  - Display
+    '5xl': '48px', // 3rem     - Large display
+    '6xl': '64px', // 4rem     - Extra large display
   },
 
   // Font weights
@@ -323,12 +329,12 @@ Rounded corners for components.
 // tokens/radius.ts
 export const radius = {
   none: '0',
-  sm: '4px',       // Small radius (badges, tags)
-  md: '8px',       // Medium radius (buttons, inputs)
-  lg: '12px',      // Large radius (cards)
-  xl: '16px',      // Extra large radius (modals)
-  '2xl': '24px',   // Featured cards
-  full: '9999px',  // Pills, circular elements
+  sm: '4px', // Small radius (badges, tags)
+  md: '8px', // Medium radius (buttons, inputs)
+  lg: '12px', // Large radius (cards)
+  xl: '16px', // Extra large radius (modals)
+  '2xl': '24px', // Featured cards
+  full: '9999px', // Pills, circular elements
 };
 
 // Component-specific radius
@@ -360,18 +366,18 @@ export const shadows = {
   inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
 
   // Colored shadows (for focus states)
-  focus: '0 0 0 3px rgba(0, 166, 153, 0.5)',      // Brand color
+  focus: '0 0 0 3px rgba(0, 166, 153, 0.5)', // Brand color
   focusError: '0 0 0 3px rgba(231, 76, 60, 0.5)', // Error color
 };
 
 // Elevation system (inspired by Material Design)
 export const elevation = {
-  0: shadows.none,       // Flat
-  1: shadows.sm,         // Cards on white background
-  2: shadows.md,         // Hover state cards
-  3: shadows.lg,         // Dropdowns, tooltips
-  4: shadows.xl,         // Modals
-  5: shadows['2xl'],     // Floating action buttons
+  0: shadows.none, // Flat
+  1: shadows.sm, // Cards on white background
+  2: shadows.md, // Hover state cards
+  3: shadows.lg, // Dropdowns, tooltips
+  4: shadows.xl, // Modals
+  5: shadows['2xl'], // Floating action buttons
 };
 ```
 
@@ -382,11 +388,11 @@ Responsive design breakpoints.
 ```typescript
 // tokens/breakpoints.ts
 export const breakpoints = {
-  xs: '375px',   // Mobile small
-  sm: '640px',   // Mobile large / Tablet small
-  md: '768px',   // Tablet
-  lg: '1024px',  // Desktop
-  xl: '1280px',  // Desktop large
+  xs: '375px', // Mobile small
+  sm: '640px', // Mobile large / Tablet small
+  md: '768px', // Tablet
+  lg: '1024px', // Desktop
+  xl: '1280px', // Desktop large
   '2xl': '1536px', // Desktop extra large
 };
 
@@ -469,20 +475,20 @@ export const zIndex = {
 
 ```typescript
 // Good examples
-colors.brand.primary
-colors.brand.primaryHover
-colors.semantic.success.base
-colors.semantic.success.light
-spacing.componentGap
-typography.fontSize.base
-typography.fontWeight.semibold
-shadows.elevation[2]
-radius.button
+colors.brand.primary;
+colors.brand.primaryHover;
+colors.semantic.success.base;
+colors.semantic.success.light;
+spacing.componentGap;
+typography.fontSize.base;
+typography.fontWeight.semibold;
+shadows.elevation[2];
+radius.button;
 
 // Bad examples (avoid)
-colors.redColor          // Redundant
-spacing.spacingMedium    // Redundant
-colors.rgb255000000      // Not semantic
+colors.redColor; // Redundant
+spacing.spacingMedium; // Redundant
+colors.rgb255000000; // Not semantic
 ```
 
 ### Semantic vs Literal Names
@@ -639,8 +645,8 @@ const Button = () => (
 /* tokens/tokens.css */
 :root {
   /* Colors */
-  --color-brand-primary: #FF5A5F;
-  --color-brand-secondary: #00A699;
+  --color-brand-primary: #ff5a5f;
+  --color-brand-secondary: #00a699;
   --color-text-primary: #222222;
   --color-text-secondary: #717171;
 
@@ -753,6 +759,7 @@ Design (Figma) → Figma Tokens Plugin → JSON → Transform → Code Tokens
 ```
 
 **Tools:**
+
 - **Figma Tokens** - Export tokens from Figma
 - **Style Dictionary** - Transform tokens to multiple formats
 - **Theo** - Salesforce's token transformer
@@ -769,6 +776,7 @@ Design (Figma) → Figma Tokens Plugin → JSON → Transform → Code Tokens
 ```
 
 **Semantic Versioning:**
+
 - **Major (2.0.0)**: Breaking changes (renamed tokens, removed tokens)
 - **Minor (2.1.0)**: New tokens added
 - **Patch (2.1.1)**: Bug fixes (wrong color values)
@@ -789,6 +797,7 @@ export const brandPrimary = '#FF5A5F';
 ## Best Practices
 
 ✅ **DO:**
+
 - Use semantic names (primary, not red)
 - Document usage context
 - Version your tokens
@@ -797,6 +806,7 @@ export const brandPrimary = '#FF5A5F';
 - Use TypeScript for type safety
 
 ❌ **DON'T:**
+
 - Use hard-coded values
 - Create tokens for every single value
 - Use non-semantic names (color1, color2)

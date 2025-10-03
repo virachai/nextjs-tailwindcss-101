@@ -57,7 +57,9 @@ Layout templates define the **structural skeleton** of your pages:
 
 ```tsx
 // Basic Container
-export const Container: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const Container: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   return (
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
       {children}
@@ -68,7 +70,7 @@ export const Container: React.FC<{ children: React.ReactNode }> = ({ children })
 // Usage
 <Container>
   <h1>Your content here</h1>
-</Container>
+</Container>;
 ```
 
 **Breakpoint Widths:**
@@ -83,9 +85,9 @@ max-w-4xl    // 896px  - Long-form articles
 **Padding System:**
 
 ```tsx
-px-4         // 16px mobile
-sm:px-6      // 24px tablet (640px+)
-lg:px-8      // 32px desktop (1024px+)
+px - 4; // 16px mobile
+sm: px - 6; // 24px tablet (640px+)
+lg: px - 8; // 32px desktop (1024px+)
 ```
 
 ### 2. Section Pattern
@@ -108,15 +110,15 @@ export const Section: React.FC<{
 <Section>
   <h2>Section Title</h2>
   <p>Section content...</p>
-</Section>
+</Section>;
 ```
 
 **Vertical Spacing Scale:**
 
 ```tsx
-py-12        // 48px mobile
-md:py-16     // 64px tablet
-lg:py-24     // 96px desktop
+py - 12; // 48px mobile
+md: py - 16; // 64px tablet
+lg: py - 24; // 96px desktop
 ```
 
 ### 3. Grid Layout Pattern
@@ -125,16 +127,18 @@ lg:py-24     // 96px desktop
 
 ```tsx
 // Two-Column Grid
-export const TwoColumnGrid: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const TwoColumnGrid: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   return (
-    <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-      {children}
-    </div>
+    <div className="grid grid-cols-1 gap-8 md:grid-cols-2">{children}</div>
   );
 };
 
 // Three-Column Grid
-export const ThreeColumnGrid: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const ThreeColumnGrid: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   return (
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
       {children}
@@ -143,7 +147,9 @@ export const ThreeColumnGrid: React.FC<{ children: React.ReactNode }> = ({ child
 };
 
 // Four-Column Grid
-export const FourColumnGrid: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const FourColumnGrid: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {children}
@@ -201,7 +207,9 @@ export const VStack: React.FC<{
     lg: 'space-y-8',
   };
 
-  return <div className={`flex flex-col ${spacingMap[spacing]}`}>{children}</div>;
+  return (
+    <div className={`flex flex-col ${spacingMap[spacing]}`}>{children}</div>
+  );
 };
 ```
 
@@ -684,16 +692,14 @@ Avoid deep nesting and excessive DOM nodes:
 ### Hero Section Layout
 
 ```tsx
-<section className="relative overflow-hidden bg-gradient-to-br from-brand-600 to-brand-800 py-24 lg:py-32">
+<section className="from-brand-600 to-brand-800 relative overflow-hidden bg-gradient-to-br py-24 lg:py-32">
   <Container>
     <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
       <div className="flex flex-col justify-center">
         <h1 className="text-4xl font-bold text-white lg:text-6xl">
           Hero Title
         </h1>
-        <p className="mt-6 text-lg text-white/90">
-          Hero description...
-        </p>
+        <p className="mt-6 text-lg text-white/90">Hero description...</p>
         <div className="mt-8 flex gap-4">
           <Button>Get Started</Button>
         </div>

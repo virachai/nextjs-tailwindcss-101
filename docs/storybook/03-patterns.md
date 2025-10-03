@@ -19,10 +19,12 @@ Advanced techniques and patterns for building sophisticated component stories.
 
 ```tsx
 // Modal.stories.tsx
-import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { Modal } from './Modal';
+
+import type { Meta, StoryObj } from '@storybook/react';
+
 import { Button } from '../Button';
+import { Modal } from './Modal';
 
 const meta: Meta<typeof Modal> = {
   title: 'Components/Modal',
@@ -54,9 +56,7 @@ export const Default: Story = {
             <Button variant="secondary" onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
-            <Button onClick={() => setIsOpen(false)}>
-              Confirm
-            </Button>
+            <Button onClick={() => setIsOpen(false)}>Confirm</Button>
           </Modal.Footer>
         </Modal>
       </>
@@ -125,6 +125,7 @@ export const LongContent: Story = {
 ```tsx
 // Dropdown.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { Dropdown } from './Dropdown';
 
 const meta: Meta<typeof Dropdown> = {
@@ -145,7 +146,11 @@ export const Default: Story = {
     items: [
       { label: 'Edit', onClick: () => console.log('Edit') },
       { label: 'Duplicate', onClick: () => console.log('Duplicate') },
-      { label: 'Delete', onClick: () => console.log('Delete'), variant: 'danger' },
+      {
+        label: 'Delete',
+        onClick: () => console.log('Delete'),
+        variant: 'danger',
+      },
     ],
   },
 };
@@ -158,18 +163,18 @@ export const WithIcons: Story = {
       {
         label: 'Edit',
         icon: <EditIcon />,
-        onClick: () => {}
+        onClick: () => {},
       },
       {
         label: 'Share',
         icon: <ShareIcon />,
-        onClick: () => {}
+        onClick: () => {},
       },
       {
         label: 'Delete',
         icon: <TrashIcon />,
         onClick: () => {},
-        variant: 'danger'
+        variant: 'danger',
       },
     ],
   },
@@ -211,6 +216,7 @@ export const Open: Story = {
 ```tsx
 // Counter.stories.tsx
 import { useState } from 'react';
+
 import { Counter } from './Counter';
 
 export const Interactive: Story = {
@@ -255,7 +261,10 @@ export const WithInput: Story = {
         </div>
         <ul className="space-y-2">
           {items.map((item, i) => (
-            <li key={i} className="flex items-center justify-between rounded-md border p-2">
+            <li
+              key={i}
+              className="flex items-center justify-between rounded-md border p-2"
+            >
               <span>{item}</span>
               <Button
                 size="sm"
@@ -347,6 +356,7 @@ const preview: Preview = {
 ```tsx
 // UserList.stories.tsx
 import { http, HttpResponse } from 'msw';
+
 import { UserList } from './UserList';
 
 const meta: Meta<typeof UserList> = {
@@ -465,8 +475,10 @@ export const WithData: Story = {
 
 ```tsx
 // LoginForm.stories.tsx
-import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+
+import type { Meta, StoryObj } from '@storybook/react';
+
 import { LoginForm } from './LoginForm';
 
 const meta: Meta<typeof LoginForm> = {
@@ -564,6 +576,7 @@ export const Submitting: Story = {
 ```tsx
 // SignupForm.stories.tsx
 import { useForm } from 'react-hook-form';
+
 import { SignupForm } from './SignupForm';
 
 export const Default: Story = {
@@ -598,6 +611,7 @@ export const Default: Story = {
 ```tsx
 // Tabs.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { Tabs } from './Tabs';
 
 const meta: Meta<typeof Tabs> = {
@@ -674,7 +688,8 @@ export const Default: Story = {
       <Accordion.Item value="item-1">
         <Accordion.Trigger>What is Storybook?</Accordion.Trigger>
         <Accordion.Content>
-          Storybook is an open-source tool for developing UI components in isolation.
+          Storybook is an open-source tool for developing UI components in
+          isolation.
         </Accordion.Content>
       </Accordion.Item>
       <Accordion.Item value="item-2">
@@ -844,6 +859,7 @@ pnpm chromatic --project-token=<your-token>
 // Button.test.tsx
 import { composeStories } from '@storybook/react';
 import { render } from '@testing-library/react';
+
 import * as stories from './Button.stories';
 
 const { Primary, Secondary, Disabled } = composeStories(stories);
@@ -907,15 +923,8 @@ import { FixedSizeList } from 'react-window';
 
 export const VirtualizedList: Story = {
   render: () => (
-    <FixedSizeList
-      height={400}
-      itemCount={1000}
-      itemSize={50}
-      width="100%"
-    >
-      {({ index, style }) => (
-        <div style={style}>Item {index + 1}</div>
-      )}
+    <FixedSizeList height={400} itemCount={1000} itemSize={50} width="100%">
+      {({ index, style }) => <div style={style}>Item {index + 1}</div>}
     </FixedSizeList>
   ),
 };
@@ -924,6 +933,7 @@ export const VirtualizedList: Story = {
 ## Best Practices Summary
 
 ✅ **DO:**
+
 - Use render functions for stateful components
 - Mock API calls with MSW
 - Write interaction tests for critical flows
@@ -932,6 +942,7 @@ export const VirtualizedList: Story = {
 - Lazy load heavy components
 
 ❌ **DON'T:**
+
 - Put all state in args
 - Make real API calls
 - Skip accessibility testing

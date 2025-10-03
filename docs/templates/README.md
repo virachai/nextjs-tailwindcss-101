@@ -1,6 +1,7 @@
 # Modern Website Templates with Tailwind CSS
 
-> Production-ready component patterns and templates for building consistent, professional UIs following Airbnb-level frontend standards.
+> Production-ready component patterns and templates for building consistent,
+> professional UIs following Airbnb-level frontend standards.
 
 ## Table of Contents
 
@@ -14,11 +15,13 @@
 
 ## Design System Overview
 
-Our Tailwind configuration ([tailwind.config.ts](../../tailwind.config.ts)) provides a comprehensive design system for UI consistency.
+Our Tailwind configuration ([tailwind.config.ts](../../tailwind.config.ts))
+provides a comprehensive design system for UI consistency.
 
 ### Color System
 
 **Brand Colors** - Primary brand identity
+
 ```tsx
 // 11 shades from 50 (lightest) to 950 (darkest)
 <button className="bg-brand-500 hover:bg-brand-600 text-white">
@@ -27,14 +30,16 @@ Our Tailwind configuration ([tailwind.config.ts](../../tailwind.config.ts)) prov
 ```
 
 **Semantic Colors** - Contextual feedback
+
 ```tsx
 // Success (green), Warning (amber), Error (red), Info (blue)
-<div className="border-l-4 border-success-500 bg-success-50 p-4">
+<div className="border-success-500 bg-success-50 border-l-4 p-4">
   <p className="text-success-700">Operation successful</p>
 </div>
 ```
 
 **Neutral Colors** - Gray scale for text and backgrounds
+
 ```tsx
 <div className="bg-neutral-50 dark:bg-neutral-900">
   <p className="text-neutral-900 dark:text-neutral-50">Content</p>
@@ -410,8 +415,8 @@ Layering system for overlapping elements:
 
 ```tsx
 // Modal Overlay + Dialog
-<div className="fixed inset-0 z-modal flex items-center justify-center bg-neutral-900/50 p-4 backdrop-blur-sm">
-  <div className="w-full max-w-md animate-scaleIn rounded-2xl bg-white p-6 shadow-2xl dark:bg-neutral-800">
+<div className="z-modal fixed inset-0 flex items-center justify-center bg-neutral-900/50 p-4 backdrop-blur-sm">
+  <div className="animate-scaleIn w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl dark:bg-neutral-800">
     <h2 className="text-2xl font-semibold text-neutral-900 dark:text-neutral-50">
       Modal Title
     </h2>
@@ -422,7 +427,7 @@ Layering system for overlapping elements:
       <button className="rounded-lg px-4 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-700">
         Cancel
       </button>
-      <button className="rounded-lg bg-brand-500 px-4 py-2 text-sm font-medium text-white hover:bg-brand-600">
+      <button className="bg-brand-500 hover:bg-brand-600 rounded-lg px-4 py-2 text-sm font-medium text-white">
         Confirm
       </button>
     </div>
@@ -626,7 +631,9 @@ Ensure WCAG AA compliance (4.5:1 for normal text):
 // Trap focus in modals
 useEffect(() => {
   const modal = modalRef.current;
-  const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  const focusableElements = modal.querySelectorAll(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  );
   const firstElement = focusableElements[0];
   const lastElement = focusableElements[focusableElements.length - 1];
 
@@ -686,9 +693,15 @@ useEffect(() => {
 ```tsx
 // Stagger children animation
 <div className="space-y-4">
-  <div className="animate-slideInFromLeft" style={{ animationDelay: '0ms' }}>Item 1</div>
-  <div className="animate-slideInFromLeft" style={{ animationDelay: '100ms' }}>Item 2</div>
-  <div className="animate-slideInFromLeft" style={{ animationDelay: '200ms' }}>Item 3</div>
+  <div className="animate-slideInFromLeft" style={{ animationDelay: '0ms' }}>
+    Item 1
+  </div>
+  <div className="animate-slideInFromLeft" style={{ animationDelay: '100ms' }}>
+    Item 2
+  </div>
+  <div className="animate-slideInFromLeft" style={{ animationDelay: '200ms' }}>
+    Item 3
+  </div>
 </div>
 ```
 
@@ -700,22 +713,22 @@ useEffect(() => {
 
 ```tsx
 // Card container
-"rounded-2xl bg-white p-6 shadow-md dark:bg-neutral-800"
+'rounded-2xl bg-white p-6 shadow-md dark:bg-neutral-800';
 
 // Primary button
-"rounded-lg bg-brand-500 px-4 py-2 text-sm font-medium text-white hover:bg-brand-600 focus:ring-2 focus:ring-brand-500"
+'rounded-lg bg-brand-500 px-4 py-2 text-sm font-medium text-white hover:bg-brand-600 focus:ring-2 focus:ring-brand-500';
 
 // Input field
-"w-full rounded-lg border border-neutral-300 px-4 py-2 focus:border-brand-500 focus:ring-2 focus:ring-brand-500 dark:border-neutral-700 dark:bg-neutral-800"
+'w-full rounded-lg border border-neutral-300 px-4 py-2 focus:border-brand-500 focus:ring-2 focus:ring-brand-500 dark:border-neutral-700 dark:bg-neutral-800';
 
 // Section heading
-"text-3xl font-semibold text-neutral-900 dark:text-neutral-50"
+'text-3xl font-semibold text-neutral-900 dark:text-neutral-50';
 
 // Body text
-"text-base text-neutral-700 dark:text-neutral-300"
+'text-base text-neutral-700 dark:text-neutral-300';
 
 // Centered container
-"mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+'mx-auto max-w-7xl px-4 sm:px-6 lg:px-8';
 ```
 
 ---
@@ -726,10 +739,9 @@ useEffect(() => {
 - [Tailwind CSS Docs](https://tailwindcss.com/docs) - Official documentation
 - [Headless UI](https://headlessui.com/) - Unstyled accessible components
 - [Radix UI](https://www.radix-ui.com/) - Primitive component library
-- [WCAG Guidelines](https://www.w3.org/WAI/WCAG21/quickref/) - Accessibility standards
+- [WCAG Guidelines](https://www.w3.org/WAI/WCAG21/quickref/) - Accessibility
+  standards
 
 ---
 
-**Version:** 1.0.0
-**Last Updated:** 2025-10-03
-**Maintained by:** Frontend Team
+**Version:** 1.0.0 **Last Updated:** 2025-10-03 **Maintained by:** Frontend Team

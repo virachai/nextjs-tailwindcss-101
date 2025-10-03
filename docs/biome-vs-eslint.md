@@ -1,14 +1,17 @@
 # Biome vs ESLint: Choosing the Right Tool
 
-This document explains why this project uses ESLint + Prettier instead of Biome, and provides guidance for teams considering their options.
+This document explains why this project uses ESLint + Prettier instead of Biome,
+and provides guidance for teams considering their options.
 
 ## Overview
 
-Both Biome and ESLint are code quality tools, but they have different philosophies and trade-offs.
+Both Biome and ESLint are code quality tools, but they have different
+philosophies and trade-offs.
 
 ### Current Project Setup
 
 This project uses:
+
 - **ESLint 8.57.1** with Airbnb configuration
 - **Prettier 3.6.2** for code formatting
 - **TypeScript ESLint** for TypeScript support
@@ -16,16 +19,16 @@ This project uses:
 
 ## Quick Comparison
 
-| Feature | Biome | ESLint + Prettier |
-|---------|-------|-------------------|
-| **Speed** | ⚡⚡⚡⚡⚡ 25-50x faster | 🐌 Slower |
-| **Setup** | 🎯 Simple (1 tool) | 🔧 Complex (2 tools + plugins) |
-| **Configuration** | 📝 Single file | 📚 Multiple configs |
-| **Airbnb Preset** | ❌ Not available | ✅ Built-in |
-| **Plugin Ecosystem** | 🌱 Growing | 🌳 Mature |
-| **Language Support** | TypeScript, JavaScript, JSON | Everything (plugins) |
-| **Community** | 🆕 New but growing | 👥 Large, established |
-| **Maturity** | ⚠️ Young (v1.0 in 2024) | ✅ Battle-tested |
+| Feature              | Biome                        | ESLint + Prettier              |
+| -------------------- | ---------------------------- | ------------------------------ |
+| **Speed**            | ⚡⚡⚡⚡⚡ 25-50x faster     | 🐌 Slower                      |
+| **Setup**            | 🎯 Simple (1 tool)           | 🔧 Complex (2 tools + plugins) |
+| **Configuration**    | 📝 Single file               | 📚 Multiple configs            |
+| **Airbnb Preset**    | ❌ Not available             | ✅ Built-in                    |
+| **Plugin Ecosystem** | 🌱 Growing                   | 🌳 Mature                      |
+| **Language Support** | TypeScript, JavaScript, JSON | Everything (plugins)           |
+| **Community**        | 🆕 New but growing           | 👥 Large, established          |
+| **Maturity**         | ⚠️ Young (v1.0 in 2024)      | ✅ Battle-tested               |
 
 ## Why NOT Use Biome + ESLint Together?
 
@@ -80,6 +83,7 @@ $ pnpm lint
 ### ❌ Configuration Complexity
 
 You'd need to maintain:
+
 - `.eslintrc.json` (ESLint rules)
 - `prettier.config.mjs` (Prettier formatting)
 - `biome.json` (Biome rules)
@@ -106,28 +110,27 @@ $ npm run lint
 ### ✅ Airbnb Style Guide
 
 The Airbnb JavaScript/React style guide is:
+
 - Industry standard for frontend development
 - Used by companies like Airbnb, Netflix, Uber
 - Well-documented and battle-tested
 - Has comprehensive React + TypeScript rules
 
 **Currently:**
+
 ```json
 {
-  "extends": [
-    "airbnb",
-    "airbnb-typescript",
-    "airbnb/hooks"
-  ]
+  "extends": ["airbnb", "airbnb-typescript", "airbnb/hooks"]
 }
 ```
 
-**With Biome:**
-❌ No Airbnb preset - you'd need to manually configure 100+ rules
+**With Biome:** ❌ No Airbnb preset - you'd need to manually configure 100+
+rules
 
 ### ✅ Mature Ecosystem
 
 ESLint has plugins for:
+
 - `eslint-plugin-react` - React specific rules
 - `eslint-plugin-jsx-a11y` - Accessibility rules
 - `eslint-plugin-import` - Import/export validation
@@ -135,22 +138,22 @@ ESLint has plugins for:
 - `eslint-plugin-prettier` - Prettier integration
 - `prettier-plugin-tailwindcss` - Tailwind class sorting
 
-**With Biome:**
-Limited plugin support - core features only
+**With Biome:** Limited plugin support - core features only
 
 ### ✅ Team Familiarity
 
 Most developers know:
+
 - ESLint configuration
 - Airbnb style guide
 - Prettier formatting rules
 
-**With Biome:**
-New tool - team would need to learn new configuration format
+**With Biome:** New tool - team would need to learn new configuration format
 
 ### ✅ CI/CD Integration
 
 ESLint + Prettier work with all CI/CD platforms:
+
 - GitHub Actions
 - GitLab CI
 - CircleCI
@@ -202,6 +205,7 @@ If you don't need Airbnb/Standard/Google configs, Biome's defaults are good.
 ### ✅ Modern Toolchain
 
 Projects using:
+
 - Vite (already fast)
 - Turbopack (Next.js)
 - Modern build tools
@@ -409,6 +413,7 @@ Some teams try to use both:
 ### Stay with ESLint + Prettier ✅
 
 **Reasons:**
+
 1. ✅ Already configured with Airbnb style guide
 2. ✅ Team familiar with tooling
 3. ✅ Complete documentation in [docs/](.)
@@ -416,6 +421,7 @@ Some teams try to use both:
 5. ✅ Project size doesn't require Biome's speed
 
 **When to reconsider:**
+
 - Project grows to 10,000+ files
 - Lint times exceed 30 seconds
 - Team wants to try modern tooling
@@ -459,15 +465,15 @@ pnpm add -D lint-staged husky
 
 ### Choose ONE Tool
 
-| Scenario | Recommended Tool |
-|----------|-----------------|
-| Need Airbnb style guide | ESLint + Prettier |
-| Large monorepo (10k+ files) | Biome |
-| Small/medium project | ESLint + Prettier |
-| Team familiar with ESLint | ESLint + Prettier |
-| Need specific plugins | ESLint + Prettier |
-| Want maximum speed | Biome |
-| New project, no requirements | Biome |
+| Scenario                     | Recommended Tool  |
+| ---------------------------- | ----------------- |
+| Need Airbnb style guide      | ESLint + Prettier |
+| Large monorepo (10k+ files)  | Biome             |
+| Small/medium project         | ESLint + Prettier |
+| Team familiar with ESLint    | ESLint + Prettier |
+| Need specific plugins        | ESLint + Prettier |
+| Want maximum speed           | Biome             |
+| New project, no requirements | Biome             |
 
 ### This Project's Choice
 
@@ -481,7 +487,8 @@ pnpm add -D lint-staged husky
 
 **Performance is acceptable** for project size (~10-20 files).
 
-If you still want to experiment with Biome, create a **separate branch** and compare:
+If you still want to experiment with Biome, create a **separate branch** and
+compare:
 
 ```bash
 git checkout -b experiment/biome
@@ -500,4 +507,5 @@ git checkout -b experiment/biome
 
 ---
 
-**TL;DR:** Don't use Biome + ESLint together. Pick one based on your needs. This project uses ESLint + Prettier for Airbnb style guide compliance.
+**TL;DR:** Don't use Biome + ESLint together. Pick one based on your needs. This
+project uses ESLint + Prettier for Airbnb style guide compliance.

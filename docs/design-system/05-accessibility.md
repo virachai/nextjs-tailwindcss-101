@@ -1,6 +1,7 @@
 # Accessibility (A11y)
 
-Build inclusive products that everyone can use, following WCAG 2.1 AA standards and industry best practices.
+Build inclusive products that everyone can use, following WCAG 2.1 AA standards
+and industry best practices.
 
 ## Table of Contents
 
@@ -20,22 +21,26 @@ Build inclusive products that everyone can use, following WCAG 2.1 AA standards 
 
 - **15% of the world** has some form of disability (WHO)
 - **1 in 4 adults in the US** has a disability (CDC)
-- **71% of users with disabilities** will leave a website that is difficult to use
+- **71% of users with disabilities** will leave a website that is difficult to
+  use
 - **Legal requirement** in many countries (ADA, Section 508, AODA)
 
 ### Business Impact
 
 **Larger Audience**
+
 - 15% more potential customers
 - Better SEO (accessible sites rank higher)
 - Improved usability for everyone
 
 **Legal Protection**
+
 - Avoid lawsuits (Target: $6M, Domino's: $4M)
 - Compliance with regulations
 - Corporate reputation
 
 **Better UX for All**
+
 - Captions help in noisy environments
 - Keyboard navigation is faster for power users
 - High contrast helps in bright sunlight
@@ -47,6 +52,7 @@ Build inclusive products that everyone can use, following WCAG 2.1 AA standards 
 Information must be presentable to users in ways they can perceive.
 
 **Requirements:**
+
 - Text alternatives for images
 - Captions for videos
 - Content adaptable to different formats
@@ -83,6 +89,7 @@ Information must be presentable to users in ways they can perceive.
 User interface components must be operable.
 
 **Requirements:**
+
 - Keyboard accessible
 - Enough time to read/use content
 - No seizure-inducing content
@@ -120,6 +127,7 @@ User interface components must be operable.
 Information and operation must be understandable.
 
 **Requirements:**
+
 - Readable text
 - Predictable functionality
 - Input assistance
@@ -155,6 +163,7 @@ Information and operation must be understandable.
 Content must be robust enough to be interpreted by assistive technologies.
 
 **Requirements:**
+
 - Valid HTML
 - Compatible with assistive technologies
 - Semantic HTML
@@ -263,7 +272,9 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
     );
 
     const firstElement = focusableElements?.[0] as HTMLElement;
-    const lastElement = focusableElements?.[focusableElements.length - 1] as HTMLElement;
+    const lastElement = focusableElements?.[
+      focusableElements.length - 1
+    ] as HTMLElement;
 
     firstElement?.focus();
 
@@ -351,7 +362,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
 // Announce dynamic content changes
 <div aria-live="polite" aria-atomic="true">
   {message}
-</div>
+</div>;
 
 // aria-live values:
 // - off: Don't announce (default)
@@ -367,7 +378,7 @@ const [error, setError] = useState('');
   <div role="alert" aria-live="assertive">
     {error}
   </div>
-</form>
+</form>;
 ```
 
 ## Color & Contrast
@@ -375,11 +386,13 @@ const [error, setError] = useState('');
 ### WCAG Contrast Requirements
 
 **Level AA (Minimum):**
+
 - Normal text: 4.5:1
 - Large text (18pt+): 3:1
 - UI components: 3:1
 
 **Level AAA (Enhanced):**
+
 - Normal text: 7:1
 - Large text: 4.5:1
 
@@ -720,17 +733,20 @@ test('Button has no accessibility violations', async () => {
 ### Manual Testing
 
 **Keyboard Testing:**
+
 1. Unplug your mouse
 2. Navigate using Tab, Shift+Tab, Enter, Escape, Arrow keys
 3. Ensure all functionality is accessible
 4. Check focus indicators are visible
 
 **Screen Reader Testing:**
+
 - **Mac**: VoiceOver (Cmd+F5)
 - **Windows**: NVDA (free) or JAWS
 - **Mobile**: TalkBack (Android) or VoiceOver (iOS)
 
 **Color Blind Testing:**
+
 - Use browser extensions (Colorblinding, NoCoffee)
 - Test in grayscale mode
 - Check contrast ratios
@@ -756,19 +772,23 @@ test('Button has no accessibility violations', async () => {
 ## Resources
 
 ### Guidelines
+
 - [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
 - [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
 
 ### Tools
+
 - [axe DevTools](https://www.deque.com/axe/devtools/)
 - [WAVE](https://wave.webaim.org/)
 - [Lighthouse](https://developers.google.com/web/tools/lighthouse)
 
 ### Learning
+
 - [WebAIM](https://webaim.org/)
 - [A11ycasts (YouTube)](https://www.youtube.com/playlist?list=PLNYkxOF6rcICWx0C9LVWWVqvHlYJyqw7g)
 - [The A11y Project](https://www.a11yproject.com/)
 
 ---
 
-**Remember:** Accessibility is not a feature, it's a requirement. Build it in from the start, not as an afterthought.
+**Remember:** Accessibility is not a feature, it's a requirement. Build it in
+from the start, not as an afterthought.

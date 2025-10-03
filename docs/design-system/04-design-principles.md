@@ -1,6 +1,7 @@
 # Design Principles
 
-Core principles that guide design decisions and ensure consistency across the design system.
+Core principles that guide design decisions and ensure consistency across the
+design system.
 
 ## Table of Contents
 
@@ -16,9 +17,11 @@ Core principles that guide design decisions and ensure consistency across the de
 
 ### 1. Consistency Over Perfection
 
-**Principle:** A consistent "good enough" solution used everywhere is better than a perfect solution used inconsistently.
+**Principle:** A consistent "good enough" solution used everywhere is better
+than a perfect solution used inconsistently.
 
 **Why it matters:**
+
 - Users learn patterns once, apply everywhere
 - Reduces cognitive load
 - Faster development
@@ -39,6 +42,7 @@ Core principles that guide design decisions and ensure consistency across the de
 ```
 
 **Real Example (Airbnb):**
+
 - All property cards follow the same layout
 - Consistent photo aspect ratios
 - Uniform spacing and typography
@@ -49,6 +53,7 @@ Core principles that guide design decisions and ensure consistency across the de
 **Principle:** Clear, obvious designs are better than clever, subtle ones.
 
 **Why it matters:**
+
 - Reduces user confusion
 - Faster task completion
 - Lower support costs
@@ -83,6 +88,7 @@ Core principles that guide design decisions and ensure consistency across the de
 **Principle:** Show simple options first, reveal complexity as needed.
 
 **Why it matters:**
+
 - Doesn't overwhelm beginners
 - Powerful for advanced users
 - Scalable complexity
@@ -118,6 +124,7 @@ Core principles that guide design decisions and ensure consistency across the de
 **Principle:** Provide options, but limit choices to maintain consistency.
 
 **Why it matters:**
+
 - Prevents decision paralysis
 - Maintains design integrity
 - Allows necessary customization
@@ -143,6 +150,7 @@ Core principles that guide design decisions and ensure consistency across the de
 ```
 
 **Real Example (Shopify Polaris):**
+
 - Button variants: Primary, Secondary, Plain, Destructive (4 options)
 - Button sizes: Small, Medium, Large (3 options)
 - Allows className for layout (flex, width, margin)
@@ -183,7 +191,8 @@ Core principles that guide design decisions and ensure consistency across the de
 
 ### 2. Whitespace as a Design Element
 
-**Principle:** Use spacing intentionally to group related elements and separate unrelated ones.
+**Principle:** Use spacing intentionally to group related elements and separate
+unrelated ones.
 
 **Application:**
 
@@ -226,6 +235,7 @@ Core principles that guide design decisions and ensure consistency across the de
 ```
 
 **Spacing Scale (Airbnb-inspired):**
+
 - **0-8px**: Tight (related elements like label + input)
 - **12-16px**: Normal (between form fields)
 - **24-32px**: Loose (between sections)
@@ -412,9 +422,7 @@ neutral: {
     <Button variant="secondary" onClick={handleClose}>
       Cancel
     </Button>
-    <Button onClick={handleSaveAndClose}>
-      Save
-    </Button>
+    <Button onClick={handleSaveAndClose}>Save</Button>
   </Modal.Footer>
 </Modal>
 
@@ -454,9 +462,7 @@ const handleDelete = async () => {
 };
 
 // ❌ Bad - Immediate destruction
-<Button onClick={() => deleteAccount()}>
-  Delete
-</Button>
+<Button onClick={() => deleteAccount()}>Delete</Button>;
 ```
 
 ## Content Principles
@@ -556,6 +562,7 @@ const handleDelete = async () => {
 **Principle:** Animate to communicate, not to decorate.
 
 **Purpose of Motion:**
+
 - **Feedback**: Confirm action (button press)
 - **Guidance**: Direct attention (highlight changed field)
 - **Relationship**: Show spatial connections (menu from button)
@@ -592,6 +599,7 @@ const handleDelete = async () => {
 **Principle:** Animations should be quick and understated.
 
 **Timing Guidelines:**
+
 - **Micro-interactions**: 100-150ms (hover, focus)
 - **Small transitions**: 200-300ms (component state changes)
 - **Page transitions**: 300-500ms (route changes)
@@ -619,14 +627,9 @@ const handleDelete = async () => {
 
 ```tsx
 // Respect prefers-reduced-motion
-<div className="
-  transition-transform
-  motion-reduce:transition-none
-  hover:scale-105
-  motion-reduce:hover:scale-100
-">
+<div className="transition-transform hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100">
   Content
-</div>
+</div>;
 
 // In Tailwind config
 module.exports = {
@@ -673,16 +676,12 @@ module.exports = {
 
 ### 2. Focus Management
 
-**Principle:** Always show clear focus indicators and manage focus appropriately.
+**Principle:** Always show clear focus indicators and manage focus
+appropriately.
 
 ```tsx
 // ✅ Good - Clear focus states
-<Input className="
-  focus:border-brand-primary
-  focus:ring-2
-  focus:ring-brand-primary
-  focus:ring-offset-2
-" />
+<Input className="focus:border-brand-primary focus:ring-brand-primary focus:ring-2 focus:ring-offset-2" />;
 
 // Modal opens → Focus first input
 useEffect(() => {

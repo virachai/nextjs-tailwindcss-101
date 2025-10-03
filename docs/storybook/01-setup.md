@@ -1,6 +1,7 @@
 # Storybook Setup for Next.js
 
-Complete guide to setting up Storybook in a Next.js 15 + React 19 + TypeScript + Tailwind CSS project.
+Complete guide to setting up Storybook in a Next.js 15 + React 19 + TypeScript +
+Tailwind CSS project.
 
 ## Table of Contents
 
@@ -16,7 +17,9 @@ Complete guide to setting up Storybook in a Next.js 15 + React 19 + TypeScript +
 
 ## What is Storybook?
 
-Storybook is an **open-source tool for building UI components in isolation**. It allows you to:
+Storybook is an **open-source tool for building UI components in isolation**. It
+allows you to:
+
 - Develop components independently
 - Document component APIs
 - Test different states and props
@@ -39,18 +42,21 @@ Regular Development          Storybook Development
 ### For Developers
 
 **Faster Development**
+
 - Build components in isolation
 - No need to navigate through the app
 - Test all component states instantly
 - Hot module reloading
 
 **Better Testing**
+
 - Visual regression testing
 - Accessibility testing
 - Interaction testing
 - Test all edge cases
 
 **Documentation**
+
 - Auto-generated docs
 - Interactive playground
 - Living style guide
@@ -59,12 +65,14 @@ Regular Development          Storybook Development
 ### For Teams
 
 **Design-Dev Collaboration**
+
 - Designers can review components
 - Test components before integration
 - Consistent component library
 - Reduce back-and-forth
 
 **Quality Assurance**
+
 - QA can test components in isolation
 - Check all states and variants
 - Visual regression testing
@@ -73,6 +81,7 @@ Regular Development          Storybook Development
 ### Real-World Usage
 
 Companies using Storybook:
+
 - **Airbnb** - Design Language System
 - **GitHub** - Primer Design System
 - **Microsoft** - Fluent UI
@@ -159,10 +168,7 @@ import path from 'path';
 
 const config: StorybookConfig = {
   // Story files location
-  stories: [
-    '../src/**/*.mdx',
-    '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
-  ],
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
 
   // Addons
   addons: [
@@ -215,7 +221,10 @@ export default config;
 ```tsx
 // .storybook/preview.tsx
 import type { Preview } from '@storybook/react';
-import '../src/app/globals.css'; // Import your global styles
+
+import '../src/app/globals.css';
+
+// Import your global styles
 
 const preview: Preview = {
   // Global parameters
@@ -371,7 +380,8 @@ export const decorators = [
 
 ### PostCSS Configuration
 
-Storybook automatically uses your existing Tailwind config. No additional setup needed!
+Storybook automatically uses your existing Tailwind config. No additional setup
+needed!
 
 ```typescript
 // .storybook/main.ts
@@ -388,7 +398,9 @@ const config: StorybookConfig = {
 
 ```tsx
 // .storybook/preview.tsx
-import '../src/app/globals.css'; // Contains @import "tailwindcss";
+import '../src/app/globals.css';
+
+// Contains @import "tailwindcss";
 
 const preview: Preview = {
   // Your preview config
@@ -452,6 +464,7 @@ Storybook works with your existing `tsconfig.json`. Ensure paths are configured:
 ```typescript
 // Use Meta and StoryObj types for type safety
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
@@ -478,7 +491,9 @@ export const Primary: Story = {
 ```tsx
 // src/components/Button/Button.tsx
 import { forwardRef } from 'react';
+
 import { cva, type VariantProps } from 'class-variance-authority';
+
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
@@ -486,8 +501,10 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-500',
-        secondary: 'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50',
+        primary:
+          'bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-500',
+        secondary:
+          'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50',
         ghost: 'hover:bg-gray-100 text-gray-700',
       },
       size: {
@@ -527,6 +544,7 @@ Button.displayName = 'Button';
 ```tsx
 // src/components/Button/Button.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
@@ -739,12 +757,14 @@ pnpm add -D @storybook/addon-performance
 ### Common Issues
 
 **1. Tailwind classes not working**
+
 ```tsx
 // Make sure you import globals.css in preview.tsx
 import '../src/app/globals.css';
 ```
 
 **2. Next.js Image not working**
+
 ```tsx
 // Add unoptimized prop in preview.tsx
 Object.defineProperty(NextImage, 'default', {
@@ -754,12 +774,14 @@ Object.defineProperty(NextImage, 'default', {
 ```
 
 **3. Fonts not loading**
+
 ```tsx
 // Import fonts in preview.tsx and add to decorator
 import { Geist } from 'next/font/google';
 ```
 
 **4. TypeScript errors**
+
 ```bash
 # Regenerate Storybook types
 pnpm storybook --no-manager-cache
@@ -767,7 +789,8 @@ pnpm storybook --no-manager-cache
 
 ## Next Steps
 
-- [Best Practices](./02-best-practices.md) - Learn how to write effective stories
+- [Best Practices](./02-best-practices.md) - Learn how to write effective
+  stories
 - [Patterns](./03-patterns.md) - Advanced patterns and techniques
 - Write your first story
 - Explore the Storybook UI

@@ -1,6 +1,7 @@
 # Tailwind CSS Responsive Design
 
-Master responsive design patterns used by professional frontend teams at Airbnb and other top companies.
+Master responsive design patterns used by professional frontend teams at Airbnb
+and other top companies.
 
 ## Table of Contents
 
@@ -194,7 +195,7 @@ const Layout: React.FC = ({ children }) => {
       {/* Sidebar */}
       <aside
         className={cn(
-          'fixed inset-y-0 left-0 z-50 w-64 bg-white transform transition-transform',
+          'fixed inset-y-0 left-0 z-50 w-64 transform bg-white transition-transform',
           'lg:static lg:translate-x-0',
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         )}
@@ -205,10 +206,7 @@ const Layout: React.FC = ({ children }) => {
       {/* Main content */}
       <main className="flex-1 overflow-auto">
         {/* Mobile menu button */}
-        <button
-          onClick={() => setSidebarOpen(true)}
-          className="lg:hidden p-4"
-        >
+        <button onClick={() => setSidebarOpen(true)} className="p-4 lg:hidden">
           Menu
         </button>
         {children}
@@ -338,18 +336,16 @@ const Layout: React.FC = ({ children }) => {
   <div className="@sm:text-lg @md:text-xl @lg:text-2xl">
     {/* Responds to container size, not viewport */}
   </div>
-</div>
+</div>;
 
 // Practical example: Card that adapts to container
 const AdaptiveCard: React.FC = ({ children }) => (
   <div className="@container rounded-lg bg-white p-4 shadow-md">
-    <div className="flex flex-col @md:flex-row gap-4">
+    <div className="flex flex-col gap-4 @md:flex-row">
       <div className="@md:w-1/3">
         <img src="/image.jpg" className="rounded" />
       </div>
-      <div className="@md:w-2/3">
-        {children}
-      </div>
+      <div className="@md:w-2/3">{children}</div>
     </div>
   </div>
 );
@@ -361,42 +357,22 @@ const AdaptiveCard: React.FC = ({ children }) => (
 
 ```tsx
 const Hero: React.FC = () => (
-  <section className="
-    relative overflow-hidden
-    px-4 py-12
-    sm:px-6 sm:py-16
-    lg:px-8 lg:py-24
-  ">
+  <section className="relative overflow-hidden px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
     <div className="mx-auto max-w-7xl">
-      <div className="
-        grid grid-cols-1 gap-8
-        lg:grid-cols-2 lg:gap-12
-        items-center
-      ">
+      <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
         {/* Content */}
         <div className="text-center lg:text-left">
-          <h1 className="
-            text-4xl font-bold
-            sm:text-5xl
-            lg:text-6xl
-            tracking-tight
-          ">
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
             Welcome to Our Platform
           </h1>
-          <p className="
-            mt-4 text-lg text-gray-600
-            sm:mt-6 sm:text-xl
-            lg:text-2xl
-          ">
+          <p className="mt-4 text-lg text-gray-600 sm:mt-6 sm:text-xl lg:text-2xl">
             Build amazing things with our tools
           </p>
-          <div className="
-            mt-8 flex flex-col gap-4
-            sm:flex-row sm:justify-center
-            lg:justify-start
-          ">
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
             <Button size="lg">Get Started</Button>
-            <Button variant="secondary" size="lg">Learn More</Button>
+            <Button variant="secondary" size="lg">
+              Learn More
+            </Button>
           </div>
         </div>
 
@@ -417,33 +393,17 @@ const FeatureGrid: React.FC = ({ features }) => (
   <section className="px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
     <div className="mx-auto max-w-7xl">
       <div className="text-center">
-        <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
-          Features
-        </h2>
+        <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl">Features</h2>
       </div>
 
-      <div className="
-        mt-12 grid gap-8
-        grid-cols-1
-        sm:grid-cols-2
-        lg:grid-cols-3
-        xl:gap-12
-      ">
+      <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:gap-12">
         {features.map((feature) => (
           <div key={feature.id} className="text-center lg:text-left">
-            <div className="
-              mx-auto lg:mx-0
-              flex h-12 w-12 items-center justify-center
-              rounded-lg bg-blue-600
-            ">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-blue-600 lg:mx-0">
               {feature.icon}
             </div>
-            <h3 className="mt-4 text-xl font-semibold">
-              {feature.title}
-            </h3>
-            <p className="mt-2 text-gray-600">
-              {feature.description}
-            </p>
+            <h3 className="mt-4 text-xl font-semibold">{feature.title}</h3>
+            <p className="mt-2 text-gray-600">{feature.description}</p>
           </div>
         ))}
       </div>
@@ -456,13 +416,7 @@ const FeatureGrid: React.FC = ({ features }) => (
 
 ```tsx
 const ProductGrid: React.FC = ({ products }) => (
-  <div className="
-    grid gap-4
-    grid-cols-1
-    sm:grid-cols-2 sm:gap-6
-    lg:grid-cols-3
-    xl:grid-cols-4 xl:gap-8
-  ">
+  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-8">
     {products.map((product) => (
       <ProductCard key={product.id} {...product} />
     ))}
@@ -511,7 +465,7 @@ const Navigation: React.FC = () => {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-gray-200">
+        <div className="border-t border-gray-200 md:hidden">
           <div className="space-y-1 px-4 py-3">
             <a href="/" className="block py-2 text-gray-700">
               Home
@@ -536,25 +490,21 @@ const Navigation: React.FC = () => {
 ```tsx
 const Footer: React.FC = () => (
   <footer className="bg-gray-900 text-white">
-    <div className="
-      mx-auto max-w-7xl
-      px-4 py-12
-      sm:px-6 sm:py-16
-      lg:px-8 lg:py-20
-    ">
-      <div className="
-        grid gap-8
-        grid-cols-1
-        sm:grid-cols-2
-        lg:grid-cols-4
-      ">
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {/* Column 1 */}
         <div>
           <h3 className="text-lg font-semibold">Company</h3>
           <ul className="mt-4 space-y-2">
-            <li><a href="/about">About</a></li>
-            <li><a href="/careers">Careers</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li>
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/careers">Careers</a>
+            </li>
+            <li>
+              <a href="/contact">Contact</a>
+            </li>
           </ul>
         </div>
 
@@ -562,18 +512,11 @@ const Footer: React.FC = () => (
       </div>
 
       {/* Bottom section */}
-      <div className="
-        mt-12 border-t border-gray-800 pt-8
-        flex flex-col gap-4
-        sm:flex-row sm:justify-between
-        items-center
-      ">
+      <div className="mt-12 flex flex-col items-center gap-4 border-t border-gray-800 pt-8 sm:flex-row sm:justify-between">
         <p className="text-sm text-gray-400">
           © 2024 Company. All rights reserved.
         </p>
-        <div className="flex gap-4">
-          {/* Social icons */}
-        </div>
+        <div className="flex gap-4">{/* Social icons */}</div>
       </div>
     </div>
   </footer>
@@ -623,16 +566,18 @@ https://play.tailwindcss.com/
 ## Best Practices Summary
 
 ✅ **DO:**
+
 - Start with mobile styles (no prefix)
 - Add larger screen styles progressively (sm:, md:, lg:)
 - Use consistent breakpoint progression
 - Test on real devices
-- Use responsive containers (max-w-*)
+- Use responsive containers (max-w-\*)
 - Hide/show elements appropriately (hidden md:block)
 - Use responsive spacing (p-4 md:p-6 lg:p-8)
 - Consider touch targets on mobile (min h-12 w-12)
 
 ❌ **DON'T:**
+
 - Use fixed widths without mobile consideration
 - Forget to test mobile landscape orientation
 - Ignore tablet sizes (md breakpoint)

@@ -1,6 +1,8 @@
 # Tailwind CSS Theme Setup & Configuration Guide
 
-> Complete guide to setting up and configuring Tailwind CSS 4 with Next.js 15, TypeScript, and professional development tools following Airbnb-level standards.
+> Complete guide to setting up and configuring Tailwind CSS 4 with Next.js 15,
+> TypeScript, and professional development tools following Airbnb-level
+> standards.
 
 ## Table of Contents
 
@@ -17,6 +19,7 @@
 ## Project Overview
 
 This is a modern Next.js 15 application configured with:
+
 - **Framework:** Next.js 15.5 with App Router
 - **Language:** TypeScript 5 (strict mode)
 - **Styling:** Tailwind CSS 4 (CSS-first configuration)
@@ -33,9 +36,9 @@ This is a modern Next.js 15 application configured with:
 
 ```json
 {
-  "next": "15.5.4",           // React framework
-  "react": "19.1.0",          // UI library
-  "react-dom": "19.1.0"       // React DOM renderer
+  "next": "15.5.4", // React framework
+  "react": "19.1.0", // UI library
+  "react-dom": "19.1.0" // React DOM renderer
 }
 ```
 
@@ -43,12 +46,13 @@ This is a modern Next.js 15 application configured with:
 
 ```json
 {
-  "tailwindcss": "^4",                // CSS framework
-  "@tailwindcss/postcss": "^4"        // PostCSS plugin
+  "tailwindcss": "^4", // CSS framework
+  "@tailwindcss/postcss": "^4" // PostCSS plugin
 }
 ```
 
-**Key Feature:** Tailwind CSS v4 uses CSS-first configuration via `@theme inline` directive instead of traditional JS config exports.
+**Key Feature:** Tailwind CSS v4 uses CSS-first configuration via
+`@theme inline` directive instead of traditional JS config exports.
 
 ### Development Tools
 
@@ -194,7 +198,9 @@ export default {
 ```
 
 **Key Features:**
-- **Color System:** Brand, semantic (success/warning/error/info), and neutral colors
+
+- **Color System:** Brand, semantic (success/warning/error/info), and neutral
+  colors
 - **Spacing:** 4px-based system with custom values
 - **Typography:** Complete scale from 2xs to 9xl with line heights
 - **Shadows:** 7-level elevation system
@@ -206,7 +212,7 @@ export default {
 Tailwind v4 uses CSS-first configuration:
 
 ```css
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
@@ -235,6 +241,7 @@ body {
 ```
 
 **Key Features:**
+
 - `@import "tailwindcss"` - Imports Tailwind v4 base
 - `@theme inline` - Maps CSS variables to Tailwind tokens
 - Automatic dark mode via `prefers-color-scheme`
@@ -269,6 +276,7 @@ export default function RootLayout({ children }) {
 ```
 
 **Benefits:**
+
 - Automatic font optimization
 - Self-hosted fonts (no external requests)
 - CSS variables for easy theme integration
@@ -280,7 +288,7 @@ Minimal config for Tailwind v4:
 
 ```javascript
 export default {
-  plugins: ["@tailwindcss/postcss"],
+  plugins: ['@tailwindcss/postcss'],
 };
 ```
 
@@ -300,13 +308,14 @@ export default {
     "moduleResolution": "bundler",
     "jsx": "preserve",
     "paths": {
-      "@/*": ["./src/*"]  // Path alias for imports
+      "@/*": ["./src/*"] // Path alias for imports
     }
   }
 }
 ```
 
 **Usage:**
+
 ```typescript
 // Instead of: import { Button } from '../../../components/Button'
 import { Button } from '@/components/Button';
@@ -330,18 +339,25 @@ Professional-grade linting with Airbnb standards:
   ],
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "react/function-component-definition": ["error", {
-      "namedComponents": "arrow-function"
-    }],
-    "@typescript-eslint/no-unused-vars": ["error", {
-      "argsIgnorePattern": "^_"
-    }],
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "arrow-function"
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
     "no-console": ["warn", { "allow": ["warn", "error"] }]
   }
 }
 ```
 
 **Features:**
+
 - Airbnb JavaScript/React style guide
 - TypeScript-specific rules
 - Import organization validation
@@ -365,7 +381,7 @@ export default {
   // Plugins
   plugins: [
     '@trivago/prettier-plugin-sort-imports',
-    'prettier-plugin-tailwindcss'
+    'prettier-plugin-tailwindcss',
   ],
 
   // Import sorting
@@ -375,7 +391,7 @@ export default {
     '<THIRD_PARTY_MODULES>',
     '^@/types/(.*)$',
     '^@/components/(.*)$',
-    '^[./]'
+    '^[./]',
   ],
   importOrderSeparation: true,
 
@@ -386,7 +402,9 @@ export default {
 ```
 
 **Benefits:**
-- Automatic import organization (React → Next → 3rd party → @/ aliases → relative)
+
+- Automatic import organization (React → Next → 3rd party → @/ aliases →
+  relative)
 - Tailwind classes sorted in recommended order
 - Consistent code style across team
 - Integrates with ESLint
@@ -394,7 +412,7 @@ export default {
 ### 4. Next.js Configuration ([next.config.ts](../../next.config.ts))
 
 ```typescript
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -404,6 +422,7 @@ export default nextConfig;
 ```
 
 **Development:**
+
 - Turbopack bundler (experimental, faster than Webpack)
 - Enabled via `--turbopack` flag in scripts
 
@@ -432,6 +451,7 @@ import React from 'react';
 
 // 2. Next.js
 import type { Metadata } from 'next';
+
 import Image from 'next/image';
 
 // 3. Third-party
@@ -439,6 +459,7 @@ import clsx from 'clsx';
 
 // 4. Internal (@/ aliases by category)
 import type { User } from '@/types/user';
+
 import { Button } from '@/components/ui/Button';
 
 // 5. Relative imports
@@ -472,6 +493,7 @@ export const Button: FC<ButtonProps> = ({ variant = 'primary', children }) => {
 ```
 
 **Key Points:**
+
 - Arrow function components (Airbnb standard)
 - Typed props with interfaces
 - Use `clsx` for conditional classes
@@ -551,6 +573,7 @@ import Image from 'next/image';
 ### Issue: Tailwind classes not applying
 
 **Solution:**
+
 1. Check content paths in [tailwind.config.ts](../../tailwind.config.ts:4)
 2. Ensure files are in `src/app/**` or `src/components/**`
 3. Restart dev server: `pnpm dev`
@@ -558,15 +581,19 @@ import Image from 'next/image';
 ### Issue: Import sorting not working
 
 **Solution:**
+
 1. Check Prettier plugin: `@trivago/prettier-plugin-sort-imports`
-2. Verify [prettier.config.mjs](../../prettier.config.mjs) has correct plugin order
+2. Verify [prettier.config.mjs](../../prettier.config.mjs) has correct plugin
+   order
 3. Run manually: `pnpm format`
 
 ### Issue: ESLint errors in IDE
 
 **Solution:**
+
 1. Install VSCode extensions: ESLint, Prettier
 2. Add to `.vscode/settings.json`:
+
 ```json
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -580,6 +607,7 @@ import Image from 'next/image';
 ### Issue: Type errors from Next.js
 
 **Solution:**
+
 1. Run type check: `pnpm type-check`
 2. Check [tsconfig.json](../../tsconfig.json) paths
 3. Restart TypeScript server in IDE
@@ -587,6 +615,7 @@ import Image from 'next/image';
 ### Issue: Turbopack build errors
 
 **Solution:**
+
 1. Clear cache: `rm -rf .next`
 2. Reinstall: `pnpm install`
 3. If persistent, use Webpack: remove `--turbopack` flag
@@ -594,6 +623,7 @@ import Image from 'next/image';
 ### Issue: Dark mode not working
 
 **Solution:**
+
 1. Check `darkMode: 'class'` in [tailwind.config.ts](../../tailwind.config.ts:5)
 2. Toggle with `<html class="dark">` in [layout.tsx](../../src/app/layout.tsx)
 3. Or use `prefers-color-scheme` (automatic, already configured)
@@ -618,12 +648,15 @@ import Image from 'next/image';
 ## Resources
 
 ### Documentation
+
 - [Next.js Docs](https://nextjs.org/docs) - Framework documentation
 - [Tailwind CSS v4](https://tailwindcss.com/docs) - Styling framework
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/) - Language guide
-- [Airbnb Style Guide](https://airbnb.io/javascript/react/) - React best practices
+- [Airbnb Style Guide](https://airbnb.io/javascript/react/) - React best
+  practices
 
 ### Internal Guides
+
 - [Component Templates](README.md) - UI component patterns
 - [Tailwind Fundamentals](../tailwindcss/01-fundamentals.md) - Tailwind basics
 - [Design System](../design-system/01-overview.md) - Design token system
@@ -631,12 +664,14 @@ import Image from 'next/image';
 - [ESLint Setup](../eslint-setup.md) - Linting configuration
 
 ### Tools
-- [Tailwind IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) - VSCode extension
-- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) - Code formatter
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) - Linter
+
+- [Tailwind IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) -
+  VSCode extension
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) -
+  Code formatter
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) -
+  Linter
 
 ---
 
-**Version:** 1.0.0
-**Last Updated:** 2025-10-03
-**Maintained by:** Frontend Team
+**Version:** 1.0.0 **Last Updated:** 2025-10-03 **Maintained by:** Frontend Team

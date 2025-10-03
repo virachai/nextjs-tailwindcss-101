@@ -1,6 +1,7 @@
 # Tailwind CSS Fundamentals
 
-Master the core concepts of Tailwind CSS used by professional frontend developers at companies like Airbnb.
+Master the core concepts of Tailwind CSS used by professional frontend
+developers at companies like Airbnb.
 
 ## Table of Contents
 
@@ -69,16 +70,7 @@ Every design is composed of utility classes:
 ```tsx
 const Button: React.FC<ButtonProps> = ({ children, variant = 'primary' }) => (
   <button
-    className={`
-      inline-flex items-center justify-center
-      rounded-md px-4 py-2
-      text-sm font-medium
-      transition-colors
-      focus:outline-none focus:ring-2 focus:ring-offset-2
-      disabled:cursor-not-allowed disabled:opacity-50
-      ${variant === 'primary' && 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500'}
-      ${variant === 'secondary' && 'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-blue-500'}
-    `}
+    className={`inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 ${variant === 'primary' && 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500'} ${variant === 'secondary' && 'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-blue-500'} `}
   >
     {children}
   </button>
@@ -257,7 +249,8 @@ dark:hover:bg-gray-700    // Hover background in dark mode
 
 ## Spacing System
 
-Tailwind uses a consistent spacing scale: `0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 56, 64, 72, 80, 96`
+Tailwind uses a consistent spacing scale:
+`0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 56, 64, 72, 80, 96`
 
 ### Padding
 
@@ -655,9 +648,7 @@ const Card: React.FC = () => (
         </span>
 
         {/* Title */}
-        <h2 className="mt-2 text-xl font-bold text-gray-900">
-          Card Title
-        </h2>
+        <h2 className="mt-2 text-xl font-bold text-gray-900">Card Title</h2>
 
         {/* Description */}
         <p className="mt-2 text-sm leading-relaxed text-gray-600">
@@ -665,7 +656,7 @@ const Card: React.FC = () => (
         </p>
 
         {/* Button */}
-        <button className="mt-4 inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+        <button className="mt-4 inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none">
           Learn More
         </button>
       </div>
@@ -677,6 +668,7 @@ const Card: React.FC = () => (
 ## Next Steps
 
 Continue to:
+
 - [Best Practices](./02-best-practices.md)
 - [Component Patterns](./03-component-patterns.md)
 - [Responsive Design](./04-responsive-design.md)

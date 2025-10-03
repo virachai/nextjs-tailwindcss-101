@@ -56,16 +56,14 @@ Professional patterns and techniques used by top-tier frontend developers.
   <div className="rounded-lg bg-white p-6 shadow-md">
     {/* Duplicate styles */}
   </div>
-</div>
+</div>;
 
 // ✅ Good - extract to variable
 const cardClasses = 'rounded-lg bg-white p-6 shadow-md';
 
 <div className={cardClasses}>
-  <div className={cardClasses}>
-    {/* Reusable */}
-  </div>
-</div>
+  <div className={cardClasses}>{/* Reusable */}</div>
+</div>;
 ```
 
 ### Use Template Literals for Conditionals
@@ -124,13 +122,16 @@ const Button: React.FC<ButtonProps> = ({
       className={clsx(
         // Base styles
         'inline-flex items-center justify-center rounded-md font-medium',
-        'transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2',
+        'transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none',
         'disabled:cursor-not-allowed disabled:opacity-50',
 
         // Variants
-        variant === 'primary' && 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
-        variant === 'secondary' && 'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-blue-500',
-        variant === 'ghost' && 'text-gray-700 hover:bg-gray-100 focus:ring-gray-500',
+        variant === 'primary' &&
+          'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
+        variant === 'secondary' &&
+          'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-blue-500',
+        variant === 'ghost' &&
+          'text-gray-700 hover:bg-gray-100 focus:ring-gray-500',
 
         // Sizes
         size === 'sm' && 'px-3 py-1.5 text-xs',
@@ -150,7 +151,7 @@ const Button: React.FC<ButtonProps> = ({
 // Usage
 <Button variant="primary" size="lg">
   Get Started
-</Button>
+</Button>;
 ```
 
 ### Composition Pattern
@@ -189,7 +190,7 @@ const CardFooter: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <CardFooter>
     <Button>Edit Profile</Button>
   </CardFooter>
-</Card>
+</Card>;
 ```
 
 ### Polymorphic Components
@@ -229,7 +230,7 @@ const Button: React.FC<ButtonProps> = ({ as: Component = 'button', children, cla
 
 ```tsx
 // lib/utils.ts
-import { clsx, type ClassValue } from 'clsx';
+import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 export const cn = (...inputs: ClassValue[]) => {
@@ -251,7 +252,7 @@ const Card: React.FC<CardProps> = ({ className, children }) => (
 // Override background
 <Card className="bg-gray-100">
   {/* bg-white is replaced with bg-gray-100 */}
-</Card>
+</Card>;
 ```
 
 ### Variant-Based Patterns
@@ -305,7 +306,8 @@ const Button: React.FC<ButtonProps> = ({ variant, size, className, children }) =
 ```tsx
 // hooks/useButtonStyles.ts
 const useButtonStyles = (variant: string, size: string) => {
-  const baseStyles = 'inline-flex items-center justify-center rounded-md font-medium transition-colors';
+  const baseStyles =
+    'inline-flex items-center justify-center rounded-md font-medium transition-colors';
 
   const variantStyles = {
     primary: 'bg-blue-600 text-white hover:bg-blue-700',
@@ -448,7 +450,7 @@ const colorRoles = {
 <div className={colorRoles.bgPrimary}>
   <h1 className={colorRoles.textPrimary}>Title</h1>
   <p className={colorRoles.textSecondary}>Description</p>
-</div>
+</div>;
 ```
 
 ### Document Custom Patterns
@@ -475,10 +477,8 @@ const Card: React.FC = ({ children }) => (
 ```tsx
 // ✅ Good - dark mode variant
 <div className="bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
-  <p className="text-gray-600 dark:text-gray-400">
-    Description text
-  </p>
-</div>
+  <p className="text-gray-600 dark:text-gray-400">Description text</p>
+</div>;
 
 // ✅ Better - extract to reusable classes
 const themeClasses = {
@@ -491,7 +491,7 @@ const themeClasses = {
 <div className={themeClasses.card}>
   <h2 className={themeClasses.textPrimary}>Title</h2>
   <p className={themeClasses.textSecondary}>Description</p>
-</div>
+</div>;
 ```
 
 ### Dark Mode Best Practices
@@ -617,7 +617,7 @@ const PrimaryButton = ({ children }) => (
 );
 
 // Not just utility classes everywhere
-<PrimaryButton>Submit</PrimaryButton>
+<PrimaryButton>Submit</PrimaryButton>;
 ```
 
 ### ✅ Do: Leverage the Cascade

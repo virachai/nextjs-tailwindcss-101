@@ -1,6 +1,7 @@
 # Design System Overview
 
-A comprehensive design system inspired by industry leaders like Airbnb, Uber, and Shopify for building consistent, accessible, and scalable user interfaces.
+A comprehensive design system inspired by industry leaders like Airbnb, Uber,
+and Shopify for building consistent, accessible, and scalable user interfaces.
 
 ## Table of Contents
 
@@ -14,7 +15,9 @@ A comprehensive design system inspired by industry leaders like Airbnb, Uber, an
 
 ## What is a Design System?
 
-A design system is a **complete set of standards, documentation, and principles** along with the **toolkit (UI patterns and code components)** to achieve those standards.
+A design system is a **complete set of standards, documentation, and
+principles** along with the **toolkit (UI patterns and code components)** to
+achieve those standards.
 
 ### Components of a Design System
 
@@ -29,34 +32,38 @@ Design System
 
 ### Design System vs Style Guide vs Component Library
 
-| Aspect | Style Guide | Component Library | Design System |
-|--------|-------------|-------------------|---------------|
-| **Scope** | Visual rules | Coded components | Complete ecosystem |
-| **Content** | Colors, fonts, spacing | React/Vue components | Tokens + Components + Patterns + Guidelines |
-| **Users** | Designers | Developers | Designers + Developers + Product |
-| **Output** | PDF/Figma file | npm package | Multiple outputs |
-| **Examples** | Brand guidelines | Material-UI | Airbnb DLS, Shopify Polaris |
+| Aspect       | Style Guide            | Component Library    | Design System                               |
+| ------------ | ---------------------- | -------------------- | ------------------------------------------- |
+| **Scope**    | Visual rules           | Coded components     | Complete ecosystem                          |
+| **Content**  | Colors, fonts, spacing | React/Vue components | Tokens + Components + Patterns + Guidelines |
+| **Users**    | Designers              | Developers           | Designers + Developers + Product            |
+| **Output**   | PDF/Figma file         | npm package          | Multiple outputs                            |
+| **Examples** | Brand guidelines       | Material-UI          | Airbnb DLS, Shopify Polaris                 |
 
 ## Why Design Systems Matter
 
 ### Business Impact
 
 **Faster Development**
+
 - Reusable components reduce development time by 40-60%
 - Designers spend less time on UI specs
 - Developers focus on features, not styling
 
 **Consistency**
+
 - Unified experience across all products
 - Same look and feel on web, iOS, Android
 - Reduces design debt
 
 **Scalability**
+
 - Onboard new team members faster
 - Maintain quality as team grows
 - Easy to update design across entire product
 
 **Cost Savings**
+
 - Less duplicate work
 - Fewer design/dev iterations
 - Reduced QA time
@@ -80,6 +87,7 @@ Design System
 ```
 
 **Advantages:**
+
 - ✅ Consistent UI automatically
 - ✅ Less decision fatigue
 - ✅ Faster implementation
@@ -99,8 +107,8 @@ export const tokens = {
   // Colors
   colors: {
     brand: {
-      primary: '#FF5A5F',    // Airbnb red
-      secondary: '#00A699',  // Teal
+      primary: '#FF5A5F', // Airbnb red
+      secondary: '#00A699', // Teal
     },
     neutral: {
       white: '#FFFFFF',
@@ -160,14 +168,7 @@ Basic UI building blocks.
 
 ```tsx
 // Atomic components
-- Button
-- Input
-- Checkbox
-- Radio
-- Select
-- Badge
-- Avatar
-- Icon
+-Button - Input - Checkbox - Radio - Select - Badge - Avatar - Icon;
 
 // Example: Button component using design tokens
 interface ButtonProps {
@@ -191,7 +192,9 @@ const Button: React.FC<ButtonProps> = ({ variant, size }) => {
   };
 
   return (
-    <button className={cn(styles.base, styles.variants[variant], styles.sizes[size])}>
+    <button
+      className={cn(styles.base, styles.variants[variant], styles.sizes[size])}
+    >
       {children}
     </button>
   );
@@ -230,15 +233,18 @@ Rules and best practices for using the system.
 ## Button Usage Guidelines
 
 ### When to Use
+
 - ✅ Primary actions (Submit, Save, Continue)
 - ✅ Navigational actions (Next, Back)
 - ✅ Destructive actions (Delete, Remove)
 
 ### When NOT to Use
+
 - ❌ For navigation links (use Link component)
 - ❌ More than 2 buttons in a single view (causes decision paralysis)
 
 ### Accessibility Requirements
+
 - Must have descriptive text or aria-label
 - Must be keyboard accessible
 - Must have visible focus state
@@ -249,7 +255,8 @@ Rules and best practices for using the system.
 
 ### 1. Consistency Over Perfection
 
-**Philosophy:** It's better to have a consistent "good enough" solution used everywhere than a perfect solution used inconsistently.
+**Philosophy:** It's better to have a consistent "good enough" solution used
+everywhere than a perfect solution used inconsistently.
 
 ```tsx
 // ✅ Consistent but simple
@@ -261,7 +268,8 @@ Rules and best practices for using the system.
 
 ### 2. Flexibility Within Constraints
 
-**Philosophy:** Provide enough flexibility to handle edge cases, but constrain choices to maintain consistency.
+**Philosophy:** Provide enough flexibility to handle edge cases, but constrain
+choices to maintain consistency.
 
 ```tsx
 // ✅ Flexible within system
@@ -277,7 +285,8 @@ Rules and best practices for using the system.
 
 ### 3. Accessibility First
 
-**Philosophy:** Accessibility isn't an afterthought—it's built into every component from day one.
+**Philosophy:** Accessibility isn't an afterthought—it's built into every
+component from day one.
 
 ```tsx
 // Every component includes:
@@ -290,7 +299,8 @@ Rules and best practices for using the system.
 
 ### 4. Progressive Disclosure
 
-**Philosophy:** Simple things should be simple, complex things should be possible.
+**Philosophy:** Simple things should be simple, complex things should be
+possible.
 
 ```tsx
 // Simple use case
@@ -314,6 +324,7 @@ Rules and best practices for using the system.
 **Philosophy:** If it's not documented, it doesn't exist.
 
 Every component requires:
+
 - Purpose and usage guidelines
 - Props API documentation
 - Code examples
@@ -440,12 +451,14 @@ design-system/
 ### Airbnb Design Language System (DLS)
 
 **Key Features:**
+
 - Comprehensive component library
 - Strong focus on accessibility
 - Detailed animation guidelines
 - Multi-platform support (Web, iOS, Android)
 
 **Notable Components:**
+
 - Property cards with consistent imagery
 - Unified search experience
 - Standardized navigation patterns
@@ -453,12 +466,14 @@ design-system/
 ### Shopify Polaris
 
 **Key Features:**
+
 - Open-source design system
 - Merchant-focused (B2B interface patterns)
 - Extensive guidelines for complex workflows
 - Built-in analytics patterns
 
 **What Makes It Great:**
+
 - Excellent documentation
 - Real-world examples from Shopify admin
 - Accessibility first approach
@@ -466,24 +481,28 @@ design-system/
 ### Material Design (Google)
 
 **Key Features:**
+
 - Most comprehensive design system
 - Strong motion/animation principles
 - Cross-platform consistency
 - Elevation system (z-index/shadows)
 
 **Adoption:**
+
 - Used by millions of apps
 - Available for Web, Android, iOS, Flutter
 
 ### Uber Base Web
 
 **Key Features:**
+
 - Open-source React component library
 - Themeable from the ground up
 - TypeScript first
 - Performance optimized
 
 **Technical Highlights:**
+
 - Advanced theming system
 - Overrides pattern for customization
 - Focus on DX (developer experience)
@@ -500,12 +519,14 @@ design-system/
 ### For Developers
 
 1. **Install packages**
+
    ```bash
    pnpm add @yourcompany/design-tokens
    pnpm add @yourcompany/components
    ```
 
 2. **Import and use**
+
    ```tsx
    import { Button, Input } from '@yourcompany/components';
 
@@ -519,12 +540,11 @@ design-system/
    ```
 
 3. **Customize with tokens**
+
    ```tsx
    import { tokens } from '@yourcompany/design-tokens';
 
-   <div style={{ padding: tokens.spacing.md }}>
-     Content
-   </div>
+   <div style={{ padding: tokens.spacing.md }}>Content</div>;
    ```
 
 ### For Product Managers
@@ -539,28 +559,34 @@ design-system/
 ### Metrics to Track
 
 **Adoption Rate**
+
 - % of products using the design system
 - # of components from system vs custom
 
 **Development Speed**
+
 - Time to build new features
 - Time to onboard new developers
 
 **Consistency Score**
+
 - UI audit results
 - Designer/developer alignment
 
 **Accessibility Compliance**
+
 - WCAG violations
 - Accessibility bug count
 
 **Developer Satisfaction**
+
 - NPS score for design system
 - Feature request fulfillment rate
 
 ## Next Steps
 
 Continue to:
+
 - [Design Tokens](./02-design-tokens.md) - Define your foundation
 - [Component Library](./03-component-library.md) - Build your components
 - [Design Principles](./04-design-principles.md) - Establish guidelines
@@ -569,6 +595,7 @@ Continue to:
 ## Resources
 
 **Industry Design Systems:**
+
 - [Airbnb DLS](https://airbnb.design/building-a-visual-language/)
 - [Shopify Polaris](https://polaris.shopify.com/)
 - [Material Design](https://material.io/design)
@@ -577,10 +604,12 @@ Continue to:
 - [IBM Carbon](https://carbondesignsystem.com/)
 
 **Books:**
+
 - "Design Systems" by Alla Kholmatova
 - "Atomic Design" by Brad Frost
 
 **Tools:**
+
 - [Storybook](https://storybook.js.org/)
 - [Figma](https://figma.com/)
 - [Style Dictionary](https://amzn.github.io/style-dictionary/)

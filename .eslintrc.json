@@ -1,7 +1,6 @@
 {
   "extends": [
     "airbnb",
-    "airbnb-typescript",
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
@@ -22,7 +21,14 @@
       "jsx": true
     }
   },
-  "plugins": ["@typescript-eslint", "import", "jsx-a11y", "react", "react-hooks", "prettier"],
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "jsx-a11y",
+    "react",
+    "react-hooks",
+    "prettier"
+  ],
   "settings": {
     "react": {
       "version": "detect"

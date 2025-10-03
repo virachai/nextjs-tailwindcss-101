@@ -1,6 +1,8 @@
 # Design Tokens Reference Guide
 
-> Complete design token system for building consistent, scalable UIs with Tailwind CSS 4. All tokens are defined in [tailwind.config.ts](../../tailwind.config.ts).
+> Complete design token system for building consistent, scalable UIs with
+> Tailwind CSS 4. All tokens are defined in
+> [tailwind.config.ts](../../tailwind.config.ts).
 
 ## Table of Contents
 
@@ -22,20 +24,21 @@
 
 ```typescript
 // Token reference
-colors.brand[50]  = '#f0f9ff'  // Lightest - backgrounds
-colors.brand[100] = '#e0f2fe'
-colors.brand[200] = '#bae6fd'
-colors.brand[300] = '#7dd3fc'
-colors.brand[400] = '#38bdf8'
-colors.brand[500] = '#0ea5e9'  // Base - primary actions
-colors.brand[600] = '#0284c7'  // Hover state
-colors.brand[700] = '#0369a1'  // Active state
-colors.brand[800] = '#075985'
-colors.brand[900] = '#0c4a6e'
-colors.brand[950] = '#082f49'  // Darkest - text on light bg
+colors.brand[50] = '#f0f9ff'; // Lightest - backgrounds
+colors.brand[100] = '#e0f2fe';
+colors.brand[200] = '#bae6fd';
+colors.brand[300] = '#7dd3fc';
+colors.brand[400] = '#38bdf8';
+colors.brand[500] = '#0ea5e9'; // Base - primary actions
+colors.brand[600] = '#0284c7'; // Hover state
+colors.brand[700] = '#0369a1'; // Active state
+colors.brand[800] = '#075985';
+colors.brand[900] = '#0c4a6e';
+colors.brand[950] = '#082f49'; // Darkest - text on light bg
 ```
 
 **Usage Examples:**
+
 ```tsx
 // Buttons
 <button className="bg-brand-500 hover:bg-brand-600 active:bg-brand-700 text-white">
@@ -63,14 +66,15 @@ colors.brand[950] = '#082f49'  // Darkest - text on light bg
 #### Success (Green)
 
 ```typescript
-colors.success[50]  = '#f0fdf4'  // Background
-colors.success[100] = '#dcfce7'  // Light background
-colors.success[500] = '#22c55e'  // Base icon/border
-colors.success[600] = '#16a34a'  // Hover
-colors.success[700] = '#15803d'  // Text
+colors.success[50] = '#f0fdf4'; // Background
+colors.success[100] = '#dcfce7'; // Light background
+colors.success[500] = '#22c55e'; // Base icon/border
+colors.success[600] = '#16a34a'; // Hover
+colors.success[700] = '#15803d'; // Text
 ```
 
 **Usage:**
+
 ```tsx
 // Alert
 <div className="border-l-4 border-success-500 bg-success-50 p-4 dark:bg-success-900/20">
@@ -91,14 +95,15 @@ colors.success[700] = '#15803d'  // Text
 #### Warning (Amber)
 
 ```typescript
-colors.warning[50]  = '#fffbeb'
-colors.warning[100] = '#fef3c7'
-colors.warning[500] = '#f59e0b'  // Base
-colors.warning[600] = '#d97706'  // Hover
-colors.warning[700] = '#b45309'  // Text
+colors.warning[50] = '#fffbeb';
+colors.warning[100] = '#fef3c7';
+colors.warning[500] = '#f59e0b'; // Base
+colors.warning[600] = '#d97706'; // Hover
+colors.warning[700] = '#b45309'; // Text
 ```
 
 **Usage:**
+
 ```tsx
 // Alert
 <div className="border-l-4 border-warning-500 bg-warning-50 p-4 dark:bg-warning-900/20">
@@ -115,14 +120,15 @@ colors.warning[700] = '#b45309'  // Text
 #### Error (Red)
 
 ```typescript
-colors.error[50]  = '#fef2f2'
-colors.error[100] = '#fee2e2'
-colors.error[500] = '#ef4444'  // Base
-colors.error[600] = '#dc2626'  // Hover
-colors.error[700] = '#b91c1c'  // Text
+colors.error[50] = '#fef2f2';
+colors.error[100] = '#fee2e2';
+colors.error[500] = '#ef4444'; // Base
+colors.error[600] = '#dc2626'; // Hover
+colors.error[700] = '#b91c1c'; // Text
 ```
 
 **Usage:**
+
 ```tsx
 // Alert
 <div className="border-l-4 border-error-500 bg-error-50 p-4 dark:bg-error-900/20">
@@ -142,19 +148,20 @@ colors.error[700] = '#b91c1c'  // Text
 #### Info (Blue)
 
 ```typescript
-colors.info[50]  = '#eff6ff'
-colors.info[100] = '#dbeafe'
-colors.info[500] = '#3b82f6'  // Base
-colors.info[600] = '#2563eb'  // Hover
-colors.info[700] = '#1d4ed8'  // Text
+colors.info[50] = '#eff6ff';
+colors.info[100] = '#dbeafe';
+colors.info[500] = '#3b82f6'; // Base
+colors.info[600] = '#2563eb'; // Hover
+colors.info[700] = '#1d4ed8'; // Text
 ```
 
 **Usage:**
+
 ```tsx
 // Info banner
-<div className="border-l-4 border-info-500 bg-info-50 p-4 dark:bg-info-900/20">
+<div className="border-info-500 bg-info-50 dark:bg-info-900/20 border-l-4 p-4">
   <div className="flex items-start gap-3">
-    <InfoIcon className="h-5 w-5 text-info-500" />
+    <InfoIcon className="text-info-500 h-5 w-5" />
     <p className="text-info-700 dark:text-info-400">
       This feature is in beta. Learn more about what's new.
     </p>
@@ -165,20 +172,21 @@ colors.info[700] = '#1d4ed8'  // Text
 ### Neutral Colors (Gray Scale)
 
 ```typescript
-colors.neutral[50]  = '#fafafa'  // Lightest backgrounds
-colors.neutral[100] = '#f5f5f5'  // Subtle backgrounds
-colors.neutral[200] = '#e5e5e5'  // Borders
-colors.neutral[300] = '#d4d4d4'  // Input borders
-colors.neutral[400] = '#a3a3a3'  // Disabled text
-colors.neutral[500] = '#737373'  // Placeholder text
-colors.neutral[600] = '#525252'  // Secondary text
-colors.neutral[700] = '#404040'  // Body text
-colors.neutral[800] = '#262626'  // Headings
-colors.neutral[900] = '#171717'  // Primary text
-colors.neutral[950] = '#0a0a0a'  // Darkest
+colors.neutral[50] = '#fafafa'; // Lightest backgrounds
+colors.neutral[100] = '#f5f5f5'; // Subtle backgrounds
+colors.neutral[200] = '#e5e5e5'; // Borders
+colors.neutral[300] = '#d4d4d4'; // Input borders
+colors.neutral[400] = '#a3a3a3'; // Disabled text
+colors.neutral[500] = '#737373'; // Placeholder text
+colors.neutral[600] = '#525252'; // Secondary text
+colors.neutral[700] = '#404040'; // Body text
+colors.neutral[800] = '#262626'; // Headings
+colors.neutral[900] = '#171717'; // Primary text
+colors.neutral[950] = '#0a0a0a'; // Darkest
 ```
 
 **Usage:**
+
 ```tsx
 // Text hierarchy
 <h1 className="text-neutral-900 dark:text-neutral-50">Main Heading</h1>
@@ -210,23 +218,24 @@ colors.neutral[950] = '#0a0a0a'  // Darkest
 
 ```typescript
 // Size reference
-fontSize['2xs'] = ['0.625rem', { lineHeight: '0.875rem' }]  // 10px/14px
-fontSize.xs     = ['0.75rem', { lineHeight: '1rem' }]        // 12px/16px
-fontSize.sm     = ['0.875rem', { lineHeight: '1.25rem' }]    // 14px/20px
-fontSize.base   = ['1rem', { lineHeight: '1.5rem' }]         // 16px/24px
-fontSize.lg     = ['1.125rem', { lineHeight: '1.75rem' }]    // 18px/28px
-fontSize.xl     = ['1.25rem', { lineHeight: '1.75rem' }]     // 20px/28px
-fontSize['2xl'] = ['1.5rem', { lineHeight: '2rem' }]         // 24px/32px
-fontSize['3xl'] = ['1.875rem', { lineHeight: '2.25rem' }]    // 30px/36px
-fontSize['4xl'] = ['2.25rem', { lineHeight: '2.5rem' }]      // 36px/40px
-fontSize['5xl'] = ['3rem', { lineHeight: '1' }]              // 48px/1
-fontSize['6xl'] = ['3.75rem', { lineHeight: '1' }]           // 60px/1
-fontSize['7xl'] = ['4.5rem', { lineHeight: '1' }]            // 72px/1
-fontSize['8xl'] = ['6rem', { lineHeight: '1' }]              // 96px/1
-fontSize['9xl'] = ['8rem', { lineHeight: '1' }]              // 128px/1
+fontSize['2xs'] = ['0.625rem', { lineHeight: '0.875rem' }]; // 10px/14px
+fontSize.xs = ['0.75rem', { lineHeight: '1rem' }]; // 12px/16px
+fontSize.sm = ['0.875rem', { lineHeight: '1.25rem' }]; // 14px/20px
+fontSize.base = ['1rem', { lineHeight: '1.5rem' }]; // 16px/24px
+fontSize.lg = ['1.125rem', { lineHeight: '1.75rem' }]; // 18px/28px
+fontSize.xl = ['1.25rem', { lineHeight: '1.75rem' }]; // 20px/28px
+fontSize['2xl'] = ['1.5rem', { lineHeight: '2rem' }]; // 24px/32px
+fontSize['3xl'] = ['1.875rem', { lineHeight: '2.25rem' }]; // 30px/36px
+fontSize['4xl'] = ['2.25rem', { lineHeight: '2.5rem' }]; // 36px/40px
+fontSize['5xl'] = ['3rem', { lineHeight: '1' }]; // 48px/1
+fontSize['6xl'] = ['3.75rem', { lineHeight: '1' }]; // 60px/1
+fontSize['7xl'] = ['4.5rem', { lineHeight: '1' }]; // 72px/1
+fontSize['8xl'] = ['6rem', { lineHeight: '1' }]; // 96px/1
+fontSize['9xl'] = ['8rem', { lineHeight: '1' }]; // 128px/1
 ```
 
 **Usage by Context:**
+
 ```tsx
 // Hero sections
 <h1 className="text-6xl font-bold lg:text-7xl">Hero Title</h1>
@@ -259,18 +268,19 @@ fontSize['9xl'] = ['8rem', { lineHeight: '1' }]              // 128px/1
 ### Font Weights
 
 ```typescript
-fontWeight.thin       = '100'  // Rarely used
-fontWeight.extralight = '200'  // Rarely used
-fontWeight.light      = '300'  // Subtle emphasis
-fontWeight.normal     = '400'  // Body text (default)
-fontWeight.medium     = '500'  // Slight emphasis
-fontWeight.semibold   = '600'  // Headings, buttons
-fontWeight.bold       = '700'  // Strong headings
-fontWeight.extrabold  = '800'  // Hero text
-fontWeight.black      = '900'  // Maximum impact
+fontWeight.thin = '100'; // Rarely used
+fontWeight.extralight = '200'; // Rarely used
+fontWeight.light = '300'; // Subtle emphasis
+fontWeight.normal = '400'; // Body text (default)
+fontWeight.medium = '500'; // Slight emphasis
+fontWeight.semibold = '600'; // Headings, buttons
+fontWeight.bold = '700'; // Strong headings
+fontWeight.extrabold = '800'; // Hero text
+fontWeight.black = '900'; // Maximum impact
 ```
 
 **Usage Patterns:**
+
 ```tsx
 // Headings hierarchy
 <h1 className="text-4xl font-bold">Bold heading (700)</h1>
@@ -295,11 +305,12 @@ fontWeight.black      = '900'  // Maximum impact
 
 ```css
 /* Defined in globals.css and layout.tsx */
---font-sans: var(--font-geist-sans);  /* Geist Sans - UI text */
---font-mono: var(--font-geist-mono);  /* Geist Mono - Code */
+--font-sans: var(--font-geist-sans); /* Geist Sans - UI text */
+--font-mono: var(--font-geist-mono); /* Geist Mono - Code */
 ```
 
 **Usage:**
+
 ```tsx
 // Default (sans-serif)
 <p className="font-sans">UI text uses Geist Sans</p>
@@ -320,40 +331,41 @@ fontWeight.black      = '900'  // Maximum impact
 
 ```typescript
 // Standard spacing scale
-spacing[0]   = '0px'      // 0
-spacing[1]   = '0.25rem'  // 4px
-spacing[2]   = '0.5rem'   // 8px
-spacing[3]   = '0.75rem'  // 12px
-spacing[4]   = '1rem'     // 16px - Base unit
-spacing[5]   = '1.25rem'  // 20px
-spacing[6]   = '1.5rem'   // 24px
-spacing[8]   = '2rem'     // 32px
-spacing[10]  = '2.5rem'   // 40px
-spacing[12]  = '3rem'     // 48px
-spacing[16]  = '4rem'     // 64px
-spacing[20]  = '5rem'     // 80px
-spacing[24]  = '6rem'     // 96px
-spacing[32]  = '8rem'     // 128px
-spacing[40]  = '10rem'    // 160px
-spacing[48]  = '12rem'    // 192px
-spacing[56]  = '14rem'    // 224px
-spacing[64]  = '16rem'    // 256px
+spacing[0] = '0px'; // 0
+spacing[1] = '0.25rem'; // 4px
+spacing[2] = '0.5rem'; // 8px
+spacing[3] = '0.75rem'; // 12px
+spacing[4] = '1rem'; // 16px - Base unit
+spacing[5] = '1.25rem'; // 20px
+spacing[6] = '1.5rem'; // 24px
+spacing[8] = '2rem'; // 32px
+spacing[10] = '2.5rem'; // 40px
+spacing[12] = '3rem'; // 48px
+spacing[16] = '4rem'; // 64px
+spacing[20] = '5rem'; // 80px
+spacing[24] = '6rem'; // 96px
+spacing[32] = '8rem'; // 128px
+spacing[40] = '10rem'; // 160px
+spacing[48] = '12rem'; // 192px
+spacing[56] = '14rem'; // 224px
+spacing[64] = '16rem'; // 256px
 ```
 
 ### Custom Values
 
 ```typescript
-spacing['4.5'] = '1.125rem'  // 18px
-spacing['13']  = '3.25rem'   // 52px
-spacing['15']  = '3.75rem'   // 60px
-spacing['17']  = '4.25rem'   // 68px
-spacing['18']  = '4.5rem'    // 72px
-spacing['112'] = '28rem'     // 448px
-spacing['128'] = '32rem'     // 512px
-spacing['144'] = '36rem'     // 576px
+spacing['4.5'] = '1.125rem'; // 18px
+spacing['13'] = '3.25rem'; // 52px
+spacing['15'] = '3.75rem'; // 60px
+spacing['17'] = '4.25rem'; // 68px
+spacing['18'] = '4.5rem'; // 72px
+spacing['112'] = '28rem'; // 448px
+spacing['128'] = '32rem'; // 512px
+spacing['144'] = '36rem'; // 576px
 ```
 
 **Usage Patterns:**
+
 ```tsx
 // Padding (internal spacing)
 <div className="p-4">16px padding all sides</div>
@@ -386,6 +398,7 @@ spacing['144'] = '36rem'     // 576px
 ```
 
 **Spacing Rhythm Guidelines:**
+
 ```tsx
 // Within a component (tight)
 <div className="space-y-2">
@@ -420,18 +433,19 @@ spacing['144'] = '36rem'     // 576px
 ### Border Radius
 
 ```typescript
-borderRadius.none    = '0'
-borderRadius.sm      = '0.125rem'  // 2px - Subtle rounding
-borderRadius.DEFAULT = '0.25rem'   // 4px - Default
-borderRadius.md      = '0.375rem'  // 6px - Medium
-borderRadius.lg      = '0.5rem'    // 8px - Buttons, inputs
-borderRadius.xl      = '0.75rem'   // 12px - Large buttons
-borderRadius['2xl']  = '1rem'      // 16px - Cards
-borderRadius['3xl']  = '1.5rem'    // 24px - Large cards
-borderRadius.full    = '9999px'    // Circle/pill
+borderRadius.none = '0';
+borderRadius.sm = '0.125rem'; // 2px - Subtle rounding
+borderRadius.DEFAULT = '0.25rem'; // 4px - Default
+borderRadius.md = '0.375rem'; // 6px - Medium
+borderRadius.lg = '0.5rem'; // 8px - Buttons, inputs
+borderRadius.xl = '0.75rem'; // 12px - Large buttons
+borderRadius['2xl'] = '1rem'; // 16px - Cards
+borderRadius['3xl'] = '1.5rem'; // 24px - Large cards
+borderRadius.full = '9999px'; // Circle/pill
 ```
 
 **Usage:**
+
 ```tsx
 // Buttons
 <button className="rounded-lg">8px radius</button>
@@ -457,18 +471,23 @@ borderRadius.full    = '9999px'    // Circle/pill
 ### Box Shadow (Elevation)
 
 ```typescript
-boxShadow.xs      = '0 1px 2px 0 rgb(0 0 0 / 0.05)'
-boxShadow.sm      = '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)'
-boxShadow.DEFAULT = '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)'
-boxShadow.md      = '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)'
-boxShadow.lg      = '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)'
-boxShadow.xl      = '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)'
-boxShadow['2xl']  = '0 25px 50px -12px rgb(0 0 0 / 0.25)'
-boxShadow.inner   = 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)'
-boxShadow.none    = 'none'
+boxShadow.xs = '0 1px 2px 0 rgb(0 0 0 / 0.05)';
+boxShadow.sm = '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)';
+boxShadow.DEFAULT =
+  '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)';
+boxShadow.md =
+  '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)';
+boxShadow.lg =
+  '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)';
+boxShadow.xl =
+  '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)';
+boxShadow['2xl'] = '0 25px 50px -12px rgb(0 0 0 / 0.25)';
+boxShadow.inner = 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)';
+boxShadow.none = 'none';
 ```
 
 **Elevation Hierarchy:**
+
 ```tsx
 // Level 0 - Flat (no shadow)
 <div>Base content</div>
@@ -500,22 +519,23 @@ boxShadow.none    = 'none'
 ### Z-Index (Layering)
 
 ```typescript
-zIndex[0]       = '0'
-zIndex[10]      = '10'
-zIndex[20]      = '20'
-zIndex[30]      = '30'
-zIndex[40]      = '40'
-zIndex[50]      = '50'
-zIndex.auto     = 'auto'
-zIndex.dropdown = '1000'   // Dropdown menus
-zIndex.sticky   = '1020'   // Sticky headers
-zIndex.fixed    = '1030'   // Fixed elements
-zIndex.modal    = '1040'   // Modal dialogs
-zIndex.popover  = '1050'   // Popovers
-zIndex.tooltip  = '1060'   // Tooltips (highest)
+zIndex[0] = '0';
+zIndex[10] = '10';
+zIndex[20] = '20';
+zIndex[30] = '30';
+zIndex[40] = '40';
+zIndex[50] = '50';
+zIndex.auto = 'auto';
+zIndex.dropdown = '1000'; // Dropdown menus
+zIndex.sticky = '1020'; // Sticky headers
+zIndex.fixed = '1030'; // Fixed elements
+zIndex.modal = '1040'; // Modal dialogs
+zIndex.popover = '1050'; // Popovers
+zIndex.tooltip = '1060'; // Tooltips (highest)
 ```
 
 **Layering Strategy:**
+
 ```tsx
 // Base content (z-0 or no z-index)
 <div className="relative">Base layer</div>
@@ -549,17 +569,18 @@ zIndex.tooltip  = '1060'   // Tooltips (highest)
 ### Backdrop Blur
 
 ```typescript
-backdropBlur.xs   = '2px'   // Custom subtle blur
-backdropBlur.sm   = '4px'   // Default Tailwind
-backdropBlur.DEFAULT = '8px'
-backdropBlur.md   = '12px'
-backdropBlur.lg   = '16px'
-backdropBlur.xl   = '24px'
-backdropBlur['2xl'] = '40px'
-backdropBlur['3xl'] = '64px'
+backdropBlur.xs = '2px'; // Custom subtle blur
+backdropBlur.sm = '4px'; // Default Tailwind
+backdropBlur.DEFAULT = '8px';
+backdropBlur.md = '12px';
+backdropBlur.lg = '16px';
+backdropBlur.xl = '24px';
+backdropBlur['2xl'] = '40px';
+backdropBlur['3xl'] = '64px';
 ```
 
 **Usage:**
+
 ```tsx
 // Glass morphism
 <div className="bg-white/80 backdrop-blur-md">
@@ -588,11 +609,14 @@ backdropBlur['3xl'] = '64px'
 ### Background Gradients
 
 ```typescript
-backgroundImage['gradient-radial'] = 'radial-gradient(var(--tw-gradient-stops))'
-backgroundImage['gradient-conic']  = 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
+backgroundImage['gradient-radial'] =
+  'radial-gradient(var(--tw-gradient-stops))';
+backgroundImage['gradient-conic'] =
+  'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))';
 ```
 
 **Usage:**
+
 ```tsx
 // Linear gradients (Tailwind default)
 <div className="bg-gradient-to-r from-brand-500 to-brand-700">
@@ -634,18 +658,19 @@ backgroundImage['gradient-conic']  = 'conic-gradient(from 180deg at 50% 50%, var
 ### Transition Duration
 
 ```typescript
-transitionDuration[0]    = '0ms'
-transitionDuration[75]   = '75ms'    // Instant
-transitionDuration[100]  = '100ms'   // Very quick
-transitionDuration[150]  = '150ms'   // Quick
-transitionDuration[200]  = '200ms'   // Default fast
-transitionDuration[300]  = '300ms'   // Default
-transitionDuration[500]  = '500ms'   // Slow
-transitionDuration[700]  = '700ms'   // Very slow
-transitionDuration[1000] = '1000ms'  // Extra slow
+transitionDuration[0] = '0ms';
+transitionDuration[75] = '75ms'; // Instant
+transitionDuration[100] = '100ms'; // Very quick
+transitionDuration[150] = '150ms'; // Quick
+transitionDuration[200] = '200ms'; // Default fast
+transitionDuration[300] = '300ms'; // Default
+transitionDuration[500] = '500ms'; // Slow
+transitionDuration[700] = '700ms'; // Very slow
+transitionDuration[1000] = '1000ms'; // Extra slow
 ```
 
 **Usage:**
+
 ```tsx
 // Fast interactions (hover, focus)
 <button className="transition-colors duration-200 hover:bg-brand-600">
@@ -670,37 +695,38 @@ transitionDuration[1000] = '1000ms'  // Extra slow
 
 ```typescript
 // Keyframes defined in tailwind.config.ts
-keyframes.fadeIn            // Opacity 0 → 1
-keyframes.fadeOut           // Opacity 1 → 0
-keyframes.slideInFromTop    // Slide + fade from top
-keyframes.slideInFromBottom // Slide + fade from bottom
-keyframes.slideInFromLeft   // Slide + fade from left
-keyframes.slideInFromRight  // Slide + fade from right
-keyframes.scaleIn           // Scale 0.95 → 1
-keyframes.scaleOut          // Scale 1 → 0.95
-keyframes.zoomPulse         // Infinite scale pulse
-keyframes.swingRotate       // Infinite swing rotation
-keyframes.spin              // 360° rotation
-keyframes.ping              // Scale + fade ping
-keyframes.bounce            // Bounce effect
+keyframes.fadeIn; // Opacity 0 → 1
+keyframes.fadeOut; // Opacity 1 → 0
+keyframes.slideInFromTop; // Slide + fade from top
+keyframes.slideInFromBottom; // Slide + fade from bottom
+keyframes.slideInFromLeft; // Slide + fade from left
+keyframes.slideInFromRight; // Slide + fade from right
+keyframes.scaleIn; // Scale 0.95 → 1
+keyframes.scaleOut; // Scale 1 → 0.95
+keyframes.zoomPulse; // Infinite scale pulse
+keyframes.swingRotate; // Infinite swing rotation
+keyframes.spin; // 360° rotation
+keyframes.ping; // Scale + fade ping
+keyframes.bounce; // Bounce effect
 
 // Animation utilities
-animation.fadeIn            = 'fadeIn 0.3s ease-in-out forwards'
-animation.fadeOut           = 'fadeOut 0.3s ease-in-out forwards'
-animation.slideInFromTop    = 'slideInFromTop 0.3s ease-out forwards'
-animation.slideInFromBottom = 'slideInFromBottom 0.3s ease-out forwards'
-animation.slideInFromLeft   = 'slideInFromLeft 0.3s ease-out forwards'
-animation.slideInFromRight  = 'slideInFromRight 0.3s ease-out forwards'
-animation.scaleIn           = 'scaleIn 0.2s ease-out forwards'
-animation.scaleOut          = 'scaleOut 0.2s ease-in forwards'
-animation.zoomPulse         = 'zoomPulse 2s ease-in-out infinite'
-animation.swingRotate       = 'swingRotate 2s cubic-bezier(0.4, 0, 0.2, 1) infinite'
-animation.spin              = 'spin 1s linear infinite'
-animation.ping              = 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite'
-animation.bounce            = 'bounce 1s infinite'
+animation.fadeIn = 'fadeIn 0.3s ease-in-out forwards';
+animation.fadeOut = 'fadeOut 0.3s ease-in-out forwards';
+animation.slideInFromTop = 'slideInFromTop 0.3s ease-out forwards';
+animation.slideInFromBottom = 'slideInFromBottom 0.3s ease-out forwards';
+animation.slideInFromLeft = 'slideInFromLeft 0.3s ease-out forwards';
+animation.slideInFromRight = 'slideInFromRight 0.3s ease-out forwards';
+animation.scaleIn = 'scaleIn 0.2s ease-out forwards';
+animation.scaleOut = 'scaleOut 0.2s ease-in forwards';
+animation.zoomPulse = 'zoomPulse 2s ease-in-out infinite';
+animation.swingRotate = 'swingRotate 2s cubic-bezier(0.4, 0, 0.2, 1) infinite';
+animation.spin = 'spin 1s linear infinite';
+animation.ping = 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite';
+animation.bounce = 'bounce 1s infinite';
 ```
 
 **Usage:**
+
 ```tsx
 // Fade animations
 <div className="animate-fadeIn">Fades in on mount</div>
@@ -741,6 +767,7 @@ animation.bounce            = 'bounce 1s infinite'
 ### Token Selection Decision Tree
 
 **1. Choose Color**
+
 ```
 Is it interactive? → Use brand colors
 Is it feedback? → Use semantic colors (success/warning/error/info)
@@ -748,6 +775,7 @@ Is it text/UI? → Use neutral colors
 ```
 
 **2. Choose Typography**
+
 ```
 Hero/Landing? → 6xl-7xl, font-extrabold
 Page title? → 4xl, font-bold
@@ -758,6 +786,7 @@ Caption? → sm, font-normal
 ```
 
 **3. Choose Spacing**
+
 ```
 Within component? → 1-4 (4px-16px)
 Between components? → 4-8 (16px-32px)
@@ -766,6 +795,7 @@ Page sections? → 16-24 (64px-96px)
 ```
 
 **4. Choose Elevation**
+
 ```
 Flat element? → No shadow
 Subtle card? → shadow-sm/md
@@ -777,6 +807,7 @@ Modal? → shadow-2xl
 ### Consistency Checklist
 
 When creating a component:
+
 - [ ] Uses only tokens from [tailwind.config.ts](../../tailwind.config.ts)
 - [ ] No arbitrary values (`[#hex]`, `[123px]`)
 - [ ] Color usage follows semantic meaning
@@ -795,10 +826,10 @@ When creating a component:
 - [Tailwind Config](../../tailwind.config.ts) - Token definitions
 - [Component Templates](README.md) - Token usage examples
 - [Airbnb Patterns](04-airbnb-patterns.md) - Professional patterns
-- [Tailwind CSS Docs](https://tailwindcss.com/docs/customizing-colors) - Customization guide
+- [Tailwind CSS Docs](https://tailwindcss.com/docs/customizing-colors) -
+  Customization guide
 
 ---
 
-**Version:** 1.0.0
-**Last Updated:** 2025-10-03
-**Token Count:** 200+ design tokens
+**Version:** 1.0.0 **Last Updated:** 2025-10-03 **Token Count:** 200+ design
+tokens

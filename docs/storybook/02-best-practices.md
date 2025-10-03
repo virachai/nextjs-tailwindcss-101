@@ -1,6 +1,7 @@
 # Storybook Best Practices
 
-Professional patterns for writing effective stories and maintaining a high-quality component library.
+Professional patterns for writing effective stories and maintaining a
+high-quality component library.
 
 ## Table of Contents
 
@@ -37,20 +38,20 @@ components/
 ```tsx
 // ✅ Good - Clear hierarchy
 const meta: Meta<typeof Button> = {
-  title: 'Components/Forms/Button',  // Components > Forms > Button
+  title: 'Components/Forms/Button', // Components > Forms > Button
   component: Button,
 };
 
 // ✅ Good - Organized by type
-'Components/Button'       // Reusable components
-'Forms/LoginForm'         // Form patterns
-'Layouts/DashboardLayout' // Layout templates
-'Pages/Homepage'          // Full pages
+('Components/Button'); // Reusable components
+('Forms/LoginForm'); // Form patterns
+('Layouts/DashboardLayout'); // Layout templates
+('Pages/Homepage'); // Full pages
 
 // ❌ Bad - Flat structure
-'Button'
-'MyButton'
-'ButtonComponent'
+('Button');
+('MyButton');
+('ButtonComponent');
 ```
 
 ### Story Naming
@@ -109,8 +110,12 @@ export const AllStates: Story = {
   render: () => (
     <div>
       <Button variant="primary">Primary</Button>
-      <Button variant="primary" isLoading>Loading</Button>
-      <Button variant="primary" disabled>Disabled</Button>
+      <Button variant="primary" isLoading>
+        Loading
+      </Button>
+      <Button variant="primary" disabled>
+        Disabled
+      </Button>
     </div>
   ),
 };
@@ -140,9 +145,15 @@ export const AllVariants: Story = {
     <div className="space-y-4">
       {(['primary', 'secondary', 'ghost'] as const).map((variant) => (
         <div key={variant} className="flex gap-4">
-          <Button variant={variant} size="sm">Small</Button>
-          <Button variant={variant} size="md">Medium</Button>
-          <Button variant={variant} size="lg">Large</Button>
+          <Button variant={variant} size="sm">
+            Small
+          </Button>
+          <Button variant={variant} size="md">
+            Medium
+          </Button>
+          <Button variant={variant} size="lg">
+            Large
+          </Button>
         </div>
       ))}
     </div>
@@ -459,7 +470,8 @@ const meta: Meta<typeof Button> = {
   parameters: {
     docs: {
       description: {
-        component: 'A versatile button component with multiple variants and sizes. Follows WCAG 2.1 AA accessibility standards.',
+        component:
+          'A versatile button component with multiple variants and sizes. Follows WCAG 2.1 AA accessibility standards.',
       },
     },
   },
@@ -477,7 +489,8 @@ export const Primary: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'The primary button is used for the main call-to-action on a page.',
+        story:
+          'The primary button is used for the main call-to-action on a page.',
       },
     },
   },
@@ -486,10 +499,9 @@ export const Primary: Story = {
 
 ### MDX Documentation
 
-```mdx
-{/* Button.mdx */}
-import { Meta, Canvas, Story, Controls } from '@storybook/blocks';
-import * as ButtonStories from './Button.stories';
+````mdx
+{/* Button.mdx */} import { Meta, Canvas, Story, Controls } from
+'@storybook/blocks'; import \* as ButtonStories from './Button.stories';
 
 <Meta of={ButtonStories} />
 
@@ -502,8 +514,9 @@ Buttons are used to trigger actions or navigate to different pages.
 ```tsx
 import { Button } from '@/components/Button';
 
-<Button variant="primary">Click me</Button>
+<Button variant="primary">Click me</Button>;
 ```
+````
 
 ## Variants
 
@@ -524,10 +537,12 @@ import { Button } from '@/components/Button';
 ## Guidelines
 
 ### When to use
+
 - Primary actions (Submit, Save, Continue)
 - Navigational actions (Next, Back)
 
 ### When not to use
+
 - For navigation links (use Link component instead)
 - More than 2 buttons in a single view
 
@@ -536,7 +551,8 @@ import { Button } from '@/components/Button';
 - Always provide accessible text or aria-label
 - Ensure keyboard accessibility (Enter/Space)
 - Maintain WCAG 2.1 AA contrast ratio (4.5:1)
-```
+
+````
 
 ## Testing in Storybook
 
@@ -560,7 +576,7 @@ export const ClickTest: Story = {
     await expect(button).toHaveAttribute('aria-pressed', 'true');
   },
 };
-```
+````
 
 ### Accessibility Tests
 
@@ -634,11 +650,7 @@ export const HeavyStory: Story = {
 // Use optimized images
 export const WithImage: Story = {
   render: () => (
-    <img
-      src="/optimized-image.webp"
-      alt="Description"
-      loading="lazy"
-    />
+    <img src="/optimized-image.webp" alt="Description" loading="lazy" />
   ),
 };
 ```
@@ -783,6 +795,7 @@ export const Desktop: Story = {
 ## Best Practices Summary
 
 ✅ **DO:**
+
 - Write one story per component state
 - Cover all variants and edge cases
 - Use realistic data
@@ -792,6 +805,7 @@ export const Desktop: Story = {
 - Keep stories simple and focused
 
 ❌ **DON'T:**
+
 - Mix multiple states in one story
 - Use Lorem Ipsum
 - Forget edge cases

@@ -1,6 +1,7 @@
 # Airbnb-Level UI Patterns & Consistency Guide
 
-> Professional frontend development patterns inspired by Airbnb's design system for building scalable, consistent, and maintainable user interfaces.
+> Professional frontend development patterns inspired by Airbnb's design system
+> for building scalable, consistent, and maintainable user interfaces.
 
 ## Table of Contents
 
@@ -17,7 +18,8 @@
 ### Core Principles
 
 1. **Consistency Over Creativity** - Reuse patterns before creating new ones
-2. **Accessibility First** - Every component must be keyboard and screen-reader friendly
+2. **Accessibility First** - Every component must be keyboard and screen-reader
+   friendly
 3. **Progressive Enhancement** - Start with semantic HTML, enhance with CSS/JS
 4. **Mobile-First Responsive** - Design for smallest screen, scale up
 5. **Performance Conscious** - Optimize for Core Web Vitals
@@ -30,6 +32,7 @@
 ### 1. Visual Hierarchy
 
 **Spacing Rhythm (8px base)**
+
 ```typescript
 // Micro spacing (within components)
 const spacing = {
@@ -54,6 +57,7 @@ const spacing = {
 ```
 
 **Typography Hierarchy**
+
 ```typescript
 // Consistent type scale
 const typography = {
@@ -78,6 +82,7 @@ const typography = {
 ### 2. Color Consistency
 
 **State-Based Colors**
+
 ```typescript
 // Interactive states for buttons
 const buttonStates = {
@@ -105,6 +110,7 @@ const buttonStates = {
 ```
 
 **Semantic Feedback Colors**
+
 ```typescript
 // Alert/notification colors
 const feedback = {
@@ -138,6 +144,7 @@ const feedback = {
 ### 3. Component Sizing
 
 **Consistent Heights (Touch-Friendly)**
+
 ```typescript
 const componentHeights = {
   xs: 'h-8',   // 32px - Compact UI
@@ -169,6 +176,7 @@ export const Button = ({ size = 'md', children }) => (
 ### 1. Compound Components
 
 **Tabs Component (Airbnb-style)**
+
 ```typescript
 import type { FC, ReactNode } from 'react';
 import { createContext, useContext, useState } from 'react';
@@ -753,6 +761,7 @@ export const Features: FC = () => (
 ### 1. Code Review Checklist
 
 **Component Quality**
+
 - [ ] Uses TypeScript with proper interfaces
 - [ ] Arrow function components (Airbnb standard)
 - [ ] Proper prop destructuring
@@ -765,6 +774,7 @@ export const Features: FC = () => (
 - [ ] Focus states visible
 
 **Performance**
+
 - [ ] Images use Next.js `<Image>` component
 - [ ] No unnecessary re-renders (memoization where needed)
 - [ ] CSS animations use `transform`/`opacity`
@@ -772,6 +782,7 @@ export const Features: FC = () => (
 - [ ] Lazy loading for below-fold content
 
 **Consistency**
+
 - [ ] Uses design tokens from [tailwind.config.ts](../../tailwind.config.ts)
 - [ ] Follows spacing rhythm (4px/8px base)
 - [ ] Typography scale respected
@@ -781,6 +792,7 @@ export const Features: FC = () => (
 ### 2. Testing Checklist
 
 **Manual Testing**
+
 - [ ] Test on mobile (375px width)
 - [ ] Test on tablet (768px width)
 - [ ] Test on desktop (1440px width)
@@ -795,11 +807,13 @@ export const Features: FC = () => (
 ### 3. Performance Metrics
 
 **Core Web Vitals Targets**
+
 - LCP (Largest Contentful Paint): < 2.5s
 - FID (First Input Delay): < 100ms
 - CLS (Cumulative Layout Shift): < 0.1
 
 **Optimization Techniques**
+
 ```typescript
 // Image optimization
 <Image
@@ -829,17 +843,20 @@ const sortedItems = useMemo(
 ## Resources
 
 ### Design Inspiration
+
 - [Airbnb Design](https://airbnb.design/) - Official design blog
 - [Dribbble - Airbnb](https://dribbble.com/tags/airbnb) - Community designs
 - [Behance - Booking Platforms](https://www.behance.net/search/projects?search=booking%20platform)
 
 ### Technical References
+
 - [Tailwind Config](../../tailwind.config.ts) - Theme configuration
 - [Component Templates](README.md) - Basic component library
 - [Setup Guide](00-setup-guide.md) - Project configuration
 - [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/)
 
 ### Tools
+
 - [clsx](https://github.com/lukeed/clsx) - Conditional class names
 - [React Hook Form](https://react-hook-form.com/) - Form management
 - [Zod](https://zod.dev/) - Schema validation
@@ -847,6 +864,5 @@ const sortedItems = useMemo(
 
 ---
 
-**Version:** 1.0.0
-**Last Updated:** 2025-10-03
-**Focus:** Airbnb-level consistency and professional patterns
+**Version:** 1.0.0 **Last Updated:** 2025-10-03 **Focus:** Airbnb-level
+consistency and professional patterns

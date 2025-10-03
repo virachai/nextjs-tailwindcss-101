@@ -1,6 +1,7 @@
 # Tailwind CSS Setup & Templates - Complete Context
 
-> Comprehensive documentation of the Tailwind CSS 4 + Next.js 15 setup with Airbnb-level professional templates and design system implementation.
+> Comprehensive documentation of the Tailwind CSS 4 + Next.js 15 setup with
+> Airbnb-level professional templates and design system implementation.
 
 ## Table of Contents
 
@@ -17,7 +18,10 @@
 
 ## Project Overview
 
-This project is a **modern Next.js 15 application** configured with Tailwind CSS 4, TypeScript, and professional development tools following Airbnb-level frontend standards. It includes a comprehensive design system and template library for building consistent, accessible, and performant user interfaces.
+This project is a **modern Next.js 15 application** configured with Tailwind CSS
+4, TypeScript, and professional development tools following Airbnb-level
+frontend standards. It includes a comprehensive design system and template
+library for building consistent, accessible, and performant user interfaces.
 
 ### Project Goals
 
@@ -34,8 +38,10 @@ This project is a **modern Next.js 15 application** configured with Tailwind CSS
 ### Configuration Files
 
 #### 1. Tailwind Configuration ([tailwind.config.ts](../tailwind.config.ts))
+
 - **200+ design tokens** for consistent UI
-- **Color System:** Brand (11 shades), Semantic (success/warning/error/info), Neutral (11 shades)
+- **Color System:** Brand (11 shades), Semantic (success/warning/error/info),
+  Neutral (11 shades)
 - **Typography:** Complete scale from 2xs to 9xl with line heights
 - **Spacing:** 4px-based system with custom values
 - **Shadows:** 7-level elevation system
@@ -43,6 +49,7 @@ This project is a **modern Next.js 15 application** configured with Tailwind CSS
 - **Z-Index:** Semantic layering (dropdown, sticky, modal, tooltip)
 
 #### 2. ESLint Configuration ([.eslintrc.json](../.eslintrc.json))
+
 - **Airbnb style guide** (JavaScript, TypeScript, React)
 - **TypeScript-specific rules**
 - **Import organization** validation
@@ -51,18 +58,22 @@ This project is a **modern Next.js 15 application** configured with Tailwind CSS
 - **Prettier integration**
 
 #### 3. Prettier Configuration ([prettier.config.mjs](../prettier.config.mjs))
-- **Automatic import sorting** (React → Next → 3rd party → @/ aliases → relative)
+
+- **Automatic import sorting** (React → Next → 3rd party → @/ aliases →
+  relative)
 - **Tailwind class ordering** (follows recommended order)
 - **Consistent code style** (100 char width, single quotes, semicolons)
 - **File-specific overrides** (JSON, Markdown, CSS)
 
 #### 4. TypeScript Configuration ([tsconfig.json](../tsconfig.json))
+
 - **Strict mode enabled**
-- **Path aliases** (@/* → ./src/*)
+- **Path aliases** (@/_ → ./src/_)
 - **ES2017 target** with ESNext modules
 - **Next.js plugin** integration
 
 #### 5. Global CSS ([src/app/globals.css](../src/app/globals.css))
+
 - **Tailwind v4 CSS-first** configuration
 - **@theme inline** for design tokens
 - **Automatic dark mode** via prefers-color-scheme
@@ -71,7 +82,9 @@ This project is a **modern Next.js 15 application** configured with Tailwind CSS
 ### Documentation Files (8 files, 6,152 lines)
 
 #### 1. Setup Guide ([docs/templates/00-setup-guide.md](templates/00-setup-guide.md))
+
 **642 lines** - Complete project setup and configuration
+
 - Technology stack overview
 - Installation instructions
 - Development commands
@@ -80,7 +93,9 @@ This project is a **modern Next.js 15 application** configured with Tailwind CSS
 - Best practices and troubleshooting
 
 #### 2. Component Templates ([docs/templates/README.md](templates/README.md))
+
 **735 lines** - Production-ready component library
+
 - Design system overview (colors, typography, spacing)
 - Button variants (primary, secondary, ghost, destructive, icon)
 - Card patterns (basic, image, interactive)
@@ -96,7 +111,9 @@ This project is a **modern Next.js 15 application** configured with Tailwind CSS
 - Animation usage
 
 #### 3. Airbnb-Level Patterns ([docs/templates/04-airbnb-patterns.md](templates/04-airbnb-patterns.md))
+
 **852 lines** - Professional UI patterns inspired by Airbnb
+
 - Design philosophy and core principles
 - Consistency principles (visual hierarchy, color usage, sizing)
 - Advanced component patterns:
@@ -110,7 +127,9 @@ This project is a **modern Next.js 15 application** configured with Tailwind CSS
 - Performance metrics (Core Web Vitals)
 
 #### 4. Design Tokens Reference ([docs/templates/05-design-tokens.md](templates/05-design-tokens.md))
+
 **804 lines** - Complete design token documentation
+
 - **Color Tokens:** All 200+ tokens with hex values and usage
 - **Typography Tokens:** Font sizes, weights, families
 - **Spacing Tokens:** Base scale + custom values
@@ -121,6 +140,7 @@ This project is a **modern Next.js 15 application** configured with Tailwind CSS
 - Consistency checklist
 
 #### 5. Additional Template Docs
+
 - **01-overview.md** (522 lines) - Template architecture
 - **02-layout-templates.md** (762 lines) - Layout patterns
 - **03-component-templates.md** (816 lines) - Component library
@@ -131,24 +151,27 @@ This project is a **modern Next.js 15 application** configured with Tailwind CSS
 ## Technology Stack
 
 ### Core Framework
+
 ```json
 {
-  "next": "15.5.4",        // React framework with App Router
-  "react": "19.1.0",       // UI library
-  "react-dom": "19.1.0",   // React DOM renderer
-  "typescript": "^5"       // Type safety
+  "next": "15.5.4", // React framework with App Router
+  "react": "19.1.0", // UI library
+  "react-dom": "19.1.0", // React DOM renderer
+  "typescript": "^5" // Type safety
 }
 ```
 
 ### Styling
+
 ```json
 {
-  "tailwindcss": "^4",             // CSS framework (v4 - CSS-first)
-  "@tailwindcss/postcss": "^4"     // PostCSS plugin
+  "tailwindcss": "^4", // CSS framework (v4 - CSS-first)
+  "@tailwindcss/postcss": "^4" // PostCSS plugin
 }
 ```
 
 ### Code Quality
+
 ```json
 {
   // ESLint (Airbnb configuration)
@@ -172,6 +195,7 @@ This project is a **modern Next.js 15 application** configured with Tailwind CSS
 ```
 
 ### Build Tools
+
 - **Turbopack** - Next.js experimental bundler (faster than Webpack)
 - **pnpm** - Fast, disk-space efficient package manager
 - **PostCSS** - CSS processing
@@ -218,31 +242,38 @@ docs/
 ### 1. Design System (200+ Tokens)
 
 #### Color System
+
 - **Brand Colors:** 11-shade sky blue palette (#f0f9ff → #082f49)
-- **Semantic Colors:** Success (green), Warning (amber), Error (red), Info (blue)
+- **Semantic Colors:** Success (green), Warning (amber), Error (red), Info
+  (blue)
 - **Neutral Colors:** 11-shade gray scale (#fafafa → #0a0a0a)
 
 #### Typography Scale
+
 - **Font Sizes:** 2xs (10px) → 9xl (128px) with line heights
 - **Font Weights:** 100 (thin) → 900 (black)
 - **Font Families:** Geist Sans (UI), Geist Mono (code)
 
 #### Spacing System
+
 - **Base Unit:** 4px increments
 - **Standard Scale:** 0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64...
 - **Custom Values:** 18px, 52px, 60px, 68px, 72px, 448px, 512px, 576px
 
 #### Effects & Motion
+
 - **Shadows:** 7 levels (xs → 2xl) + inner
 - **Border Radius:** sm (2px) → 3xl (24px) + full (circle)
 - **Animations:** 13 custom animations (fade, slide, scale, pulse, spin, bounce)
-- **Z-Index:** Semantic layers (dropdown: 1000, sticky: 1020, modal: 1040, tooltip: 1060)
+- **Z-Index:** Semantic layers (dropdown: 1000, sticky: 1020, modal: 1040,
+  tooltip: 1060)
 
 ### 2. Component Library
 
 **674 code examples** across documentation including:
 
 **Basic Components:**
+
 - Buttons (5 variants)
 - Cards (3 patterns)
 - Forms (5 input types)
@@ -251,6 +282,7 @@ docs/
 - Loading states
 
 **Advanced Patterns:**
+
 - Compound components (Tabs)
 - Property cards (Airbnb-style)
 - Search bars (multi-field)
@@ -262,6 +294,7 @@ docs/
 ### 3. Development Workflow
 
 #### Commands
+
 ```bash
 # Development
 pnpm dev              # Start dev server (Turbopack)
@@ -277,6 +310,7 @@ pnpm type-check       # TypeScript validation
 ```
 
 #### Automatic Tooling
+
 - **Format on save** (Prettier)
 - **Import sorting** (React → Next → 3rd party → @/ aliases → relative)
 - **Tailwind class ordering** (layout → spacing → sizing → typography → visual)
@@ -286,6 +320,7 @@ pnpm type-check       # TypeScript validation
 ### 4. Best Practices
 
 #### Code Standards
+
 - **Component Pattern:** Arrow function components with FC<Props>
 - **Import Order:** Automatic sorting by Prettier
 - **Class Names:** Use design tokens, avoid arbitrary values
@@ -294,6 +329,7 @@ pnpm type-check       # TypeScript validation
 - **Accessibility:** ARIA labels, keyboard navigation, focus states
 
 #### Performance
+
 - **Next.js Image:** Automatic optimization
 - **Font Loading:** next/font with self-hosting
 - **Animations:** GPU-accelerated (transform/opacity)
@@ -304,6 +340,7 @@ pnpm type-check       # TypeScript validation
 ## Implementation Summary
 
 ### Phase 1: Configuration ✅
+
 - [x] Tailwind config with 200+ design tokens
 - [x] ESLint with Airbnb configuration
 - [x] Prettier with import sorting and Tailwind class ordering
@@ -313,6 +350,7 @@ pnpm type-check       # TypeScript validation
 - [x] Global CSS with @theme inline
 
 ### Phase 2: Documentation ✅
+
 - [x] Setup guide (642 lines)
 - [x] Component templates (735 lines)
 - [x] Airbnb-level patterns (852 lines)
@@ -321,6 +359,7 @@ pnpm type-check       # TypeScript validation
 - [x] Total: 6,152 lines of documentation
 
 ### Phase 3: Code Examples ✅
+
 - [x] 674 TypeScript/TSX code examples
 - [x] 18 references to tailwind.config.ts
 - [x] 59+ dark mode examples
@@ -328,6 +367,7 @@ pnpm type-check       # TypeScript validation
 - [x] Accessibility examples
 
 ### Phase 4: Quality Review ✅
+
 - [x] Code review completed (Grade: A, 93/100)
 - [x] Technical accuracy validated
 - [x] Cross-references checked
@@ -339,16 +379,18 @@ pnpm type-check       # TypeScript validation
 ## Quality Metrics
 
 ### Documentation Coverage
-| Category | Coverage | Lines |
-|----------|----------|-------|
-| Setup & Config | 100% | 642 |
-| Component Templates | 100% | 735 |
-| Airbnb Patterns | 100% | 852 |
-| Design Tokens | 100% | 804 |
-| Additional Templates | 100% | 3,119 |
-| **Total** | **100%** | **6,152** |
+
+| Category             | Coverage | Lines     |
+| -------------------- | -------- | --------- |
+| Setup & Config       | 100%     | 642       |
+| Component Templates  | 100%     | 735       |
+| Airbnb Patterns      | 100%     | 852       |
+| Design Tokens        | 100%     | 804       |
+| Additional Templates | 100%     | 3,119     |
+| **Total**            | **100%** | **6,152** |
 
 ### Code Quality
+
 - **TypeScript Coverage:** 100% (all examples typed)
 - **Dark Mode Support:** 59+ examples in README alone
 - **Accessibility:** ARIA labels, keyboard navigation, focus states
@@ -356,6 +398,7 @@ pnpm type-check       # TypeScript validation
 - **Performance:** Next.js Image, optimized fonts, GPU animations
 
 ### Token Usage Analysis
+
 - **Most Used Brand Colors:** bg-brand-500 (primary), bg-brand-600 (hover)
 - **Color Tokens:** 33 unique brand colors used
 - **Semantic Colors:** success/warning/error/info all documented
@@ -368,6 +411,7 @@ pnpm type-check       # TypeScript validation
 ### Immediate Actions (High Priority)
 
 #### 1. Implement Utility Functions
+
 ```bash
 # Install dependencies
 pnpm add clsx tailwind-merge
@@ -375,7 +419,7 @@ pnpm add clsx tailwind-merge
 
 ```typescript
 // Create src/lib/utils.ts
-import { clsx, type ClassValue } from 'clsx';
+import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
@@ -384,13 +428,17 @@ export function cn(...inputs: ClassValue[]) {
 ```
 
 #### 2. VSCode Extensions
+
 Install recommended extensions:
+
 - ESLint (`dbaeumer.vscode-eslint`)
 - Prettier (`esbenp.prettier-vscode`)
 - Tailwind CSS IntelliSense (`bradlc.vscode-tailwindcss`)
 
 #### 3. Editor Settings
+
 Create `.vscode/settings.json`:
+
 ```json
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -434,18 +482,21 @@ Create `.vscode/settings.json`:
 ## Project Statistics
 
 ### Files Created/Modified
+
 - **Configuration Files:** 5 (tailwind, eslint, prettier, tsconfig, postcss)
 - **CSS Files:** 1 (globals.css with Tailwind v4)
 - **Documentation Files:** 9 (8 templates + 1 context)
 - **Total Lines:** 6,152+ documentation lines
 
 ### Code Examples
+
 - **Total Examples:** 674
 - **TypeScript Examples:** 100%
 - **Dark Mode Support:** 59+
 - **Accessibility Examples:** 6+
 
 ### Design Tokens
+
 - **Total Tokens:** 200+
 - **Color Tokens:** 55 (brand + semantic + neutral)
 - **Typography Tokens:** 25 (sizes + weights)
@@ -458,6 +509,7 @@ Create `.vscode/settings.json`:
 ## Resources
 
 ### Internal Documentation
+
 - [Setup Guide](templates/00-setup-guide.md) - Complete setup walkthrough
 - [Component Templates](templates/README.md) - UI component library
 - [Airbnb Patterns](templates/04-airbnb-patterns.md) - Professional patterns
@@ -465,49 +517,50 @@ Create `.vscode/settings.json`:
 - [Tailwind Config](../tailwind.config.ts) - Theme configuration
 
 ### External Resources
+
 - [Next.js 15 Docs](https://nextjs.org/docs) - Framework documentation
 - [Tailwind CSS v4](https://tailwindcss.com/docs) - Styling framework
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/) - Language guide
-- [Airbnb Style Guide](https://airbnb.io/javascript/react/) - React best practices
-- [WCAG Guidelines](https://www.w3.org/WAI/WCAG21/quickref/) - Accessibility standards
+- [Airbnb Style Guide](https://airbnb.io/javascript/react/) - React best
+  practices
+- [WCAG Guidelines](https://www.w3.org/WAI/WCAG21/quickref/) - Accessibility
+  standards
 
 ### Tools
-- [Tailwind IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) - VSCode extension
-- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) - Code formatter
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) - Linter
+
+- [Tailwind IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) -
+  VSCode extension
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) -
+  Code formatter
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) -
+  Linter
 
 ---
 
 ## Version Information
 
-**Created:** 2025-10-03
-**Version:** 1.0.0
-**Framework:** Next.js 15.5.4
-**React:** 19.1.0
-**Tailwind CSS:** 4.x (CSS-first)
-**TypeScript:** 5.x
+**Created:** 2025-10-03 **Version:** 1.0.0 **Framework:** Next.js 15.5.4
+**React:** 19.1.0 **Tailwind CSS:** 4.x (CSS-first) **TypeScript:** 5.x
 
-**Documentation Coverage:** 100%
-**Code Examples:** 674
-**Design Tokens:** 200+
+**Documentation Coverage:** 100% **Code Examples:** 674 **Design Tokens:** 200+
 **Quality Grade:** A (93/100)
 
 ---
 
 ## Conclusion
 
-This project provides a **production-ready foundation** for building modern web applications with:
+This project provides a **production-ready foundation** for building modern web
+applications with:
 
-✅ **Professional Setup** - Industry-standard tooling (ESLint Airbnb, Prettier, TypeScript)
-✅ **Design System** - 200+ design tokens for UI consistency
-✅ **Template Library** - 674 code examples for rapid development
-✅ **Best Practices** - Airbnb-level coding standards throughout
-✅ **Complete Documentation** - 6,152 lines covering every aspect
+✅ **Professional Setup** - Industry-standard tooling (ESLint Airbnb, Prettier,
+TypeScript) ✅ **Design System** - 200+ design tokens for UI consistency ✅
+**Template Library** - 674 code examples for rapid development ✅ **Best
+Practices** - Airbnb-level coding standards throughout ✅ **Complete
+Documentation** - 6,152 lines covering every aspect
 
 **Ready to build consistent, accessible, and performant UIs with confidence.**
 
 ---
 
-**Maintained by:** Frontend Team
-**Last Updated:** 2025-10-03
-**Status:** ✅ Production Ready
+**Maintained by:** Frontend Team **Last Updated:** 2025-10-03 **Status:** ✅
+Production Ready

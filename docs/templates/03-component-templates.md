@@ -1,6 +1,7 @@
 # Component Templates
 
-> Production-ready section templates for building consistent, scalable UIs following Airbnb design system standards.
+> Production-ready section templates for building consistent, scalable UIs
+> following Airbnb design system standards.
 
 ## Table of Contents
 
@@ -18,7 +19,8 @@
 
 ## What Are Component Templates?
 
-Component templates are **reusable page sections** that combine multiple UI elements into cohesive patterns:
+Component templates are **reusable page sections** that combine multiple UI
+elements into cohesive patterns:
 
 - **Hero Sections** - First impression, value proposition
 - **Feature Sections** - Product benefits, capabilities
@@ -39,7 +41,9 @@ Component templates are **reusable page sections** that combine multiple UI elem
 ```tsx
 // src/templates/sections/HeroCentered.tsx
 import React from 'react';
+
 import Image from 'next/image';
+
 import { Container } from '@/templates/layout/Container';
 
 interface HeroCenteredProps {
@@ -66,9 +70,9 @@ export const HeroCentered: React.FC<HeroCenteredProps> = ({
   imageAlt,
 }) => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-brand-600 to-brand-800 py-24 lg:py-32">
+    <section className="from-brand-600 to-brand-800 relative overflow-hidden bg-gradient-to-br py-24 lg:py-32">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-radial opacity-30" />
+      <div className="bg-gradient-radial absolute inset-0 opacity-30" />
 
       <Container>
         <div className="relative space-y-12 text-center">
@@ -77,23 +81,21 @@ export const HeroCentered: React.FC<HeroCenteredProps> = ({
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
               {title}
             </h1>
-            <p className="text-lg text-white/90 sm:text-xl">
-              {description}
-            </p>
+            <p className="text-lg text-white/90 sm:text-xl">{description}</p>
           </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
               href={primaryCta.href}
-              className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 text-base font-semibold text-brand-600 shadow-lg transition-all hover:bg-neutral-50 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-brand-600"
+              className="text-brand-600 focus:ring-offset-brand-600 inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 text-base font-semibold shadow-lg transition-all hover:bg-neutral-50 hover:shadow-xl focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-none"
             >
               {primaryCta.text}
             </a>
             {secondaryCta && (
               <a
                 href={secondaryCta.href}
-                className="inline-flex items-center justify-center rounded-lg border-2 border-white px-8 py-3 text-base font-semibold text-white transition-all hover:bg-white hover:text-brand-600 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-brand-600"
+                className="hover:text-brand-600 focus:ring-offset-brand-600 inline-flex items-center justify-center rounded-lg border-2 border-white px-8 py-3 text-base font-semibold text-white transition-all hover:bg-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-none"
               >
                 {secondaryCta.text}
               </a>
@@ -126,7 +128,7 @@ export const HeroCentered: React.FC<HeroCenteredProps> = ({
   secondaryCta={{ text: 'Watch Demo', href: '/demo' }}
   imageUrl="/hero-dashboard.png"
   imageAlt="Product dashboard"
-/>
+/>;
 ```
 
 ### 2. Hero with Side Image
@@ -136,7 +138,9 @@ export const HeroCentered: React.FC<HeroCenteredProps> = ({
 ```tsx
 // src/templates/sections/HeroSideImage.tsx
 import React from 'react';
+
 import Image from 'next/image';
+
 import { Container } from '@/templates/layout/Container';
 
 interface HeroSideImageProps {
@@ -166,7 +170,7 @@ export const HeroSideImage: React.FC<HeroSideImageProps> = ({
           <div
             className={`flex flex-col justify-center ${imagePosition === 'right' ? 'lg:order-first' : 'lg:order-last'}`}
           >
-            <h1 className="text-4xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-5xl md:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl md:text-6xl dark:text-white">
               {title}
             </h1>
             <p className="mt-6 text-lg text-neutral-600 dark:text-neutral-300">
@@ -179,7 +183,7 @@ export const HeroSideImage: React.FC<HeroSideImageProps> = ({
                 {features.map((feature, index) => (
                   <li key={index} className="flex items-start">
                     <svg
-                      className="mr-3 h-6 w-6 flex-shrink-0 text-brand-500"
+                      className="text-brand-500 mr-3 h-6 w-6 flex-shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -203,7 +207,7 @@ export const HeroSideImage: React.FC<HeroSideImageProps> = ({
             <div className="mt-10">
               <a
                 href={primaryCta.href}
-                className="inline-flex items-center justify-center rounded-lg bg-brand-600 px-8 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-brand-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
+                className="bg-brand-600 hover:bg-brand-700 focus:ring-brand-500 inline-flex items-center justify-center rounded-lg px-8 py-3 text-base font-semibold text-white shadow-lg transition-all hover:shadow-xl focus:ring-2 focus:ring-offset-2 focus:outline-none"
               >
                 {primaryCta.text}
               </a>
@@ -241,7 +245,7 @@ export const HeroSideImage: React.FC<HeroSideImageProps> = ({
   imageUrl="/product-screenshot.png"
   imageAlt="Product interface"
   imagePosition="right"
-/>
+/>;
 ```
 
 ---
@@ -255,6 +259,7 @@ export const HeroSideImage: React.FC<HeroSideImageProps> = ({
 ```tsx
 // src/templates/sections/FeaturesThreeColumn.tsx
 import React from 'react';
+
 import { Container } from '@/templates/layout/Container';
 
 interface Feature {
@@ -279,7 +284,7 @@ export const FeaturesThreeColumn: React.FC<FeaturesThreeColumnProps> = ({
       <Container>
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl dark:text-white">
             {title}
           </h2>
           {description && (
@@ -295,7 +300,7 @@ export const FeaturesThreeColumn: React.FC<FeaturesThreeColumnProps> = ({
             <div key={index} className="relative">
               <div className="space-y-4">
                 {/* Icon */}
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-100 text-brand-600 dark:bg-brand-900/20 dark:text-brand-400">
+                <div className="bg-brand-100 text-brand-600 dark:bg-brand-900/20 dark:text-brand-400 flex h-12 w-12 items-center justify-center rounded-xl">
                   {feature.icon}
                 </div>
 
@@ -338,7 +343,7 @@ export const FeaturesThreeColumn: React.FC<FeaturesThreeColumnProps> = ({
       description: 'Connect with your favorite tools in minutes.',
     },
   ]}
-/>
+/>;
 ```
 
 ### 2. Feature with Screenshot
@@ -348,7 +353,9 @@ export const FeaturesThreeColumn: React.FC<FeaturesThreeColumnProps> = ({
 ```tsx
 // src/templates/sections/FeatureWithScreenshot.tsx
 import React from 'react';
+
 import Image from 'next/image';
+
 import { Container } from '@/templates/layout/Container';
 
 interface FeatureWithScreenshotProps {
@@ -376,7 +383,7 @@ export const FeatureWithScreenshot: React.FC<FeatureWithScreenshotProps> = ({
           <div
             className={`flex flex-col justify-center ${imagePosition === 'right' ? 'lg:order-first' : 'lg:order-last'}`}
           >
-            <h2 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl dark:text-white">
               {title}
             </h2>
             <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
@@ -426,6 +433,7 @@ export const FeatureWithScreenshot: React.FC<FeatureWithScreenshotProps> = ({
 ```tsx
 // src/templates/sections/CTASimple.tsx
 import React from 'react';
+
 import { Container } from '@/templates/layout/Container';
 
 interface CTASimpleProps {
@@ -444,7 +452,7 @@ export const CTASimple: React.FC<CTASimpleProps> = ({
   return (
     <section className="py-24 lg:py-32">
       <Container>
-        <div className="rounded-3xl bg-brand-600 px-6 py-16 text-center shadow-2xl sm:px-12 lg:px-16">
+        <div className="bg-brand-600 rounded-3xl px-6 py-16 text-center shadow-2xl sm:px-12 lg:px-16">
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
             {title}
           </h2>
@@ -455,7 +463,7 @@ export const CTASimple: React.FC<CTASimpleProps> = ({
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
               href={primaryCta.href}
-              className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 text-base font-semibold text-brand-600 shadow-lg transition-all hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-brand-600"
+              className="text-brand-600 focus:ring-offset-brand-600 inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 text-base font-semibold shadow-lg transition-all hover:bg-neutral-50 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-none"
             >
               {primaryCta.text}
             </a>
@@ -480,7 +488,7 @@ export const CTASimple: React.FC<CTASimpleProps> = ({
   description="Join thousands of teams already building with our platform."
   primaryCta={{ text: 'Start Free Trial', href: '/signup' }}
   secondaryCta={{ text: 'Schedule Demo', href: '/demo' }}
-/>
+/>;
 ```
 
 ---
@@ -496,8 +504,12 @@ export const CTASimple: React.FC<CTASimpleProps> = ({
 'use client';
 
 import React, { useState } from 'react';
+
 import Link from 'next/link';
+
 import { Container } from '@/templates/layout/Container';
+
+// src/templates/sections/Header.tsx
 
 interface NavLink {
   label: string;
@@ -514,7 +526,7 @@ export const Header: React.FC<HeaderProps> = ({ logo, links, ctaButton }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-sticky border-b border-neutral-200 bg-white/80 backdrop-blur-lg dark:border-neutral-800 dark:bg-neutral-900/80">
+    <header className="z-sticky sticky top-0 border-b border-neutral-200 bg-white/80 backdrop-blur-lg dark:border-neutral-800 dark:bg-neutral-900/80">
       <Container>
         <nav className="flex h-16 items-center justify-between">
           {/* Logo */}
@@ -542,7 +554,7 @@ export const Header: React.FC<HeaderProps> = ({ logo, links, ctaButton }) => {
             <div className="hidden md:block">
               <Link
                 href={ctaButton.href}
-                className="inline-flex items-center justify-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
+                className="bg-brand-600 hover:bg-brand-700 focus:ring-brand-500 inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold text-white transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none"
               >
                 {ctaButton.text}
               </Link>
@@ -583,7 +595,7 @@ export const Header: React.FC<HeaderProps> = ({ logo, links, ctaButton }) => {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="border-t border-neutral-200 py-4 dark:border-neutral-800 md:hidden">
+          <div className="border-t border-neutral-200 py-4 md:hidden dark:border-neutral-800">
             <div className="flex flex-col space-y-4">
               {links.map((link) => (
                 <Link
@@ -598,7 +610,7 @@ export const Header: React.FC<HeaderProps> = ({ logo, links, ctaButton }) => {
               {ctaButton && (
                 <Link
                   href={ctaButton.href}
-                  className="inline-flex items-center justify-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white"
+                  className="bg-brand-600 inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold text-white"
                 >
                   {ctaButton.text}
                 </Link>
@@ -620,7 +632,7 @@ export const Header: React.FC<HeaderProps> = ({ logo, links, ctaButton }) => {
     { label: 'Docs', href: '/docs' },
   ]}
   ctaButton={{ text: 'Get Started', href: '/signup' }}
-/>
+/>;
 ```
 
 ---
@@ -634,7 +646,9 @@ export const Header: React.FC<HeaderProps> = ({ logo, links, ctaButton }) => {
 ```tsx
 // src/templates/sections/Footer.tsx
 import React from 'react';
+
 import Link from 'next/link';
+
 import { Container } from '@/templates/layout/Container';
 
 interface FooterLink {
@@ -752,7 +766,7 @@ export const Footer: React.FC<FooterProps> = ({
     },
   ]}
   copyright="© 2025 Your Company. All rights reserved."
-/>
+/>;
 ```
 
 ---
@@ -779,7 +793,7 @@ export const Footer: React.FC<FooterProps> = ({
   alt="Hero"
   fill
   className="object-cover"
-  priority  // For hero images
+  priority // For hero images
 />
 ```
 

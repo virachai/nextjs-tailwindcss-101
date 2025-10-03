@@ -1,6 +1,7 @@
 # Tailwind CSS Advanced Techniques
 
-Advanced patterns and techniques used by senior frontend developers at top tech companies.
+Advanced patterns and techniques used by senior frontend developers at top tech
+companies.
 
 ## Table of Contents
 
@@ -598,9 +599,7 @@ const config: Config = {
   },
 
   // Purge unused styles
-  content: [
-    './src/**/*.{js,ts,jsx,tsx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
 };
 ```
 
@@ -612,18 +611,16 @@ const config: Config = {
   <div className="rounded-lg bg-white p-6 shadow-md">
     {/* Duplicate styles */}
   </div>
-</div>
+</div>;
 
 // ✅ Good - extract to component
 const Card = ({ children }) => (
-  <div className="rounded-lg bg-white p-6 shadow-md">
-    {children}
-  </div>
+  <div className="rounded-lg bg-white p-6 shadow-md">{children}</div>
 );
 
 <Card>
   <Card>{/* Nested card */}</Card>
-</Card>
+</Card>;
 ```
 
 ### Memoize Complex Classes
@@ -643,7 +640,7 @@ const buttonClasses = useMemo(
   [variant, size]
 );
 
-<button className={buttonClasses}>Click</button>
+<button className={buttonClasses}>Click</button>;
 ```
 
 ## Advanced Composition
@@ -661,9 +658,7 @@ Card.Header = ({ children }) => (
   <div className="border-b border-gray-200 px-6 py-4">{children}</div>
 );
 
-Card.Body = ({ children }) => (
-  <div className="px-6 py-4">{children}</div>
-);
+Card.Body = ({ children }) => <div className="px-6 py-4">{children}</div>;
 
 Card.Footer = ({ children }) => (
   <div className="border-t border-gray-200 px-6 py-4">{children}</div>
@@ -674,7 +669,7 @@ Card.Footer = ({ children }) => (
   <Card.Header>Title</Card.Header>
   <Card.Body>Content</Card.Body>
   <Card.Footer>Actions</Card.Footer>
-</Card>
+</Card>;
 ```
 
 ### Render Props Pattern
@@ -689,17 +684,11 @@ const Tooltip: React.FC<TooltipProps> = ({ children, content }) => {
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}
       >
-        {typeof children === 'function'
-          ? children({ isOpen })
-          : children}
+        {typeof children === 'function' ? children({ isOpen }) : children}
       </div>
 
       {isOpen && (
-        <div className="
-          absolute bottom-full left-1/2 -translate-x-1/2 mb-2
-          rounded bg-gray-900 px-2 py-1 text-sm text-white
-          whitespace-nowrap
-        ">
+        <div className="absolute bottom-full left-1/2 mb-2 -translate-x-1/2 rounded bg-gray-900 px-2 py-1 text-sm whitespace-nowrap text-white">
           {content}
         </div>
       )}
@@ -709,12 +698,8 @@ const Tooltip: React.FC<TooltipProps> = ({ children, content }) => {
 
 // Usage
 <Tooltip content="Click to copy">
-  {({ isOpen }) => (
-    <button className={cn(isOpen && 'ring-2')}>
-      Copy
-    </button>
-  )}
-</Tooltip>
+  {({ isOpen }) => <button className={cn(isOpen && 'ring-2')}>Copy</button>}
+</Tooltip>;
 ```
 
 ## Production Patterns
@@ -733,16 +718,14 @@ const ThemeProvider: React.FC = ({ children }) => {
   }, [theme]);
 
   return (
-    <ThemeContext.Provider value={theme}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
   );
 };
 
 // Usage
 <div className="bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
   Theme-aware content
-</div>
+</div>;
 ```
 
 ### Feature Flags with Variants

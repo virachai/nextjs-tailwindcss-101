@@ -1,6 +1,8 @@
 # Code Style Guide
 
-This document outlines the coding standards and best practices for this Next.js + TypeScript project, following Airbnb's JavaScript/React style guide with TypeScript adaptations.
+This document outlines the coding standards and best practices for this
+Next.js + TypeScript project, following Airbnb's JavaScript/React style guide
+with TypeScript adaptations.
 
 ## Table of Contents
 
@@ -19,6 +21,7 @@ This document outlines the coding standards and best practices for this Next.js 
 ## General Principles
 
 ### Code Quality
+
 - Write clean, readable, and maintainable code
 - Follow the principle of least surprise
 - Keep functions small and focused (single responsibility)
@@ -26,6 +29,7 @@ This document outlines the coding standards and best practices for this Next.js 
 - Use TypeScript's type system to catch errors early
 
 ### Consistency
+
 - Follow established patterns in the codebase
 - Use automated tools (ESLint, Prettier) for formatting
 - Review code before committing
@@ -389,15 +393,15 @@ export { formatDate, parseDate, isValidDate };
 ### Avoid Barrel Exports (index.ts) Overuse
 
 ```typescript
+// ... 50 more exports
+// ✅ Import directly
+import { Button } from '@/components/ui/Button';
+
 // ❌ Avoid deep barrel files
 // components/index.ts
 export { Button } from './Button';
 export { Input } from './Input';
 export { Card } from './Card';
-// ... 50 more exports
-
-// ✅ Import directly
-import { Button } from '@/components/ui/Button';
 
 // ✅ Use barrel files for cohesive groups only
 // components/ui/index.ts (small, focused)
@@ -666,6 +670,7 @@ describe('Button', () => {
 ## Best Practices Summary
 
 ✅ **DO:**
+
 - Use TypeScript strictly
 - Write small, focused components
 - Destructure props
@@ -679,6 +684,7 @@ describe('Button', () => {
 - Let Prettier/ESLint handle formatting
 
 ❌ **DON'T:**
+
 - Use `any` type
 - Mutate state directly
 - Write components over 200 lines

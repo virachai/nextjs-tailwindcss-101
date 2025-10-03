@@ -19,6 +19,7 @@ Enterprise-grade structure rules for Next.js + DDD/Clean Architecture, inspired 
 ### ✅ Rule 1: Feature-First Organization
 
 **DO**:
+
 ```
 src/
 ├── features/              # ✅ Group by business domain
@@ -29,6 +30,7 @@ src/
 ```
 
 **DON'T**:
+
 ```
 src/
 ├── components/            # ❌ Technical grouping
@@ -44,6 +46,7 @@ src/
 ### ✅ Rule 2: Strict Layer Hierarchy
 
 **Required Structure** (every feature):
+
 ```
 features/[feature-name]/
 ├── domain/                # ✅ REQUIRED: Business logic
@@ -69,6 +72,7 @@ features/[feature-name]/
 ```
 
 **Enforcement**:
+
 - Linter should error if layers are missing
 - Pre-commit hook validates structure
 
@@ -77,6 +81,7 @@ features/[feature-name]/
 ### ✅ Rule 3: Single Responsibility Per File
 
 **DO**:
+
 ```typescript
 // ✅ locale.entity.ts - Only entity definition
 export type LocaleCode = 'en' | 'th';
@@ -92,12 +97,13 @@ export interface ILocaleRepository {
 ```
 
 **DON'T**:
+
 ```typescript
 // ❌ locale.ts - Multiple responsibilities
 export type LocaleCode = 'en' | 'th';
-export interface Locale { }
-export interface ILocaleRepository { }
-export class LocaleService { }  // ❌ Mixed concerns
+export interface Locale {}
+export interface ILocaleRepository {}
+export class LocaleService {} // ❌ Mixed concerns
 ```
 
 ---
@@ -105,6 +111,7 @@ export class LocaleService { }  // ❌ Mixed concerns
 ### ✅ Rule 4: Barrel Exports (index.ts)
 
 **DO**:
+
 ```typescript
 // features/i18n/index.ts
 // ✅ Export only public API
@@ -117,6 +124,7 @@ export { useLocaleSwitcher } from './presentation/hooks/use-locale-switcher';
 ```
 
 **Usage**:
+
 ```typescript
 // ✅ Clean imports
 import { LocaleSwitcher, useLocaleSwitcher } from '@/features/i18n';
@@ -159,6 +167,7 @@ import { LocaleSwitcher } from '@/features/i18n/presentation/components/LocaleSw
 ```
 
 **Enforcement**:
+
 ```typescript
 // ESLint rule (see setup section)
 "@typescript-eslint/no-restricted-imports": [
@@ -180,6 +189,7 @@ import { LocaleSwitcher } from '@/features/i18n/presentation/components/LocaleSw
 ### ✅ Rule 6: Domain Layer Purity
 
 **DO**:
+
 ```typescript
 // ✅ domain/entities/locale.entity.ts
 // Pure TypeScript, no framework dependencies
@@ -188,20 +198,25 @@ export type LocaleCode = 'en' | 'th';
 export interface Locale {
   code: LocaleCode;
   name: string;
-  validate(): boolean;  // ✅ Business logic
+  validate(): boolean; // ✅ Business logic
 }
 
 export const DEFAULT_LOCALE: LocaleCode = 'en';
 ```
 
 **DON'T**:
+
 ```typescript
 // ❌ domain/entities/locale.entity.ts
-import { useRouter } from 'next/navigation';  // ❌ Framework import
-import React from 'react';                    // ❌ Framework import
+// ❌ Framework import
+import React from 'react';
+
+import { useRouter } from 'next/navigation';
+
+// ❌ Framework import
 
 export interface Locale {
-  component: React.FC;  // ❌ UI concern in domain
+  component: React.FC; // ❌ UI concern in domain
 }
 ```
 
@@ -212,6 +227,7 @@ export interface Locale {
 **Pattern**: `{Verb}{Noun}.use-case.ts`
 
 **DO**:
+
 ```
 application/use-cases/
 ├── get-current-locale.use-case.ts       # ✅
@@ -221,6 +237,7 @@ application/use-cases/
 ```
 
 **DON'T**:
+
 ```
 application/use-cases/
 ├── locale.ts                            # ❌ No verb
@@ -236,6 +253,7 @@ application/use-cases/
 **Pattern**: `{Entity}.repository.ts` for interface, `{Framework}{Entity}.repository.ts` for implementation
 
 **DO**:
+
 ```
 # Interface
 domain/repositories/
@@ -248,6 +266,7 @@ infrastructure/repositories/
 ```
 
 **DON'T**:
+
 ```
 domain/repositories/
 └── ILocaleRepository.ts                 # ❌ Capital "I" prefix
@@ -263,6 +282,7 @@ infrastructure/repositories/
 ### ✅ Rule 9: Component Co-location
 
 **DO**: Keep related files together
+
 ```
 presentation/components/LocaleSwitcher/
 ├── LocaleSwitcher.tsx                   # ✅ Main component
@@ -278,6 +298,7 @@ presentation/components/
 ```
 
 **DON'T**: Separate by type
+
 ```
 presentation/
 ├── components/
@@ -295,6 +316,7 @@ presentation/
 ### ✅ Rule 10: Shared Code Structure
 
 **DO**:
+
 ```
 src/
 ├── shared/                              # ✅ Cross-feature utilities
@@ -320,6 +342,7 @@ src/
 ```
 
 **DON'T**:
+
 ```
 src/
 ├── utils/                               # ❌ Too generic
@@ -333,6 +356,7 @@ src/
 ### ✅ Rule 11: Test File Placement
 
 **DO**: Co-locate with source
+
 ```
 features/i18n/
 ├── domain/
@@ -346,6 +370,7 @@ features/i18n/
 ```
 
 **DON'T**: Separate test directory
+
 ```
 features/i18n/
 ├── domain/
@@ -356,6 +381,7 @@ features/i18n/
 ```
 
 **Exception**: E2E tests can be separate
+
 ```
 tests/
 └── e2e/
@@ -367,6 +393,7 @@ tests/
 ### ✅ Rule 12: Configuration Files
 
 **DO**: Centralize infrastructure configs
+
 ```
 features/i18n/
 └── infrastructure/
@@ -377,6 +404,7 @@ features/i18n/
 ```
 
 **DON'T**: Mix with business logic
+
 ```
 features/i18n/
 ├── domain/
@@ -389,24 +417,28 @@ features/i18n/
 
 ## File Size Limits
 
-| File Type | Max Lines | Rationale |
-|-----------|-----------|-----------|
-| Component | 300 | Split into sub-components |
-| Hook | 150 | Extract logic to use cases |
-| Use Case | 100 | Single Responsibility Principle |
-| Entity | 200 | Extract value objects |
-| Utility | 50 | One function per file preferred |
+| File Type | Max Lines | Rationale                       |
+| --------- | --------- | ------------------------------- |
+| Component | 300       | Split into sub-components       |
+| Hook      | 150       | Extract logic to use cases      |
+| Use Case  | 100       | Single Responsibility Principle |
+| Entity    | 200       | Extract value objects           |
+| Utility   | 50        | One function per file preferred |
 
 **Enforcement**:
+
 ```json
 // .eslintrc.json
 {
   "rules": {
-    "max-lines": ["error", {
-      "max": 300,
-      "skipBlankLines": true,
-      "skipComments": true
-    }]
+    "max-lines": [
+      "error",
+      {
+        "max": 300,
+        "skipBlankLines": true,
+        "skipComments": true
+      }
+    ]
   }
 }
 ```
@@ -416,9 +448,11 @@ features/i18n/
 ## Import Order Rules
 
 **Required Order** (enforced by Prettier):
+
 ```typescript
 // 1. React/Next.js core
 import React from 'react';
+
 import { useRouter } from 'next/navigation';
 
 // 2. Third-party libraries
@@ -427,14 +461,16 @@ import { format } from 'date-fns';
 
 // 3. Alias imports (@/*)
 import type { LocaleCode } from '@/features/i18n';
+
 import { Button } from '@/shared/components/Button';
 
+import styles from './LocaleSwitcher.module.css';
 // 4. Relative imports
 import { LocaleSwitcherButton } from './LocaleSwitcherButton';
-import styles from './LocaleSwitcher.module.css';
 ```
 
 **Configuration** (already in [.prettierrc](../../.prettierrc)):
+
 ```json
 {
   "importOrder": [
@@ -460,6 +496,7 @@ import styles from './LocaleSwitcher.module.css';
 ## Path Alias Rules
 
 **Configured Aliases** (in [tsconfig.json](../../tsconfig.json)):
+
 ```json
 {
   "paths": {
@@ -472,18 +509,22 @@ import styles from './LocaleSwitcher.module.css';
 ```
 
 **DO**:
+
 ```typescript
 // ✅ Use aliases for cross-feature imports
-import { LocaleSwitcher } from '@/features/i18n';
-import { Button } from '@/shared/components/Button';
 import { API_URL } from '@/core/config/env';
 
+import { LocaleSwitcher } from '@/features/i18n';
+
+import { Button } from '@/shared/components/Button';
+
+import { useLocaleSwitcher } from '../hooks/use-locale-switcher';
 // ✅ Use relative for same-feature imports
 import { LocaleSwitcherButton } from './LocaleSwitcherButton';
-import { useLocaleSwitcher } from '../hooks/use-locale-switcher';
 ```
 
 **DON'T**:
+
 ```typescript
 // ❌ Deep imports violate encapsulation
 import { NextLocaleRepository } from '@/features/i18n/infrastructure/repositories/next-locale.repository';
@@ -499,6 +540,7 @@ import { ThemeToggle } from '../../../theme/presentation/components/ThemeToggle'
 ### ✅ Rule 13: Interface vs Type
 
 **Use Interface** when:
+
 - Defining object shapes
 - Need to extend/implement
 - Repository/Service contracts
@@ -517,6 +559,7 @@ export interface ILocaleRepository {
 ```
 
 **Use Type** when:
+
 - Union types
 - Primitive aliases
 - Mapped types
@@ -537,6 +580,7 @@ export type Readonly<T> = { readonly [K in keyof T]: T[K] };
 ### ✅ Rule 14: Type File Organization
 
 **DO**: Group related types
+
 ```typescript
 // locale.types.ts
 export type LocaleCode = 'en' | 'th';
@@ -549,6 +593,7 @@ export interface LocaleMetadata {
 ```
 
 **DON'T**: One file per type
+
 ```
 domain/types/
 ├── locale-code.type.ts                  # ❌ Too granular
@@ -563,7 +608,8 @@ domain/types/
 ### ✅ Rule 15: Required Documentation
 
 **Must Document**:
-```typescript
+
+````typescript
 // ✅ Public API (exported from index.ts)
 /**
  * Switches the application locale.
@@ -584,9 +630,10 @@ export function switchLocale(locale: LocaleCode): void;
  * Performs case-insensitive comparison.
  */
 function validateLocale(locale: string): boolean;
-```
+````
 
 **Optional Documentation**:
+
 ```typescript
 // ✓ Simple, self-explanatory functions
 export function getCurrentLocale(): LocaleCode {
@@ -628,6 +675,7 @@ export function getCurrentLocale(): LocaleCode {
 See [.eslintrc.json](../../.eslintrc.json) for full config.
 
 Key rules:
+
 ```json
 {
   "rules": {
@@ -687,8 +735,8 @@ const REQUIRED_LAYERS = ['domain', 'application', 'infrastructure', 'presentatio
 const FEATURES_DIR = path.join(__dirname, '../src/features');
 
 // Validate each feature has required layers
-fs.readdirSync(FEATURES_DIR).forEach(feature => {
-  REQUIRED_LAYERS.forEach(layer => {
+fs.readdirSync(FEATURES_DIR).forEach((feature) => {
+  REQUIRED_LAYERS.forEach((layer) => {
     const layerPath = path.join(FEATURES_DIR, feature, layer);
     if (!fs.existsSync(layerPath)) {
       throw new Error(`Missing ${layer} layer in feature: ${feature}`);
@@ -710,14 +758,17 @@ console.log('✅ Structure validation passed');
 ## Migration Strategy
 
 ### Phase 1: New Features (Immediate)
+
 - All new features MUST follow structure
 - Use feature template/generator
 
 ### Phase 2: Existing Features (Gradual)
+
 - Refactor during feature updates
 - No need to refactor stable features
 
 ### Phase 3: Shared Code (Planned)
+
 - Extract common components to `shared/`
 - Consolidate utilities
 
@@ -725,18 +776,18 @@ console.log('✅ Structure validation passed');
 
 ## Summary
 
-| Rule | Description | Enforcement |
-|------|-------------|-------------|
-| Feature-First | Group by business domain | Directory structure |
-| Layer Hierarchy | domain → application → infrastructure → presentation | ESLint import rules |
-| Single Responsibility | One concern per file | Code review |
-| Barrel Exports | Public API via index.ts | Linter + code review |
-| Dependency Direction | Inner layers independent | ESLint import rules |
-| Domain Purity | No framework in domain | ESLint import rules |
-| Use Case Naming | {Verb}{Noun}.use-case.ts | File naming convention |
-| Co-location | Tests with source | Directory structure |
-| Type Placement | Interfaces in domain | Directory structure |
-| Import Order | Consistent ordering | Prettier |
+| Rule                  | Description                                          | Enforcement            |
+| --------------------- | ---------------------------------------------------- | ---------------------- |
+| Feature-First         | Group by business domain                             | Directory structure    |
+| Layer Hierarchy       | domain → application → infrastructure → presentation | ESLint import rules    |
+| Single Responsibility | One concern per file                                 | Code review            |
+| Barrel Exports        | Public API via index.ts                              | Linter + code review   |
+| Dependency Direction  | Inner layers independent                             | ESLint import rules    |
+| Domain Purity         | No framework in domain                               | ESLint import rules    |
+| Use Case Naming       | {Verb}{Noun}.use-case.ts                             | File naming convention |
+| Co-location           | Tests with source                                    | Directory structure    |
+| Type Placement        | Interfaces in domain                                 | Directory structure    |
+| Import Order          | Consistent ordering                                  | Prettier               |
 
 ---
 

@@ -98,12 +98,7 @@ const ButtonWithIcon: React.FC = ({ icon, children, iconPosition = 'left' }) => 
 ### Loading Button
 
 ```tsx
-const LoadingButton: React.FC<LoadingButtonProps> = ({
-  loading,
-  children,
-  disabled,
-  ...props
-}) => (
+const LoadingButton: React.FC<LoadingButtonProps> = ({ loading, children, disabled, ...props }) => (
   <button
     className="inline-flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
     disabled={disabled || loading}
@@ -179,16 +174,9 @@ const Input: React.FC<InputProps> = ({
 ### Textarea
 
 ```tsx
-const Textarea: React.FC<TextareaProps> = ({
-  label,
-  error,
-  rows = 4,
-  ...props
-}) => (
+const Textarea: React.FC<TextareaProps> = ({ label, error, rows = 4, ...props }) => (
   <div className="space-y-1">
-    {label && (
-      <label className="block text-sm font-medium text-gray-700">{label}</label>
-    )}
+    {label && <label className="block text-sm font-medium text-gray-700">{label}</label>}
     <textarea
       rows={rows}
       className={cn(
@@ -209,9 +197,7 @@ const Textarea: React.FC<TextareaProps> = ({
 ```tsx
 const Select: React.FC<SelectProps> = ({ label, options, error, ...props }) => (
   <div className="space-y-1">
-    {label && (
-      <label className="block text-sm font-medium text-gray-700">{label}</label>
-    )}
+    {label && <label className="block text-sm font-medium text-gray-700">{label}</label>}
     <select
       className={cn(
         'block w-full rounded-md border border-gray-300 px-3 py-2',
@@ -252,18 +238,10 @@ const Checkbox: React.FC<CheckboxProps> = ({ label, ...props }) => (
 ### Radio Group
 
 ```tsx
-const RadioGroup: React.FC<RadioGroupProps> = ({
-  options,
-  name,
-  value,
-  onChange,
-}) => (
+const RadioGroup: React.FC<RadioGroupProps> = ({ options, name, value, onChange }) => (
   <div className="space-y-2">
     {options.map((option) => (
-      <label
-        key={option.value}
-        className="inline-flex cursor-pointer items-center"
-      >
+      <label key={option.value} className="inline-flex cursor-pointer items-center">
         <input
           type="radio"
           name={name}
@@ -285,9 +263,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
 
 ```tsx
 const Card: React.FC<CardProps> = ({ children, className }) => (
-  <div className={cn('rounded-lg bg-white p-6 shadow-md', className)}>
-    {children}
-  </div>
+  <div className={cn('rounded-lg bg-white p-6 shadow-md', className)}>{children}</div>
 );
 
 const CardHeader: React.FC<{ children: React.ReactNode }> = ({ children }) => (
@@ -341,19 +317,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => (
 
     {/* Content */}
     <div className="p-4">
-      <h3 className="mb-2 text-lg font-semibold text-gray-900">
-        {product.name}
-      </h3>
-      <p className="mb-4 line-clamp-2 text-sm text-gray-600">
-        {product.description}
-      </p>
+      <h3 className="mb-2 text-lg font-semibold text-gray-900">{product.name}</h3>
+      <p className="mb-4 line-clamp-2 text-sm text-gray-600">{product.description}</p>
 
       {/* Price & Button */}
       <div className="flex items-center justify-between">
         <div>
-          <span className="text-2xl font-bold text-gray-900">
-            ${product.price}
-          </span>
+          <span className="text-2xl font-bold text-gray-900">${product.price}</span>
           {product.originalPrice && (
             <span className="ml-2 text-sm text-gray-500 line-through">
               ${product.originalPrice}
@@ -370,12 +340,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => (
 ### Stats Card
 
 ```tsx
-const StatsCard: React.FC<StatsCardProps> = ({
-  title,
-  value,
-  change,
-  icon,
-}) => (
+const StatsCard: React.FC<StatsCardProps> = ({ title, value, change, icon }) => (
   <div className="rounded-lg bg-white p-6 shadow-md">
     <div className="flex items-center justify-between">
       <div>
@@ -486,23 +451,14 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => (
       {items.map((item, index) => (
         <li key={item.href} className="flex items-center gap-2">
           {index > 0 && (
-            <svg
-              className="h-4 w-4 text-gray-400"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
+            <svg className="h-4 w-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
               <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
             </svg>
           )}
           {index === items.length - 1 ? (
-            <span className="text-sm font-medium text-gray-500">
-              {item.label}
-            </span>
+            <span className="text-sm font-medium text-gray-500">{item.label}</span>
           ) : (
-            <a
-              href={item.href}
-              className="text-sm font-medium text-gray-700 hover:text-gray-900"
-            >
+            <a href={item.href} className="text-sm font-medium text-gray-700 hover:text-gray-900">
               {item.label}
             </a>
           )}
@@ -524,10 +480,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
       {/* Backdrop */}
-      <div
-        className="bg-opacity-50 fixed inset-0 bg-black transition-opacity"
-        onClick={onClose}
-      />
+      <div className="bg-opacity-50 fixed inset-0 bg-black transition-opacity" onClick={onClose} />
 
       {/* Modal */}
       <div className="flex min-h-full items-center justify-center p-4">
@@ -535,10 +488,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
           {/* Header */}
           <div className="mb-4 flex items-center justify-between">
             <h3 className="text-xl font-bold text-gray-900">{title}</h3>
-            <button
-              onClick={onClose}
-              className="text-gray-400 hover:text-gray-500"
-            >
+            <button onClick={onClose} className="text-gray-400 hover:text-gray-500">
               <CloseIcon className="h-6 w-6" />
             </button>
           </div>
@@ -662,10 +612,7 @@ const Table: React.FC<TableProps> = ({ columns, data }) => (
         {data.map((row, rowIndex) => (
           <tr key={rowIndex} className="hover:bg-gray-50">
             {columns.map((column) => (
-              <td
-                key={column.key}
-                className="px-6 py-4 text-sm whitespace-nowrap text-gray-900"
-              >
+              <td key={column.key} className="px-6 py-4 text-sm whitespace-nowrap text-gray-900">
                 {row[column.key]}
               </td>
             ))}
@@ -727,10 +674,7 @@ const Tag: React.FC<TagProps> = ({ children, onRemove }) => (
 ```tsx
 const Spinner: React.FC<SpinnerProps> = ({ size = 'md' }) => (
   <svg
-    className={cn(
-      'animate-spin',
-      { sm: 'h-4 w-4', md: 'h-6 w-6', lg: 'h-8 w-8' }[size]
-    )}
+    className={cn('animate-spin', { sm: 'h-4 w-4', md: 'h-6 w-6', lg: 'h-8 w-8' }[size])}
     viewBox="0 0 24 24"
   >
     <circle

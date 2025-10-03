@@ -33,9 +33,7 @@ nested, will have green text.
 <div class="[&_.highlight]:bg-yellow-200">
   <span class="highlight">This will have a yellow background.</span>
   <div>
-    <p class="highlight">
-      This nested element will also have a yellow background.
-    </p>
+    <p class="highlight">This nested element will also have a yellow background.</p>
   </div>
 </div>
 ```

@@ -105,13 +105,7 @@ export const HeroCentered: React.FC<HeroCenteredProps> = ({
           {/* Hero Image */}
           <div className="mx-auto mt-12 max-w-5xl">
             <div className="relative aspect-video overflow-hidden rounded-2xl shadow-2xl">
-              <Image
-                src={imageUrl}
-                alt={imageAlt}
-                fill
-                className="object-cover"
-                priority
-              />
+              <Image src={imageUrl} alt={imageAlt} fill className="object-cover" priority />
             </div>
           </div>
         </div>
@@ -173,9 +167,7 @@ export const HeroSideImage: React.FC<HeroSideImageProps> = ({
             <h1 className="text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl md:text-6xl dark:text-white">
               {title}
             </h1>
-            <p className="mt-6 text-lg text-neutral-600 dark:text-neutral-300">
-              {description}
-            </p>
+            <p className="mt-6 text-lg text-neutral-600 dark:text-neutral-300">{description}</p>
 
             {/* Feature List */}
             {features && features.length > 0 && (
@@ -195,9 +187,7 @@ export const HeroSideImage: React.FC<HeroSideImageProps> = ({
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span className="text-neutral-700 dark:text-neutral-300">
-                      {feature}
-                    </span>
+                    <span className="text-neutral-700 dark:text-neutral-300">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -217,13 +207,7 @@ export const HeroSideImage: React.FC<HeroSideImageProps> = ({
           {/* Image */}
           <div className="relative">
             <div className="relative aspect-square overflow-hidden rounded-2xl shadow-2xl">
-              <Image
-                src={imageUrl}
-                alt={imageAlt}
-                fill
-                className="object-cover"
-                priority
-              />
+              <Image src={imageUrl} alt={imageAlt} fill className="object-cover" priority />
             </div>
           </div>
         </div>
@@ -288,9 +272,7 @@ export const FeaturesThreeColumn: React.FC<FeaturesThreeColumnProps> = ({
             {title}
           </h2>
           {description && (
-            <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-              {description}
-            </p>
+            <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">{description}</p>
           )}
         </div>
 
@@ -310,9 +292,7 @@ export const FeaturesThreeColumn: React.FC<FeaturesThreeColumnProps> = ({
                 </h3>
 
                 {/* Description */}
-                <p className="text-neutral-600 dark:text-neutral-300">
-                  {feature.description}
-                </p>
+                <p className="text-neutral-600 dark:text-neutral-300">{feature.description}</p>
               </div>
             </div>
           ))}
@@ -386,9 +366,7 @@ export const FeatureWithScreenshot: React.FC<FeatureWithScreenshotProps> = ({
             <h2 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl dark:text-white">
               {title}
             </h2>
-            <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-              {description}
-            </p>
+            <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">{description}</p>
 
             <div className="mt-8 space-y-6">
               {features.map((feature, index) => (
@@ -407,12 +385,7 @@ export const FeatureWithScreenshot: React.FC<FeatureWithScreenshotProps> = ({
           {/* Screenshot */}
           <div className="relative">
             <div className="relative aspect-video overflow-hidden rounded-2xl shadow-2xl">
-              <Image
-                src={imageUrl}
-                alt={imageAlt}
-                fill
-                className="object-cover"
-              />
+              <Image src={imageUrl} alt={imageAlt} fill className="object-cover" />
             </div>
           </div>
         </div>
@@ -453,12 +426,8 @@ export const CTASimple: React.FC<CTASimpleProps> = ({
     <section className="py-24 lg:py-32">
       <Container>
         <div className="bg-brand-600 rounded-3xl px-6 py-16 text-center shadow-2xl sm:px-12 lg:px-16">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            {title}
-          </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-white/90">
-            {description}
-          </p>
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">{title}</h2>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-white/90">{description}</p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
@@ -508,6 +477,10 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 
 import { Container } from '@/templates/layout/Container';
+
+// src/templates/sections/Header.tsx
+
+// src/templates/sections/Header.tsx
 
 // src/templates/sections/Header.tsx
 
@@ -572,12 +545,7 @@ export const Header: React.FC<HeaderProps> = ({ logo, links, ctaButton }) => {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               {mobileMenuOpen ? (
                 <path
                   strokeLinecap="round"
@@ -672,12 +640,7 @@ interface FooterProps {
   copyright: string;
 }
 
-export const Footer: React.FC<FooterProps> = ({
-  logo,
-  sections,
-  socialLinks,
-  copyright,
-}) => {
+export const Footer: React.FC<FooterProps> = ({ logo, sections, socialLinks, copyright }) => {
   return (
     <footer className="border-t border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950">
       <Container>
@@ -730,9 +693,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Copyright */}
           <div className="mt-12 border-t border-neutral-200 pt-8 dark:border-neutral-800">
-            <p className="text-sm text-neutral-500 dark:text-neutral-400">
-              {copyright}
-            </p>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400">{copyright}</p>
           </div>
         </div>
       </Container>

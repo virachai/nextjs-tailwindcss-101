@@ -261,10 +261,7 @@ export const WithInput: Story = {
         </div>
         <ul className="space-y-2">
           {items.map((item, i) => (
-            <li
-              key={i}
-              className="flex items-center justify-between rounded-md border p-2"
-            >
+            <li key={i} className="flex items-center justify-between rounded-md border p-2">
               <span>{item}</span>
               <Button
                 size="sm"
@@ -307,12 +304,8 @@ export const ThemeSwitcher: Story = {
       return (
         <div className={theme === 'dark' ? 'dark' : ''}>
           <div className="space-y-4 rounded-lg bg-white p-6 dark:bg-gray-900">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-              Theme Demo
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400">
-              Current theme: {theme}
-            </p>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Theme Demo</h2>
+            <p className="text-gray-600 dark:text-gray-400">Current theme: {theme}</p>
             <div className="flex gap-2">
               <Button onClick={() => setTheme('light')}>Light</Button>
               <Button onClick={() => setTheme('dark')}>Dark</Button>
@@ -405,10 +398,7 @@ export const Error: Story = {
     msw: {
       handlers: [
         http.get('/api/users', () => {
-          return HttpResponse.json(
-            { message: 'Failed to fetch users' },
-            { status: 500 }
-          );
+          return HttpResponse.json({ message: 'Failed to fetch users' }, { status: 500 });
         }),
       ],
     },
@@ -522,11 +512,7 @@ export const PreFilled: Story = {
     });
 
     return (
-      <LoginForm
-        data={formData}
-        onChange={setFormData}
-        onSubmit={(data) => console.log(data)}
-      />
+      <LoginForm data={formData} onChange={setFormData} onSubmit={(data) => console.log(data)} />
     );
   },
 };
@@ -543,14 +529,7 @@ export const WithErrors: Story = {
       password: 'Password must be at least 8 characters',
     });
 
-    return (
-      <LoginForm
-        data={formData}
-        errors={errors}
-        onChange={setFormData}
-        onSubmit={() => {}}
-      />
-    );
+    return <LoginForm data={formData} errors={errors} onChange={setFormData} onSubmit={() => {}} />;
   },
 };
 
@@ -591,12 +570,7 @@ export const Default: Story = {
         },
       });
 
-      return (
-        <SignupForm
-          form={form}
-          onSubmit={(data) => console.log('Submitted:', data)}
-        />
-      );
+      return <SignupForm form={form} onSubmit={(data) => console.log('Submitted:', data)} />;
     };
 
     return <FormWrapper />;
@@ -633,21 +607,15 @@ export const Default: Story = {
       <Tabs.Panels>
         <Tabs.Panel value="tab1">
           <h3 className="text-lg font-semibold">Account Settings</h3>
-          <p className="mt-2 text-gray-600">
-            Manage your account settings and preferences.
-          </p>
+          <p className="mt-2 text-gray-600">Manage your account settings and preferences.</p>
         </Tabs.Panel>
         <Tabs.Panel value="tab2">
           <h3 className="text-lg font-semibold">Password Settings</h3>
-          <p className="mt-2 text-gray-600">
-            Update your password and security settings.
-          </p>
+          <p className="mt-2 text-gray-600">Update your password and security settings.</p>
         </Tabs.Panel>
         <Tabs.Panel value="tab3">
           <h3 className="text-lg font-semibold">Notification Settings</h3>
-          <p className="mt-2 text-gray-600">
-            Configure your notification preferences.
-          </p>
+          <p className="mt-2 text-gray-600">Configure your notification preferences.</p>
         </Tabs.Panel>
       </Tabs.Panels>
     </Tabs>
@@ -688,21 +656,16 @@ export const Default: Story = {
       <Accordion.Item value="item-1">
         <Accordion.Trigger>What is Storybook?</Accordion.Trigger>
         <Accordion.Content>
-          Storybook is an open-source tool for developing UI components in
-          isolation.
+          Storybook is an open-source tool for developing UI components in isolation.
         </Accordion.Content>
       </Accordion.Item>
       <Accordion.Item value="item-2">
         <Accordion.Trigger>How do I install it?</Accordion.Trigger>
-        <Accordion.Content>
-          Run: pnpm dlx storybook@latest init
-        </Accordion.Content>
+        <Accordion.Content>Run: pnpm dlx storybook@latest init</Accordion.Content>
       </Accordion.Item>
       <Accordion.Item value="item-3">
         <Accordion.Trigger>Is it free?</Accordion.Trigger>
-        <Accordion.Content>
-          Yes! Storybook is completely free and open-source.
-        </Accordion.Content>
+        <Accordion.Content>Yes! Storybook is completely free and open-source.</Accordion.Content>
       </Accordion.Item>
     </Accordion>
   ),

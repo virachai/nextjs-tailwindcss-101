@@ -197,8 +197,7 @@ const config: StorybookConfig = {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) =>
-        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
+      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
     },
   },
 
@@ -492,19 +491,16 @@ export const Primary: Story = {
 // src/components/Button/Button.tsx
 import { forwardRef } from 'react';
 
-import { cva, type VariantProps } from 'class-variance-authority';
-
 import { cn } from '@/lib/utils';
+import { cva, type VariantProps } from 'class-variance-authority';
 
 const buttonVariants = cva(
   'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
-        primary:
-          'bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-500',
-        secondary:
-          'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50',
+        primary: 'bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-500',
+        secondary: 'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50',
         ghost: 'hover:bg-gray-100 text-gray-700',
       },
       size: {
@@ -527,11 +523,7 @@ export interface ButtonProps
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, ...props }, ref) => {
     return (
-      <button
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
+      <button className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
     );
   }
 );
@@ -631,18 +623,8 @@ export const WithIcon: Story = {
   args: {
     children: (
       <>
-        <svg
-          className="mr-2 h-4 w-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M12 4v16m8-8H4"
-          />
+        <svg className="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
         </svg>
         Add Item
       </>

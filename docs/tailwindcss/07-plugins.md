@@ -17,14 +17,7 @@ const plugin = require('tailwindcss/plugin');
 
 module.exports = {
   plugins: [
-    plugin(function ({
-      addUtilities,
-      addComponents,
-      addBase,
-      theme,
-      e,
-      config,
-    }) {
+    plugin(function ({ addUtilities, addComponents, addBase, theme, e, config }) {
       // Add your custom styles here
     }),
   ],

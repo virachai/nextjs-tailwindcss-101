@@ -142,9 +142,7 @@ export default {
 **ใช้งาน:**
 
 ```tsx
-<div className="xs:text-sm 3xl:text-2xl">
-  {/* ยังใช้ sm:, md:, lg:, xl:, 2xl: ได้ */}
-</div>
+<div className="xs:text-sm 3xl:text-2xl">{/* ยังใช้ sm:, md:, lg:, xl:, 2xl: ได้ */}</div>
 ```
 
 ---

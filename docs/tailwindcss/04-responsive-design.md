@@ -454,10 +454,7 @@ const Navigation: React.FC = () => {
           </div>
 
           {/* Mobile menu button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden"
-          >
+          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden">
             <MenuIcon className="h-6 w-6" />
           </button>
         </div>
@@ -513,9 +510,7 @@ const Footer: React.FC = () => (
 
       {/* Bottom section */}
       <div className="mt-12 flex flex-col items-center gap-4 border-t border-gray-800 pt-8 sm:flex-row sm:justify-between">
-        <p className="text-sm text-gray-400">
-          © 2024 Company. All rights reserved.
-        </p>
+        <p className="text-sm text-gray-400">© 2024 Company. All rights reserved.</p>
         <div className="flex gap-4">{/* Social icons */}</div>
       </div>
     </div>

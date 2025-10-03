@@ -379,10 +379,7 @@ export default {
   trailingComma: 'es5',
 
   // Plugins
-  plugins: [
-    '@trivago/prettier-plugin-sort-imports',
-    'prettier-plugin-tailwindcss',
-  ],
+  plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-tailwindcss'],
 
   // Import sorting
   importOrder: [
@@ -449,18 +446,16 @@ src/components/
 // 1. React
 import React from 'react';
 
+import Image from 'next/image';
+
+import { Button } from '@/components/ui/Button';
+// 3. Third-party
+import clsx from 'clsx';
 // 2. Next.js
 import type { Metadata } from 'next';
 
-import Image from 'next/image';
-
-// 3. Third-party
-import clsx from 'clsx';
-
 // 4. Internal (@/ aliases by category)
 import type { User } from '@/types/user';
-
-import { Button } from '@/components/ui/Button';
 
 // 5. Relative imports
 import { helper } from './helper';

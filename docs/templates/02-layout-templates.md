@@ -57,14 +57,8 @@ Layout templates define the **structural skeleton** of your pages:
 
 ```tsx
 // Basic Container
-export const Container: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  return (
-    <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-      {children}
-    </div>
-  );
+export const Container: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">{children}</div>;
 };
 
 // Usage
@@ -127,34 +121,18 @@ lg: py - 24; // 96px desktop
 
 ```tsx
 // Two-Column Grid
-export const TwoColumnGrid: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  return (
-    <div className="grid grid-cols-1 gap-8 md:grid-cols-2">{children}</div>
-  );
+export const TwoColumnGrid: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return <div className="grid grid-cols-1 gap-8 md:grid-cols-2">{children}</div>;
 };
 
 // Three-Column Grid
-export const ThreeColumnGrid: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  return (
-    <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-      {children}
-    </div>
-  );
+export const ThreeColumnGrid: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">{children}</div>;
 };
 
 // Four-Column Grid
-export const FourColumnGrid: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  return (
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {children}
-    </div>
-  );
+export const FourColumnGrid: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">{children}</div>;
 };
 ```
 
@@ -189,11 +167,7 @@ export const HStack: React.FC<{
     end: 'items-end',
   };
 
-  return (
-    <div className={`flex ${spacingMap[spacing]} ${alignMap[align]}`}>
-      {children}
-    </div>
-  );
+  return <div className={`flex ${spacingMap[spacing]} ${alignMap[align]}`}>{children}</div>;
 };
 
 // Vertical Stack
@@ -207,9 +181,7 @@ export const VStack: React.FC<{
     lg: 'space-y-8',
   };
 
-  return (
-    <div className={`flex flex-col ${spacingMap[spacing]}`}>{children}</div>
-  );
+  return <div className={`flex flex-col ${spacingMap[spacing]}`}>{children}</div>;
 };
 ```
 
@@ -583,9 +555,7 @@ For component-specific responsiveness:
 ```tsx
 // Tailwind CSS 4+ supports container queries
 <div className="@container">
-  <div className="@lg:flex @lg:space-x-4">
-    {/* Responsive based on parent container */}
-  </div>
+  <div className="@lg:flex @lg:space-x-4">{/* Responsive based on parent container */}</div>
 </div>
 ```
 
@@ -696,9 +666,7 @@ Avoid deep nesting and excessive DOM nodes:
   <Container>
     <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
       <div className="flex flex-col justify-center">
-        <h1 className="text-4xl font-bold text-white lg:text-6xl">
-          Hero Title
-        </h1>
+        <h1 className="text-4xl font-bold text-white lg:text-6xl">Hero Title</h1>
         <p className="mt-6 text-lg text-white/90">Hero description...</p>
         <div className="mt-8 flex gap-4">
           <Button>Get Started</Button>

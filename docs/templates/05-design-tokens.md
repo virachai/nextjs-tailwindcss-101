@@ -473,14 +473,10 @@ borderRadius.full = '9999px'; // Circle/pill
 ```typescript
 boxShadow.xs = '0 1px 2px 0 rgb(0 0 0 / 0.05)';
 boxShadow.sm = '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)';
-boxShadow.DEFAULT =
-  '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)';
-boxShadow.md =
-  '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)';
-boxShadow.lg =
-  '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)';
-boxShadow.xl =
-  '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)';
+boxShadow.DEFAULT = '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)';
+boxShadow.md = '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)';
+boxShadow.lg = '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)';
+boxShadow.xl = '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)';
 boxShadow['2xl'] = '0 25px 50px -12px rgb(0 0 0 / 0.25)';
 boxShadow.inner = 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)';
 boxShadow.none = 'none';
@@ -609,8 +605,7 @@ backdropBlur['3xl'] = '64px';
 ### Background Gradients
 
 ```typescript
-backgroundImage['gradient-radial'] =
-  'radial-gradient(var(--tw-gradient-stops))';
+backgroundImage['gradient-radial'] = 'radial-gradient(var(--tw-gradient-stops))';
 backgroundImage['gradient-conic'] =
   'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))';
 ```

@@ -192,9 +192,7 @@ const Button: React.FC<ButtonProps> = ({ variant, size }) => {
   };
 
   return (
-    <button
-      className={cn(styles.base, styles.variants[variant], styles.sizes[size])}
-    >
+    <button className={cn(styles.base, styles.variants[variant], styles.sizes[size])}>
       {children}
     </button>
   );

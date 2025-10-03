@@ -24,9 +24,7 @@ provides a comprehensive design system for UI consistency.
 
 ```tsx
 // 11 shades from 50 (lightest) to 950 (darkest)
-<button className="bg-brand-500 hover:bg-brand-600 text-white">
-  Primary Action
-</button>
+<button className="bg-brand-500 hover:bg-brand-600 text-white">Primary Action</button>
 ```
 
 **Semantic Colors** - Contextual feedback
@@ -417,12 +415,8 @@ Layering system for overlapping elements:
 // Modal Overlay + Dialog
 <div className="z-modal fixed inset-0 flex items-center justify-center bg-neutral-900/50 p-4 backdrop-blur-sm">
   <div className="animate-scaleIn w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl dark:bg-neutral-800">
-    <h2 className="text-2xl font-semibold text-neutral-900 dark:text-neutral-50">
-      Modal Title
-    </h2>
-    <p className="mt-2 text-neutral-600 dark:text-neutral-300">
-      Modal content goes here
-    </p>
+    <h2 className="text-2xl font-semibold text-neutral-900 dark:text-neutral-50">Modal Title</h2>
+    <p className="mt-2 text-neutral-600 dark:text-neutral-300">Modal content goes here</p>
     <div className="mt-6 flex justify-end space-x-3">
       <button className="rounded-lg px-4 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-700">
         Cancel

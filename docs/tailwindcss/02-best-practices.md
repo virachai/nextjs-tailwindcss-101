@@ -53,9 +53,7 @@ Professional patterns and techniques used by top-tier frontend developers.
 ```tsx
 // ❌ Bad - repeated classes
 <div className="rounded-lg bg-white p-6 shadow-md">
-  <div className="rounded-lg bg-white p-6 shadow-md">
-    {/* Duplicate styles */}
-  </div>
+  <div className="rounded-lg bg-white p-6 shadow-md">{/* Duplicate styles */}</div>
 </div>;
 
 // ✅ Good - extract to variable
@@ -126,12 +124,10 @@ const Button: React.FC<ButtonProps> = ({
         'disabled:cursor-not-allowed disabled:opacity-50',
 
         // Variants
-        variant === 'primary' &&
-          'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
+        variant === 'primary' && 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
         variant === 'secondary' &&
           'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-blue-500',
-        variant === 'ghost' &&
-          'text-gray-700 hover:bg-gray-100 focus:ring-gray-500',
+        variant === 'ghost' && 'text-gray-700 hover:bg-gray-100 focus:ring-gray-500',
 
         // Sizes
         size === 'sm' && 'px-3 py-1.5 text-xs',
@@ -161,11 +157,7 @@ const Button: React.FC<ButtonProps> = ({
 const Card: React.FC<{ children: React.ReactNode; className?: string }> = ({
   children,
   className,
-}) => (
-  <div className={clsx('rounded-lg bg-white shadow-md', className)}>
-    {children}
-  </div>
-);
+}) => <div className={clsx('rounded-lg bg-white shadow-md', className)}>{children}</div>;
 
 const CardHeader: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <div className="border-b border-gray-200 px-6 py-4">{children}</div>
@@ -244,15 +236,11 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ className, children }) => (
-  <div className={cn('rounded-lg bg-white p-6 shadow-md', className)}>
-    {children}
-  </div>
+  <div className={cn('rounded-lg bg-white p-6 shadow-md', className)}>{children}</div>
 );
 
 // Override background
-<Card className="bg-gray-100">
-  {/* bg-white is replaced with bg-gray-100 */}
-</Card>;
+<Card className="bg-gray-100">{/* bg-white is replaced with bg-gray-100 */}</Card>;
 ```
 
 ### Variant-Based Patterns
@@ -464,9 +452,7 @@ const colorRoles = {
  * - Hover: Larger shadow
  */
 const Card: React.FC = ({ children }) => (
-  <div className="rounded-lg bg-white shadow-md transition-shadow hover:shadow-lg">
-    {children}
-  </div>
+  <div className="rounded-lg bg-white shadow-md transition-shadow hover:shadow-lg">{children}</div>
 );
 ```
 
@@ -611,9 +597,7 @@ const Card = ({ children }) => (
 ```tsx
 // ✅ Good - semantic component names
 const PrimaryButton = ({ children }) => (
-  <button className="rounded bg-blue-600 px-4 py-2 text-white">
-    {children}
-  </button>
+  <button className="rounded bg-blue-600 px-4 py-2 text-white">{children}</button>
 );
 
 // Not just utility classes everywhere

@@ -99,7 +99,9 @@ src/
 **Purpose**: Contains pure business logic, independent of frameworks
 
 **Components**:
+
 - **Entities**: Core business objects with identity
+
   ```typescript
   // locale.entity.ts
   export type LocaleCode = 'en' | 'th';
@@ -123,6 +125,7 @@ src/
   ```
 
 **Rules**:
+
 - ✅ No framework dependencies (React, Next.js)
 - ✅ Pure TypeScript/JavaScript
 - ✅ Only interfaces, types, classes
@@ -134,7 +137,9 @@ src/
 **Purpose**: Orchestrates domain logic and coordinates workflows
 
 **Components**:
+
 - **Use Cases**: Single-purpose business operations
+
   ```typescript
   // switch-locale.use-case.ts
   export class SwitchLocaleUseCase {
@@ -153,6 +158,7 @@ src/
 - **DTOs**: Data Transfer Objects for cross-boundary communication
 
 **Rules**:
+
 - ✅ Depends on Domain layer only
 - ✅ Framework-agnostic
 - ✅ Contains business workflows
@@ -164,7 +170,9 @@ src/
 **Purpose**: Implements external concerns (APIs, databases, frameworks)
 
 **Components**:
+
 - **Repository Implementations**: Concrete data access
+
   ```typescript
   // next-locale.repository.ts
   export class NextLocaleRepository implements ILocaleRepository {
@@ -184,6 +192,7 @@ src/
 - **Adapters**: Third-party library wrappers
 
 **Rules**:
+
 - ✅ Implements Domain interfaces
 - ✅ Framework-specific code allowed
 - ✅ External dependencies
@@ -194,7 +203,9 @@ src/
 **Purpose**: UI components and user interaction logic
 
 **Components**:
+
 - **Components**: React components
+
   ```typescript
   // locale-switcher.tsx
   export const LocaleSwitcher: React.FC = () => {
@@ -209,6 +220,7 @@ src/
   ```
 
 - **Hooks**: Custom React hooks that bridge Use Cases
+
   ```typescript
   // use-locale-switcher.ts
   export const useLocaleSwitcher = () => {
@@ -225,6 +237,7 @@ src/
 - **View Models**: Presentation state management
 
 **Rules**:
+
 - ✅ React/Next.js components
 - ✅ Calls Application Use Cases
 - ✅ UI state management
@@ -241,6 +254,7 @@ Presentation → Application → Domain ← Infrastructure
 ```
 
 **Key Principle**: Dependencies point inward
+
 - Outer layers depend on inner layers
 - Inner layers are independent
 - Domain has NO dependencies
@@ -277,6 +291,7 @@ features/[feature-name]/
 ### Domain Layer
 
 **[locale.entity.ts](../../src/features/i18n/domain/entities/locale.entity.ts)**
+
 ```typescript
 export type LocaleCode = 'en' | 'th';
 
@@ -295,6 +310,7 @@ export const SUPPORTED_LOCALES: Locale[] = [
 ```
 
 **[locale.repository.ts](../../src/features/i18n/domain/repositories/locale.repository.ts)**
+
 ```typescript
 export interface ILocaleRepository {
   getCurrentLocale(): LocaleCode;
@@ -306,6 +322,7 @@ export interface ILocaleRepository {
 ### Application Layer
 
 **[switch-locale.use-case.ts](../../src/features/i18n/application/use-cases/switch-locale.use-case.ts)**
+
 ```typescript
 export class SwitchLocaleUseCase {
   constructor(private localeRepository: ILocaleRepository) {}
@@ -322,12 +339,13 @@ export class SwitchLocaleUseCase {
 ### Infrastructure Layer
 
 **[next-locale.repository.ts](../../src/features/i18n/infrastructure/repositories/next-locale.repository.ts)**
+
 ```typescript
 export class NextLocaleRepository implements ILocaleRepository {
   constructor(
     private params: ReturnType<typeof useParams>,
     private pathname: string,
-    private router: ReturnType<typeof useRouter>,
+    private router: ReturnType<typeof useRouter>
   ) {}
 
   getCurrentLocale(): LocaleCode {
@@ -336,10 +354,7 @@ export class NextLocaleRepository implements ILocaleRepository {
   }
 
   setLocale(locale: LocaleCode): void {
-    const newPathname = this.pathname.replace(
-      `/${this.getCurrentLocale()}`,
-      `/${locale}`
-    );
+    const newPathname = this.pathname.replace(`/${this.getCurrentLocale()}`, `/${locale}`);
     this.router.replace(newPathname);
   }
 
@@ -352,6 +367,7 @@ export class NextLocaleRepository implements ILocaleRepository {
 ### Presentation Layer
 
 **[use-locale-switcher.ts](../../src/features/i18n/presentation/hooks/use-locale-switcher.ts)**
+
 ```typescript
 export const useLocaleSwitcher = () => {
   const params = useParams();
@@ -363,10 +379,7 @@ export const useLocaleSwitcher = () => {
     [params, pathname, router]
   );
 
-  const switchLocaleUseCase = useMemo(
-    () => new SwitchLocaleUseCase(repository),
-    [repository]
-  );
+  const switchLocaleUseCase = useMemo(() => new SwitchLocaleUseCase(repository), [repository]);
 
   return {
     currentLocale: repository.getCurrentLocale(),
@@ -377,6 +390,7 @@ export const useLocaleSwitcher = () => {
 ```
 
 **[locale-switcher.tsx](../../src/features/i18n/presentation/components/locale-switcher.tsx)**
+
 ```typescript
 export const LocaleSwitcher: React.FC = () => {
   const { currentLocale, locales, switchLocale } = useLocaleSwitcher();
@@ -415,22 +429,24 @@ Configured in [tsconfig.json](../../tsconfig.json):
 ```
 
 **Usage Examples**:
+
 ```typescript
 // Feature imports
+// Core imports (future)
+import { API_URL } from '@/core/config';
+
 import { LocaleSwitcher } from '@/features/i18n';
 import { ThemeProvider } from '@/features/theme';
 
 // Shared imports (future)
 import { Button } from '@/shared/components/button';
 import { useDebounce } from '@/shared/hooks/use-debounce';
-
-// Core imports (future)
-import { API_URL } from '@/core/config';
 ```
 
 ## Benefits of This Architecture
 
 ### 1. **Testability**
+
 ```typescript
 // Easy to test in isolation
 describe('SwitchLocaleUseCase', () => {
@@ -450,21 +466,25 @@ describe('SwitchLocaleUseCase', () => {
 ```
 
 ### 2. **Framework Independence**
+
 - Switch from Next.js to Remix? Only change Infrastructure layer
 - Change state management? Only affect Presentation layer
 - Domain logic remains untouched
 
 ### 3. **Scalability**
+
 - Add new features without affecting existing ones
 - Each feature is self-contained
 - Clear boundaries prevent coupling
 
 ### 4. **Maintainability**
+
 - Easy to locate code (feature-based structure)
 - Clear responsibilities (layer separation)
 - Predictable patterns across features
 
 ### 5. **Team Collaboration**
+
 - Multiple developers can work on different layers simultaneously
 - Clear contracts (interfaces) between layers
 - Reduced merge conflicts
@@ -474,6 +494,7 @@ describe('SwitchLocaleUseCase', () => {
 ### DO ✅
 
 1. **Keep Domain Pure**
+
    ```typescript
    // ✅ Good: Pure TypeScript
    export interface Locale {
@@ -483,6 +504,7 @@ describe('SwitchLocaleUseCase', () => {
    ```
 
 2. **Use Dependency Injection**
+
    ```typescript
    // ✅ Good: Inject dependencies
    class SwitchLocaleUseCase {
@@ -491,6 +513,7 @@ describe('SwitchLocaleUseCase', () => {
    ```
 
 3. **Define Interfaces in Domain**
+
    ```typescript
    // ✅ Good: Interface in Domain
    // domain/repositories/locale.repository.ts
@@ -511,6 +534,7 @@ describe('SwitchLocaleUseCase', () => {
 ### DON'T ❌
 
 1. **No Framework Code in Domain**
+
    ```typescript
    // ❌ Bad: React in Domain
    export interface Locale {
@@ -519,11 +543,13 @@ describe('SwitchLocaleUseCase', () => {
    ```
 
 2. **No Business Logic in Components**
+
    ```typescript
    // ❌ Bad: Logic in component
    const LocaleSwitcher = () => {
      const switchLocale = (locale) => {
-       if (!['en', 'th'].includes(locale)) { // NO!
+       if (!['en', 'th'].includes(locale)) {
+         // NO!
          throw new Error('Invalid');
        }
        // ...
@@ -532,6 +558,7 @@ describe('SwitchLocaleUseCase', () => {
    ```
 
 3. **No Direct Infrastructure in Presentation**
+
    ```typescript
    // ❌ Bad: Direct API call
    const Component = () => {
@@ -548,10 +575,13 @@ describe('SwitchLocaleUseCase', () => {
    ```
 
 4. **No Circular Dependencies**
+
    ```typescript
    // ❌ Bad: Domain depends on Infrastructure
    // domain/entities/locale.entity.ts
-   import { NextLocaleRepository } from '../../infrastructure'; // NO!
+   import { NextLocaleRepository } from '../../infrastructure';
+
+   // NO!
    ```
 
 ## Migration Guide
@@ -559,6 +589,7 @@ describe('SwitchLocaleUseCase', () => {
 ### Adding a New Feature
 
 1. **Create feature directory**
+
    ```bash
    mkdir -p src/features/[feature-name]/{domain,application,infrastructure,presentation}
    ```

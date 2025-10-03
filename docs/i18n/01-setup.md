@@ -40,8 +40,7 @@ export const routing = defineRouting({
   defaultLocale: 'en',
 });
 
-export const { Link, redirect, usePathname, useRouter } =
-  createNavigation(routing);
+export const { Link, redirect, usePathname, useRouter } = createNavigation(routing);
 ```
 
 **Key Points:**
@@ -101,7 +100,6 @@ export const config = {
 
 ```typescript
 import type { NextConfig } from 'next';
-
 import createNextIntlPlugin from 'next-intl/plugin';
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');

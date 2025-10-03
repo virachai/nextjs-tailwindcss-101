@@ -12,9 +12,9 @@ This guide demonstrates how to use path aliases in the project, following Airbnb
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/*"],              // Root alias (general use)
-      "@/core/*": ["./src/core/*"],    // Core utilities & config
-      "@/features/*": ["./src/features/*"],  // Feature modules
+      "@/*": ["./src/*"], // Root alias (general use)
+      "@/core/*": ["./src/core/*"], // Core utilities & config
+      "@/features/*": ["./src/features/*"], // Feature modules
       "@/shared/*": ["./src/shared/*"] // Shared components & utils
     }
   }
@@ -43,25 +43,26 @@ This guide demonstrates how to use path aliases in the project, following Airbnb
 ### Rule 1: Use Aliases for Cross-Feature/Cross-Layer Imports
 
 **✅ DO:**
+
 ```typescript
 // ✅ Importing from different features
+// ✅ Importing core utilities
+import { API_URL } from '@/core/config/env';
+import { ROUTES } from '@/core/constants/routes';
+
 import { LocaleSwitcher } from '@/features/i18n';
 import { ThemeProvider } from '@/features/theme';
 
 // ✅ Importing shared components
 import { Button } from '@/shared/components/Button';
 import { useDebounce } from '@/shared/hooks/use-debounce';
-
-// ✅ Importing core utilities
-import { API_URL } from '@/core/config/env';
-import { ROUTES } from '@/core/constants/routes';
 ```
 
 **❌ DON'T:**
+
 ```typescript
 // ❌ Relative paths across features
 import { LocaleSwitcher } from '../../../features/i18n/presentation/components/locale-switcher';
-
 // ❌ Relative paths across layers
 import { Button } from '../../../shared/components/Button';
 ```
@@ -71,22 +72,23 @@ import { Button } from '../../../shared/components/Button';
 ### Rule 2: Use Relative Imports Within Same Feature/Module
 
 **✅ DO:**
+
 ```typescript
 // features/i18n/presentation/components/locale-switcher.tsx
-
 // ✅ Relative import within same feature
-import { useLocaleSwitcher } from '../hooks/use-locale-switcher';
-import { LocaleSwitcherButton } from './LocaleSwitcherButton';
-
 // ✅ Alias for domain/application layers (different layer)
 import { type LocaleCode } from '@/features/i18n';
+
+import { useLocaleSwitcher } from '../hooks/use-locale-switcher';
+import { LocaleSwitcherButton } from './LocaleSwitcherButton';
 ```
 
 **❌ DON'T:**
+
 ```typescript
 // ❌ Using alias within same feature for nearby files
-import { useLocaleSwitcher } from '@/features/i18n/presentation/hooks/use-locale-switcher';
 import { LocaleSwitcherButton } from '@/features/i18n/presentation/components/LocaleSwitcherButton';
+import { useLocaleSwitcher } from '@/features/i18n/presentation/hooks/use-locale-switcher';
 ```
 
 ---
@@ -96,6 +98,7 @@ import { LocaleSwitcherButton } from '@/features/i18n/presentation/components/Lo
 **✅ DO:**
 
 **Feature barrel export** ([features/i18n/index.ts](../../src/features/i18n/index.ts)):
+
 ```typescript
 // features/i18n/index.ts
 export type { LocaleCode, Locale } from './domain/entities/locale.entity';
@@ -104,16 +107,18 @@ export { useLocaleSwitcher } from './presentation/hooks/use-locale-switcher';
 ```
 
 **Usage**:
+
 ```typescript
 // ✅ Import from barrel (public API)
-import { LocaleSwitcher, LocaleCode } from '@/features/i18n';
+import { LocaleCode, LocaleSwitcher } from '@/features/i18n';
 ```
 
 **❌ DON'T:**
+
 ```typescript
 // ❌ Deep imports bypass encapsulation
-import { LocaleSwitcher } from '@/features/i18n/presentation/components/locale-switcher';
 import { LocaleCode } from '@/features/i18n/domain/entities/locale.entity';
+import { LocaleSwitcher } from '@/features/i18n/presentation/components/locale-switcher';
 
 // ❌ Export everything in barrel (leak internal implementation)
 export * from './infrastructure/repositories/next-locale.repository'; // NO!
@@ -143,7 +148,6 @@ export interface Locale {
 
 ```typescript
 // features/i18n/application/use-cases/switch-locale.use-case.ts
-
 // ✅ Relative import from domain (same feature)
 import { type LocaleCode } from '../../domain/entities/locale.entity';
 import { type LocaleRepository } from '../../domain/repositories/locale.repository';
@@ -163,7 +167,6 @@ export class SwitchLocaleUseCase {
 
 ```typescript
 // features/i18n/infrastructure/repositories/next-locale.repository.ts
-
 // ✅ Framework imports (infrastructure layer)
 import { useParams, useRouter } from 'next/navigation';
 
@@ -209,29 +212,30 @@ Prettier is configured with `@trivago/prettier-plugin-sort-imports` to automatic
 ```typescript
 // 1. React/Next.js core (framework)
 import React from 'react';
+
 import { useRouter } from 'next/navigation';
-import type { Metadata } from 'next';
 
 // 2. Third-party libraries
 import { clsx } from 'clsx';
 import { format } from 'date-fns';
+import type { Metadata } from 'next';
 
+import { API_URL } from '@/core/config/env';
+
+import type { User } from '@/features/auth';
 // 3. Type imports (from aliases)
 import type { LocaleCode } from '@/features/i18n';
-import type { User } from '@/features/auth';
-
 // 4. Alias imports (grouped by alias)
 import { LocaleSwitcher } from '@/features/i18n';
 import { ThemeProvider } from '@/features/theme';
+
 import { Button } from '@/shared/components/Button';
-import { API_URL } from '@/core/config/env';
 
 // 5. Relative imports (same feature/module)
 import { useLocaleSwitcher } from '../hooks/use-locale-switcher';
-import { LocaleSwitcherButton } from './LocaleSwitcherButton';
-
 // 6. Styles (always last)
 import styles from './LocaleSwitcher.module.css';
+import { LocaleSwitcherButton } from './LocaleSwitcherButton';
 ```
 
 ### Prettier Configuration (package.json)
@@ -247,6 +251,7 @@ import styles from './LocaleSwitcher.module.css';
 ```
 
 **Create `.prettierrc.json`** (recommended):
+
 ```json
 {
   "semi": true,
@@ -266,10 +271,7 @@ import styles from './LocaleSwitcher.module.css';
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
-  "plugins": [
-    "@trivago/prettier-plugin-sort-imports",
-    "prettier-plugin-tailwindcss"
-  ]
+  "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"]
 }
 ```
 
@@ -319,14 +321,19 @@ export default async function Layout({ children }: { children: React.ReactNode }
 // features/i18n/presentation/hooks/use-locale-switcher.ts
 'use client';
 
-import { useParams, usePathname, useRouter } from 'next/navigation';
 import { useMemo } from 'react';
+
+import { useParams, usePathname, useRouter } from 'next/navigation';
 
 // ✅ Relative imports from same feature
 import { GetCurrentLocaleUseCase } from '../../application/use-cases/get-current-locale.use-case';
 import { SwitchLocaleUseCase } from '../../application/use-cases/switch-locale.use-case';
-import { SUPPORTED_LOCALES, type LocaleCode } from '../../domain/entities/locale.entity';
+import { type LocaleCode, SUPPORTED_LOCALES } from '../../domain/entities/locale.entity';
 import { NextLocaleRepository } from '../../infrastructure/repositories/next-locale.repository';
+
+// features/i18n/presentation/hooks/use-locale-switcher.ts
+
+// features/i18n/presentation/hooks/use-locale-switcher.ts
 
 export const useLocaleSwitcher = () => {
   const params = useParams();
@@ -338,10 +345,7 @@ export const useLocaleSwitcher = () => {
     [params, pathname, router]
   );
 
-  const switchLocaleUseCase = useMemo(
-    () => new SwitchLocaleUseCase(repository),
-    [repository]
-  );
+  const switchLocaleUseCase = useMemo(() => new SwitchLocaleUseCase(repository), [repository]);
 
   return {
     currentLocale: repository.getCurrentLocale(),
@@ -431,8 +435,8 @@ export default function HomePage() {
       "@/core/*": ["./src/core/*"],
       "@/features/*": ["./src/features/*"],
       "@/shared/*": ["./src/shared/*"],
-      "@/lib/*": ["./src/lib/*"],        // ✅ New alias
-      "@/types/*": ["./src/types/*"]     // ✅ New alias
+      "@/lib/*": ["./src/lib/*"], // ✅ New alias
+      "@/types/*": ["./src/types/*"] // ✅ New alias
     }
   }
 }
@@ -461,8 +465,8 @@ export default function HomePage() {
     "^react$",
     "^next/(.*)$",
     "<THIRD_PARTY_MODULES>",
-    "^@/types/(.*)$",        // ✅ New
-    "^@/lib/(.*)$",          // ✅ New
+    "^@/types/(.*)$", // ✅ New
+    "^@/lib/(.*)$", // ✅ New
     "^@/core/(.*)$",
     "^@/features/(.*)$",
     "^@/shared/(.*)$",
@@ -554,26 +558,33 @@ export default nextConfig;
 ### ✅ DO
 
 1. **Use barrel exports (index.ts) for public APIs**
+
    ```typescript
    // features/i18n/index.ts
    export { LocaleSwitcher } from './presentation/components/locale-switcher';
    ```
 
 2. **Use aliases for cross-feature imports**
+
    ```typescript
    import { LocaleSwitcher } from '@/features/i18n';
    ```
 
 3. **Use relative imports within same feature**
+
    ```typescript
    import { useLocaleSwitcher } from '../hooks/use-locale-switcher';
    ```
 
 4. **Group imports by source (framework → library → alias → relative)**
+
    ```typescript
    import React from 'react';
+
    import { clsx } from 'clsx';
+
    import { Button } from '@/shared/components/Button';
+
    import { helper } from './helper';
    ```
 
@@ -585,19 +596,23 @@ export default nextConfig;
 ### ❌ DON'T
 
 1. **Don't use deep imports**
+
    ```typescript
    // ❌ Bad
    import { LocaleSwitcher } from '@/features/i18n/presentation/components/locale-switcher';
    ```
 
 2. **Don't mix alias and relative for same location**
+
    ```typescript
    // ❌ Bad (inconsistent)
    import { useLocaleSwitcher } from '@/features/i18n/presentation/hooks/use-locale-switcher';
+
    import { LocaleSwitcherButton } from './LocaleSwitcherButton';
    ```
 
 3. **Don't create aliases for every folder**
+
    ```json
    // ❌ Too many aliases
    {
@@ -617,14 +632,14 @@ export default nextConfig;
 
 ## Quick Reference
 
-| Import Type | When to Use | Example |
-|------------|-------------|---------|
-| **Framework** | React, Next.js core | `import { useRouter } from 'next/navigation'` |
-| **Library** | Third-party packages | `import { clsx } from 'clsx'` |
-| **@/features** | Cross-feature imports | `import { LocaleSwitcher } from '@/features/i18n'` |
-| **@/shared** | Shared components/hooks | `import { Button } from '@/shared/components/Button'` |
-| **@/core** | App config/constants | `import { API_URL } from '@/core/config/env'` |
-| **Relative** | Same feature/module | `import { helper } from './helper'` |
+| Import Type    | When to Use             | Example                                               |
+| -------------- | ----------------------- | ----------------------------------------------------- |
+| **Framework**  | React, Next.js core     | `import { useRouter } from 'next/navigation'`         |
+| **Library**    | Third-party packages    | `import { clsx } from 'clsx'`                         |
+| **@/features** | Cross-feature imports   | `import { LocaleSwitcher } from '@/features/i18n'`    |
+| **@/shared**   | Shared components/hooks | `import { Button } from '@/shared/components/Button'` |
+| **@/core**     | App config/constants    | `import { API_URL } from '@/core/config/env'`         |
+| **Relative**   | Same feature/module     | `import { helper } from './helper'`                   |
 
 ---
 
@@ -651,18 +666,21 @@ export default nextConfig;
 ## Summary
 
 ✅ **Configured Aliases**:
+
 - `@/*` → Root src
 - `@/core/*` → Core utilities
 - `@/features/*` → Feature modules
 - `@/shared/*` → Shared components
 
 ✅ **Import Strategy**:
+
 - Use aliases for cross-feature/cross-layer
 - Use relative within same feature
 - Export public API via barrel (index.ts)
 - Enforce with ESLint + Prettier
 
 ✅ **Airbnb Standards**:
+
 - Consistent import ordering
 - No deep imports
 - Encapsulation via barrels

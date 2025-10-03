@@ -272,9 +272,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
     );
 
     const firstElement = focusableElements?.[0] as HTMLElement;
-    const lastElement = focusableElements?.[
-      focusableElements.length - 1
-    ] as HTMLElement;
+    const lastElement = focusableElements?.[focusableElements.length - 1] as HTMLElement;
 
     firstElement?.focus();
 
@@ -300,12 +298,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   }, [isOpen]);
 
   return (
-    <div
-      ref={modalRef}
-      role="dialog"
-      aria-modal="true"
-      className="fixed inset-0 z-50"
-    >
+    <div ref={modalRef} role="dialog" aria-modal="true" className="fixed inset-0 z-50">
       {children}
     </div>
   );

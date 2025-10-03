@@ -634,11 +634,7 @@ const Card: React.FC = () => (
     {/* Card container */}
     <div className="overflow-hidden rounded-lg bg-white shadow-md transition-shadow hover:shadow-xl">
       {/* Image */}
-      <img
-        src="/placeholder.jpg"
-        alt="Card"
-        className="h-48 w-full object-cover"
-      />
+      <img src="/placeholder.jpg" alt="Card" className="h-48 w-full object-cover" />
 
       {/* Content */}
       <div className="p-6">

@@ -141,10 +141,10 @@ Imports are automatically organized in this order:
 2. **Next.js Core**
 
    ```typescript
-   import type { Metadata } from 'next';
-
    import { headers } from 'next/headers';
    import Image from 'next/image';
+
+   import type { Metadata } from 'next';
    ```
 
 3. **Third-party Libraries**
@@ -157,25 +157,17 @@ Imports are automatically organized in this order:
 4. **Internal Modules (by category)**
 
    ```typescript
-   import type { User } from '@/types/user';
-
+   import { metadata } from '@/app/layout';
+   import { Header } from '@/components/Header';
+   import { Button } from '@/components/ui/Button';
    import { API_URL } from '@/config/constants';
-
-   import { prisma } from '@/lib/prisma';
-
    import { useAuth } from '@/hooks/useAuth';
-
+   import { prisma } from '@/lib/prisma';
+   import { userService } from '@/services/user';
+   import { useUserStore } from '@/stores/user';
    import { formatDate } from '@/utils/date';
 
-   import { userService } from '@/services/user';
-
-   import { useUserStore } from '@/stores/user';
-
-   import { Button } from '@/components/ui/Button';
-
-   import { Header } from '@/components/Header';
-
-   import { metadata } from '@/app/layout';
+   import type { User } from '@/types/user';
    ```
 
 5. **Relative Imports**

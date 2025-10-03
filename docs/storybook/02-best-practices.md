@@ -489,8 +489,7 @@ export const Primary: Story = {
   parameters: {
     docs: {
       description: {
-        story:
-          'The primary button is used for the main call-to-action on a page.',
+        story: 'The primary button is used for the main call-to-action on a page.',
       },
     },
   },
@@ -649,9 +648,7 @@ export const HeavyStory: Story = {
 ```tsx
 // Use optimized images
 export const WithImage: Story = {
-  render: () => (
-    <img src="/optimized-image.webp" alt="Description" loading="lazy" />
-  ),
+  render: () => <img src="/optimized-image.webp" alt="Description" loading="lazy" />,
 };
 ```
 

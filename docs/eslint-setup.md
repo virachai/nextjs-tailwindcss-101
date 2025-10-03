@@ -194,12 +194,7 @@ Add to your `.vscode/settings.json`:
 
 ```json
 {
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   }

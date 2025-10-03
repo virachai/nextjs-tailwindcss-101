@@ -183,9 +183,7 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({ variant, children }) => (
-  <button className={cn('rounded px-4 py-2', variants[variant])}>
-    {children}
-  </button>
+  <button className={cn('rounded px-4 py-2', variants[variant])}>{children}</button>
 );
 ```
 
@@ -608,15 +606,11 @@ const config: Config = {
 ```tsx
 // ❌ Bad - repetitive classes
 <div className="rounded-lg bg-white p-6 shadow-md">
-  <div className="rounded-lg bg-white p-6 shadow-md">
-    {/* Duplicate styles */}
-  </div>
+  <div className="rounded-lg bg-white p-6 shadow-md">{/* Duplicate styles */}</div>
 </div>;
 
 // ✅ Good - extract to component
-const Card = ({ children }) => (
-  <div className="rounded-lg bg-white p-6 shadow-md">{children}</div>
-);
+const Card = ({ children }) => <div className="rounded-lg bg-white p-6 shadow-md">{children}</div>;
 
 <Card>
   <Card>{/* Nested card */}</Card>
@@ -635,10 +629,7 @@ const getButtonClasses = (variant: string, size: string) => {
 };
 
 // Memoize for expensive calculations
-const buttonClasses = useMemo(
-  () => getButtonClasses(variant, size),
-  [variant, size]
-);
+const buttonClasses = useMemo(() => getButtonClasses(variant, size), [variant, size]);
 
 <button className={buttonClasses}>Click</button>;
 ```
@@ -680,10 +671,7 @@ const Tooltip: React.FC<TooltipProps> = ({ children, content }) => {
 
   return (
     <div className="relative inline-block">
-      <div
-        onMouseEnter={() => setIsOpen(true)}
-        onMouseLeave={() => setIsOpen(false)}
-      >
+      <div onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
         {typeof children === 'function' ? children({ isOpen }) : children}
       </div>
 
@@ -717,15 +705,11 @@ const ThemeProvider: React.FC = ({ children }) => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
   }, [theme]);
 
-  return (
-    <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>;
 };
 
 // Usage
-<div className="bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
-  Theme-aware content
-</div>;
+<div className="bg-white text-gray-900 dark:bg-gray-900 dark:text-white">Theme-aware content</div>;
 ```
 
 ### Feature Flags with Variants
@@ -750,9 +734,7 @@ const variants = {
 };
 
 const Button = ({ variant = 'control', children }) => (
-  <button className={cn('rounded px-4 py-2 text-white', variants[variant])}>
-    {children}
-  </button>
+  <button className={cn('rounded px-4 py-2 text-white', variants[variant])}>{children}</button>
 );
 ```
 

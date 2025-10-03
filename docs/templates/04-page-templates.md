@@ -159,12 +159,7 @@ export default function LandingPage() {
         features={[
           {
             icon: (
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -179,12 +174,7 @@ export default function LandingPage() {
           },
           {
             icon: (
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -199,12 +189,7 @@ export default function LandingPage() {
           },
           {
             icon: (
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -252,10 +237,7 @@ export default function LandingPage() {
                 company: 'InnovateLabs',
               },
             ].map((testimonial, index) => (
-              <div
-                key={index}
-                className="rounded-2xl bg-white p-8 shadow-lg dark:bg-neutral-900"
-              >
+              <div key={index} className="rounded-2xl bg-white p-8 shadow-lg dark:bg-neutral-900">
                 <p className="text-neutral-700 dark:text-neutral-300">
                   &quot;{testimonial.quote}&quot;
                 </p>
@@ -322,7 +304,6 @@ export default function LandingPage() {
 // src/app/dashboard/page.tsx
 import { Header } from '@/components/dashboard/Header';
 import { Sidebar } from '@/components/dashboard/Sidebar';
-
 import { AppShell } from '@/templates/layout/AppShell';
 import { TwoColumnLayout } from '@/templates/layout/TwoColumnLayout';
 
@@ -333,9 +314,7 @@ export default function DashboardPage() {
         {/* Stats Grid */}
         <div className="space-y-8">
           <div>
-            <h1 className="text-3xl font-bold text-neutral-900 dark:text-white">
-              Dashboard
-            </h1>
+            <h1 className="text-3xl font-bold text-neutral-900 dark:text-white">Dashboard</h1>
             <p className="mt-2 text-neutral-600 dark:text-neutral-400">
               Overview of your account performance
             </p>
@@ -426,14 +405,9 @@ export default function DashboardPage() {
                   time: '3 hours ago',
                 },
               ].map((activity, index) => (
-                <div
-                  key={index}
-                  className="flex items-center justify-between p-6"
-                >
+                <div key={index} className="flex items-center justify-between p-6">
                   <div>
-                    <p className="font-medium text-neutral-900 dark:text-white">
-                      {activity.user}
-                    </p>
+                    <p className="font-medium text-neutral-900 dark:text-white">{activity.user}</p>
                     <p className="text-sm text-neutral-600 dark:text-neutral-400">
                       {activity.action}
                     </p>
@@ -554,15 +528,15 @@ export default function BlogPostPage() {
         <CenteredLayout maxWidth="lg">
           <div className="prose prose-neutral prose-lg dark:prose-invert mx-auto py-16">
             <p className="lead">
-              We&apos;re excited to announce that we&apos;ve raised $20M in
-              Series A funding led by Acme Ventures to accelerate our mission of
-              making software development faster and more accessible.
+              We&apos;re excited to announce that we&apos;ve raised $20M in Series A funding led by
+              Acme Ventures to accelerate our mission of making software development faster and more
+              accessible.
             </p>
 
             <h2>What this means for you</h2>
             <p>
-              This funding allows us to double down on our commitment to
-              developers worldwide. Here&apos;s what you can expect:
+              This funding allows us to double down on our commitment to developers worldwide.
+              Here&apos;s what you can expect:
             </p>
 
             <ul>
@@ -573,23 +547,21 @@ export default function BlogPostPage() {
 
             <h2>Our journey so far</h2>
             <p>
-              Since launching in 2023, we&apos;ve grown to serve over 100,000
-              developers across 150 countries. Our platform has processed over
-              10 million deployments and counting.
+              Since launching in 2023, we&apos;ve grown to serve over 100,000 developers across 150
+              countries. Our platform has processed over 10 million deployments and counting.
             </p>
 
             <blockquote>
               <p>
-                &quot;This is just the beginning. We&apos;re building the future
-                of software development.&quot;
+                &quot;This is just the beginning. We&apos;re building the future of software
+                development.&quot;
               </p>
             </blockquote>
 
             <h2>What&apos;s next</h2>
             <p>
-              We&apos;re working on some exciting new features that we
-              can&apos;t wait to share. Stay tuned for updates in the coming
-              weeks.
+              We&apos;re working on some exciting new features that we can&apos;t wait to share.
+              Stay tuned for updates in the coming weeks.
             </p>
           </div>
         </CenteredLayout>
@@ -604,8 +576,8 @@ export default function BlogPostPage() {
                   Sarah Johnson
                 </h3>
                 <p className="mt-1 text-neutral-600 dark:text-neutral-400">
-                  Co-founder & CEO at YourBrand. Previously led product at
-                  BigTech. Passionate about developer tools and open source.
+                  Co-founder & CEO at YourBrand. Previously led product at BigTech. Passionate about
+                  developer tools and open source.
                 </p>
               </div>
             </div>
@@ -674,12 +646,7 @@ export default function PricingPage() {
       name: 'Starter',
       price: '$0',
       description: 'Perfect for trying out our platform',
-      features: [
-        '5 projects',
-        '10 team members',
-        'Basic analytics',
-        'Community support',
-      ],
+      features: ['5 projects', '10 team members', 'Basic analytics', 'Community support'],
       cta: 'Start Free',
       href: '/signup',
       featured: false,
@@ -726,8 +693,7 @@ export default function PricingPage() {
               Simple, transparent pricing
             </h1>
             <p className="mt-6 text-lg text-neutral-600 dark:text-neutral-300">
-              Choose the plan that&apos;s right for you. All plans include a
-              14-day free trial.
+              Choose the plan that&apos;s right for you. All plans include a 14-day free trial.
             </p>
           </div>
 
@@ -754,17 +720,13 @@ export default function PricingPage() {
                   <h3 className="text-xl font-semibold text-neutral-900 dark:text-white">
                     {plan.name}
                   </h3>
-                  <p className="mt-2 text-neutral-600 dark:text-neutral-400">
-                    {plan.description}
-                  </p>
+                  <p className="mt-2 text-neutral-600 dark:text-neutral-400">{plan.description}</p>
                   <p className="mt-6">
                     <span className="text-4xl font-bold text-neutral-900 dark:text-white">
                       {plan.price}
                     </span>
                     {plan.price !== 'Custom' && (
-                      <span className="text-neutral-600 dark:text-neutral-400">
-                        /month
-                      </span>
+                      <span className="text-neutral-600 dark:text-neutral-400">/month</span>
                     )}
                   </p>
                 </div>
@@ -785,9 +747,7 @@ export default function PricingPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-neutral-700 dark:text-neutral-300">
-                        {feature}
-                      </span>
+                      <span className="text-neutral-700 dark:text-neutral-300">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -840,8 +800,7 @@ export default function LoginPage() {
         <div className="text-white">
           <h1 className="text-4xl font-bold">Welcome back</h1>
           <p className="mt-4 text-lg text-white/90">
-            Sign in to continue to your account and start building amazing
-            products.
+            Sign in to continue to your account and start building amazing products.
           </p>
           <div className="mt-12 space-y-4">
             <div className="flex items-center space-x-3">
@@ -870,15 +829,10 @@ export default function LoginPage() {
       right={
         <div className="w-full">
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">
-              Sign in
-            </h2>
+            <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">Sign in</h2>
             <p className="mt-2 text-neutral-600 dark:text-neutral-400">
               Don&apos;t have an account?{' '}
-              <a
-                href="/signup"
-                className="text-brand-600 hover:text-brand-500 font-medium"
-              >
+              <a href="/signup" className="text-brand-600 hover:text-brand-500 font-medium">
                 Sign up
               </a>
             </p>

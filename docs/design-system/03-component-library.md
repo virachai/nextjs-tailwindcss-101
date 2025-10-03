@@ -111,9 +111,8 @@ components.
 // components/Button/Button.tsx
 import { forwardRef } from 'react';
 
-import { cva, type VariantProps } from 'class-variance-authority';
-
 import { cn } from '@/lib/utils';
+import { cva, type VariantProps } from 'class-variance-authority';
 
 const buttonVariants = cva(
   // Base styles
@@ -125,8 +124,7 @@ const buttonVariants = cva(
           'bg-brand-primary text-white hover:bg-brand-primary-hover focus-visible:ring-brand-primary',
         secondary:
           'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus-visible:ring-gray-500',
-        destructive:
-          'bg-red-600 text-white hover:bg-red-700 focus-visible:ring-red-500',
+        destructive: 'bg-red-600 text-white hover:bg-red-700 focus-visible:ring-red-500',
         ghost: 'hover:bg-gray-100 text-gray-700 focus-visible:ring-gray-500',
         link: 'text-brand-primary underline-offset-4 hover:underline',
       },
@@ -154,17 +152,7 @@ export interface ButtonProps
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    {
-      className,
-      variant,
-      size,
-      isLoading,
-      leftIcon,
-      rightIcon,
-      children,
-      disabled,
-      ...props
-    },
+    { className, variant, size, isLoading, leftIcon, rightIcon, children, disabled, ...props },
     ref
   ) => {
     return (
@@ -202,8 +190,7 @@ import { forwardRef } from 'react';
 
 import { cn } from '@/lib/utils';
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
   helperText?: string;
@@ -212,28 +199,13 @@ export interface InputProps
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  (
-    {
-      className,
-      label,
-      error,
-      helperText,
-      leftAddon,
-      rightAddon,
-      id,
-      ...props
-    },
-    ref
-  ) => {
+  ({ className, label, error, helperText, leftAddon, rightAddon, id, ...props }, ref) => {
     const inputId = id || label?.toLowerCase().replace(/\s+/g, '-');
 
     return (
       <div className="w-full">
         {label && (
-          <label
-            htmlFor={inputId}
-            className="mb-1 block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor={inputId} className="mb-1 block text-sm font-medium text-gray-700">
             {label}
             {props.required && <span className="ml-1 text-red-500">*</span>}
           </label>
@@ -261,11 +233,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
             aria-invalid={error ? 'true' : 'false'}
             aria-describedby={
-              error
-                ? `${inputId}-error`
-                : helperText
-                  ? `${inputId}-helper`
-                  : undefined
+              error ? `${inputId}-error` : helperText ? `${inputId}-helper` : undefined
             }
             {...props}
           />
@@ -310,8 +278,7 @@ export interface SelectOption {
   disabled?: boolean;
 }
 
-export interface SelectProps
-  extends React.SelectHTMLAttributes<HTMLSelectElement> {
+export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
   error?: string;
   options: SelectOption[];
@@ -325,10 +292,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     return (
       <div className="w-full">
         {label && (
-          <label
-            htmlFor={selectId}
-            className="mb-1 block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor={selectId} className="mb-1 block text-sm font-medium text-gray-700">
             {label}
             {props.required && <span className="ml-1 text-red-500">*</span>}
           </label>
@@ -353,11 +317,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
             </option>
           )}
           {options.map((option) => (
-            <option
-              key={option.value}
-              value={option.value}
-              disabled={option.disabled}
-            >
+            <option key={option.value} value={option.value} disabled={option.disabled}>
               {option.label}
             </option>
           ))}
@@ -404,11 +364,7 @@ export const Container: React.FC<ContainerProps> = ({
 
   return (
     <Component
-      className={cn(
-        'mx-auto w-full px-4 sm:px-6 lg:px-8',
-        maxWidthClasses[maxWidth],
-        className
-      )}
+      className={cn('mx-auto w-full px-4 sm:px-6 lg:px-8', maxWidthClasses[maxWidth], className)}
     >
       {children}
     </Component>
@@ -482,9 +438,8 @@ export const Stack: React.FC<StackProps> = ({
 
 ```tsx
 // components/Alert/Alert.tsx
-import { cva, type VariantProps } from 'class-variance-authority';
-
 import { cn } from '@/lib/utils';
+import { cva, type VariantProps } from 'class-variance-authority';
 
 const alertVariants = cva('relative w-full rounded-lg border p-4', {
   variants: {
@@ -547,9 +502,8 @@ export const Alert: React.FC<AlertProps> = ({
 // components/Modal/Modal.tsx
 import { useEffect } from 'react';
 
-import { createPortal } from 'react-dom';
-
 import { cn } from '@/lib/utils';
+import { createPortal } from 'react-dom';
 
 interface ModalProps {
   isOpen: boolean;
@@ -653,9 +607,7 @@ Modal.Body = ({ children }: { children: React.ReactNode }) => (
 );
 
 Modal.Footer = ({ children }: { children: React.ReactNode }) => (
-  <div className="flex justify-end gap-2 border-t border-gray-200 pt-4">
-    {children}
-  </div>
+  <div className="flex justify-end gap-2 border-t border-gray-200 pt-4">{children}</div>
 );
 ```
 
@@ -674,12 +626,7 @@ interface CardProps {
   onClick?: () => void;
 }
 
-export const Card: React.FC<CardProps> = ({
-  children,
-  className,
-  hover,
-  onClick,
-}) => {
+export const Card: React.FC<CardProps> = ({ children, className, hover, onClick }) => {
   return (
     <div
       className={cn(
@@ -695,16 +642,8 @@ export const Card: React.FC<CardProps> = ({
   );
 };
 
-Card.Header = ({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => (
-  <div className={cn('mb-4 border-b border-gray-200 pb-4', className)}>
-    {children}
-  </div>
+Card.Header = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <div className={cn('mb-4 border-b border-gray-200 pb-4', className)}>{children}</div>
 );
 
 Card.Title = ({ children }: { children: React.ReactNode }) => (
@@ -715,24 +654,12 @@ Card.Description = ({ children }: { children: React.ReactNode }) => (
   <p className="text-sm text-gray-600">{children}</p>
 );
 
-Card.Content = ({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => <div className={cn('text-gray-600', className)}>{children}</div>;
+Card.Content = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <div className={cn('text-gray-600', className)}>{children}</div>
+);
 
-Card.Footer = ({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => (
-  <div className={cn('mt-4 border-t border-gray-200 pt-4', className)}>
-    {children}
-  </div>
+Card.Footer = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <div className={cn('mt-4 border-t border-gray-200 pt-4', className)}>{children}</div>
 );
 ```
 
@@ -821,9 +748,7 @@ const Tabs: React.FC & {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <TabsContext.Provider value={{ activeTab, setActiveTab }}>
-      {children}
-    </TabsContext.Provider>
+    <TabsContext.Provider value={{ activeTab, setActiveTab }}>{children}</TabsContext.Provider>
   );
 };
 
@@ -851,11 +776,7 @@ Tabs.Panel = TabPanel;
 ```tsx
 const DataFetcher: React.FC<{
   url: string;
-  children: (
-    data: any,
-    loading: boolean,
-    error: Error | null
-  ) => React.ReactNode;
+  children: (data: any, loading: boolean, error: Error | null) => React.ReactNode;
 }> = ({ url, children }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -989,10 +910,7 @@ describe('Button', () => {
 ```tsx
 it('has proper ARIA attributes', () => {
   render(<Button aria-label="Close dialog">×</Button>);
-  expect(screen.getByRole('button')).toHaveAttribute(
-    'aria-label',
-    'Close dialog'
-  );
+  expect(screen.getByRole('button')).toHaveAttribute('aria-label', 'Close dialog');
 });
 
 it('is keyboard accessible', () => {

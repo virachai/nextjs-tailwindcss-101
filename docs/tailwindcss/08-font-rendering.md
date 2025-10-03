@@ -127,9 +127,7 @@ can appear sharper and more precise, especially at smaller sizes.
 {
   /* Small font sizes needing clarity */
 }
-<small className="text-xs subpixel-antialiased">
-  Enhanced readability at small sizes
-</small>;
+<small className="text-xs subpixel-antialiased">Enhanced readability at small sizes</small>;
 
 {
   /* Body text on standard displays */
@@ -158,8 +156,8 @@ can appear sharper and more precise, especially at smaller sizes.
 <article className="bg-white text-gray-900">
   <h2 className="text-3xl font-semibold subpixel-antialiased">Article Title</h2>
   <p className="leading-relaxed subpixel-antialiased">
-    Body text with enhanced clarity and sharpness for better readability in
-    long-form content on light backgrounds.
+    Body text with enhanced clarity and sharpness for better readability in long-form content on
+    light backgrounds.
   </p>
 </article>
 ```

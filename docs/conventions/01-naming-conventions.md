@@ -21,27 +21,27 @@ This document outlines naming standards inspired by leading tech companies (Airb
 
 ### TypeScript/JavaScript Files
 
-| Type | Convention | Example | Notes |
-|------|------------|---------|-------|
-| React Components | **PascalCase** + `.tsx` | `LocaleSwitcher.tsx` | Matches component name |
-| Hooks | **kebab-case** + `.ts` | `use-locale-switcher.ts` | Prefix with `use-` |
-| Utilities | **kebab-case** + `.ts` | `format-date.ts` | Descriptive verb |
-| Types/Interfaces | **kebab-case** + `.ts` | `locale.types.ts` | Suffix with `.types` |
-| Constants | **kebab-case** + `.ts` | `api-endpoints.ts` | Plural if multiple |
-| Configs | **kebab-case** + `.ts` | `next.config.ts` | Framework standard |
+| Type             | Convention              | Example                  | Notes                  |
+| ---------------- | ----------------------- | ------------------------ | ---------------------- |
+| React Components | **PascalCase** + `.tsx` | `LocaleSwitcher.tsx`     | Matches component name |
+| Hooks            | **kebab-case** + `.ts`  | `use-locale-switcher.ts` | Prefix with `use-`     |
+| Utilities        | **kebab-case** + `.ts`  | `format-date.ts`         | Descriptive verb       |
+| Types/Interfaces | **kebab-case** + `.ts`  | `locale.types.ts`        | Suffix with `.types`   |
+| Constants        | **kebab-case** + `.ts`  | `api-endpoints.ts`       | Plural if multiple     |
+| Configs          | **kebab-case** + `.ts`  | `next.config.ts`         | Framework standard     |
 
 ### Special File Names
 
-| Type | Pattern | Example |
-|------|---------|---------|
-| Entities | `*.entity.ts` | `locale.entity.ts` |
-| Repositories | `*.repository.ts` | `locale.repository.ts` |
-| Use Cases | `*.use-case.ts` | `switch-locale.use-case.ts` |
-| Services | `*.service.ts` | `auth.service.ts` |
-| DTOs | `*.dto.ts` | `user-profile.dto.ts` |
-| Tests | `*.test.ts[x]` | `locale-switcher.test.tsx` |
-| Specs | `*.spec.ts[x]` | `locale-switcher.spec.tsx` |
-| Stories (Storybook) | `*.stories.tsx` | `button.stories.tsx` |
+| Type                | Pattern           | Example                     |
+| ------------------- | ----------------- | --------------------------- |
+| Entities            | `*.entity.ts`     | `locale.entity.ts`          |
+| Repositories        | `*.repository.ts` | `locale.repository.ts`      |
+| Use Cases           | `*.use-case.ts`   | `switch-locale.use-case.ts` |
+| Services            | `*.service.ts`    | `auth.service.ts`           |
+| DTOs                | `*.dto.ts`        | `user-profile.dto.ts`       |
+| Tests               | `*.test.ts[x]`    | `locale-switcher.test.tsx`  |
+| Specs               | `*.spec.ts[x]`    | `locale-switcher.spec.tsx`  |
+| Stories (Storybook) | `*.stories.tsx`   | `button.stories.tsx`        |
 
 ### Examples
 
@@ -84,12 +84,12 @@ src/features/i18n/
 
 ### General Rules
 
-| Type | Convention | Example |
-|------|------------|---------|
-| Features | **kebab-case**, **singular** | `i18n/`, `theme/`, `auth/` |
-| Layer folders | **kebab-case**, **singular** | `domain/`, `application/`, `infrastructure/` |
-| Shared utilities | **kebab-case**, **plural** | `hooks/`, `utils/`, `types/` |
-| Component folders | **kebab-case** | `locale-switcher/` |
+| Type              | Convention                   | Example                                      |
+| ----------------- | ---------------------------- | -------------------------------------------- |
+| Features          | **kebab-case**, **singular** | `i18n/`, `theme/`, `auth/`                   |
+| Layer folders     | **kebab-case**, **singular** | `domain/`, `application/`, `infrastructure/` |
+| Shared utilities  | **kebab-case**, **plural**   | `hooks/`, `utils/`, `types/`                 |
+| Component folders | **kebab-case**               | `locale-switcher/`                           |
 
 ### Feature Structure
 
@@ -151,27 +151,27 @@ const userProfile = { name: 'John' };
 const itemCount = 10;
 
 // ❌ BAD
-const CurrentLocale = 'en';      // ❌ PascalCase for variable
-const is_loading = false;        // ❌ snake_case
-const usr = { name: 'John' };    // ❌ Abbreviated
-const cnt = 10;                  // ❌ Unclear abbreviation
+const CurrentLocale = 'en'; // ❌ PascalCase for variable
+const is_loading = false; // ❌ snake_case
+const usr = { name: 'John' }; // ❌ Abbreviated
+const cnt = 10; // ❌ Unclear abbreviation
 ```
 
 ### Functions
 
 ```typescript
 // ✅ GOOD: camelCase, verb prefix
-function getCurrentLocale(): LocaleCode { }
-function switchLocale(locale: LocaleCode): void { }
-function formatDate(date: Date): string { }
-function validateEmail(email: string): boolean { }
-function handleClick(): void { }
+function getCurrentLocale(): LocaleCode {}
+function switchLocale(locale: LocaleCode): void {}
+function formatDate(date: Date): string {}
+function validateEmail(email: string): boolean {}
+function handleClick(): void {}
 
 // ❌ BAD
-function GetCurrentLocale() { }           // ❌ PascalCase
-function locale_switch() { }              // ❌ snake_case
-function locale() { }                     // ❌ No verb
-function doStuff() { }                    // ❌ Vague
+function GetCurrentLocale() {} // ❌ PascalCase
+function locale_switch() {} // ❌ snake_case
+function locale() {} // ❌ No verb
+function doStuff() {} // ❌ Vague
 ```
 
 ### Boolean Variables
@@ -185,9 +185,9 @@ const canEdit = false;
 const isDisabled = true;
 
 // ❌ BAD
-const loading = true;                     // ❌ No prefix
-const error = false;                      // ❌ Not boolean-like
-const redirect = true;                    // ❌ Unclear
+const loading = true; // ❌ No prefix
+const error = false; // ❌ Not boolean-like
+const redirect = true; // ❌ Unclear
 ```
 
 ### Arrays & Collections
@@ -199,24 +199,24 @@ const users = [{ name: 'John' }];
 const errorMessages = ['Error 1', 'Error 2'];
 
 // ❌ BAD
-const localeList = ['en', 'th'];          // ❌ Redundant "List"
-const userArray = [{ name: 'John' }];     // ❌ Redundant "Array"
-const locale = ['en', 'th'];              // ❌ Should be plural
+const localeList = ['en', 'th']; // ❌ Redundant "List"
+const userArray = [{ name: 'John' }]; // ❌ Redundant "Array"
+const locale = ['en', 'th']; // ❌ Should be plural
 ```
 
 ### Handler Functions
 
 ```typescript
 // ✅ GOOD: Prefix with handle/on
-const handleClick = () => { };
-const handleSubmit = () => { };
-const onLocaleChange = (locale: LocaleCode) => { };
-const onError = (error: Error) => { };
+const handleClick = () => {};
+const handleSubmit = () => {};
+const onLocaleChange = (locale: LocaleCode) => {};
+const onError = (error: Error) => {};
 
 // ❌ BAD
-const click = () => { };                  // ❌ No prefix
-const doSubmit = () => { };               // ❌ Use handle/on
-const localeChange = () => { };           // ❌ No prefix
+const click = () => {}; // ❌ No prefix
+const doSubmit = () => {}; // ❌ Use handle/on
+const localeChange = () => {}; // ❌ No prefix
 ```
 
 ---
@@ -227,16 +227,16 @@ const localeChange = () => { };           // ❌ No prefix
 
 ```typescript
 // ✅ GOOD: PascalCase, descriptive
-export const LocaleSwitcher: React.FC = () => { };
-export const ThemeToggle: React.FC = () => { };
-export const UserProfileCard: React.FC = () => { };
-export const NavigationMenu: React.FC = () => { };
+export const LocaleSwitcher: React.FC = () => {};
+export const ThemeToggle: React.FC = () => {};
+export const UserProfileCard: React.FC = () => {};
+export const NavigationMenu: React.FC = () => {};
 
 // ❌ BAD
-export const localeSwitcher = () => { };   // ❌ camelCase
-export const locale_switcher = () => { };  // ❌ snake_case
-export const LS = () => { };               // ❌ Abbreviated
-export const Switcher = () => { };         // ❌ Too generic
+export const localeSwitcher = () => {}; // ❌ camelCase
+export const locale_switcher = () => {}; // ❌ snake_case
+export const LS = () => {}; // ❌ Abbreviated
+export const Switcher = () => {}; // ❌ Too generic
 ```
 
 ### Component Files
@@ -255,17 +255,13 @@ export const LocaleSwitcher: React.FC = () => { };  // ❌ Mismatch
 
 ```typescript
 // ✅ GOOD: Prefix with "with"
-export const withAuth = <P extends object>(
-  Component: React.ComponentType<P>
-) => { };
+export const withAuth = <P extends object>(Component: React.ComponentType<P>) => {};
 
-export const withLocale = <P extends object>(
-  Component: React.ComponentType<P>
-) => { };
+export const withLocale = <P extends object>(Component: React.ComponentType<P>) => {};
 
 // ❌ BAD
-export const authHOC = () => { };          // ❌ No "with" prefix
-export const AuthWrapper = () => { };      // ❌ Use "with" prefix
+export const authHOC = () => {}; // ❌ No "with" prefix
+export const AuthWrapper = () => {}; // ❌ Use "with" prefix
 ```
 
 ### Render Props Components
@@ -293,19 +289,19 @@ const RenderData = () => { };              // ❌ Unclear purpose
 
 ```typescript
 // ✅ GOOD: PascalCase, prefix with "I" for repository/service interfaces
-export interface ILocaleRepository { }
-export interface IAuthService { }
-export interface IUserRepository { }
+export interface ILocaleRepository {}
+export interface IAuthService {}
+export interface IUserRepository {}
 
 // ✅ GOOD: No prefix for data interfaces
-export interface Locale { }
-export interface User { }
-export interface Theme { }
+export interface Locale {}
+export interface User {}
+export interface Theme {}
 
 // ❌ BAD
-export interface localeRepository { }      // ❌ camelCase
-export interface locale_repository { }     // ❌ snake_case
-export interface ILocale { }               // ❌ "I" prefix for data interface
+export interface localeRepository {} // ❌ camelCase
+export interface locale_repository {} // ❌ snake_case
+export interface ILocale {} // ❌ "I" prefix for data interface
 ```
 
 ### Type Aliases
@@ -317,8 +313,8 @@ export type ThemeMode = 'light' | 'dark';
 export type UserId = string;
 
 // ❌ BAD
-export type localeCode = 'en' | 'th';      // ❌ camelCase
-export type LOCALE_CODE = 'en' | 'th';     // ❌ UPPER_CASE
+export type localeCode = 'en' | 'th'; // ❌ camelCase
+export type LOCALE_CODE = 'en' | 'th'; // ❌ UPPER_CASE
 ```
 
 ### Generics
@@ -343,12 +339,12 @@ export interface LocaleSwitcherProps {
   className?: string;
 }
 
-export const LocaleSwitcher: React.FC<LocaleSwitcherProps> = (props) => { };
+export const LocaleSwitcher: React.FC<LocaleSwitcherProps> = (props) => {};
 
 // ❌ BAD
-export interface ILocaleSwitcherProps { }  // ❌ "I" prefix
-export interface Props { }                 // ❌ Too generic
-export interface LocaleSwitcherProperties { } // ❌ Use "Props"
+export interface ILocaleSwitcherProps {} // ❌ "I" prefix
+export interface Props {} // ❌ Too generic
+export interface LocaleSwitcherProperties {} // ❌ Use "Props"
 ```
 
 ---
@@ -373,16 +369,24 @@ export interface LocaleSwitcherProperties { } // ❌ Use "Props"
 
 ```css
 /* ✅ GOOD: BEM (Block Element Modifier) */
-.locale-switcher { }
-.locale-switcher__button { }
-.locale-switcher__button--active { }
-.locale-switcher__icon { }
+.locale-switcher {
+}
+.locale-switcher__button {
+}
+.locale-switcher__button--active {
+}
+.locale-switcher__icon {
+}
 
 /* ❌ BAD */
-.LocaleSwitcher { }                /* ❌ PascalCase */
-.locale_switcher { }               /* ❌ snake_case */
-.localeSwitcher { }                /* ❌ camelCase */
-.ls-btn { }                        /* ❌ Abbreviated */
+.LocaleSwitcher {
+} /* ❌ PascalCase */
+.locale_switcher {
+} /* ❌ snake_case */
+.localeSwitcher {
+} /* ❌ camelCase */
+.ls-btn {
+} /* ❌ Abbreviated */
 ```
 
 ### CSS Module Classes
@@ -537,35 +541,35 @@ export const LOCALE_CODES = ['en', 'th'] as const;
 
 ## Summary Table
 
-| Category | Convention | Example |
-|----------|-----------|---------|
-| **Files** | | |
-| React Components | PascalCase.tsx | `LocaleSwitcher.tsx` |
-| Hooks | kebab-case.ts | `use-locale-switcher.ts` |
-| Utilities | kebab-case.ts | `format-date.ts` |
-| Entities | kebab-case.entity.ts | `locale.entity.ts` |
-| Use Cases | kebab-case.use-case.ts | `switch-locale.use-case.ts` |
-| **Directories** | | |
-| Features | kebab-case (singular) | `i18n/`, `theme/` |
-| Layers | kebab-case (singular) | `domain/`, `application/` |
-| Collections | kebab-case (plural) | `hooks/`, `utils/` |
-| **Code** | | |
-| Variables | camelCase | `currentLocale` |
-| Functions | camelCase (verb prefix) | `getCurrentLocale()` |
-| Components | PascalCase | `LocaleSwitcher` |
-| Interfaces (DI) | IPascalCase | `ILocaleRepository` |
-| Interfaces (Data) | PascalCase | `Locale`, `User` |
-| Types | PascalCase | `LocaleCode` |
-| Constants (primitive) | UPPER_SNAKE_CASE | `MAX_RETRIES` |
-| Constants (object) | PascalCase/camelCase | `ThemeConfig` |
-| Enums | PascalCase | `LocaleCode.English` |
-| **CSS** | | |
-| Custom classes | kebab-case (BEM) | `.locale-switcher__button` |
-| Module classes | camelCase | `styles.buttonActive` |
-| **Tests** | | |
-| Unit tests | kebab-case.test.ts | `locale-switcher.test.tsx` |
-| Integration tests | kebab-case.spec.ts | `auth-flow.spec.ts` |
-| E2E tests | kebab-case.e2e.ts | `user-flow.e2e.ts` |
+| Category              | Convention              | Example                     |
+| --------------------- | ----------------------- | --------------------------- |
+| **Files**             |                         |                             |
+| React Components      | PascalCase.tsx          | `LocaleSwitcher.tsx`        |
+| Hooks                 | kebab-case.ts           | `use-locale-switcher.ts`    |
+| Utilities             | kebab-case.ts           | `format-date.ts`            |
+| Entities              | kebab-case.entity.ts    | `locale.entity.ts`          |
+| Use Cases             | kebab-case.use-case.ts  | `switch-locale.use-case.ts` |
+| **Directories**       |                         |                             |
+| Features              | kebab-case (singular)   | `i18n/`, `theme/`           |
+| Layers                | kebab-case (singular)   | `domain/`, `application/`   |
+| Collections           | kebab-case (plural)     | `hooks/`, `utils/`          |
+| **Code**              |                         |                             |
+| Variables             | camelCase               | `currentLocale`             |
+| Functions             | camelCase (verb prefix) | `getCurrentLocale()`        |
+| Components            | PascalCase              | `LocaleSwitcher`            |
+| Interfaces (DI)       | IPascalCase             | `ILocaleRepository`         |
+| Interfaces (Data)     | PascalCase              | `Locale`, `User`            |
+| Types                 | PascalCase              | `LocaleCode`                |
+| Constants (primitive) | UPPER_SNAKE_CASE        | `MAX_RETRIES`               |
+| Constants (object)    | PascalCase/camelCase    | `ThemeConfig`               |
+| Enums                 | PascalCase              | `LocaleCode.English`        |
+| **CSS**               |                         |                             |
+| Custom classes        | kebab-case (BEM)        | `.locale-switcher__button`  |
+| Module classes        | camelCase               | `styles.buttonActive`       |
+| **Tests**             |                         |                             |
+| Unit tests            | kebab-case.test.ts      | `locale-switcher.test.tsx`  |
+| Integration tests     | kebab-case.spec.ts      | `auth-flow.spec.ts`         |
+| E2E tests             | kebab-case.e2e.ts       | `user-flow.e2e.ts`          |
 
 ---
 
@@ -573,37 +577,37 @@ export const LOCALE_CODES = ['en', 'th'] as const;
 
 ### Prefixes
 
-| Prefix | Usage | Example |
-|--------|-------|---------|
-| `use-` | Custom React hooks | `use-locale-switcher.ts` |
-| `with-` | Higher-Order Components | `withAuth.tsx` |
-| `is-` | Boolean variables | `isLoading`, `isActive` |
-| `has-` | Boolean variables (possession) | `hasError`, `hasPermission` |
-| `should-` | Boolean variables (intent) | `shouldRedirect` |
-| `can-` | Boolean variables (ability) | `canEdit`, `canDelete` |
-| `handle-` | Event handlers | `handleClick`, `handleSubmit` |
-| `on-` | Event callbacks (props) | `onLocaleChange`, `onError` |
-| `get-` | Getter functions | `getCurrentLocale()` |
-| `set-` | Setter functions | `setLocale()` |
-| `fetch-` | API calls | `fetchUserProfile()` |
-| `validate-` | Validation functions | `validateEmail()` |
+| Prefix      | Usage                          | Example                       |
+| ----------- | ------------------------------ | ----------------------------- |
+| `use-`      | Custom React hooks             | `use-locale-switcher.ts`      |
+| `with-`     | Higher-Order Components        | `withAuth.tsx`                |
+| `is-`       | Boolean variables              | `isLoading`, `isActive`       |
+| `has-`      | Boolean variables (possession) | `hasError`, `hasPermission`   |
+| `should-`   | Boolean variables (intent)     | `shouldRedirect`              |
+| `can-`      | Boolean variables (ability)    | `canEdit`, `canDelete`        |
+| `handle-`   | Event handlers                 | `handleClick`, `handleSubmit` |
+| `on-`       | Event callbacks (props)        | `onLocaleChange`, `onError`   |
+| `get-`      | Getter functions               | `getCurrentLocale()`          |
+| `set-`      | Setter functions               | `setLocale()`                 |
+| `fetch-`    | API calls                      | `fetchUserProfile()`          |
+| `validate-` | Validation functions           | `validateEmail()`             |
 
 ### Suffixes
 
-| Suffix | Usage | Example |
-|--------|-------|---------|
-| `.entity.ts` | Domain entities | `locale.entity.ts` |
-| `.repository.ts` | Repository interfaces/implementations | `locale.repository.ts` |
-| `.use-case.ts` | Application use cases | `switch-locale.use-case.ts` |
-| `.service.ts` | Services | `auth.service.ts` |
-| `.dto.ts` | Data Transfer Objects | `user-profile.dto.ts` |
-| `.types.ts` | Type definitions | `locale.types.ts` |
-| `.test.ts[x]` | Unit tests | `locale-switcher.test.tsx` |
-| `.spec.ts[x]` | Integration tests | `auth-flow.spec.ts` |
-| `.e2e.ts` | End-to-end tests | `user-registration.e2e.ts` |
-| `.stories.tsx` | Storybook stories | `button.stories.tsx` |
-| `.module.css` | CSS Modules | `button.module.css` |
-| `Props` | Component props interface | `LocaleSwitcherProps` |
+| Suffix           | Usage                                 | Example                     |
+| ---------------- | ------------------------------------- | --------------------------- |
+| `.entity.ts`     | Domain entities                       | `locale.entity.ts`          |
+| `.repository.ts` | Repository interfaces/implementations | `locale.repository.ts`      |
+| `.use-case.ts`   | Application use cases                 | `switch-locale.use-case.ts` |
+| `.service.ts`    | Services                              | `auth.service.ts`           |
+| `.dto.ts`        | Data Transfer Objects                 | `user-profile.dto.ts`       |
+| `.types.ts`      | Type definitions                      | `locale.types.ts`           |
+| `.test.ts[x]`    | Unit tests                            | `locale-switcher.test.tsx`  |
+| `.spec.ts[x]`    | Integration tests                     | `auth-flow.spec.ts`         |
+| `.e2e.ts`        | End-to-end tests                      | `user-registration.e2e.ts`  |
+| `.stories.tsx`   | Storybook stories                     | `button.stories.tsx`        |
+| `.module.css`    | CSS Modules                           | `button.module.css`         |
+| `Props`          | Component props interface             | `LocaleSwitcherProps`       |
 
 ---
 

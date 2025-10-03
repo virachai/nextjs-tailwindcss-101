@@ -1,8 +1,7 @@
-import type { Metadata } from 'next';
-
 import { Geist, Geist_Mono as GeistMono } from 'next/font/google';
 import { notFound } from 'next/navigation';
 
+import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 

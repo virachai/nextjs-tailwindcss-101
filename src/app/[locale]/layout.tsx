@@ -6,10 +6,10 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
-import { ThemeProvider } from '@/components/theme-provider';
-import { ThemeToggle } from '@/components/theme-toggle';
-
-import { routing } from '@/i18n/routing';
+import { routing } from '@/features/i18n/infrastructure/config/routing';
+import { LocaleSwitcher } from '@/features/i18n/presentation/components/locale-switcher';
+import { ThemeProvider } from '@/features/theme/presentation/components/theme-provider';
+import { ThemeToggle } from '@/features/theme/presentation/components/theme-toggle';
 
 import '../globals.css';
 
@@ -46,6 +46,7 @@ const LocaleLayout: React.FC<{
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
             <ThemeToggle />
+            <LocaleSwitcher />
             {children}
           </ThemeProvider>
         </NextIntlClientProvider>

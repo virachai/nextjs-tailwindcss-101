@@ -96,6 +96,8 @@
     "@typescript-eslint/no-non-null-assertion": "warn",
 
     // General
+    "no-useless-constructor": "off",
+    "no-empty-function": "off",
     "no-console": [
       "warn",
       {
@@ -108,6 +110,58 @@
       {
         "allowShortCircuit": true,
         "allowTernary": true
+      }
+    ],
+
+    // File size limits
+    "max-lines": [
+      "error",
+      {
+        "max": 300,
+        "skipBlankLines": true,
+        "skipComments": true
+      }
+    ],
+    "max-lines-per-function": [
+      "warn",
+      {
+        "max": 50,
+        "skipBlankLines": true,
+        "skipComments": true
+      }
+    ],
+
+    // Naming conventions
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "variable",
+        "format": ["camelCase", "UPPER_CASE", "PascalCase"],
+        "leadingUnderscore": "allow"
+      },
+      {
+        "selector": "function",
+        "format": ["camelCase", "PascalCase"]
+      },
+      {
+        "selector": "typeLike",
+        "format": ["PascalCase"]
+      },
+      {
+        "selector": "interface",
+        "format": ["PascalCase"],
+        "custom": {
+          "regex": "^I[A-Z]",
+          "match": false
+        }
+      },
+      {
+        "selector": "typeAlias",
+        "format": ["PascalCase"]
+      },
+      {
+        "selector": "enumMember",
+        "format": ["PascalCase"]
       }
     ]
   },

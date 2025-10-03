@@ -82,22 +82,9 @@ re-renders). They enable interactivity and use browser APIs.
 ### Example: Client Component
 
 ```tsx
-// components/AddToCartButton.tsx
 'use client';
 
 import { useState } from 'react';
-
-// components/AddToCartButton.tsx
-
-// components/AddToCartButton.tsx
-
-// components/AddToCartButton.tsx
-
-// components/AddToCartButton.tsx
-
-// components/AddToCartButton.tsx
-
-// components/AddToCartButton.tsx
 
 // components/AddToCartButton.tsx
 
@@ -208,22 +195,9 @@ export default function Page() {
 Third-party components often need `'use client'`. Create wrapper components:
 
 ```tsx
-// components/Map.tsx
 'use client';
 
 import { MapContainer } from 'react-leaflet';
-
-// components/Map.tsx
-
-// components/Map.tsx
-
-// components/Map.tsx
-
-// components/Map.tsx
-
-// components/Map.tsx
-
-// components/Map.tsx
 
 // components/Map.tsx
 
@@ -261,22 +235,9 @@ export default async function PostsPage() {
 ### Client Components: useEffect or SWR/React Query
 
 ```tsx
-// components/LivePosts.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
-
-// components/LivePosts.tsx
-
-// components/LivePosts.tsx
-
-// components/LivePosts.tsx
-
-// components/LivePosts.tsx
-
-// components/LivePosts.tsx
-
-// components/LivePosts.tsx
 
 // components/LivePosts.tsx
 
@@ -326,22 +287,9 @@ export default function Page() {
 ### ❌ Mistake 2: Importing Server-Only Code in Client Components
 
 ```tsx
-// components/UserProfile.tsx - WRONG
 'use client';
 
 import { db } from '@/lib/database';
-
-// components/UserProfile.tsx - WRONG
-
-// components/UserProfile.tsx - WRONG
-
-// components/UserProfile.tsx - WRONG
-
-// components/UserProfile.tsx - WRONG
-
-// components/UserProfile.tsx - WRONG
-
-// components/UserProfile.tsx - WRONG
 
 // components/UserProfile.tsx - WRONG
 // Error! Can't import server-only code
@@ -553,7 +501,6 @@ The `'use server'` directive marks code that should **only execute on the server
 Mark async functions as Server Actions for form submissions and mutations:
 
 ```tsx
-// app/actions.ts
 'use server';
 
 import { db } from '@/lib/database';
@@ -578,7 +525,6 @@ export async function createUser(formData: FormData) {
 Mark entire files/modules to prevent accidental client-side bundling:
 
 ```tsx
-// lib/server-utils.ts
 'use server';
 
 import { headers } from 'next/headers';
@@ -621,7 +567,6 @@ export async function submitForm(data: FormData) {
 ```
 
 ```tsx
-// components/UserForm.tsx
 'use client';
 
 import { submitForm } from '@/app/actions';

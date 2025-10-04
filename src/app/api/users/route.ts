@@ -8,8 +8,8 @@ const users = [
 ];
 
 // GET /api/users - Get all users or filter by query params
-export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams;
+export function GET(request: NextRequest) {
+  const { searchParams } = request.nextUrl;
   const role = searchParams.get('role');
 
   if (role) {
@@ -20,10 +20,16 @@ export async function GET(request: NextRequest) {
   return NextResponse.json({ data: users, count: users.length });
 }
 
+interface UpdateUserRequest {
+  name?: string;
+  email?: string;
+  role?: string;
+}
+
 // POST /api/users - Create a new user
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    const body = (await request.json()) as UpdateUserRequest;
     const { name, email, role } = body;
 
     if (!name || !email) {
@@ -39,7 +45,10 @@ export async function POST(request: NextRequest) {
 
     users.push(newUser);
 
-    return NextResponse.json({ data: newUser, message: 'User created successfully' }, { status: 201 });
+    return NextResponse.json(
+      { data: newUser, message: 'User created successfully' },
+      { status: 201 }
+    );
   } catch (error) {
     return NextResponse.json({ error: 'Invalid request body' }, { status: 400 });
   }

@@ -8,12 +8,9 @@ const users = [
 ];
 
 // GET /api/users/[id] - Get user by ID
-export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const user = users.find((u) => u.id === parseInt(id));
+  const user = users.find((u) => u.id === parseInt(id, 10));
 
   if (!user) {
     return NextResponse.json({ error: 'User not found' }, { status: 404 });
@@ -28,7 +25,7 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const index = users.findIndex((u) => u.id === parseInt(id));
+  const index = users.findIndex((u) => u.id === parseInt(id, 10));
 
   if (index === -1) {
     return NextResponse.json({ error: 'User not found' }, { status: 404 });
@@ -39,20 +36,23 @@ export async function DELETE(
   return NextResponse.json({ message: 'User deleted successfully' });
 }
 
+interface UpdateUserRequest {
+  name?: string;
+  email?: string;
+  role?: string;
+}
+
 // PATCH /api/users/[id] - Update user by ID
-export async function PATCH(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
+export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const user = users.find((u) => u.id === parseInt(id));
+  const user = users.find((u) => u.id === parseInt(id, 10));
 
   if (!user) {
     return NextResponse.json({ error: 'User not found' }, { status: 404 });
   }
 
   try {
-    const body = await request.json();
+    const body = (await request.json()) as UpdateUserRequest;
     const { name, email, role } = body;
 
     if (name) user.name = name;

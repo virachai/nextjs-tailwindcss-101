@@ -290,14 +290,9 @@
 **เหมาะสำหรับ:** Todo app, Forms, Interactive features
 
 ```tsx
-// app/todos/actions.ts
 'use server';
 
 import { useOptimistic } from 'react';
-
-// app/todos/actions.ts
-
-// app/todos/actions.ts
 
 // app/todos/actions.ts
 

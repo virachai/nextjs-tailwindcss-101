@@ -31,18 +31,18 @@ Server Actions are asynchronous functions that run on the server and can be invo
 
 ```tsx
 // app/actions.ts
-'use server'
+'use server';
 
 export async function createUser(formData: FormData) {
-  const name = formData.get('name') as string
-  const email = formData.get('email') as string
+  const name = formData.get('name') as string;
+  const email = formData.get('email') as string;
 
   // Perform server-side operations
   const user = await db.user.create({
-    data: { name, email }
-  })
+    data: { name, email },
+  });
 
-  return { success: true, user }
+  return { success: true, user };
 }
 ```
 
@@ -50,7 +50,7 @@ export async function createUser(formData: FormData) {
 
 ```tsx
 // app/page.tsx
-import { createUser } from './actions'
+import { createUser } from './actions';
 
 export default function Page() {
   return (
@@ -59,21 +59,23 @@ export default function Page() {
       <input type="email" name="email" required />
       <button type="submit">Create User</button>
     </form>
-  )
+  );
 }
 ```
 
 ### Using in Client Component
 
 ```tsx
-// app/form.tsx
-'use client'
+'use client';
 
-import { createUser } from './actions'
-import { useFormState, useFormStatus } from 'react-dom'
+import { useFormState, useFormStatus } from 'react-dom';
+
+import { createUser } from './actions';
+
+// app/form.tsx
 
 export function UserForm() {
-  const [state, formAction] = useFormState(createUser, { success: false })
+  const [state, formAction] = useFormState(createUser, { success: false });
 
   return (
     <form action={formAction}>
@@ -82,17 +84,17 @@ export function UserForm() {
       <SubmitButton />
       {state?.success && <p>User created successfully!</p>}
     </form>
-  )
+  );
 }
 
 function SubmitButton() {
-  const { pending } = useFormStatus()
+  const { pending } = useFormStatus();
 
   return (
     <button type="submit" disabled={pending}>
       {pending ? 'Creating...' : 'Create User'}
     </button>
-  )
+  );
 }
 ```
 
@@ -103,26 +105,26 @@ React 19 introduces the `action` prop for forms, providing native support for as
 ### Basic Form Action
 
 ```tsx
-'use client'
+'use client';
 
-import { useState } from 'react'
+import { useState } from 'react';
 
 export function ContactForm() {
-  const [status, setStatus] = useState('')
+  const [status, setStatus] = useState('');
 
   async function handleSubmit(formData: FormData) {
     const data = {
       name: formData.get('name'),
-      message: formData.get('message')
-    }
+      message: formData.get('message'),
+    };
 
     const response = await fetch('/api/contact', {
       method: 'POST',
-      body: JSON.stringify(data)
-    })
+      body: JSON.stringify(data),
+    });
 
     if (response.ok) {
-      setStatus('Message sent!')
+      setStatus('Message sent!');
     }
   }
 
@@ -133,25 +135,26 @@ export function ContactForm() {
       <button type="submit">Send</button>
       {status && <p>{status}</p>}
     </form>
-  )
+  );
 }
 ```
 
 ### Combining with useFormState
 
 ```tsx
-'use client'
+'use client';
 
-import { useFormState } from 'react-dom'
-import { submitContact } from './actions'
+import { useFormState } from 'react-dom';
+
+import { submitContact } from './actions';
 
 const initialState = {
   message: '',
-  errors: {}
-}
+  errors: {},
+};
 
 export function ContactForm() {
-  const [state, formAction] = useFormState(submitContact, initialState)
+  const [state, formAction] = useFormState(submitContact, initialState);
 
   return (
     <form action={formAction}>
@@ -164,7 +167,7 @@ export function ContactForm() {
       <button type="submit">Submit</button>
       {state.message && <p>{state.message}</p>}
     </form>
-  )
+  );
 }
 ```
 
@@ -176,7 +179,7 @@ Forms work without JavaScript enabled using Server Actions.
 
 ```tsx
 // app/subscribe/page.tsx
-import { subscribe } from './actions'
+import { subscribe } from './actions';
 
 export default function SubscribePage() {
   return (
@@ -184,39 +187,41 @@ export default function SubscribePage() {
       <input type="email" name="email" required />
       <button type="submit">Subscribe</button>
     </form>
-  )
+  );
 }
 ```
 
 ```tsx
-// app/subscribe/actions.ts
-'use server'
+'use server';
 
-import { redirect } from 'next/navigation'
-import { revalidatePath } from 'next/cache'
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
+
+// app/subscribe/actions.ts
 
 export async function subscribe(formData: FormData) {
-  const email = formData.get('email') as string
+  const email = formData.get('email') as string;
 
   await db.newsletter.create({
-    data: { email }
-  })
+    data: { email },
+  });
 
-  revalidatePath('/subscribe')
-  redirect('/subscribe/success')
+  revalidatePath('/subscribe');
+  redirect('/subscribe/success');
 }
 ```
 
 ### Enhanced Progressive Form
 
 ```tsx
-'use client'
+'use client';
 
-import { useFormState, useFormStatus } from 'react-dom'
-import { subscribe } from './actions'
+import { useFormState, useFormStatus } from 'react-dom';
+
+import { subscribe } from './actions';
 
 export function SubscribeForm() {
-  const [state, formAction] = useFormState(subscribe, null)
+  const [state, formAction] = useFormState(subscribe, null);
 
   return (
     <form action={formAction}>
@@ -227,19 +232,23 @@ export function SubscribeForm() {
         aria-describedby={state?.error ? 'error' : undefined}
       />
       <SubmitButton />
-      {state?.error && <p id="error" role="alert">{state.error}</p>}
+      {state?.error && (
+        <p id="error" role="alert">
+          {state.error}
+        </p>
+      )}
       {state?.success && <p role="status">Subscribed successfully!</p>}
     </form>
-  )
+  );
 }
 
 function SubmitButton() {
-  const { pending } = useFormStatus()
+  const { pending } = useFormStatus();
   return (
     <button type="submit" disabled={pending}>
       {pending ? 'Subscribing...' : 'Subscribe'}
     </button>
-  )
+  );
 }
 ```
 
@@ -248,87 +257,83 @@ function SubmitButton() {
 ### Server-side Validation with Zod
 
 ```tsx
-// app/actions.ts
-'use server'
+'use server';
 
-import { z } from 'zod'
+import { z } from 'zod';
+
+// app/actions.ts
 
 const userSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Invalid email address'),
-  age: z.coerce.number().min(18, 'Must be 18 or older')
-})
+  age: z.coerce.number().min(18, 'Must be 18 or older'),
+});
 
 export async function createUser(prevState: any, formData: FormData) {
   const validatedFields = userSchema.safeParse({
     name: formData.get('name'),
     email: formData.get('email'),
-    age: formData.get('age')
-  })
+    age: formData.get('age'),
+  });
 
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: 'Validation failed'
-    }
+      message: 'Validation failed',
+    };
   }
 
-  const { name, email, age } = validatedFields.data
+  const { name, email, age } = validatedFields.data;
 
   await db.user.create({
-    data: { name, email, age }
-  })
+    data: { name, email, age },
+  });
 
-  return { message: 'User created successfully' }
+  return { message: 'User created successfully' };
 }
 ```
 
 ### Form with Validation Display
 
 ```tsx
-'use client'
+'use client';
 
-import { useFormState } from 'react-dom'
-import { createUser } from './actions'
+import { useFormState } from 'react-dom';
+
+import { createUser } from './actions';
 
 const initialState = {
   message: '',
-  errors: {}
-}
+  errors: {},
+};
 
 export function UserForm() {
-  const [state, formAction] = useFormState(createUser, initialState)
+  const [state, formAction] = useFormState(createUser, initialState);
 
   return (
     <form action={formAction}>
       <div>
         <label htmlFor="name">Name</label>
         <input id="name" type="text" name="name" />
-        {state.errors?.name && (
-          <p className="text-red-500">{state.errors.name[0]}</p>
-        )}
+        {state.errors?.name && <p className="text-red-500">{state.errors.name[0]}</p>}
       </div>
 
       <div>
         <label htmlFor="email">Email</label>
         <input id="email" type="email" name="email" />
-        {state.errors?.email && (
-          <p className="text-red-500">{state.errors.email[0]}</p>
-        )}
+        {state.errors?.email && <p className="text-red-500">{state.errors.email[0]}</p>}
       </div>
 
       <div>
         <label htmlFor="age">Age</label>
         <input id="age" type="number" name="age" />
-        {state.errors?.age && (
-          <p className="text-red-500">{state.errors.age[0]}</p>
-        )}
+        {state.errors?.age && <p className="text-red-500">{state.errors.age[0]}</p>}
       </div>
 
       <button type="submit">Create User</button>
       {state.message && <p>{state.message}</p>}
     </form>
-  )
+  );
 }
 ```
 
@@ -337,25 +342,25 @@ export function UserForm() {
 ### Try-Catch in Server Actions
 
 ```tsx
-'use server'
+'use server';
 
 export async function createPost(formData: FormData) {
   try {
-    const title = formData.get('title') as string
-    const content = formData.get('content') as string
+    const title = formData.get('title') as string;
+    const content = formData.get('content') as string;
 
     const post = await db.post.create({
-      data: { title, content }
-    })
+      data: { title, content },
+    });
 
-    revalidatePath('/posts')
-    return { success: true, post }
+    revalidatePath('/posts');
+    return { success: true, post };
   } catch (error) {
-    console.error('Failed to create post:', error)
+    console.error('Failed to create post:', error);
     return {
       success: false,
-      error: 'Failed to create post. Please try again.'
-    }
+      error: 'Failed to create post. Please try again.',
+    };
   }
 }
 ```
@@ -364,14 +369,14 @@ export async function createPost(formData: FormData) {
 
 ```tsx
 // app/error.tsx
-'use client'
+'use client';
 
 export default function Error({
   error,
   reset,
 }: {
-  error: Error & { digest?: string }
-  reset: () => void
+  error: Error & { digest?: string };
+  reset: () => void;
 }) {
   return (
     <div>
@@ -379,7 +384,7 @@ export default function Error({
       <p>{error.message}</p>
       <button onClick={reset}>Try again</button>
     </div>
-  )
+  );
 }
 ```
 
@@ -388,18 +393,18 @@ export default function Error({
 ### Using useFormStatus
 
 ```tsx
-'use client'
+'use client';
 
-import { useFormStatus } from 'react-dom'
+import { useFormStatus } from 'react-dom';
 
 export function SubmitButton({ label = 'Submit' }: { label?: string }) {
-  const { pending } = useFormStatus()
+  const { pending } = useFormStatus();
 
   return (
     <button
       type="submit"
       disabled={pending}
-      className={pending ? 'opacity-50 cursor-not-allowed' : ''}
+      className={pending ? 'cursor-not-allowed opacity-50' : ''}
     >
       {pending ? (
         <>
@@ -410,37 +415,35 @@ export function SubmitButton({ label = 'Submit' }: { label?: string }) {
         label
       )}
     </button>
-  )
+  );
 }
 ```
 
 ### Optimistic Updates
 
 ```tsx
-'use client'
+'use client';
 
-import { useOptimistic } from 'react'
-import { addTodo } from './actions'
+import { useOptimistic } from 'react';
+
+import { addTodo } from './actions';
 
 export function TodoList({ todos }: { todos: Todo[] }) {
-  const [optimisticTodos, addOptimisticTodo] = useOptimistic(
-    todos,
-    (state, newTodo: string) => [
-      ...state,
-      { id: Date.now(), text: newTodo, completed: false }
-    ]
-  )
+  const [optimisticTodos, addOptimisticTodo] = useOptimistic(todos, (state, newTodo: string) => [
+    ...state,
+    { id: Date.now(), text: newTodo, completed: false },
+  ]);
 
   async function formAction(formData: FormData) {
-    const text = formData.get('text') as string
-    addOptimisticTodo(text)
-    await addTodo(formData)
+    const text = formData.get('text') as string;
+    addOptimisticTodo(text);
+    await addTodo(formData);
   }
 
   return (
     <>
       <ul>
-        {optimisticTodos.map(todo => (
+        {optimisticTodos.map((todo) => (
           <li key={todo.id}>{todo.text}</li>
         ))}
       </ul>
@@ -450,7 +453,7 @@ export function TodoList({ todos }: { todos: Todo[] }) {
         <button type="submit">Add Todo</button>
       </form>
     </>
-  )
+  );
 }
 ```
 
@@ -459,44 +462,44 @@ export function TodoList({ todos }: { todos: Todo[] }) {
 ### Revalidate Path
 
 ```tsx
-'use server'
+'use server';
 
-import { revalidatePath } from 'next/cache'
+import { revalidatePath } from 'next/cache';
 
 export async function updatePost(id: string, formData: FormData) {
   await db.post.update({
     where: { id },
     data: {
       title: formData.get('title') as string,
-      content: formData.get('content') as string
-    }
-  })
+      content: formData.get('content') as string,
+    },
+  });
 
   // Revalidate specific path
-  revalidatePath(`/posts/${id}`)
+  revalidatePath(`/posts/${id}`);
 
   // Revalidate all posts
-  revalidatePath('/posts')
+  revalidatePath('/posts');
 }
 ```
 
 ### Revalidate Tag
 
 ```tsx
-'use server'
+'use server';
 
-import { revalidateTag } from 'next/cache'
+import { revalidateTag } from 'next/cache';
 
 export async function createProduct(formData: FormData) {
   await db.product.create({
     data: {
       name: formData.get('name') as string,
-      price: parseFloat(formData.get('price') as string)
-    }
-  })
+      price: parseFloat(formData.get('price') as string),
+    },
+  });
 
   // Revalidate all data tagged with 'products'
-  revalidateTag('products')
+  revalidateTag('products');
 }
 ```
 
@@ -508,17 +511,12 @@ Always validate on both client and server:
 
 ```tsx
 // Client validation
-<input
-  type="email"
-  name="email"
-  required
-  pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
-/>
+<input type="email" name="email" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+" />;
 
 // Server validation
 const schema = z.object({
-  email: z.string().email()
-})
+  email: z.string().email(),
+});
 ```
 
 ### 2. Type Safety
@@ -527,21 +525,18 @@ Use TypeScript and validated data:
 
 ```tsx
 type FormState = {
-  message: string
+  message: string;
   errors?: {
-    name?: string[]
-    email?: string[]
-  }
+    name?: string[];
+    email?: string[];
+  };
   data?: {
-    name: string
-    email: string
-  }
-}
+    name: string;
+    email: string;
+  };
+};
 
-export async function submitForm(
-  prevState: FormState,
-  formData: FormData
-): Promise<FormState> {
+export async function submitForm(prevState: FormState, formData: FormData): Promise<FormState> {
   // Implementation
 }
 ```
@@ -554,17 +549,18 @@ export async function submitForm(
 - Implement rate limiting
 
 ```tsx
-'use server'
+'use server';
 
-import { ratelimit } from '@/lib/ratelimit'
-import { headers } from 'next/headers'
+import { headers } from 'next/headers';
+
+import { ratelimit } from '@/lib/ratelimit';
 
 export async function createComment(formData: FormData) {
-  const ip = headers().get('x-forwarded-for')
-  const { success } = await ratelimit.limit(ip)
+  const ip = headers().get('x-forwarded-for');
+  const { success } = await ratelimit.limit(ip);
 
   if (!success) {
-    return { error: 'Too many requests' }
+    return { error: 'Too many requests' };
   }
 
   // Process form
@@ -604,59 +600,61 @@ export async function createComment(formData: FormData) {
 ### 5. Reset Forms After Success
 
 ```tsx
-'use client'
+'use client';
 
-import { useRef, useEffect } from 'react'
-import { useFormState } from 'react-dom'
+import { useEffect, useRef } from 'react';
+
+import { useFormState } from 'react-dom';
 
 export function MyForm() {
-  const formRef = useRef<HTMLFormElement>(null)
-  const [state, formAction] = useFormState(submitForm, null)
+  const formRef = useRef<HTMLFormElement>(null);
+  const [state, formAction] = useFormState(submitForm, null);
 
   useEffect(() => {
     if (state?.success) {
-      formRef.current?.reset()
+      formRef.current?.reset();
     }
-  }, [state?.success])
+  }, [state?.success]);
 
   return (
     <form ref={formRef} action={formAction}>
       {/* form fields */}
     </form>
-  )
+  );
 }
 ```
 
 ### 6. Handle File Uploads
 
 ```tsx
-'use server'
+'use server';
 
 export async function uploadFile(formData: FormData) {
-  const file = formData.get('file') as File
+  const file = formData.get('file') as File;
 
   if (!file) {
-    return { error: 'No file provided' }
+    return { error: 'No file provided' };
   }
 
   // Validate file type and size
-  const validTypes = ['image/jpeg', 'image/png', 'image/webp']
+  const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
   if (!validTypes.includes(file.type)) {
-    return { error: 'Invalid file type' }
+    return { error: 'Invalid file type' };
   }
 
-  if (file.size > 5 * 1024 * 1024) { // 5MB
-    return { error: 'File too large' }
+  if (file.size > 5 * 1024 * 1024) {
+    // 5MB
+    return { error: 'File too large' };
   }
 
   // Process file
-  const bytes = await file.arrayBuffer()
-  const buffer = Buffer.from(bytes)
+  const bytes = await file.arrayBuffer();
+  const buffer = Buffer.from(bytes);
 
   // Upload to storage
-  const url = await uploadToStorage(buffer, file.name)
+  const url = await uploadToStorage(buffer, file.name);
 
-  return { success: true, url }
+  return { success: true, url };
 }
 ```
 
@@ -671,7 +669,7 @@ export function FormWithMultipleActions() {
       <button formAction={publish}>Publish</button>
       <button formAction={deletePost}>Delete</button>
     </form>
-  )
+  );
 }
 ```
 

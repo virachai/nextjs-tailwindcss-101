@@ -8,7 +8,7 @@ export const LocaleSwitcher: React.FC = () => {
   const { currentLocale, locales, switchLocale } = useLocaleSwitcher();
 
   return (
-    <div className="fixed bottom-8 right-8 z-50 flex gap-2">
+    <div className="fixed right-8 bottom-8 z-50 flex gap-2">
       {locales.map((locale) => (
         <button
           key={locale.code}

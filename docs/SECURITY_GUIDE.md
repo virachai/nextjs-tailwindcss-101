@@ -199,17 +199,10 @@ export const config = {
 **Prevention:**
 
 ```typescript
-// ❌ BAD - API key in client component
 'use client';
 
 // ✅ GOOD - Use server-only package
 import 'server-only';
-
-// ❌ BAD - API key in client component
-
-// ❌ BAD - API key in client component
-
-// ❌ BAD - API key in client component
 
 // ❌ BAD - API key in client component
 

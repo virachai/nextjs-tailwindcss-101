@@ -5,15 +5,27 @@
 
 ## Table of Contents
 
-- [What Are Component Templates?](#what-are-component-templates)
-- [Hero Section Templates](#hero-section-templates)
-- [Feature Section Templates](#feature-section-templates)
-- [CTA Section Templates](#cta-section-templates)
-- [Navigation Templates](#navigation-templates)
-- [Footer Templates](#footer-templates)
-- [Card Templates](#card-templates)
-- [Form Section Templates](#form-section-templates)
-- [Best Practices](#best-practices)
+- [Component Templates](#component-templates)
+  - [Table of Contents](#table-of-contents)
+  - [What Are Component Templates?](#what-are-component-templates)
+  - [Hero Section Templates](#hero-section-templates)
+    - [1. Hero with Image (Centered)](#1-hero-with-image-centered)
+    - [2. Hero with Side Image](#2-hero-with-side-image)
+  - [Feature Section Templates](#feature-section-templates)
+    - [1. Three-Column Feature Grid](#1-three-column-feature-grid)
+    - [2. Feature with Screenshot](#2-feature-with-screenshot)
+  - [CTA Section Templates](#cta-section-templates)
+    - [1. Simple CTA](#1-simple-cta)
+  - [Navigation Templates](#navigation-templates)
+    - [1. Header with Navigation](#1-header-with-navigation)
+  - [Footer Templates](#footer-templates)
+    - [1. Four-Column Footer](#1-four-column-footer)
+  - [Best Practices](#best-practices)
+    - [1. **Consistent Spacing**](#1-consistent-spacing)
+    - [2. **Responsive Images**](#2-responsive-images)
+    - [3. **Accessibility**](#3-accessibility)
+    - [4. **Dark Mode**](#4-dark-mode)
+    - [5. **Type Safety**](#5-type-safety)
 
 ---
 
@@ -469,7 +481,6 @@ export const CTASimple: React.FC<CTASimpleProps> = ({
 **Use Case:** Marketing sites, documentation
 
 ```tsx
-// src/templates/sections/Header.tsx
 'use client';
 
 import React, { useState } from 'react';
@@ -477,14 +488,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 
 import { Container } from '@/templates/layout/Container';
-
-// src/templates/sections/Header.tsx
-
-// src/templates/sections/Header.tsx
-
-// src/templates/sections/Header.tsx
-
-// src/templates/sections/Header.tsx
 
 // src/templates/sections/Header.tsx
 

@@ -318,7 +318,6 @@ export default async function Layout({ children }: { children: React.ReactNode }
 ### Pattern 2: Custom Hook Using Use Cases
 
 ```typescript
-// features/i18n/presentation/hooks/use-locale-switcher.ts
 'use client';
 
 import { useMemo } from 'react';
@@ -330,8 +329,6 @@ import { GetCurrentLocaleUseCase } from '../../application/use-cases/get-current
 import { SwitchLocaleUseCase } from '../../application/use-cases/switch-locale.use-case';
 import { type LocaleCode, SUPPORTED_LOCALES } from '../../domain/entities/locale.entity';
 import { NextLocaleRepository } from '../../infrastructure/repositories/next-locale.repository';
-
-// features/i18n/presentation/hooks/use-locale-switcher.ts
 
 // features/i18n/presentation/hooks/use-locale-switcher.ts
 
@@ -477,7 +474,7 @@ export default function HomePage() {
 
 ### Step 4: Restart TypeScript Server (VSCode)
 
-```
+```text
 Cmd+Shift+P → TypeScript: Restart TS Server
 ```
 
@@ -623,6 +620,7 @@ export default nextConfig;
    ```
 
 4. **Don't bypass encapsulation**
+
    ```typescript
    // ❌ Importing internal implementation
    import { NextLocaleRepository } from '@/features/i18n/infrastructure/repositories/next-locale.repository';

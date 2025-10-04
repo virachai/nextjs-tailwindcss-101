@@ -2,6 +2,8 @@
 
 import type React from 'react';
 
+import Image from 'next/image';
+
 import { useLocaleSwitcher } from '../hooks/use-locale-switcher';
 
 export const LocaleSwitcher: React.FC = () => {
@@ -24,8 +26,14 @@ export const LocaleSwitcher: React.FC = () => {
           aria-label={`Switch to ${locale.name}`}
           aria-current={currentLocale === locale.code ? 'true' : 'false'}
         >
-          <span className="text-lg" aria-hidden="true">
-            {locale.flag}
+          <span key={locale.code} className="text-lg" aria-hidden="true">
+            <Image
+              src={locale.flag}
+              alt={locale.nativeName}
+              className="h-full max-h-5 w-full max-w-5"
+              width={5}
+              height={5}
+            />
           </span>
           <span className="font-semibold">{locale.code.toUpperCase()}</span>
         </button>

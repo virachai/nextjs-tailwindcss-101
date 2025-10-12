@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MeePrompt.Com - ระบบสร้างภาพจาก Prompt ด้วย AI</title>
+    <style>
+      /* Base styles */
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+        color: #333;
+      }
+
+      .separator {
+        margin-bottom: 20px;
+      }
+
+      .image-overlay-container {
+        position: relative;
+        display: inline-block;
+        width: calc(100% + 32px);
+        margin-left: -16px;
+      }
+
+      .image-overlay-container img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .image-overlay-container .overlay-text {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -20%);
+        text-align: center;
+        color: white;
+        padding: 20px;
+      }
+
+      .image-overlay-container .logo {
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .image-overlay-container h2 {
+        font-size: 20px;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      #prompt-form .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 8px;
+        box-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.12),
+          0 1px 2px rgba(0, 0, 0, 0.24);
+        overflow: hidden;
+      }
+
+      #prompt-form .form-container {
+        padding: 20px;
+      }
+
+      #prompt-form .form-group {
+        margin-bottom: 25px;
+        position: relative;
+      }
+
+      #prompt-form label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      #prompt-form .required::after {
+        content: ' *';
+        color: #ea4335;
+      }
+
+      #prompt-form input,
+      #prompt-form textarea,
+      #prompt-form select {
+        width: 100%;
+        padding: 12px 12px 12px 40px;
+        border: 1px solid #dadce0;
+        border-radius: 4px;
+        font-size: 16px;
+        transition: border 0.3s;
+        box-sizing: border-box;
+      }
+
+      #prompt-form input:focus,
+      #prompt-form textarea:focus,
+      #prompt-form select:focus {
+        outline: none;
+        border-color: #4285f4;
+        box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+      }
+
+      #prompt-form textarea {
+        min-height: 150px;
+        resize: vertical;
+        padding-left: 12px;
+      }
+
+      #prompt-form .error-message {
+        color: #ea4335;
+        font-size: 14px;
+        margin-top: 5px;
+        display: none;
+      }
+
+      #prompt-form .google-login-btn {
+        background-color: white;
+        color: #202124;
+        border: 1px solid #dadce0;
+        border-radius: 4px;
+        padding: 12px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 20px;
+        transition: background-color 0.3s;
+      }
+
+      #prompt-form .google-login-btn:hover {
+        background-color: #f8f9fa;
+      }
+
+      #prompt-form .google-icon {
+        width: 18px;
+        height: 18px;
+        margin-right: 10px;
+      }
+
+      #prompt-form .submit-btn {
+        background-color: #4285f4;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 14px 20px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      #prompt-form .submit-btn:hover {
+        background-color: #3367d6;
+      }
+
+      #prompt-form .submit-btn:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+
+      #prompt-form .form-footer {
+        text-align: center;
+        margin-top: 20px;
+        color: #5f6368;
+        font-size: 14px;
+      }
+
+      #prompt-form .success-message {
+        background-color: #e6f4ea;
+        color: #34a853;
+        padding: 15px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        display: none;
+        align-items: center;
+        gap: 10px;
+      }
+
+      /* Icon styles */
+      .icon-container {
+        position: absolute;
+        left: 12px;
+        top: 38px;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .icon-container textarea {
+        left: 0;
+        top: 0;
+      }
+
+      .icon {
+        width: 20px;
+        height: 20px;
+        fill: #5f6368;
+      }
+
+      .icon-primary {
+        fill: #4285f4;
+      }
+
+      .icon-white {
+        fill: white;
+      }
+
+      .icon-success {
+        fill: #34a853;
+      }
+
+      .icon-lg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .icon-xl {
+        width: 32px;
+        height: 32px;
+      }
+
+      @media (max-width: 600px) {
+        #prompt-form .container {
+          border-radius: 0;
+        }
+
+        #prompt-form .form-container {
+          padding: 15px;
+        }
+
+        .image-overlay-container {
+          width: 100%;
+          margin-left: 0;
+        }
+
+        .image-overlay-container .overlay-text {
+          padding: 15px;
+        }
+
+        .image-overlay-container .logo {
+          font-size: 24px;
+        }
+
+        .image-overlay-container h2 {
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <p style="display: none">ระบบสร้างภาพจาก Prompt ด้วย AI สำหรับผู้ใช้ทุกคนผ่าน Google Form</p>
+
+    <!-- SVG Icons (hidden) -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+      <!-- AI Icon -->
+      <symbol id="ai-icon" viewBox="0 0 24 24">
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm4 0h-2v-6h2v6zm2-10h-8V5h8v2z"
+        />
+      </symbol>
+
+      <!-- Phone Icon -->
+      <symbol id="phone-icon" viewBox="0 0 24 24">
+        <path
+          d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM12 3v10l3-3h6V3h-9z"
+        />
+      </symbol>
+
+      <!-- Prompt Icon -->
+      <symbol id="prompt-icon" viewBox="0 0 24 24">
+        <path
+          d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+        />
+      </symbol>
+
+      <!-- Send Icon -->
+      <symbol id="send-icon" viewBox="0 0 24 24">
+        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+      </symbol>
+
+      <!-- Success Icon -->
+      <symbol id="success-icon" viewBox="0 0 24 24">
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+        />
+      </symbol>
+
+      <!-- Camera Icon -->
+      <symbol id="camera-icon" viewBox="0 0 24 24">
+        <path
+          d="M12 15.2C10.23 15.2 8.8 13.77 8.8 12s1.43-3.2 3.2-3.2 3.2 1.43 3.2 3.2-1.43 3.2-3.2 3.2zM20 4h-3.17l-1.24-1.35c-.37-.41-.91-.65-1.47-.65H9.88c-.56 0-1.1.24-1.48.65L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 13c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
+        />
+      </symbol>
+    </svg>
+
+    <div class="image-overlay-container separator">
+      <figure>
+        <img
+          class="!aspect-512/288 object-cover blur-[2px]"
+          style="max-height: 160px; transform: scale(1.02)"
+          alt="Background Image"
+          data-original-height="1024"
+          data-original-width="1024"
+          src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgLvvahu7uK2_89kMHJ-dJm6770atg7QnHMhi1B9IuznsSMkSvwFAZlE67XO0-lMo54-OVpu7Dz_iVIdQR87XP5isJ4WSrw8G9PiME0eoHKpPVZrrZUBAUCArioBYzE0NXe1K69k39YPoffNNG3N-409rwEoDRxe-lyq3Xt1yRjsHMQBjhFW180WWSpHw4/s512/bg.jpg"
+          width="512"
+        />
+        <div class="overlay-text h-auto w-full">
+          <div class="logo !text-white">
+            <svg class="icon icon-white icon-xl">
+              <use xlink:href="#ai-icon"></use>
+            </svg>
+            MeePrompt.Com
+          </div>
+          <h2 class="!text-white">
+            <svg class="icon icon-white icon-lg">
+              <use xlink:href="#camera-icon"></use>
+            </svg>
+            ส่งพร้อม สำหรับสร้างภาพ
+          </h2>
+        </div>
+
+        <!--more-->
+        <figcaption class="hidden">
+          <span class="caption">
+            <a
+              href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgLvvahu7uK2_89kMHJ-dJm6770atg7QnHMhi1B9IuznsSMkSvwFAZlE67XO0-lMo54-OVpu7Dz_iVIdQR87XP5isJ4WSrw8G9PiME0eoHKpPVZrrZUBAUCArioBYzE0NXe1K69k39YPoffNNG3N-409rwEoDRxe-lyq3Xt1yRjsHMQBjhFW180WWSpHw4/s512/bg.jpg"
+              target="_blank"
+              >Background Image</a
+            >
+          </span>
+          , by
+          <span class="attribution">
+            <a href="https://gemini.google.com" target="_blank">Google Gemini</a>
+          </span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="container" id="prompt-form">
+      <div class="form-container">
+        <div class="success-message" id="successMessage">
+          <svg class="icon icon-success icon-lg">
+            <use xlink:href="#success-icon"></use>
+          </svg>
+          ส่งข้อมูลเรียบร้อยแล้ว! ขอบคุณสำหรับการส่งพร้อมของคุณ
+        </div>
+
+        <form id="promptForm">
+          <div class="form-group">
+            <label for="phone" class="required">
+              <svg class="icon icon-primary">
+                <use xlink:href="#phone-icon"></use>
+              </svg>
+              หมายเลขโทรศัพท์มือถือ
+            </label>
+            <div class="icon-container">
+              <svg class="icon">
+                <use xlink:href="#phone-icon"></use>
+              </svg>
+            </div>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="ตัวอย่าง: 0912345678"
+              inputmode="decimal"
+              pattern="0[0-9]{9}"
+              required
+            />
+            <div class="error-message" id="phoneError">
+              กรุณากรอกหมายเลขโทรศัพท์มือถือให้ถูกต้อง (ตัวอย่าง: 0912345678)
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="prompt" class="required">
+              <svg class="icon icon-primary">
+                <use xlink:href="#prompt-icon"></use>
+              </svg>
+              Prompt
+            </label>
+            <textarea
+              id="prompt"
+              name="prompt"
+              placeholder="กรุณากรอกคำอธิบายภาพที่คุณต้องการสร้าง"
+              required
+            ></textarea>
+            <div class="error-message" id="promptError">กรุณากรอกพร้อม</div>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn" disabled>
+            <svg class="icon icon-white">
+              <use xlink:href="#send-icon"></use>
+            </svg>
+            ส่งพร้อม
+          </button>
+        </form>
+
+        <div class="form-footer">ข้อมูลของคุณจะถูกบันทึกผ่าน Google Form</div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const submitBtn = document.getElementById('submitBtn');
+        const promptForm = document.getElementById('promptForm');
+        const successMessage = document.getElementById('successMessage');
+        const phoneInput = document.getElementById('phone');
+        const promptInput = document.getElementById('prompt');
+
+        // Enable submit button when form has content
+        function checkFormValidity() {
+          const phoneValue = phoneInput.value.trim();
+          const promptValue = promptInput.value.trim();
+
+          // Basic validation
+          const phoneRegex = /^[0-9]{10}$/;
+          const isPhoneValid = phoneRegex.test(phoneValue);
+          const isPromptValid = promptValue.length > 0;
+
+          submitBtn.disabled = !(isPhoneValid && isPromptValid);
+        }
+
+        // Add event listeners for real-time validation
+        phoneInput.addEventListener('input', checkFormValidity);
+        promptInput.addEventListener('input', checkFormValidity);
+
+        // ฟังก์ชันตรวจสอบความถูกต้องของฟอร์ม
+        function validateForm() {
+          let isValid = true;
+
+          // ตรวจสอบหมายเลขโทรศัพท์
+          const phone = document.getElementById('phone');
+          const phoneError = document.getElementById('phoneError');
+          const phoneRegex = /^[0-9]{10}$/;
+          if (!phoneRegex.test(phone.value.trim())) {
+            phoneError.style.display = 'block';
+            isValid = false;
+          } else {
+            phoneError.style.display = 'none';
+          }
+
+          // ตรวจสอบ Prompt
+          const prompt = document.getElementById('prompt');
+          const promptError = document.getElementById('promptError');
+          if (!prompt.value.trim()) {
+            promptError.style.display = 'block';
+            isValid = false;
+          } else {
+            promptError.style.display = 'none';
+          }
+
+          return isValid;
+        }
+
+        // จัดการการส่งฟอร์ม
+        promptForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          if (validateForm()) {
+            // ในสถานการณ์จริงจะเป็นการส่งข้อมูลไปยัง Google Form
+            // ที่นี่เราจะจำลองการส่งข้อมูลสำเร็จ
+            successMessage.style.display = 'flex';
+            promptForm.reset();
+            submitBtn.disabled = true;
+
+            // เลื่อนไปที่ด้านบนเพื่อแสดงข้อความสำเร็จ
+            window.scrollTo(0, 0);
+
+            // รีเซ็ตฟอร์มหลังจาก 5 วินาที
+            setTimeout(function () {
+              successMessage.style.display = 'none';
+            }, 5000);
+          }
+        });
+
+        // ตรวจสอบความถูกต้องแบบเรียลไทม์
+        const inputs = document.querySelectorAll('input, textarea');
+        inputs.forEach((input) => {
+          input.addEventListener('blur', function () {
+            if (submitBtn.disabled === false) {
+              validateForm();
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

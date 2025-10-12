@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MeePrompt.Com - ส่ง Prompt สำหรับสร้างภาพ</title>
+  </head>
+  <body>
+    <p style="display: none">
+      The Prompt Hub: Essential Prompts to Test LLM Capabilities on Fundamental and Complex Tasks
+    </p>
+
+    <div class="separator">
+      <figure>
+        <img
+          alt="Background Image"
+          data-original-height="1024"
+          data-original-width="1024"
+          src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgLvvahu7uK2_89kMHJ-dJm6770atg7QnHMhi1B9IuznsSMkSvwFAZlE67XO0-lMo54-OVpu7Dz_iVIdQR87XP5isJ4WSrw8G9PiME0eoHKpPVZrrZUBAUCArioBYzE0NXe1K69k39YPoffNNG3N-409rwEoDRxe-lyq3Xt1yRjsHMQBjhFW180WWSpHw4/s512/bg.jpg"
+          width="512"
+        />
+        <!--more-->
+        <figcaption>
+          <span class="caption">
+            <a
+              href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgLvvahu7uK2_89kMHJ-dJm6770atg7QnHMhi1B9IuznsSMkSvwFAZlE67XO0-lMo54-OVpu7Dz_iVIdQR87XP5isJ4WSrw8G9PiME0eoHKpPVZrrZUBAUCArioBYzE0NXe1K69k39YPoffNNG3N-409rwEoDRxe-lyq3Xt1yRjsHMQBjhFW180WWSpHw4/s512/bg.jpg"
+              target="_blank"
+              >Background Image</a
+            >
+          </span>
+          , by
+          <span class="attribution">
+            <a href="https://gemini.google.com" target="_blank">Google Gemini</a>
+          </span>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="container">
+      <style>
+        .container {
+          max-width: 800px;
+          margin: 0 auto;
+          background: white;
+          border-radius: 8px;
+          box-shadow:
+            0 1px 3px rgba(0, 0, 0, 0.12),
+            0 1px 2px rgba(0, 0, 0, 0.24);
+          overflow: hidden;
+        }
+
+        header {
+          background-color: #4285f4;
+          color: white;
+          padding: 20px;
+          text-align: center;
+        }
+
+        .logo {
+          font-size: 24px;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+
+        .form-container {
+          padding: 30px;
+        }
+
+        .form-group {
+          margin-bottom: 25px;
+        }
+
+        label {
+          display: block;
+          margin-bottom: 8px;
+          font-weight: 500;
+        }
+
+        .required::after {
+          content: ' *';
+          color: #ea4335;
+        }
+
+        input,
+        textarea,
+        select {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid #dadce0;
+          border-radius: 4px;
+          font-size: 16px;
+          transition: border 0.3s;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+          outline: none;
+          border-color: #4285f4;
+          box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+        }
+
+        textarea {
+          min-height: 150px;
+          resize: vertical;
+        }
+
+        .error-message {
+          color: #ea4335;
+          font-size: 14px;
+          margin-top: 5px;
+          display: none;
+        }
+
+        .google-login-btn {
+          background-color: white;
+          color: #202124;
+          border: 1px solid #dadce0;
+          border-radius: 4px;
+          padding: 12px 20px;
+          font-size: 16px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          margin-bottom: 20px;
+          transition: background-color 0.3s;
+        }
+
+        .google-login-btn:hover {
+          background-color: #f8f9fa;
+        }
+
+        .google-icon {
+          width: 18px;
+          height: 18px;
+          margin-right: 10px;
+        }
+
+        .submit-btn {
+          background-color: #4285f4;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          padding: 14px 20px;
+          font-size: 16px;
+          font-weight: 500;
+          cursor: pointer;
+          width: 100%;
+          transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+          background-color: #3367d6;
+        }
+
+        .submit-btn:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+        }
+
+        .form-footer {
+          text-align: center;
+          margin-top: 20px;
+          color: #5f6368;
+          font-size: 14px;
+        }
+
+        .success-message {
+          background-color: #e6f4ea;
+          color: #34a853;
+          padding: 15px;
+          border-radius: 4px;
+          margin-bottom: 20px;
+          display: none;
+        }
+
+        @media (max-width: 600px) {
+          .container {
+            border-radius: 0;
+          }
+
+          .form-container {
+            padding: 20px;
+          }
+        }
+      </style>
+
+      <header>
+        <div class="logo">MeePrompt.Com</div>
+        <h1>ส่ง Prompt สำหรับสร้างภาพ</h1>
+      </header>
+
+      <div class="form-container">
+        <div class="success-message" id="successMessage">
+          ส่งข้อมูลเรียบร้อยแล้ว! ขอบคุณสำหรับการส่ง prompt ของคุณ
+        </div>
+
+        <form id="promptForm">
+          <div class="form-group">
+            <label for="phone" class="required">หมายเลขโทรศัพท์มือถือ</label>
+            <input type="tel" id="phone" name="phone" placeholder="ตัวอย่าง: 0912345678" />
+            <div class="error-message" id="phoneError">
+              กรุณากรอกหมายเลขโทรศัพท์มือถือให้ถูกต้อง (ตัวอย่าง: 0912345678)
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="prompt" class="required">Prompt</label>
+            <textarea
+              id="prompt"
+              name="prompt"
+              placeholder="กรุณากรอกคำอธิบายภาพที่คุณต้องการสร้าง"
+            ></textarea>
+            <div class="error-message" id="promptError">กรุณากรอก Prompt</div>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn" disabled>ส่ง Prompt</button>
+        </form>
+
+        <div class="form-footer">ข้อมูลของคุณจะถูกบันทึกผ่านบัญชี Google ของคุณ</div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const submitBtn = document.getElementById('submitBtn');
+        const promptForm = document.getElementById('promptForm');
+        const successMessage = document.getElementById('successMessage');
+
+        // ฟังก์ชันตรวจสอบความถูกต้องของฟอร์ม
+        function validateForm() {
+          let isValid = true;
+
+          // ตรวจสอบหมายเลขโทรศัพท์
+          const phone = document.getElementById('phone');
+          const phoneError = document.getElementById('phoneError');
+          const phoneRegex = /^[0-9]{10}$/;
+          if (!phoneRegex.test(phone.value.trim())) {
+            phoneError.style.display = 'block';
+            isValid = false;
+          } else {
+            phoneError.style.display = 'none';
+          }
+
+          // ตรวจสอบ Prompt
+          const prompt = document.getElementById('prompt');
+          const promptError = document.getElementById('promptError');
+          if (!prompt.value.trim()) {
+            promptError.style.display = 'block';
+            isValid = false;
+          } else {
+            promptError.style.display = 'none';
+          }
+
+          return isValid;
+        }
+
+        // จัดการการส่งฟอร์ม
+        promptForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          if (validateForm()) {
+            // ในสถานการณ์จริงจะเป็นการส่งข้อมูลไปยัง Google Form
+            // ที่นี่เราจะจำลองการส่งข้อมูลสำเร็จ
+            successMessage.style.display = 'block';
+            promptForm.reset();
+            submitBtn.disabled = true;
+
+            // เลื่อนไปที่ด้านบนเพื่อแสดงข้อความสำเร็จ
+            window.scrollTo(0, 0);
+
+            // รีเซ็ตฟอร์มหลังจาก 3 วินาที
+            setTimeout(function () {
+              successMessage.style.display = 'none';
+            }, 5000);
+          }
+        });
+
+        // ตรวจสอบความถูกต้องแบบเรียลไทม์
+        const inputs = document.querySelectorAll('input, textarea');
+        inputs.forEach((input) => {
+          input.addEventListener('blur', function () {
+            if (submitBtn.disabled === false) {
+              validateForm();
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

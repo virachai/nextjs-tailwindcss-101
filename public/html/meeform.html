@@ -1,0 +1,233 @@
+<div class="image-overlay-container separator" style="width: calc(100% + 32px)">
+  <figure>
+    <img
+      class="!aspect-512/288 object-cover"
+      style="max-height: 160px; transform: scale(1.02)"
+      alt="Background Image"
+      data-original-height="641"
+      data-original-width="360"
+      src="https://t3.ftcdn.net/jpg/06/09/41/00/360_F_609410035_rrpJAitQiSA9xNfG2HbFqTSDKRq9S6ci.jpg"
+      width="512"
+    />
+  </figure>
+</div>
+
+<style>
+  /* .meeform-container {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    text-align: center;
+  } */
+
+  .meeform-container .subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 16px;
+  }
+
+  .meeform-container .toggle-container {
+    display: flex;
+    background-color: #f0f0f0;
+    border-radius: 50px;
+    padding: 5px;
+    margin: 30px 0;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .meeform-container .toggle-option {
+    flex: 1;
+    padding: 15px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+
+  .meeform-container .toggle-option.active {
+    color: white;
+  }
+
+  .meeform-container .toggle-slider {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: calc(50% - 5px);
+    height: calc(100% - 10px);
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+  }
+
+  .meeform-container .toggle-option i {
+    margin-right: 8px;
+    font-size: 18px;
+  }
+
+  .meeform-container .details {
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+    transition: all 0.3s ease;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .meeform-container .details.active {
+    opacity: 1;
+    height: auto;
+    padding: 20px;
+  }
+
+  .meeform-container .details h3 {
+    color: #333;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  .meeform-container .details h3 i {
+    margin-right: 10px;
+    color: #6a11cb;
+  }
+
+  .meeform-container .details p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+
+  .meeform-container .highlight {
+    background-color: #e6f0ff;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border-left: 4px solid #2575fc;
+  }
+
+  .meeform-container .btn {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    width: 100%;
+    box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
+  }
+
+  .meeform-container .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 117, 252, 0.6);
+  }
+
+  @media (max-width: 480px) {
+    .meeform-container .toggle-option {
+      padding: 12px 15px;
+      font-size: 14px;
+    }
+  }
+</style>
+
+<div class="meeform-container">
+  <p class="subtitle">เลือกโหมดการฝากที่ตอบโจทย์คุณ</p>
+
+  <div class="toggle-container">
+    <div class="toggle-slider"></div>
+    <div class="toggle-option active" data-option="free"><i class="fas fa-gift"></i> Free</div>
+    <div class="toggle-option" data-option="earn"><i class="fas fa-money-bill-wave"></i> Earn</div>
+  </div>
+
+  <div class="details active" id="free-details">
+    <h3><i class="fas fa-gift"></i> โหมด Free</h3>
+    <p>โหมดนี้เหมาะสำหรับการแบ่งปันไฟล์หรือเนื้อหาฟรี โดยไม่เสียค่าใช้จ่าย</p>
+    <div class="highlight">
+      <p><strong>คุณสมบัติ:</strong></p>
+      <p>แบ่งปันไฟล์/เนื้อหาฟรีให้กับผู้อื่น</p>
+      <p>ไม่มีค่าใช้จ่ายสำหรับผู้รับ</p>
+      <p>เหมาะสำหรับการแบ่งปันความรู้หรือเนื้อหาโปรโมชั่น</p>
+    </div>
+  </div>
+
+  <div class="details" id="earn-details">
+    <h3><i class="fas fa-money-bill-wave"></i> โหมด Earn</h3>
+    <p>โหมดนี้ช่วยให้คุณสามารถรับรายได้จากการแชร์เนื้อหาหรือไฟล์ของคุณ</p>
+    <div class="highlight">
+      <p><strong>คุณสมบัติ:</strong></p>
+      <p>รับรายได้เมื่อมีผู้ซื้อหรือสนับสนุนผ่านการบริจาค</p>
+      <p>เชื่อมต่อกับเบอร์มือถือพร้อมเพย์</p>
+      <p>เหมาะสำหรับครีเอเตอร์และผู้ขายเนื้อหา</p>
+    </div>
+  </div>
+
+  <button class="btn" id="confirm-btn">Free</button>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggleOptions = document.querySelectorAll('.toggle-option');
+    const toggleSlider = document.querySelector('.toggle-slider');
+    const freeDetails = document.getElementById('free-details');
+    const earnDetails = document.getElementById('earn-details');
+    const confirmBtn = document.getElementById('confirm-btn');
+
+    function switchMode(mode) {
+      toggleOptions.forEach((option) => {
+        if (option.dataset.option === mode) {
+          option.classList.add('active');
+        } else {
+          option.classList.remove('active');
+        }
+      });
+
+      if (mode === 'free') {
+        toggleSlider.style.left = '5px';
+        toggleSlider.style.transform = 'translateX(0)';
+      } else {
+        toggleSlider.style.left = '50%';
+        toggleSlider.style.transform = 'translateX(0)';
+      }
+
+      if (mode === 'free') {
+        freeDetails.classList.add('active');
+        earnDetails.classList.remove('active');
+        confirmBtn.textContent = 'Free';
+      } else {
+        freeDetails.classList.remove('active');
+        earnDetails.classList.add('active');
+        confirmBtn.textContent = 'Earn';
+      }
+    }
+
+    toggleOptions.forEach((option) => {
+      option.addEventListener('click', function () {
+        switchMode(this.dataset.option);
+      });
+    });
+
+    switchMode('free');
+
+    confirmBtn.addEventListener('click', function () {
+      const currentMode = document.querySelector('.toggle-option.active').dataset.option;
+      if (currentMode === 'free') {
+        alert('คุณได้เลือกโหมด Free: แบ่งปันเนื้อหาฟรี');
+      } else {
+        alert('คุณได้เลือกโหมด Earn: รับรายได้จากเนื้อหาของคุณ');
+      }
+    });
+  });
+</script>

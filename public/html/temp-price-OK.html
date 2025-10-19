@@ -88,19 +88,13 @@
     gap: 8px;
   }
 
-  #prompt-form-container .container {
-    max-width: 800px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 8px;
-    box-shadow:
-      0 1px 3px rgba(0, 0, 0, 0.12),
-      0 1px 2px rgba(0, 0, 0, 0.24);
-    overflow: hidden;
-  }
-
   #prompt-form-container .form-container {
     padding: 0px 10px;
+    background-image: url('https://cdni.iconscout.com/illustration/free/thumb/free-success-illustration-svg-download-png-1768777.png');
+    background-size: 180px auto;
+    background-position-x: calc(100% - 60px);
+    background-position-y: 0;
+    background-repeat: no-repeat;
   }
 
   #prompt-form-container .form-group {
@@ -141,6 +135,14 @@
     outline: none;
     border-color: #4285f4;
     box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+  }
+
+  #prompt-form-container input#phone {
+    max-width: 150px;
+  }
+
+  #prompt-form-container input#phone:focus {
+    max-width: 300px;
   }
 
   #prompt-form-container textarea {
@@ -282,41 +284,39 @@
     top: 0;
   }
 
-  .icon {
+  #post-body-7363231700758148321 .icon {
     width: 20px;
     height: 20px;
     fill: #5f6368;
   }
 
-  .icon-primary {
+  #post-body-7363231700758148321 .icon-primary {
     fill: #4285f4;
   }
 
-  .icon-white {
+  #post-body-7363231700758148321 .icon-white {
     fill: white;
   }
 
-  .icon-success {
+  #post-body-7363231700758148321 .icon-success {
     fill: #34a853;
   }
 
-  .icon-lg {
+  #post-body-7363231700758148321 .icon-lg {
     width: 24px;
     height: 24px;
   }
 
-  .icon-xl {
+  #post-body-7363231700758148321 .icon-xl {
     width: 32px;
     height: 32px;
   }
 
-  @media (max-width: 600px) {
-    #prompt-form-container .container {
-      border-radius: 0;
-    }
-
+  @media (max-width: 480px) {
     #prompt-form-container .form-container {
-      padding: 15px;
+      padding: 10px;
+      background-size: 150px auto;
+      background-position: top right;
     }
 
     .image-overlay-container {
@@ -389,6 +389,13 @@
       d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"
     />
   </symbol>
+
+  <!-- Dollar Icon -->
+  <symbol id="dollar-icon" viewBox="0 0 24 24">
+    <path
+      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.78-1.18 2.73-3.12 3.16z"
+    ></path>
+  </symbol>
 </svg>
 
 <div class="container" id="prompt-form-container">
@@ -412,7 +419,7 @@
           <svg class="icon icon-primary">
             <use xlink:href="#phone-icon"></use>
           </svg>
-          สร้างรายได้จากเบอร์พร้อมเพย์ของคุณ
+          เบอร์พร้อมเพย์
         </label>
         <div class="icon-container">
           <svg class="icon">
@@ -423,7 +430,7 @@
           type="tel"
           id="phone"
           name="entry.616789277"
-          placeholder="ตัวอย่าง: 0912345678"
+          placeholder="Exam 0912345678"
           inputmode="decimal"
           pattern="0[0-9]{9}"
           value="0900000000"
@@ -431,6 +438,62 @@
           aria-describedby="phoneError"
         />
         <div class="error-message" id="phoneError">กรุณากรอกหมายเลขโทรศัพท์มือถือให้ถูกต้อง</div>
+      </div>
+
+      <div class="form-group">
+        <label for="revenueMode">
+          <svg class="icon icon-primary">
+            <use xlink:href="#dollar-icon"></use>
+          </svg>
+          เลือกโหมด
+        </label>
+
+        <div style="display: flex; gap: 8px">
+          <label style="position: relative; display: inline-block; width: 52px; height: 30px">
+            <input
+              type="checkbox"
+              style="opacity: 0; width: 0; height: 0"
+              id="revenueMode"
+              name="entry.318904958"
+              value="true"
+            />
+            <span
+              style="
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc;
+                transition: 0.4s;
+                border-radius: 30px;
+              "
+            ></span>
+            <span
+              style="
+                position: absolute;
+                content: '';
+                height: 22px;
+                width: 22px;
+                left: 4px;
+                bottom: 4px;
+                background-color: white;
+                transition: 0.4s;
+                border-radius: 50%;
+              "
+            ></span>
+          </label>
+
+          <span id="statusTextDonate" style="line-height: 30px; font-size: 14px; color: #333"
+            >รับบริจาคเท่านั้น</span
+          >
+          <span
+            id="statusTextSell"
+            style="line-height: 30px; font-size: 14px; color: #333; display: none"
+            >รับบริจาคและขาย</span
+          >
+        </div>
       </div>
 
       <div class="form-group">
@@ -445,6 +508,7 @@
           name="entry.1496551128"
           placeholder="กรุณากรอกคำอธิบายภาพที่คุณต้องการสร้าง"
           aria-describedby="promptError"
+          maxlength="512"
         ></textarea>
         <div class="error-message" id="promptError">กรุณากรอกพร้อม</div>
       </div>
@@ -489,6 +553,13 @@
     const successMessage = document.getElementById('successMessage');
     const phoneInput = document.getElementById('phone');
     const promptInput = document.getElementById('prompt');
+    const revenueMode = document.getElementById('revenueMode');
+
+    const toggle = document.querySelector('input#revenueMode[type="checkbox"]');
+    const statusTextDonate = document.getElementById('statusTextDonate');
+    const statusTextSell = document.getElementById('statusTextSell');
+    const slider = toggle.nextElementSibling;
+    const circle = slider.nextElementSibling;
 
     function validateForm() {
       let isValid = true;
@@ -516,11 +587,18 @@
     }
 
     function resetForm() {
+      // window.location = '/p/form.html';
       promptForm.reset();
       document.getElementById('phoneError').style.display = 'none';
       document.getElementById('promptError').style.display = 'none';
       successMessage.style.display = 'none';
       submitBtn.disabled = false;
+
+      revenueMode.setAttribute('checked', false);
+      slider.style.backgroundColor = '#ccc';
+      circle.style.transform = 'translateX(0)';
+      statusTextDonate.style.display = 'inline-block';
+      statusTextSell.style.display = 'none';
     }
 
     promptForm.addEventListener('submit', function (e) {
@@ -560,41 +638,51 @@
       }
     });
 
-    // จัดการการส่งฟอร์ม
-    // promptForm.addEventListener('submit', function (e) {
-    //   e.preventDefault();
-
-    //   if (validateForm()) {
-    //     // ในสถานการณ์จริงจะเป็นการส่งข้อมูลไปยัง Google Form
-    //     promptForm.submit();
-
-    //     // ที่นี่เราจะจำลองการส่งข้อมูลสำเร็จ
-    //     successMessage.style.display = 'flex';
-    //     promptForm.reset();
-    //     submitBtn.disabled = true;
-
-    //     // เลื่อนไปที่ด้านบนเพื่อแสดงข้อความสำเร็จ
-    //     window.scrollTo(0, 0);
-
-    //     // รีเซ็ตฟอร์มหลังจาก 3 วินาที
-    //     setTimeout(function () {
-    //       successMessage.style.display = 'none';
-    //       submitBtn.disabled = false;
-    //     }, 5000);
-    //   }
-    // });
-
     resetBtn.addEventListener('click', function () {
       resetForm();
     });
 
-    const inputs = document.querySelectorAll('input, textarea');
-    inputs.forEach((input) => {
-      input.addEventListener('blur', function () {
-        if (submitBtn.disabled === false) {
-          validateForm();
-        }
-      });
+    // const inputs = document.querySelectorAll('input, textarea');
+    // inputs.forEach((input) => {
+    //   input.addEventListener('blur', function () {
+    //     if (submitBtn.disabled === false) {
+    //       validateForm();
+    //     }
+    //   });
+    // });
+
+    toggle.addEventListener('change', function () {
+      statusTextDonate.style.display = 'none';
+      statusTextSell.style.display = 'none';
+
+      revenueMode.setAttribute('checked', this.checked);
+
+      if (this.checked) {
+        slider.style.backgroundColor = '#4CAF50';
+        circle.style.transform = 'translateX(22px)';
+        statusTextSell.style.display = 'inline-block';
+      } else {
+        slider.style.backgroundColor = '#ccc';
+        circle.style.transform = 'translateX(0)';
+        statusTextDonate.style.display = 'inline-block';
+      }
+    });
+
+    toggle.addEventListener('blur', function () {
+      statusTextDonate.style.display = 'none';
+      statusTextSell.style.display = 'none';
+
+      revenueMode.setAttribute('checked', this.checked);
+
+      if (this.checked) {
+        slider.style.backgroundColor = '#4CAF50';
+        circle.style.transform = 'translateX(22px)';
+        statusTextSell.style.display = 'inline-block';
+      } else {
+        slider.style.backgroundColor = '#ccc';
+        circle.style.transform = 'translateX(0)';
+        statusTextDonate.style.display = 'inline-block';
+      }
     });
   });
 </script>

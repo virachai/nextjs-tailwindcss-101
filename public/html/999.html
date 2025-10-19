@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toggle Switch with Text Inside</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .container {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        max-width: 500px;
+        width: 100%;
+      }
+
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+        font-weight: 600;
+      }
+
+      .toggle-container {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 30px;
+      }
+
+      .toggle-label {
+        font-size: 16px;
+        color: #555;
+        font-weight: 500;
+        min-width: 150px;
+      }
+
+      /* Toggle Switch Styles */
+      .toggle-wrapper {
+        position: relative;
+        display: inline-block;
+        width: 120px;
+        height: 40px;
+      }
+
+      .toggle-checkbox {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        position: absolute;
+      }
+
+      .toggle-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ff7675;
+        transition: 0.4s;
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 10px;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .toggle-slider:before {
+        position: absolute;
+        content: '';
+        height: 32px;
+        width: 32px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 2;
+      }
+
+      .toggle-checkbox:checked + .toggle-slider {
+        background-color: #55efc4;
+      }
+
+      .toggle-checkbox:checked + .toggle-slider:before {
+        transform: translateX(80px);
+      }
+
+      .toggle-text {
+        font-size: 12px;
+        font-weight: 600;
+        color: white;
+        z-index: 1;
+        transition: opacity 0.3s;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+      }
+
+      .toggle-text-left {
+        opacity: 1;
+      }
+
+      .toggle-checkbox:checked + .toggle-slider .toggle-text-left {
+        opacity: 0.5;
+      }
+
+      .toggle-text-right {
+        opacity: 0.5;
+      }
+
+      .toggle-checkbox:checked + .toggle-slider .toggle-text-right {
+        opacity: 1;
+      }
+
+      .description {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 20px;
+        border-left: 4px solid #4caf50;
+      }
+
+      .description h3 {
+        margin-top: 0;
+        color: #333;
+      }
+
+      .description p {
+        color: #555;
+        line-height: 1.5;
+      }
+
+      .code-block {
+        background-color: #2d2d2d;
+        color: #f8f8f2;
+        padding: 15px;
+        border-radius: 6px;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+        overflow-x: auto;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Toggle Switch with Text Inside</h1>
+
+      <div class="toggle-container">
+        <span class="toggle-label">เลือกโหมดรายได้:</span>
+
+        <label class="toggle-wrapper">
+          <input type="checkbox" class="toggle-checkbox" />
+          <span class="toggle-slider">
+            <span class="toggle-text toggle-text-left">รับบริจาค</span>
+            <span class="toggle-text toggle-text-right">รับบริจาคและขาย</span>
+          </span>
+        </label>
+      </div>
+
+      <div class="description">
+        <h3>การออกแบบ Toggle Switch</h3>
+        <p>
+          Toggle switch นี้แสดงข้อความภายในตัวสวิตช์เอง ทำให้ผู้ใช้เข้าใจสถานะปัจจุบันได้ง่ายขึ้น
+        </p>
+        <ul>
+          <li>สีแดง: รับบริจาคเท่านั้น</li>
+          <li>สีเขียว: รับบริจาคและขาย</li>
+        </ul>
+        <p>ข้อความภายในสวิตช์จะเปลี่ยนความโปร่งใสตามสถานะเพื่อให้ผู้ใช้เข้าใจได้ง่าย</p>
+      </div>
+
+      <div class="code-block">
+        // JavaScript สำหรับควบคุม toggle switch const toggleCheckbox =
+        document.querySelector('.toggle-checkbox'); toggleCheckbox.addEventListener('change',
+        function() { // ไม่ต้องเขียนโค้ดเพิ่มเติมเพราะใช้ CSS สำหรับการเปลี่ยนสถานะ
+        console.log(this.checked ? 'โหมด: รับบริจาคและขาย' : 'โหมด: รับบริจาคเท่านั้น'); });
+      </div>
+    </div>
+
+    <script>
+      const toggleCheckbox = document.querySelector('.toggle-checkbox');
+
+      toggleCheckbox.addEventListener('change', function () {
+        // ไม่ต้องเขียนโค้ดเพิ่มเติมเพราะใช้ CSS สำหรับการเปลี่ยนสถานะ
+        console.log(this.checked ? 'โหมด: รับบริจาคและขาย' : 'โหมด: รับบริจาคเท่านั้น');
+      });
+    </script>
+  </body>
+</html>

@@ -508,9 +508,18 @@
           name="entry.1496551128"
           placeholder="กรุณากรอกคำอธิบายภาพที่คุณต้องการสร้าง"
           aria-describedby="promptError"
-          maxlength="512"
+          maxlength="1500"
         ></textarea>
+        <div
+          id="charCounter"
+          style="text-align: right; font-size: 14px; color: #5f6368; margin-top: 4px"
+        >
+          0 / 1000
+        </div>
         <div class="error-message" id="promptError">กรุณากรอกพร้อม</div>
+        <div class="error-message" id="promptErrorOverMax">
+          ขออภัย ข้อความต้องไม่เกิน 1000 ตัวอักษร
+        </div>
       </div>
 
       <div class="button-container">
@@ -561,6 +570,24 @@
     const slider = toggle.nextElementSibling;
     const circle = slider.nextElementSibling;
 
+    const charCounter = document.getElementById('charCounter');
+    const checkPromptMax = () => {
+      const currentLength = promptInput.value.length;
+      const maxLength = 1000;
+      charCounter.textContent = `${currentLength} / ${maxLength}`;
+
+      if (currentLength > maxLength) {
+        charCounter.style.color = '#ea4335';
+      } else {
+        charCounter.style.color = '#5f6368';
+      }
+    };
+
+    checkPromptMax();
+
+    promptInput.addEventListener('input', checkPromptMax);
+    promptInput.addEventListener('blur', checkPromptMax);
+
     function validateForm() {
       let isValid = true;
 
@@ -576,11 +603,19 @@
 
       const prompt = document.getElementById('prompt');
       const promptError = document.getElementById('promptError');
-      if (!prompt.value.trim()) {
+      const promptErrorOverMax = document.getElementById('promptErrorOverMax');
+
+      const promptValue = prompt.value.trim();
+
+      if (!promptValue) {
         promptError.style.display = 'block';
+        isValid = false;
+      } else if (promptValue.length > 1000) {
+        promptErrorOverMax.style.display = 'block';
         isValid = false;
       } else {
         promptError.style.display = 'none';
+        promptErrorOverMax.style.display = 'none';
       }
 
       return isValid;
@@ -595,6 +630,7 @@
       submitBtn.disabled = false;
 
       revenueMode.setAttribute('checked', false);
+      revenueMode.setAttribute('value', 'false');
       slider.style.backgroundColor = '#ccc';
       circle.style.transform = 'translateX(0)';
       statusTextDonate.style.display = 'inline-block';
@@ -643,13 +679,14 @@
     });
 
     // const inputs = document.querySelectorAll('input, textarea');
-    // inputs.forEach((input) => {
-    //   input.addEventListener('blur', function () {
-    //     if (submitBtn.disabled === false) {
-    //       validateForm();
-    //     }
-    //   });
-    // });
+    const inputs = document.querySelectorAll('textarea');
+    inputs.forEach((input) => {
+      input.addEventListener('blur', function () {
+        if (submitBtn.disabled === false) {
+          validateForm();
+        }
+      });
+    });
 
     toggle.addEventListener('change', function () {
       statusTextDonate.style.display = 'none';
@@ -673,6 +710,7 @@
       statusTextSell.style.display = 'none';
 
       revenueMode.setAttribute('checked', this.checked);
+      revenueMode.setAttribute('value', this.checked);
 
       if (this.checked) {
         slider.style.backgroundColor = '#4CAF50';
